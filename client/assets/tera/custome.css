@@ -1,0 +1,41 @@
+body{
+    color:#000000;
+    font-family: 'Roboto', sans-serif;
+}
+.c-sidebar-body{
+    font-size: 16px;
+    font-weight: bold;
+}
+.c-sidebar-item:hover:not(.after, .dsb){
+    background-color:#e6e6e6;
+    color: black;
+}
+.c-sidebar-item{
+    font-size: 14px;
+    color: #000000;
+}
+.active{
+    background-color: #E6F1FA;
+    font-weight: bold;
+    color: black;
+}
+.after{
+    background-color:#0770cd;
+}
+.card-body .badge{
+    position: absolute;
+    right: 15px;
+    border-radius: 20px;
+    padding-top: 4px;
+    padding-right:12px;
+    padding-left:10px;
+}
+.c-sidebar-item .disabled{
+    color: black;
+    cursor: not-allowed;
+  pointer-events: all !important;
+    opacity: 0.4;
+}
+.cursor-pointer{
+    cursor: pointer;
+  }
