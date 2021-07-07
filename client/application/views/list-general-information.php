@@ -3,208 +3,210 @@
     <h1 class="mb-3 mt-1">General Information</h1>
     <div class="card">
         <div class="card-header">Property Details</div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-4">Property Name*</div>
-                <div class="col-7">
-                    <input type="text" class="form-control" />
-                </div>
-            </div>
-            <hr />
-            <div class="row mt-3">
-                <div class="col-4">Legal Entity Name</div>
-                <div class="col-7">
-                    <input type="text" class="form-control" />
-                </div>
-            </div>
-            <hr />
-            <div class="row mt-3">
-                <div class="col-4">
-                    Does This Property Have Different Name Previously?
-                </div>
-                <div class="col-7">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <div class="row mt-3">
-                <div class="col-4">
-                    Does This Property Belong to Particular Hotel Chain?
-                </div>
-                <div class="col-7">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <div class="row mt-3">
-                <div class="col-4">Property Type*</div>
-                <div class="col-7">
-                    <div class="form-check mb-1">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            <b>Hotel</b><br />
-                            Establishment that provides accommodations, meals,
-                            and other services for paying guests (travellers,
-                            tourists)
-                        </label>
-                    </div>
-                    <div class="form-check mb-1">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            <b>Hostel</b><br />
-                            Budget accommodation (usually shared-room type) rent
-                            by individual travellers (backpackers) or groups
-                        </label>
-                    </div>
-                    <div class="form-check mb-1">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            <b>Villa</b><br />
-                            Furnished country house located in countryside area
-                            that is often rented for vacation purpose
-                        </label>
-                    </div>
-                    <div class="form-check mb-1">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            <b>Resort</b><br />
-                            A fancy accommodation that is located in a very
-                            scenic or sometimes remote location without
-                            compromising modern technology and amenities
-                        </label>
-                    </div>
-                    <div class="form-check mb-1">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            <b>Apartment</b><br />
-                            Serviced apartment complex with hotel-style booking
-                            system that enables travellers to stay for a period
-                            of time
-                        </label>
-                    </div>
-                    <div class="form-check mb-1">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            <b>Bed and Breakfast</b><br />
-                            An establishment that offers a spare room in private
-                            accommodation (e.g. private house, boarding house).
-                            It also provides breakfast
-                        </label>
-                    </div>
-                    <div class="form-check mb-1">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            <b>Other</b><br />
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <hr />
-            <div class="row mt-3">
-                <div class="col-4">Property Address</div>
-                <div class="col-7">
-                    <div id="googleMap" style="height: 400px"></div>
-                    <input type="hidden" name="lat" id="lat" />
-                    <input type="hidden" name="lng" id="lng" />
-                    <div class="form-group mt-3">
-                        <p>Street Address*</p>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                    <div class="form-group mt-3">
-                        <p>Postal Code*</p>
+        <form action="<?php echo site_url('merchant/generalinformation/'); ?>" method="post" role="form">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-4">Property Name*</div>
+                    <div class="col-7">
                         <input type="text" class="form-control" />
                     </div>
-                    <div class="form-group mt-3">
-                        <p>Country*</p>
-                        <select class="form-control" id="exampleFormControlSelect1">
-                            <option value="" hidden>Select</option>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                </div>
+                <hr />
+                <div class="row mt-3">
+                    <div class="col-4">Legal Entity Name</div>
+                    <div class="col-7">
+                        <input type="text" class="form-control" />
                     </div>
                 </div>
-            </div>
-            <hr />
-            <div class="row mt-3">
-                <div class="col-4">Phone Number</div>
-                <div class="col-7">
-                    <input type="text" class="form-control" />
+                <hr />
+                <div class="row mt-3">
+                    <div class="col-4">
+                        Does This Property Have Different Name Previously?
+                    </div>
+                    <div class="col-7">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                No
+                            </label>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <hr />
-            <div class="row mt-3">
-                <div class="col-4">Number of Rooms*</div>
-                <div class="col-7">
-                    <div class="input-group">
-                        <input type="text" class="form-control" id="inlineFormInputGroupUsername"
-                            placeholder="Username" />
-                        <div class="input-group-append">
-                            <div class="input-group-text">Rooms</div>
+                <hr />
+                <div class="row mt-3">
+                    <div class="col-4">
+                        Does This Property Belong to Particular Hotel Chain?
+                    </div>
+                    <div class="col-7">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row mt-3">
+                    <div class="col-4">Property Type*</div>
+                    <div class="col-7">
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                <b>Hotel</b><br />
+                                Establishment that provides accommodations, meals,
+                                and other services for paying guests (travellers,
+                                tourists)
+                            </label>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                <b>Hostel</b><br />
+                                Budget accommodation (usually shared-room type) rent
+                                by individual travellers (backpackers) or groups
+                            </label>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                <b>Villa</b><br />
+                                Furnished country house located in countryside area
+                                that is often rented for vacation purpose
+                            </label>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                <b>Resort</b><br />
+                                A fancy accommodation that is located in a very
+                                scenic or sometimes remote location without
+                                compromising modern technology and amenities
+                            </label>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                <b>Apartment</b><br />
+                                Serviced apartment complex with hotel-style booking
+                                system that enables travellers to stay for a period
+                                of time
+                            </label>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                <b>Bed and Breakfast</b><br />
+                                An establishment that offers a spare room in private
+                                accommodation (e.g. private house, boarding house).
+                                It also provides breakfast
+                            </label>
+                        </div>
+                        <div class="form-check mb-1">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                <b>Other</b><br />
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row mt-3">
+                    <div class="col-4">Property Address</div>
+                    <div class="col-7">
+                        <div id="googleMap" style="height: 400px"></div>
+                        <input type="hidden" name="lat" id="lat" />
+                        <input type="hidden" name="lng" id="lng" />
+                        <div class="form-group mt-3">
+                            <p>Street Address*</p>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                        <div class="form-group mt-3">
+                            <p>Postal Code*</p>
+                            <input type="text" class="form-control" />
+                        </div>
+                        <div class="form-group mt-3">
+                            <p>Country*</p>
+                            <select class="form-control" id="exampleFormControlSelect1">
+                                <option value="" hidden>Select</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row mt-3">
+                    <div class="col-4">Phone Number</div>
+                    <div class="col-7">
+                        <input type="text" class="form-control" />
+                    </div>
+                </div>
+                <hr />
+                <div class="row mt-3">
+                    <div class="col-4">Number of Rooms*</div>
+                    <div class="col-7">
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername"
+                                placeholder="Username" />
+                            <div class="input-group-append">
+                                <div class="input-group-text">Rooms</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row mt-3">
+                    <div class="col-4">
+                        Does This Property Use Channel Manager System?
+                        <span class="fas fa-question-circle" data-toggle="tooltip" data-placement="right"
+                            title="Channel Manager allows you to manage availability, rates, and inventory across all of your OTA channels from a single source"></span>
+                    </div>
+                    <div class="col-7">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                Yes
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                value="option1" checked />
+                            <label class="form-check-label" for="exampleRadios1">
+                                No
+                            </label>
                         </div>
                     </div>
                 </div>
             </div>
-            <hr />
-            <div class="row mt-3">
-                <div class="col-4">
-                    Does This Property Use Channel Manager System?
-                    <span class="fas fa-question-circle" data-toggle="tooltip" data-placement="right"
-                        title="Channel Manager allows you to manage availability, rates, and inventory across all of your OTA channels from a single source"></span>
-                </div>
-                <div class="col-7">
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            Yes
-                        </label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked />
-                        <label class="form-check-label" for="exampleRadios1">
-                            No
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </form>
     </div>
     <div class="card">
         <div class="card-header">Property Contacts</div>
