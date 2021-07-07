@@ -69,10 +69,11 @@ class Properti_Detail extends RestController
                         'flag_kawasan' => $this->input->post('flag_kawasan'),
                         'waktu_checkin' => $this->input->post('waktu_checkin'),
                         'waktu_checkout' => $this->input->post('waktu_checkout'),
-                        'jarak_kekota' => $this->input->post('jarak_kekota'),
+                        'jarak_ke_kota' => $this->input->post('jarak_ke_kota'),
                         'jumlah_lantai' => $this->input->post('jumlah_lantai'),
                         'biaya_sarapan_tambahan' => $this->input->post('biaya_sarapan_tambahan'),
                         'master_cancel_id' => $this->input->post('master_cancel_id'),
+                        'master_style_id' => $this->input->post('master_style_id'),
                         'status_id' => 1
                     );
 
@@ -111,10 +112,11 @@ class Properti_Detail extends RestController
                     'flag_kawasan' => $this->input->post('flag_kawasan'),
                     'waktu_checkin' => $this->input->post('waktu_checkin'),
                     'waktu_checkout' => $this->input->post('waktu_checkout'),
-                    'jarak_kekota' => $this->input->post('jarak_kekota'),
+                    'jarak_ke_kota' => $this->input->post('jarak_ke_kota'),
                     'jumlah_lantai' => $this->input->post('jumlah_lantai'),
                     'biaya_sarapan_tambahan' => $this->input->post('biaya_sarapan_tambahan'),
                     'master_cancel_id' => $this->input->post('master_cancel_id'),
+                    'master_style_id' => $this->input->post('master_style_id'),
                     'status_id' => 1
                 );
 
