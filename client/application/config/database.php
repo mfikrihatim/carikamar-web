@@ -74,11 +74,11 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-    'dsn' => '',
-    'hostname' => 'localhost',
-    'username' => 'root',
-    'password' => '',
-    'database' => '',
+    'dsn'    => '',
+    'hostname' => '151.106.118.173',
+    'username' => 'u1358052_extranet',
+    'password' => '123456',
+    'database' => 'u1358052_extranet',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
@@ -92,5 +92,5 @@ $db['default'] = array(
     'compress' => FALSE,
     'stricton' => FALSE,
     'failover' => array(),
-    'save_queries' => TRUE,
+    'save_queries' => TRUE
 );

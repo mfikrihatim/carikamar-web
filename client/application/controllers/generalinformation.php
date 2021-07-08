@@ -6,7 +6,7 @@ class GeneralInformation extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
+		$this->token = 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
 		$this->load->model('MSudi');
 	}
 	public function index()
@@ -29,43 +29,45 @@ class GeneralInformation extends CI_Controller
 
 		// if (isset($_POST['userlogin'])) {
 		// 	if ($_POST['userlogin'] != null && $_POST['userlogin'] != '') {
-				$url = "http://localhost/carikamar-web/index.php/api/Informasi_Umum_Detail/Informasi_Umum_Detail";
+		$url = "http://localhost/carikamar-web/index.php/api/Informasi_Umum_Detail/Informasi_Umum_Detail";
 
-				$context =
-					array(
-						'nama_properti'	=> $this->input->post('nama_properti'),
-						// 'deskripsi'		=> $this->input->post('deskripsi'),
-						// 'foto' => $this->input->post('foto'),
-						// 'alamat_lengkap'		=> $this->input->post('alamat_lengkap'),
-						// 'alamat_lat'		=> $this->input->post('alamat_lat'),
-						// 'alamat_longitude'		=> $this->input->post('alamat_longitude'),
-						// 'userlogin'		=> $_POST['userlogin'],
-					);
+		$context =
+			array(
+				'tipe_properti_id'	=> 1,
+				'nama_properti'	=> $this->input->post('nama_properti'),
+				'nama_badan_hukum'	=> $this->input->post('nama_badan_hukum'),
+				'lokasi_maps'	=> 123,
+				'alamat_jalan'	=> 234,
+				'kode_pos'	=> 456,
+				'no_telp'	=> 45674,
+				'jumlah_kamar'	=> 2,
+				'flag_chanel_manager'	=> 2,
+			);
 
-				$content = $this->MSudi->CallAPI("POST", $url, $context, $token);
+		$content = $this->MSudi->CallAPI("POST", $url, $context, $token);
 
 
-				// $data['content'] = 'VLaporanKerusakan';
-				// $this->load->view('welcome_message', $data);
+		// $data['content'] = 'VLaporanKerusakan';
+		// $this->load->view('welcome_message', $data);
 
-				if ($content['status'] == 200) {
-					$this->load->helper('url');
+		if ($content['status'] == 200) {
+			$this->load->helper('url');
 
-					/*Redirect the user to some site*/
-					redirect(site_url('generalinformation/index'));
-				} else {
-					$this->load->helper('url');
-					/*Redirect the user to some site*/
-					// redirect(site_url('Welcome/VFormAddUser'));
-					$message = $content['message'];
-					$redirect = site_url("generalinformation/index");
-					echo "<script>
+			/*Redirect the user to some site*/
+			redirect(site_url('generalinformation'));
+		} else {
+			$this->load->helper('url');
+			/*Redirect the user to some site*/
+			// redirect(site_url('Welcome/VFormAddUser'));
+			$message = $content['message'];
+			$redirect = site_url("generalinformation");
+			echo "<script>
 							alert('$message');
 							window.location.href='$redirect';
 						  </script>";
 
-					// echo "<script type='text/javascript'>alert('$message');</script>";
-				}
+			// echo "<script type='text/javascript'>alert('$message');</script>";
+		}
 		// 	} else {
 		// 		$this->load->helper('url');
 
@@ -79,5 +81,4 @@ class GeneralInformation extends CI_Controller
 		// 	redirect(site_url('Welcome'));
 		// }
 	}
-
 }
