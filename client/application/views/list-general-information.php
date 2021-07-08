@@ -3,7 +3,7 @@
     <h1 class="mb-3 mt-1">General Information</h1>
     <div class="card">
         <div class="card-header">Property Details</div>
-        <form action="<?php echo site_url('generalinformation/AddGeneralInformation'); ?>" method="post" role="form">
+        <form action="<?php echo site_url('generalinformation/AddGeneralInformation'); ?>" method="post" role="form" enctype='multipart/form-data'>
             <div class="card-body">
                 <div class="row">
                     <div class="col-4">Property Name*</div>
@@ -15,7 +15,7 @@
                 <div class="row mt-3">
                     <div class="col-4">Legal Entity Name</div>
                     <div class="col-7">
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" name="nama_badan_hukum" />
                     </div>
                 </div>
                 <hr />
@@ -25,15 +25,13 @@
                     </div>
                     <div class="col-7">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 No
                             </label>
@@ -47,15 +45,13 @@
                     </div>
                     <div class="col-7">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 No
                             </label>
@@ -67,8 +63,7 @@
                     <div class="col-4">Property Type*</div>
                     <div class="col-7">
                         <div class="form-check mb-1">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 <b>Hotel</b><br />
                                 Establishment that provides accommodations, meals,
@@ -77,8 +72,7 @@
                             </label>
                         </div>
                         <div class="form-check mb-1">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 <b>Hostel</b><br />
                                 Budget accommodation (usually shared-room type) rent
@@ -86,8 +80,7 @@
                             </label>
                         </div>
                         <div class="form-check mb-1">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 <b>Villa</b><br />
                                 Furnished country house located in countryside area
@@ -95,8 +88,7 @@
                             </label>
                         </div>
                         <div class="form-check mb-1">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 <b>Resort</b><br />
                                 A fancy accommodation that is located in a very
@@ -105,8 +97,7 @@
                             </label>
                         </div>
                         <div class="form-check mb-1">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 <b>Apartment</b><br />
                                 Serviced apartment complex with hotel-style booking
@@ -115,8 +106,7 @@
                             </label>
                         </div>
                         <div class="form-check mb-1">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 <b>Bed and Breakfast</b><br />
                                 An establishment that offers a spare room in private
@@ -125,8 +115,7 @@
                             </label>
                         </div>
                         <div class="form-check mb-1">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 <b>Other</b><br />
                             </label>
@@ -173,8 +162,7 @@
                     <div class="col-4">Number of Rooms*</div>
                     <div class="col-7">
                         <div class="input-group">
-                            <input type="text" class="form-control" id="inlineFormInputGroupUsername"
-                                placeholder="Username" />
+                            <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Username" />
                             <div class="input-group-append">
                                 <div class="input-group-text">Rooms</div>
                             </div>
@@ -185,28 +173,26 @@
                 <div class="row mt-3">
                     <div class="col-4">
                         Does This Property Use Channel Manager System?
-                        <span class="fas fa-question-circle" data-toggle="tooltip" data-placement="right"
-                            title="Channel Manager allows you to manage availability, rates, and inventory across all of your OTA channels from a single source"></span>
+                        <span class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Channel Manager allows you to manage availability, rates, and inventory across all of your OTA channels from a single source"></span>
                     </div>
                     <div class="col-7">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                                value="option1" checked />
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked />
                             <label class="form-check-label" for="exampleRadios1">
                                 No
                             </label>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
+
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </form>
@@ -249,8 +235,7 @@
                             <p class="mt-3">Position*</p>
                             <input type="text" class="form-control" />
                             <div class="form-check form-check-inline mt-3">
-                                <input class="form-check-input mr-3" type="checkbox" name="exampleRadios"
-                                    id="exampleRadios1" value="option1" />
+                                <input class="form-check-input mr-3" type="checkbox" name="exampleRadios" id="exampleRadios1" value="option1" />
                                 <label class="form-check-label" for="exampleRadios1">
                                     Contactable 24 Hours
                                 </label>
