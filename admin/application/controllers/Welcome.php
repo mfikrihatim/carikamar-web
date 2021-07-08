@@ -8,6 +8,7 @@ class Welcome extends CI_Controller
 		parent::__construct();
 		$this->token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
 		$this->load->model('MSudi');
+		// $this->load->library('encrypt');
 	}
 	public function index()
 	{
