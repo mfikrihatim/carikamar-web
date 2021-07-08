@@ -11,19 +11,6 @@ class Master_Tipe extends CI_Controller
 	}
 	public function index()
 	{
-		// if ($this->session->userdata('Login')) {
-		// 	$data['nama'] = $this->session->userdata('nama');
-		// 	$data['level'] = $this->session->userdata('level');
-
-		// $data['content'] = 'VFormAddUser';
-		$this->load->view('VLogin');
-		// } else {
-		// 	redirect(site_url('Login'));
-		// }
-	}
-
-	public function DataMasterTipe()
-	{
 		$token = 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
 		$url = "http://localhost/carikamar-web/index.php/api/Master_Tipe_Properti/Master_Tipe_Properti";
 
@@ -35,7 +22,6 @@ class Master_Tipe extends CI_Controller
 		// 	redirect(site_url('Login'));
 		// }
 	}
-
 
 	public function VFormAddMasterTipe()
 	{
@@ -54,26 +40,17 @@ class Master_Tipe extends CI_Controller
 
 		$token = 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
 
-		// if (isset($_POST['userlogin'])) {
-		// 	if ($_POST['userlogin'] != null && $_POST['userlogin'] != '') {
+		if (isset($_POST['userlogin'])) {
+			if ($_POST['userlogin'] != null && $_POST['userlogin'] != '') {
 				$url = "http://localhost/carikamar-web/index.php/api/Master_Tipe_Properti/Master_Tipe_Properti";
 
 				$context =
 					array(
 						'nama_tipe'	=> $this->input->post('nama_tipe'),
 						'deskripsi'		=> $this->input->post('deskripsi'),
-						// 'foto' => $this->input->post('foto'),
-						// 'alamat_lengkap'		=> $this->input->post('alamat_lengkap'),
-						// 'alamat_lat'		=> $this->input->post('alamat_lat'),
-						// 'alamat_longitude'		=> $this->input->post('alamat_longitude'),
-						// 'userlogin'		=> $_POST['userlogin'],
 					);
 
 				$content = $this->MSudi->CallAPI("POST", $url, $context, $token);
-
-
-				// $data['content'] = 'VLaporanKerusakan';
-				// $this->load->view('welcome_message', $data);
 
 				if ($content['status'] == 200) {
 					$this->load->helper('url');
@@ -93,18 +70,18 @@ class Master_Tipe extends CI_Controller
 
 					// echo "<script type='text/javascript'>alert('$message');</script>";
 				}
-		// 	} else {
-		// 		$this->load->helper('url');
+			} else {
+				$this->load->helper('url');
 
-		// 		/*Redirect the user to some site*/
-		// 		redirect(site_url('Welcome'));
-		// 	}
-		// } else {
-		// 	$this->load->helper('url');
+				/*Redirect the user to some site*/
+				redirect(site_url('Welcome'));
+			}
+		} else {
+			$this->load->helper('url');
 
-		// 	/*Redirect the user to some site*/
-		// 	redirect(site_url('Welcome'));
-		// }
+			/*Redirect the user to some site*/
+			redirect(site_url('Welcome'));
+		}
 	}
 
 }
