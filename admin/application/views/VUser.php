@@ -22,7 +22,8 @@
                          <div class="card-body">
                              <div style="margin-bottom: 10px;">
                                  <div class="col-lg-12">
-                                     <a href="<?php echo site_url('Welcome/VFormAddUser'); ?>" class="btn btn-success">
+                                     <a href="<?php echo site_url('Master_User/VFormAddUser'); ?>"
+                                         class="btn btn-success">
                                          Tambah data
                                      </a>
                                  </div>

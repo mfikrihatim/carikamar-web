@@ -99,22 +99,25 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="<?php echo site_url('Welcome/DataDashboard'); ?>" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <a href="<?php echo site_url('Welcome/DataDashboard'); ?>"
+                                class="nav-link <?php if($this->uri->segment(2)=="DataDashboard"){echo 'active';}?>">
+                                <i class="nav-icon fas fa-tachometer-alt "></i>
                                 <p>
                                     Dashboard
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo site_url('Welcome/DataUser'); ?>" class="nav-link">
+                            <a href="<?php echo site_url('Master_User'); ?>"
+                                class="nav-link <?php if($this->uri->segment(2)=="DataUser"){echo 'active';}?> ">
                                 <i class="far fa-user nav-icon"></i>
                                 <p>
                                     User
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
+                        <li
+                            class="nav-item has-treeview <?php if($this->uri->segment(2)=="DataMasterTipe"){echo 'menu-open';} if($this->uri->segment(2)=="DataMasterCancel"){echo 'menu-open';} if($this->uri->segment(2)=="DataMasterStyle"){echo 'menu-open';}?> ">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
@@ -124,7 +127,8 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Welcome/DataMasterTipe'); ?>" class="nav-link">
+                                    <a href="<?php echo site_url('Welcome/DataMasterTipe'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="DataMasterTipe"){echo 'active';}?>">
                                         <i class="nav-icon fa fa-bullseye"></i>
                                         <p>
                                             Master Tipe
@@ -132,7 +136,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Welcome/DataMasterCancel'); ?>" class="nav-link">
+                                    <a href="<?php echo site_url('Welcome/DataMasterCancel'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="DataMasterCancel"){echo 'active';}?>">
                                         <i class="nav-icon fa fa-bullseye"></i>
                                         <p>
                                             Master Cancel
@@ -140,7 +145,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Welcome/DataMasterStyle'); ?>" class="nav-link">
+                                    <a href="<?php echo site_url('Welcome/DataMasterStyle'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="DataMasterStyle"){echo 'active';}?>">
                                         <i class="nav-icon fa fa-bullseye"></i>
                                         <p>
                                             Master Jenis
@@ -148,6 +154,22 @@
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('Welcome/DataUser'); ?>" class="nav-link  ">
+                                <i class="far fa-user nav-icon"></i>
+                                <p>
+                                    Informasi Umum Detail
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('Welcome/DataUser'); ?>" class="nav-link  ">
+                                <i class="far fa-user nav-icon"></i>
+                                <p>
+                                    Informasi Umum Kontak
+                                </p>
+                            </a>
                         </li>
 
                         <li class="nav-item">
