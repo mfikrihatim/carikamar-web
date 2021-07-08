@@ -8,16 +8,22 @@ class Master_User extends CI_Controller
 		parent::__construct();
 		$this->token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
 		$this->load->model('MSudi');
+		form_open('Welcome/VDashboard');
+		form_open('Welcome/LoginUser');
+		
+
 		// $this->load->library('encrypt');
 	}
 	public function index()
 	{
+		
         $token = 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
 		$url = "http://localhost/carikamar-web/index.php/api/Master_User/Master_User";
 
 		$content = $this->MSudi->CallAPI("GET", $url, null, $token);
 
 		$data['datas'] = $content['data'];
+		
 		$data['content'] = 'VUser';
 		$this->load->view('welcome_message', $data);
 		// } else {
@@ -26,11 +32,12 @@ class Master_User extends CI_Controller
 	}
 
 
+
 	public function VFormAddUser()
 	{
 		// if ($this->session->userdata('Login')) {
-		// 	$data['nama'] = $this->session->userdata('nama');
-		// 	$data['level'] = $this->session->userdata('level');
+		// $data['nama'] = $this->session->userdata('nama');
+		// $data['password'] = $this->session->userdata('password');
 		$data['content'] = 'VFormAddUser';
 		$this->load->view('welcome_message', $data);
 		// } else {
