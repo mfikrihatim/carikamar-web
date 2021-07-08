@@ -12,8 +12,7 @@
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet"
-        href="<?php echo base_url('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css'); ?>">
     <!-- iCheck -->
     <link rel="stylesheet" href="<?php echo base_url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css'); ?>">
     <!-- JQVMap -->
@@ -21,17 +20,14 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/adminlte.min.css'); ?>">
     <!-- overlayScrollbars -->
-    <link rel="stylesheet"
-        href="<?php echo base_url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css'); ?>">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="<?php echo base_url('assets/plugins/daterangepicker/daterangepicker.css'); ?>">
     <!-- summernote -->
     <link rel="stylesheet" href="<?php echo base_url('assets/plugins/summernote/summernote-bs4.css'); ?>">
     <!-- DataTables -->
-    <link rel="stylesheet"
-        href="<?php echo base_url('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
-    <link rel="stylesheet"
-        href="<?php echo base_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -74,8 +70,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="<?php echo base_url('assets/dist/img/AdminLTELogo.png'); ?>" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="<?php echo base_url('assets/dist/img/AdminLTELogo.png'); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">CariKamar</span>
             </a>
 
@@ -84,77 +79,35 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg'); ?>"
-                            class="img-circle elevation-2" alt="User Image">
+                        <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg'); ?>" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Admin</a>
+                        <a href="#" class="d-block"><?php echo $nama; ?></a>
                     </div>
                 </div>
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="<?php echo site_url('Welcome/DataDashboard'); ?>"
-                                class="nav-link <?php if($this->uri->segment(2)=="DataDashboard"){echo 'active';}?>">
-                                <i class="nav-icon fas fa-tachometer-alt "></i>
+                            <a href="<?php echo site_url('Welcome/index'); ?>" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     Dashboard
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo site_url('Master_User'); ?>"
-                                class="nav-link <?php if($this->uri->segment(1)=="Master_User"){echo 'active';}?> ">
-                                <i class="far fa-user nav-icon"></i>
+                            <a href="<?php echo site_url('Master_user/index'); ?>" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
                                     User
                                 </p>
                             </a>
                         </li>
-                        <li
-                            class="nav-item has-treeview <?php if($this->uri->segment(2)=="DataMasterTipe"){echo 'menu-open';} if($this->uri->segment(2)=="DataMasterCancel"){echo 'menu-open';} if($this->uri->segment(2)=="DataMasterStyle"){echo 'menu-open';}?> ">
-                            <a href="#" class="nav-link ">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Data Master
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="<?php echo site_url('Welcome/DataMasterTipe'); ?>"
-                                        class="nav-link <?php if($this->uri->segment(2)=="DataMasterTipe"){echo 'active';}?>">
-                                        <i class="nav-icon fa fa-bullseye"></i>
-                                        <p>
-                                            Master Tipe
-                                        </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="<?php echo site_url('Welcome/DataMasterCancel'); ?>"
-                                        class="nav-link <?php if($this->uri->segment(2)=="DataMasterCancel"){echo 'active';}?>">
-                                        <i class="nav-icon fa fa-bullseye"></i>
-                                        <p>
-                                            Master Cancel
-                                        </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="<?php echo site_url('Welcome/DataMasterStyle'); ?>"
-                                        class="nav-link <?php if($this->uri->segment(2)=="DataMasterStyle"){echo 'active';}?>">
-                                        <i class="nav-icon fa fa-bullseye"></i>
-                                        <p>
-                                            Master Jenis
-                                        </p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+
                         <li class="nav-item">
                             <a href="<?php echo site_url('Welcome/DataUser'); ?>" class="nav-link  ">
                                 <i class="far fa-user nav-icon"></i>
@@ -187,8 +140,8 @@
         </aside>
 
         <?php
-    $this->load->view($content);
-    ?>
+        $this->load->view($content);
+        ?>
         <!-- /.Left col -->
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
 
@@ -217,7 +170,7 @@
     <script src="<?php echo base_url('assets/plugins/jquery-ui/jquery-ui.min.js'); ?>"></script>
     <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
     <script>
-    $.widget.bridge('uibutton', $.ui.button)
+        $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
     <script src="<?php echo base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
@@ -234,8 +187,7 @@
     <script src="<?php echo base_url('assets/plugins/moment/moment.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/plugins/daterangepicker/daterangepicker.js'); ?>"></script>
     <!-- Tempusdominus Bootstrap 4 -->
-    <script
-        src="<?php echo base_url('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js'); ?>">
+    <script src="<?php echo base_url('assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js'); ?>">
     </script>
     <!-- Summernote -->
     <script src="<?php echo base_url('assets/plugins/summernote/summernote-bs4.min.js'); ?>"></script>
@@ -258,24 +210,24 @@
     <!-- AdminLTE App -->
     <!-- <script src="<?php echo base_url('assets/dist/js/adminlte.min.js'); ?>"></script> -->
     <script>
-    function Logout() {
-        localStorage.clear();
-    }
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "autoWidth": false,
+        function Logout() {
+            localStorage.clear();
+        }
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
         });
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": false,
-            "searching": false,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-        });
-    });
     </script>
 
 </body>
