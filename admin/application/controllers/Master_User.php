@@ -1,35 +1,24 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends CI_Controller
+class Master_User extends CI_Controller
 {
 	function __construct()
 	{
 		parent::__construct();
 		$this->token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
 		$this->load->model('MSudi');
+		// $this->load->library('encrypt');
 	}
 	public function index()
 	{
-		// if ($this->session->userdata('Login')) {
-		// 	$data['nama'] = $this->session->userdata('nama');
-		// 	$data['level'] = $this->session->userdata('level');
-
-		// $data['content'] = 'VFormAddUser';
-		$this->load->view('VLogin');
-		// } else {
-		// 	redirect(site_url('Login'));
-		// }
-	}
-
-	public function DataMasterTipe()
-	{
-		$token = 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
-		$url = "http://localhost/carikamar-web/index.php/api/Master_Tipe_Properti/Master_Tipe_Properti";
+        $token = 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
+		$url = "http://localhost/carikamar-web/index.php/api/Master_User/Master_User";
 
 		$content = $this->MSudi->CallAPI("GET", $url, null, $token);
+
 		$data['datas'] = $content['data'];
-		$data['content'] = 'VMasterTipe';
+		$data['content'] = 'VUser';
 		$this->load->view('welcome_message', $data);
 		// } else {
 		// 	redirect(site_url('Login'));
@@ -37,35 +26,34 @@ class Welcome extends CI_Controller
 	}
 
 
-	public function VFormAddInfo()
+	public function VFormAddUser()
 	{
 		// if ($this->session->userdata('Login')) {
 		// 	$data['nama'] = $this->session->userdata('nama');
 		// 	$data['level'] = $this->session->userdata('level');
-		$data['content'] = 'VFormAddMasterTipe';
+		$data['content'] = 'VFormAddUser';
 		$this->load->view('welcome_message', $data);
 		// } else {
 		// 	redirect(site_url('Login'));
 		// }
 	}
 
-	public function AddMasterTipe()
+	public function AddUser()
 	{
 
 		$token = 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
 
 		if (isset($_POST['userlogin'])) {
 			if ($_POST['userlogin'] != null && $_POST['userlogin'] != '') {
-				$url = "http://localhost/carikamar-web/index.php/api/Master_Tipe_Properti/Master_Tipe_Properti";
+				$url = "http://localhost/carikamar-web/index.php/api/Master_User/Master_User";
 
 				$context =
 					array(
-						'nama_tipe'	=> $this->input->post('nama_tipe'),
-						'deskripsi'		=> $this->input->post('deskripsi'),
-						// 'foto' => $this->input->post('foto'),
-						// 'alamat_lengkap'		=> $this->input->post('alamat_lengkap'),
-						// 'alamat_lat'		=> $this->input->post('alamat_lat'),
-						// 'alamat_longitude'		=> $this->input->post('alamat_longitude'),
+						'nama'	=> $this->input->post('nama'),
+						'email' => $this->input->post('email'),
+						'password'		=> $this->input->post('password'),
+						'foto'		=> $this->input->post('foto'),
+						'status_id'		=> $this->input->post('status_id'),
 						// 'userlogin'		=> $_POST['userlogin'],
 					);
 
@@ -79,13 +67,13 @@ class Welcome extends CI_Controller
 					$this->load->helper('url');
 
 					/*Redirect the user to some site*/
-					redirect(site_url('Welcome/DataMasterTipe'));
+					redirect(site_url('Welcome/DataUser'));
 				} else {
 					$this->load->helper('url');
 					/*Redirect the user to some site*/
 					// redirect(site_url('Welcome/VFormAddUser'));
 					$message = $content['message'];
-					$redirect = site_url("Welcome/VFormAddMasterTipe");
+					$redirect = site_url("Welcome/VFormAddUser");
 					echo "<script>
 							alert('$message');
 							window.location.href='$redirect';
@@ -107,47 +95,69 @@ class Welcome extends CI_Controller
 		}
 	}
 
-	public function VFormUpdateInfo()
+	public function VFormUpdateUser()
 	{
 		$token = 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
 		$id = $_GET['id'];
-		$url = "http://localhost/smart-city-ci/index.php/api/Info/Info?id=" . $id;
+		$url = "http://localhost/smart-city-ci/index.php/api/User/User?id=" . $id;
 
 		$content = $this->MSudi->CallAPI("GET", $url, null, $token);
+		
 		$data['datas'] = $content['data'][0];
-		$data['content'] = 'VFormUpdateInfo';
+		$data['content'] = 'VFormUpdateUser';
 		$this->load->view('welcome_message', $data);
 		// } else {
 		// 	redirect(site_url('Login'));
 		// }
 	}
 
-	public function EditInfo()
+	public function EditUser()
 	{
 		$token = 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
 
 		if (isset($_REQUEST['userlogin'])) {
 			if ($_REQUEST['userlogin'] != null && $_REQUEST['userlogin'] != '') {
-				$url = "http://localhost/smart-city-ci/index.php/api/Info/Info";
+				$url = "http://localhost/smart-city-ci/index.php/api/User/User";
 
 				$context =
 					array(
 						'id' => $_REQUEST['id'],
-						'nama_info'	=> $_REQUEST('nama_info'),
-						'deskripsi_info'		=> $_REQUEST('deskripsi_info'),
-						'foto' => $_REQUEST('foto'),
+						'username'	=> $_REQUEST('username'),
+						'password'		=> $_REQUEST('password'),
+						'fullname' => $_REQUEST('fullname'),
+						'id_level'		=> $_REQUEST('id_level'),
+						'nohp'		=> $_REQUEST('nohp'),
+						'email'		=> $_REQUEST('email'),
+						'status'		=> $_REQUEST('status'),
+						'prov_id'		=> $_REQUEST('prov_id'),
+						'city_id'		=> $_REQUEST('city_id'),
+						'dis_id'		=> $_REQUEST('dis_id'),
+						'subdis_id'		=> $_REQUEST('subdis_id'),
+						'postal_id'		=> $_REQUEST('postal_id'),
+						'foto'		=> $_REQUEST('foto'),
 						'alamat_lengkap'		=> $_REQUEST('alamat_lengkap'),
-						'alamat_lat'		=> $_REQUEST('alamat_lat'),
-						'alamat_longitude'		=> $_REQUEST('alamat_longitude'),
+						'nik'		=> $_REQUEST('nik'),
+						'tgl_lahir'		=> $_REQUEST('tgl_lahir'),
+						'no_rumah'		=> $_REQUEST('no_rumah'),
+						'blok'		=> $_REQUEST('blok'),
+						'rw'		=> $_REQUEST('rw'),
+						'jnskel'		=> $_REQUEST('jnskel'),
+						'id_city_tempat_lahir'		=> $_REQUEST('id_city_tempat_lahir'),
+						'id_pendidikan'		=> $_REQUEST('id_pendidikan'),
+						'id_status_pernikahan'		=> $_REQUEST('id_status_pernikahan'),
+						'id_status_tinggal'		=> $_REQUEST('id_status_tinggal'),
+						'id_agama'		=> $_REQUEST('id_agama'),
+						'id_jenis_pekerjaan'		=> $_REQUEST('id_jenis_pekerjaan'),
+						'nama_jenis_pekerjaan'		=> $_REQUEST('nama_jenis_pekerjaan'),
 						'userlogin'		=> $_REQUEST['userlogin'],
 					);
 
-				$content = $this->MSudi->CallAPI("POST", $url, $context, $token);
+				$content = $this->MSudi->CallAPI("PUT", $url, $context, $token);
 
 				$this->load->helper('url');
 
 				/*Redirect the user to some site*/
-				redirect(site_url('Welcome/DataInfo'));
+				redirect(site_url('Welcome/DataUser'));
 			} else {
 				$this->load->helper('url');
 
@@ -163,21 +173,21 @@ class Welcome extends CI_Controller
 	}
 
 
-	public function DeleteInfo()
+	public function DeleteUser()
 	{
 		$token = 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
 		$id = $_GET['id'];
 		if (isset($_POST['username'])) {
 			if ($_POST['username'] != null && $_POST['username'] != '') {
 				$user = $_POST['username'];
-				$url = "http://localhost/smart-city-ci/index.php/api/Info/Info?id=" . $id . "&userlogin=" . $user;
+				$url = "http://localhost/smart-city-ci/index.php/api/User/User?id=" . $id . "&userlogin=" . $user;
 
 
 				$content = $this->MSudi->CallAPI("DELETE", $url, null, $token);
 				$this->load->helper('url');
 
 				/*Redirect the user to some site*/
-				redirect(site_url('Welcome/DataInfo'));
+				redirect(site_url('Welcome/DataUser'));
 			} else {
 				$this->load->helper('url');
 
@@ -191,5 +201,5 @@ class Welcome extends CI_Controller
 			redirect(site_url('Welcome'));
 		}
 	}
-
+	
 }

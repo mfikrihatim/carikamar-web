@@ -74,15 +74,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="c-sidebar-body">1. Property Information</div>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('merchant/generalinformation/Index'); ?>"
+                                <a href="<?php echo site_url('generalinformation/Index'); ?>"
                                     class="c-sidebar-item after">
                                     <div class="card-body pt-3 pb-3 mr-1 active">
                                         General Information
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('merchant/propertydetail/index'); ?>"
-                                    class="c-sidebar-item">
+                                <a href="<?php echo site_url('propertydetail/index'); ?>" class="c-sidebar-item">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Property Detail
                                         <span class="badge badge-info">8</span>
