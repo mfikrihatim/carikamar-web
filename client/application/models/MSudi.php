@@ -3,6 +3,54 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class MSudi extends CI_Model
 {
+    function CallAPI($method, $url, $data = null, $token)
+    {
+        // Initialize curl
+        $curl = curl_init();
+
+        // Checking the method request
+        switch ($method) {
+                // POST request
+            case "POST":
+                curl_setopt($curl, CURLOPT_POST, 1);
+                if ($data)
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: multipart/form-data'));
+                break;
+                // PUT request
+            case "PUT":
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "PUT");
+                if ($data)
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
+                curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
+                break;
+            case "DELETE":
+                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, "DELETE");
+                if ($data)
+                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                break;
+            default:
+                if ($data)
+                    $url = sprintf("%s?%s", $url, http_build_query($data));
+        }
+        // Options
+        curl_setopt($curl, CURLOPT_URL, $url);
+
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Authorization: ' . $token));
+
+        // Execute the process
+        $result = curl_exec($curl);
+        if (!$result) {
+            die("Connection Failure");
+        }
+        curl_close($curl);
+
+        // Returning the output
+        return json_decode($result, true);
+    }
     function AddData($tabel, $data = array())
     {
         $this->db->insert($tabel, $data);
