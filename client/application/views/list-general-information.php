@@ -3,12 +3,12 @@
     <h1 class="mb-3 mt-1">General Information</h1>
     <div class="card">
         <div class="card-header">Property Details</div>
-        <form action="<?php echo site_url('merchant/generalinformation/'); ?>" method="post" role="form">
+        <form action="<?php echo site_url('generalinformation/AddGeneralInformation'); ?>" method="post" role="form">
             <div class="card-body">
                 <div class="row">
                     <div class="col-4">Property Name*</div>
                     <div class="col-7">
-                        <input type="text" class="form-control" />
+                        <input type="text" class="form-control" name="nama_properti" />
                     </div>
                 </div>
                 <hr />
@@ -203,6 +203,9 @@
                                 No
                             </label>
                         </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>
