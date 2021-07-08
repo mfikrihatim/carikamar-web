@@ -109,7 +109,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="<?php echo site_url('Master_User'); ?>"
-                                class="nav-link <?php if($this->uri->segment(2)=="DataUser"){echo 'active';}?> ">
+                                class="nav-link <?php if($this->uri->segment(1)=="Master_User"){echo 'active';}?> ">
                                 <i class="far fa-user nav-icon"></i>
                                 <p>
                                     User
