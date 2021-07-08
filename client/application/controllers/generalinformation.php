@@ -3,6 +3,12 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class GeneralInformation extends CI_Controller
 {
+	function __construct()
+	{
+		parent::__construct();
+		$this->token = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
+		$this->load->model('MSudi');
+	}
 	public function index()
 	{
 		// if ($this->session->userdata('Login')) {
@@ -23,11 +29,11 @@ class GeneralInformation extends CI_Controller
 
 		// if (isset($_POST['userlogin'])) {
 		// 	if ($_POST['userlogin'] != null && $_POST['userlogin'] != '') {
-				$url = "http://localhost/carikamar-web/index.php/api/Properti_Detail_Master_Cancel/Properti_Detail_Master_Cancel";
+				$url = "http://localhost/carikamar-web/index.php/api/Informasi_Umum_Detail/Informasi_Umum_Detail";
 
 				$context =
 					array(
-						'nama'	=> $this->input->post('nama'),
+						'nama_properti'	=> $this->input->post('nama_properti'),
 						// 'deskripsi'		=> $this->input->post('deskripsi'),
 						// 'foto' => $this->input->post('foto'),
 						// 'alamat_lengkap'		=> $this->input->post('alamat_lengkap'),
@@ -46,13 +52,13 @@ class GeneralInformation extends CI_Controller
 					$this->load->helper('url');
 
 					/*Redirect the user to some site*/
-					redirect(site_url('Welcome/DataMasterCancel'));
+					redirect(site_url('generalinformation/index'));
 				} else {
 					$this->load->helper('url');
 					/*Redirect the user to some site*/
 					// redirect(site_url('Welcome/VFormAddUser'));
 					$message = $content['message'];
-					$redirect = site_url("Welcome/VFormAddMasterCancel");
+					$redirect = site_url("generalinformation/index");
 					echo "<script>
 							alert('$message');
 							window.location.href='$redirect';
