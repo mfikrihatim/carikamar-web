@@ -79,7 +79,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg'); ?>" class="img-circle elevation-2" alt="User Image">
+                        <img src="<?php echo $foto; ?>" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block"><?php echo $nama; ?></a>
@@ -107,20 +107,27 @@
                                 </p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="<?php echo site_url('Welcome/DataUser'); ?>" class="nav-link  ">
-                                <i class="far fa-user nav-icon"></i>
+                            <a href="<?php echo site_url('Master_tipe_kamar/index'); ?>" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Informasi Umum Detail
+                                    Master Tipe Kamar
                                 </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo site_url('Welcome/DataUser'); ?>" class="nav-link  ">
-                                <i class="far fa-user nav-icon"></i>
+                            <a href="<?php echo site_url('Master_tipe_kasur/index'); ?>" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Informasi Umum Kontak
+                                    Master Tipe Kasur
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('Master_fasilitas_kamar_header/index'); ?>" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Fasilitas Kamar Header
                                 </p>
                             </a>
                         </li>
