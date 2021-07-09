@@ -50,7 +50,7 @@
                                                  <td><?php echo $index ?></td>
                                                  <td><?php echo $ReadDS->nama; ?></td>
                                                  <td>
-                                                     <a href="<?php echo site_url('Master_Cancel/index/' . $ReadDS->id . '/view'); ?>"
+                                                     <a href="<?php echo site_url('Master_Cancel/DataCancel/' . $ReadDS->id . '/view'); ?>"
                                                          class="btn btn-xs btn-info">
                                                          Edit
                                                      </a>
