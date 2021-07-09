@@ -5,7 +5,7 @@
          <div class="container-fluid">
              <div class="row mb-2">
                  <div class="col-sm-6">
-                     <h1 class="m-0 text-dark">Edit Data Master Tipe Properti</h1>
+                     <h1 class="m-0 text-dark">Tambah Data Master Tipe Properti</h1>
                  </div>
                  <!-- <div class="col-sm-6">
                      <ol class="breadcrumb float-sm-right">
@@ -26,19 +26,21 @@
                  <div class="box-header with-border">
                      <div class="row">
                          <div class="col-12">
-                             <form action="<?php echo site_url('Master_Tipe_Properti/UpdateDataMasterTipeProperti'); ?>"
-                                 method="POST" role="form">
+                             <form action="<?php echo site_url('Master_Tipe_Properti/AddDataMasterTipeProperti'); ?>"
+                                 method="post" role="form">
                                  <div class="card-body">
                                      <div class="form-group">
                                          <label>Nama Tipe</label>
-                                         <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"
-                                             class="form-control">
-                                         <input name="nama_jabatan" type="text" class="form-control"
-                                             value="<?php echo $datas['nama_jabatan'] ?>">
+                                         <input name="nama_tipe" type="text" class="form-control"
+                                             placeholder="Nama Tipe">
                                      </div>
-                                     <input type="hidden" name="user_id" id="user_id" value="" class="form-control">
-                                     <input type="hidden" name="userlogin" id="username" value="" class="form-control">
-
+                                     <div class="form-group">
+                                         <label>Deskripsi</label>
+                                         <input name="deskripsi" type="text" class="form-control"
+                                             placeholder="Deskripsi">
+                                     </div>
+                                     <!-- <input type="hidden" name="user_id" id="user_id" value="" class="form-control">
+                                     <input type="hidden" name="userlogin" id="userlogin" value="" class="form-control"> -->
                                      <div class="form-group">
                                          <button type="submit" class="btn btn-primary">Submit</button>
                                      </div>
@@ -51,24 +53,24 @@
  </div>
 
  <script>
-window.onload = function() {
-    /** Your code here. **/
+// window.onload = function() {
+//     /** Your code here. **/
 
-    if (localStorage.getItem("user_id") != null) {
-        var userID = document.getElementsByName("user_id");
-        var username = document.getElementsByName("userlogin");
-        for (var x = 0; x < userID.length; x++) // comparison should be "<" not "<="
-        {
-            userID[x].value = localStorage.getItem("user_id");
-        }
+//     if (localStorage.getItem("user_id") != null) {
+//         var userID = document.getElementsByName("user_id");
+//         var username = document.getElementsByName("userlogin");
+//         for (var x = 0; x < userID.length; x++) // comparison should be "<" not "<="
+//         {
+//             userID[x].value = localStorage.getItem("user_id");
+//         }
 
-        for (var x = 0; x < username.length; x++) // comparison should be "<" not "<="
-        {
-            username[x].value = localStorage.getItem("username");
-        }
+//         for (var x = 0; x < username.length; x++) // comparison should be "<" not "<="
+//         {
+//             username[x].value = localStorage.getItem("username");
+//         }
 
-    }
+//     }
 
 
-}
+// }
  </script>

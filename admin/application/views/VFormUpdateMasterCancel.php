@@ -5,14 +5,9 @@
          <div class="container-fluid">
              <div class="row mb-2">
                  <div class="col-sm-6">
-                     <h1 class="m-0 text-dark">Edit Data Master Tipe Properti</h1>
+                     <h1 class="m-0 text-dark">Edit Master Tipe Cancel</h1>
                  </div>
-                 <!-- <div class="col-sm-6">
-                     <ol class="breadcrumb float-sm-right">
-                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                         <li class="breadcrumb-item active">Dashboard v1</li>
-                     </ol>
-                 </div>/.col -->
+
              </div><!-- /.row -->
          </div><!-- /.container-fluid -->
      </div>
@@ -26,19 +21,16 @@
                  <div class="box-header with-border">
                      <div class="row">
                          <div class="col-12">
-                             <form action="<?php echo site_url('Master_Tipe_Properti/UpdateDataMasterTipeProperti'); ?>"
-                                 method="POST" role="form">
+                             <form action="<?php echo site_url('Master_Cancel/UpdateDataMasterCancel'); ?>"
+                                 method="post" enctype="multipart/form-data">
                                  <div class="card-body">
                                      <div class="form-group">
-                                         <label>Nama Tipe</label>
-                                         <input type="hidden" name="id" value="<?php echo $_GET['id']; ?>"
+                                         <label>Nama Tipe Cancel</label>
+                                         <input type="hidden" name="id" value="<?php echo $detail['id']; ?>"
                                              class="form-control">
-                                         <input name="nama_jabatan" type="text" class="form-control"
-                                             value="<?php echo $datas['nama_jabatan'] ?>">
+                                         <input type="text" class="form-control" name="nama"
+                                             value="<?php echo $detail['nama']; ?>" placeholder="Masukan nama">
                                      </div>
-                                     <input type="hidden" name="user_id" id="user_id" value="" class="form-control">
-                                     <input type="hidden" name="userlogin" id="username" value="" class="form-control">
-
                                      <div class="form-group">
                                          <button type="submit" class="btn btn-primary">Submit</button>
                                      </div>
