@@ -57,7 +57,7 @@
                                                  <td><?php echo $ReadDS->urutan; ?></td>
 
                                                  <td>
-                                                     <a href="<?php echo site_url('Master_fasilitas_kamar_header/index/' . $ReadDS->id . '/view'); ?>"
+                                                     <a href="<?php echo site_url('Master_fasilitas_kamar_header/DataMasterFasilitasKamarHeader/' . $ReadDS->id . '/view'); ?>"
                                                          class="btn btn-xs btn-info">
                                                          Edit
                                                      </a>
