@@ -9,7 +9,7 @@ class Master_user extends CI_Controller
         $this->load->model('MSudi');
     }
 
-    public function index()
+    public function DataUser()
     {
         $data['nama'] = $this->session->userdata('nama');
         $data['foto'] = $this->session->userdata('foto');
@@ -75,7 +75,7 @@ class Master_user extends CI_Controller
             $add['foto'] = $replcate;
         }
         $this->MSudi->AddData('master_user', $add);
-        redirect(site_url('Master_user/index'));
+        redirect(site_url('Master_user/DataUser'));
     }
     public function UpdateDataUser()
     {
@@ -98,7 +98,7 @@ class Master_user extends CI_Controller
         $this->load->library('upload', $config);
         if (!$this->upload->do_upload('userfile')) {
             $error = array('error' => $this->upload->display_errors());
-            redirect(site_url('Master_user/index'));
+            redirect(site_url('Master_user/DataUser'));
         } else {
             $data = array('upload_data' => $this->upload->data());
             $update['foto'] = implode($this->upload->data());
@@ -109,7 +109,7 @@ class Master_user extends CI_Controller
         }
 
         $this->MSudi->UpdateData('master_user', 'id', $id, $update);
-        redirect(site_url('Master_user/index'));
+        redirect(site_url('Master_user/DataUser'));
     }
 
 
@@ -126,6 +126,6 @@ class Master_user extends CI_Controller
 
 
         $this->MSudi->UpdateData('master_user', 'id', $id, $update);
-        redirect(site_url('Master_user/index'));
+        redirect(site_url('Master_user/DataUser'));
     }
 }
