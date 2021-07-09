@@ -106,7 +106,10 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li
+                            class="nav-item <?php if($this->uri->segment(2)=="DataUser"){echo 'menu-open';}?> <?php if($this->uri->segment(2)=="DataRole"){echo 'menu-open';}?> <?php if($this->uri->segment(2)=="DataTipeProperti"){echo 'menu-open';}?>
+                                <?php if($this->uri->segment(2)=="DataMasterTipeKamar"){echo 'menu-open';}?> <?php if($this->uri->segment(2)=="DataMasterTipeKasur"){echo 'menu-open';}?> <?php if($this->uri->segment(2)=="DataMasterFasilitasKamarHeader"){echo 'menu-open';}?>
+                                <?php if($this->uri->segment(2)=="DataMasterFasilitasKamarDetail"){echo 'menu-open';}?> <?php if($this->uri->segment(2)=="DataCancel"){echo 'menu-open';}?>">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
@@ -180,7 +183,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_Style/DataStyle'); ?>" class="nav-link">
+                                    <a href="<?php echo site_url('Master_Style/DataStyle'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="DataStyle"){echo 'active';}?>">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Tipe Style
@@ -188,7 +192,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_Cancel/DataCancel'); ?>" class="nav-link">
+                                    <a href="<?php echo site_url('Master_Cancel/DataCancel'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="DataCancel"){echo 'active';}?>">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Tipe Cancel
