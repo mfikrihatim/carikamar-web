@@ -13,4 +13,9 @@ class Login extends CI_Controller
 	{
 		$this->load->view('Vlogin');
 	}
+
+	public function Register()
+	{
+		$this->load->view('VRegister');
+	}
 }
