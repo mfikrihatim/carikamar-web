@@ -258,10 +258,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_tipe_kasur/index'); ?>" class="nav-link">
+                                    <a href="<?php echo site_url('Tipe_kamar/DataTipeKamar'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "DataTipeKamar") {
+                                                                                                                    echo 'active';
+                                                                                                                } ?> "> 
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
-                                            Kamar
+                                            Tipe Kamar
                                         </p>
                                     </a>
                                 </li>
