@@ -58,6 +58,7 @@ class Master_Cancel extends CI_Controller
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
+        $data['foto'] = $this->session->userdata('foto');
 
 
         $id = $this->input->post('id');
@@ -69,17 +70,18 @@ class Master_Cancel extends CI_Controller
     }
 
 
-    public function DeleteDataMasterFasilitasKamarHeader()
+    public function DeleteDataMasterCancel()
     {
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
+        $data['foto'] = $this->session->userdata('foto');
         $id = $this->uri->segment('3');
 
         $update['status_id'] = 0;
 
 
         $this->MSudi->UpdateData('properti_detail_master_cancel', 'id', $id, $update);
-        redirect(site_url('properti_detail_master_cancel/index'));
+        redirect(site_url('Master_Cancel/DataCancel'));
     }
 }

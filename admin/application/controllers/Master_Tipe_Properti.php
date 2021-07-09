@@ -9,10 +9,12 @@ class Master_Tipe_Properti extends CI_Controller
         $this->load->model('MSudi');
     }
 
-    public function index()
+    public function DataTipeProperti()
     {
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
+        $data['foto'] = $this->session->userdata('foto');
+
         if ($this->uri->segment(4) == 'view') {
             $id = $this->uri->segment(3);
             $tampil = $this->MSudi->GetDataWhere('master_tipe_properti', 'id', $id)->row();
@@ -34,6 +36,8 @@ class Master_Tipe_Properti extends CI_Controller
     {
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
+        $data['foto'] = $this->session->userdata('foto');
+
         $data['content'] = 'VFormAddMasterTipeProperti';
         $this->load->view('welcome_message', $data);
     }
@@ -42,6 +46,8 @@ class Master_Tipe_Properti extends CI_Controller
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
+        $data['foto'] = $this->session->userdata('foto');
+
 
 
         $add['nama_tipe'] = $this->input->post('nama_tipe');
@@ -55,13 +61,15 @@ class Master_Tipe_Properti extends CI_Controller
         $add['status_id'] = 1;
 
         $this->MSudi->AddData('master_tipe_properti', $add);
-        redirect(site_url('Master_Tipe_Properti/index'));
+        redirect(site_url('Master_Tipe_Properti/DataTipeProperti'));
     }
     public function UpdateDataMasterTipeProperti()
     {
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
+        $data['foto'] = $this->session->userdata('foto');
+
 
 
         $id = $this->input->post('id');
@@ -78,18 +86,21 @@ class Master_Tipe_Properti extends CI_Controller
     }
 
 
-    public function DeleteDataUser()
+    public function DeleteDataMasterTipeProperti()
     {
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
+        $data['foto'] = $this->session->userdata('foto');
+
         $id = $this->uri->segment('3');
+        
         $update['deleted_by'] = $data['id'];
         $update['deleted_date'] = date("Y-m-d H:i:s");
         $update['status_id'] = 0;
 
 
-        $this->MSudi->UpdateData('master_user', 'id', $id, $update);
-        redirect(site_url('Master_user/index'));
+        $this->MSudi->UpdateData('master_tipe_properti', 'id', $id, $update);
+        redirect(site_url('Master_Tipe_Properti/DataTipeProperti'));
     }
 }
