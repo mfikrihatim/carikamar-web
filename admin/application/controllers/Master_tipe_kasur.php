@@ -9,7 +9,7 @@ class Master_tipe_kasur extends CI_Controller
         $this->load->model('MSudi');
     }
 
-    public function index()
+    public function DataMasterTipeKasur()
     {
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
@@ -53,7 +53,7 @@ class Master_tipe_kasur extends CI_Controller
 
 
         $this->MSudi->AddData('master_tipe_kasur', $add);
-        redirect(site_url('Master_tipe_kasur/index'));
+        redirect(site_url('Master_tipe_kasur/DataMasterTipeKasur'));
     }
     public function UpdateDataMasterTipeKasur()
     {
@@ -67,7 +67,7 @@ class Master_tipe_kasur extends CI_Controller
         $update['deskripsi'] = $this->input->post('deskripsi');
         $update['status_id'] = 1;
         $this->MSudi->UpdateData('master_tipe_kasur', 'id', $id, $update);
-        redirect(site_url('Master_tipe_kasur/index'));
+        redirect(site_url('Master_tipe_kasur/DataMasterTipeKasur'));
     }
 
 
@@ -82,6 +82,6 @@ class Master_tipe_kasur extends CI_Controller
 
 
         $this->MSudi->UpdateData('master_tipe_kasur', 'id', $id, $update);
-        redirect(site_url('Master_tipe_kasur/index'));
+        redirect(site_url('Master_tipe_kasur/DataMasterTipeKasur'));
     }
 }
