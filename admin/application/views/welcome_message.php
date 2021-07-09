@@ -106,45 +106,139 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo site_url('Master_user/index'); ?>" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-book"></i>
                                 <p>
-                                    User
+                                    Data Master
+                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview ">
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_user/index'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="index"){echo 'active';}?>">
+                                        <i class="far fa-user nav-icon"></i>
+                                        <p>
+                                            User
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_Role/DataRole'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(3)=="DataRole"){echo 'active';}?>">
+                                        <i class="far fa-user nav-icon"></i>
+                                        <p>
+                                            Jenis Role
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_Tipe_Properti/index'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="index"){echo 'active';}?> ">
+                                        <i class="far fa-user nav-icon"></i>
+                                        <p>
+                                            Tipe Properti
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_tipe_kamar/index'); ?>" class="nav-link">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Tipe Kamar
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_tipe_kasur/index'); ?>" class="nav-link">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Tipe Kasur
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_fasilitas_kamar_header/index'); ?>"
+                                        class="nav-link">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Kamar Header
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_Cancel/DataCancel'); ?>" class="nav-link">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Tipe Cancel
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo site_url('Master_Tipe_Properti'); ?>" class="nav-link  ">
-                                <i class="far fa-user nav-icon"></i>
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-book"></i>
                                 <p>
-                                    Tipe Properti
+                                    Data Klien
+                                    <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
+                            <ul class="nav nav-treeview ">
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_user/index'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="Master_user/index"){echo 'active';}?>">
+                                        <i class="far fa-user nav-icon"></i>
+                                        <p>
+                                            Informasi Umum
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_Tipe_Properti'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="index"){echo 'active';}?> ">
+                                        <i class="far fa-user nav-icon"></i>
+                                        <p>
+                                            Informasi Umum Kontak
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_tipe_kamar/index'); ?>" class="nav-link">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Detail Properti
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_tipe_kasur/index'); ?>" class="nav-link">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Kamar
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_fasilitas_kamar_header/index'); ?>"
+                                        class="nav-link">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Kamar Header
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_Cancel/DataCancel'); ?>" class="nav-link">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Tipe Cancel
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('Master_tipe_kamar/index'); ?>" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Master Tipe Kamar
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('Master_tipe_kasur/index'); ?>" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Master Tipe Kasur
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('Master_fasilitas_kamar_header/index'); ?>" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Fasilitas Kamar Header
-                                </p>
-                            </a>
-                        </li>
+
 
                         <li class="nav-item">
                             <a href="<?php echo site_url('Welcome/Logout'); ?>" class="nav-link" onclick="Logout()">
