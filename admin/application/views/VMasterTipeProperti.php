@@ -4,7 +4,7 @@
      <div class="content-header">
          <div class="container-fluid">
              <div class="col-sm-6">
-                 <h1 class="m-0 text-dark">Data Info</h1>
+                 <h1 class="m-0 text-dark">Data Master Tipe Properti</h1>
              </div>
          </div><!-- /.container-fluid -->
      </div>
@@ -20,7 +20,7 @@
                          <div class="card-body">
                              <div style="margin-bottom: 10px;">
                                  <div class="col-lg-12">
-                                     <a href="<?php echo site_url('Welcome/VFormAddMasterTipe'); ?>"
+                                     <a href="<?php echo site_url('Master_Tipe_Properti/VFormAddMasterTipeProperti'); ?>"
                                          class="btn btn-success">
                                          Tambah data
                                      </a>
@@ -32,7 +32,7 @@
                                          <th>No</th>
                                          <th>Nama Tipe</th>
                                          <th>Deskripsi Tipe</th>
-                                         <th>Foto</th>
+                                         <!-- <th>Foto</th> -->
                                          <!-- <th>
                                              &nbsp;
                                          </th> -->
@@ -40,37 +40,30 @@
                                  </thead>
                                  <tbody>
                                      <?php
-                                        foreach ($datas as $index => $info) {
-                                            $index = $index + 1;
-
-                                        ?>
+                                                if (!empty($DataMasterTipeProperti)) {
+                                                    foreach ($DataMasterTipeProperti as $index => $ReadDS) {
+                                                        $index = $index + 1;
+                                                ?>
                                      <tr>
                                          <td><?php echo $index ?></td>
-                                         <td><?php echo $info['nama_tipe'] ?></td>
-                                         <td><?php echo $info['deskripsi'] ?></td>
-                                         <td><?php echo $info['foto'] ?></td>
-                                         <!-- <td>3</td>
-                                         <td>4</td>
-                                         <td>5</td> -->
+
+                                         <td><?php echo $ReadDS->nama_tipe; ?></td>
+                                         <td><?php echo $ReadDS->deskripsi; ?></td>
                                          <td>
-                                             <!-- <div class="row">
-                                                 <a href="<?php echo site_url('Welcome/VFormUpdateInfo?id=' . $info['id']); ?>"
-                                                     class="btn btn-xs btn-info">
-                                                     Edit
-                                                 </a>
-                                                 <form
-                                                     action="<?php echo site_url('Welcome/DeleteInfo?id=' . $info['id']); ?>"
-                                                     method="POST">
-                                                     <input type="submit" class="btn btn-xs btn-danger" value="Delete">
-                                                     <input type="hidden" name="user_id" id="user_id" value=""
-                                                         class="form-control">
-                                                     <input type="hidden" name="username" id="username" value=""
-                                                         class="form-control">
-                                                 </form>
-                                             </div> -->
+                                             <a href="<?php echo site_url('Master_Tipe_Properti/index/' . $ReadDS->id . '/view'); ?>"
+                                                 class="btn btn-xs btn-info">
+                                                 Edit
+                                             </a>
+                                             <a href="<?php echo site_url('Master_Tipe_Properti/DeleteDataTipeProperti/' . $ReadDS->id); ?>"
+                                                 class="btn btn-xs btn-danger">
+                                                 Delete
+                                             </a>
+
                                          </td>
                                      </tr>
-                                     <?php } ?>
+                                     <?php
+                                                    }
+                                                } ?>
                                  </tbody>
                              </table>
                          </div>
