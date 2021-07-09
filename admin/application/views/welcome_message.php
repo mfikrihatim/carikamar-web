@@ -84,7 +84,8 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="<?php echo $foto; ?>" class="img-circle elevation-2" alt="User Image">
+                        <img src="<?php echo $foto; ?>" class="img-circle " alt="User Image"
+                            style="width: 5rem; height:2.5rem;">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block"><?php echo $nama; ?></a>
@@ -105,7 +106,10 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li
+                            class="nav-item <?php if($this->uri->segment(2)=="DataUser"){echo 'menu-open';}?> <?php if($this->uri->segment(2)=="DataRole"){echo 'menu-open';}?> <?php if($this->uri->segment(2)=="DataTipeProperti"){echo 'menu-open';}?>
+                                <?php if($this->uri->segment(2)=="DataMasterTipeKamar"){echo 'menu-open';}?> <?php if($this->uri->segment(2)=="DataMasterTipeKasur"){echo 'menu-open';}?> <?php if($this->uri->segment(2)=="DataMasterFasilitasKamarHeader"){echo 'menu-open';}?>
+                                <?php if($this->uri->segment(2)=="DataMasterFasilitasKamarDetail"){echo 'menu-open';}?> <?php if($this->uri->segment(2)=="DataCancel"){echo 'menu-open';}?>">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
@@ -170,16 +174,26 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                <a href="<?php echo site_url('Master_fasilitas_kamar_detail/DataMasterFasilitasKamarDetail'); ?>"
+                                    <a href="<?php echo site_url('Master_fasilitas_kamar_detail/DataMasterFasilitasKamarDetail'); ?>"
                                         class="nav-link <?php if($this->uri->segment(2)=="DataMasterFasilitasKamarDetail"){echo 'active';}?>">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
-                                        Fasilitas Kamar Detail
+                                            Fasilitas Kamar Detail
                                         </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_Cancel/DataCancel'); ?>" class="nav-link">
+                                    <a href="<?php echo site_url('Master_Style/DataStyle'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="DataStyle"){echo 'active';}?>">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Tipe Style
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_Cancel/DataCancel'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="DataCancel"){echo 'active';}?>">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Tipe Cancel
@@ -216,7 +230,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_tipe_kamar/index'); ?>" class="nav-link">
+                                    <a href="<?php echo site_url('Properti_Detail/DataPropertiDetail'); ?>"
+                                        class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Detail Properti
@@ -343,7 +358,7 @@
     }
     $(function() {
         $("#example1").DataTable({
-            "responsive": true,
+            "responsive": false,
             "autoWidth": false,
         });
         $('#example2').DataTable({
