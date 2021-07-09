@@ -17,9 +17,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet"
         href="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/fontawesome-free/css/all.min.css'); ?>">
     <!-- Theme style -->
+    <link rel="stylesheet"
+        href="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/dist/css/adminlte.min.css'); ?>">
     <!--- Custome Css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/tera/custome.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/dist/css/adminlte.min.css'); ?>">
 </head>
 
 <body class="hold-transition layout-top-nav">
@@ -69,31 +72,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="row mb-3 mt-3">
                         <div class="col-3">
                             <div class="card">
-                                <a href="#" class="c-sidebar-item">
+                                <a href="<?php echo site_url('jenis_hotel/Index'); ?>" class="c-sidebar-item">
                                     <div class="card-body pt-3 pb-3">
                                         <div class="c-sidebar-body">1. Property Information</div>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('generalinformation/Index'); ?>"
-                                    class="c-sidebar-item after">
-                                    <div class="card-body pt-3 pb-3 mr-1 active">
+                                <a href="<?php echo site_url('generalinformation/Index'); ?>" class="c-sidebar-item ">
+                                    <div
+                                        class="card-body pt-3 pb-3 mr-1 <?php if($this->uri->segment(1)=="generalinformation"){echo 'active';}?>">
                                         General Information
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('propertydetail/index'); ?>" class="c-sidebar-item">
+                                <a href="<?php echo site_url('propertydetail/index'); ?>"
+                                    class="c-sidebar-item <?php if($this->uri->segment(1)=="propertydetail"){echo 'active';}?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Property Detail
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="#" class="c-sidebar-item">
+                                <a href="<?php echo site_url('propertyfacilities/Index'); ?>"
+                                    class="c-sidebar-item <?php if($this->uri->segment(1)=="propertyfacilities"){echo 'active';}?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Property Facilities
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="#" class="c-sidebar-item">
+                                <a href="<?php echo site_url('rooms/Index'); ?>"
+                                    class="c-sidebar-item <?php if($this->uri->segment(1)=="rooms"){echo 'active';}?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Rooms
                                         <span class="badge badge-info">8</span>
@@ -209,12 +215,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url('assets/AdminLTE-3.1.0/dist/js/adminlte.min.js'); ?>"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="<?php echo base_url('assets/AdminLTE-3.1.0/dist/js/demo.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/moment/moment.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/inputmask/jquery.inputmask.min.js'); ?>"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script
+        src="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js'); ?>">
+    </script>
 
     <script>
     function duplicateContact() {
         $("#duplicate-contact").clone().appendTo("#row-contact");
         console.log("cuk");
     }
+
+    //Timepicker
+    $("#checkin_from").datetimepicker({
+        format: "LT",
+    });
+    $("#checkin_until").datetimepicker({
+        format: "LT",
+    });
+    $("#checkout_from").datetimepicker({
+        format: "LT",
+    });
+    $("#checkout_until").datetimepicker({
+        format: "LT",
+    });
     /*
     $(function () {
       var $contact = $('#main-contact').clone();
@@ -222,6 +248,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     });
     */
     </script>
+
 </body>
 
 </html>
