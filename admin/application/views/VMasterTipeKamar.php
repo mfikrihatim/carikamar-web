@@ -57,7 +57,7 @@
                                                  <td><?php echo $ReadDS->deskripsi; ?></td>
 
                                                  <td>
-                                                     <a href="<?php echo site_url('Master_tipe_kamar/index/' . $ReadDS->id . '/view'); ?>"
+                                                     <a href="<?php echo site_url('Master_tipe_kamar/DataMasterTipeKamar/' . $ReadDS->id . '/view'); ?>"
                                                          class="btn btn-xs btn-info">
                                                          Edit
                                                      </a>

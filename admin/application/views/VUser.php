@@ -67,7 +67,7 @@
                                                          <td><?php echo $ReadDS->password; ?></td>
                                                          <td><img width="50px" height="50px" src="<?php echo $ReadDS->foto; ?>"></td>
                                                          <td>
-                                                             <a href="<?php echo site_url('Master_user/index/' . $ReadDS->id . '/view'); ?>" class="btn btn-xs btn-info">
+                                                             <a href="<?php echo site_url('Master_user/DataUser/' . $ReadDS->id . '/view'); ?>" class="btn btn-xs btn-info">
                                                                  Edit
                                                              </a>
                                                              <a href="<?php echo site_url('Master_user/DeleteDataUser/' . $ReadDS->id); ?>" class="btn btn-xs btn-danger">

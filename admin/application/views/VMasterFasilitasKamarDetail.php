@@ -4,7 +4,7 @@
      <div class="content-header">
          <div class="container-fluid">
              <div class="col-sm-6">
-                 <h1 class="m-0 text-dark">Data Master Tipe Kasur</h1>
+                 <h1 class="m-0 text-dark">Data Master Role</h1>
              </div>
          </div><!-- /.container-fluid -->
      </div>
@@ -20,9 +20,9 @@
                          <div class="col-12">
                              <div class="card">
                                  <div class="card-header">
-                                     <a href="<?php echo site_url('Master_tipe_kasur/VFormAddMasterTipeKasur'); ?>"
+                                     <a href="<?php echo site_url('Master_fasilitas_kamar_detail/VFormAddMasterFasilitasKamarDetail'); ?>"
                                          class="btn btn-success">
-                                         Tambah data Master Tipe Kasur
+                                         Tambah Data
                                      </a>
                                  </div>
                                  <!-- /.card-header -->
@@ -32,9 +32,9 @@
                                          <thead>
                                              <tr>
                                                  <th>No</th>
-                                                 <!-- <th>Kode Pegawai</th> -->
-                                                 <th>Nama Tipe Kasur</th>
-                                                 <th>Deskripsi</th>
+                                                 
+                                                 <th>Fasilitas Kamar Header</th>
+                                                 <th>Nama</th>
                                                  <th>Tools</th>
                                                  <!-- <th>
  													&nbsp;
@@ -43,22 +43,22 @@
                                          </thead>
                                          <tbody>
                                              <?php
-                                                if (!empty($DataTipeKasur)) {
-                                                    foreach ($DataTipeKasur as $index => $ReadDS) {
+                                                if (!empty($DataFasilitasKamarDetail)) {
+                                                    foreach ($DataFasilitasKamarDetail as $index => $ReadDS) {
                                                         $index = $index + 1;
                                                 ?>
                                              <tr>
                                                  <td><?php echo $index ?></td>
 
-                                                 <td><?php echo $ReadDS->nama_tipe_kasur; ?></td>
-                                                 <td><?php echo $ReadDS->deskripsi; ?></td>
+                                                 <td><?php echo $ReadDS->nama_fasilitas_header; ?></td>
+                                                 <td><?php echo $ReadDS->nama_fasilitas_detail; ?></td>
 
                                                  <td>
-                                                     <a href="<?php echo site_url('Master_tipe_kasur/DataMasterTipeKasur/' . $ReadDS->id . '/view'); ?>"
+                                                     <a href="<?php echo site_url('Master_fasilitas_kamar_detail/DataMasterFasilitasKamarDetail/' . $ReadDS->id . '/view'); ?>"
                                                          class="btn btn-xs btn-info">
                                                          Edit
                                                      </a>
-                                                     <a href="<?php echo site_url('Master_tipe_kasur/DeleteDataMasterTipeKasur/' . $ReadDS->id); ?>"
+                                                     <a href="<?php echo site_url('Master_fasilitas_kamar_detail/DeleteDataMasterFasilitasKamarDetail/' . $ReadDS->id); ?>"
                                                          class="btn btn-xs btn-danger">
                                                          Delete
                                                      </a>
