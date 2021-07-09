@@ -12,6 +12,7 @@ class Master_user extends CI_Controller
     public function index()
     {
         $data['nama'] = $this->session->userdata('nama');
+        $data['foto'] = $this->session->userdata('foto');
         $data['email'] = $this->session->userdata('email');
         if ($this->uri->segment(4) == 'view') {
             $id = $this->uri->segment(3);
@@ -37,6 +38,7 @@ class Master_user extends CI_Controller
     {
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
+        $data['foto'] = $this->session->userdata('foto');
         $data['content'] = 'VFormAddUser';
         $this->load->view('welcome_message', $data);
     }
@@ -45,7 +47,7 @@ class Master_user extends CI_Controller
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
-
+        $data['foto'] = $this->session->userdata('foto');
 
         $add['nama'] = $this->input->post('nama');
         $add['password'] = $this->input->post('password');
@@ -80,7 +82,7 @@ class Master_user extends CI_Controller
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
-
+        $data['foto'] = $this->session->userdata('foto');
 
         $id = $this->input->post('id');
         $update['nama'] = $this->input->post('nama');
@@ -116,6 +118,7 @@ class Master_user extends CI_Controller
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
+        $data['foto'] = $this->session->userdata('foto');
         $id = $this->uri->segment('3');
         $update['deleted_by'] = $data['id'];
         $update['deleted_date'] = date("Y-m-d H:i:s");

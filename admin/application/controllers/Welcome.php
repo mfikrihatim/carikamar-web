@@ -13,6 +13,7 @@ class Welcome extends CI_Controller
 	{
 		if ($this->session->userdata('Login')) {
 			$data['nama'] = $this->session->userdata('nama');
+			$data['foto'] = $this->session->userdata('foto');
 			$data['content'] = 'VBlank';
 			$this->load->view('welcome_message', $data);
 		} else {
@@ -22,6 +23,7 @@ class Welcome extends CI_Controller
 	public function Logout()
 	{
 		$data['nama'] = $this->session->userdata('nama');
+		$data['foto'] = $this->session->userdata('foto');
 		$this->load->library('session');
 		$this->session->unset_userdata('Login');
 		redirect(site_url('Login'));
