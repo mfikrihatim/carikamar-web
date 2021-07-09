@@ -65,8 +65,18 @@
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-lg-12">
-                            <a href="<?php echo site_url('merchant/generalinformation/Index'); ?>"
+                            <a href="<?php echo site_url('generalinformation/Index'); ?>"
                                 class="btn btn-primary btn-block">Login</a>
+                            <!-- <button type="submit" class="btn btn-primary btn-block">Sign In</button> -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <h6 class="text-center">Atau</h6>
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-lg-12">
+                            <a href="<?php echo site_url('Login/register'); ?>" class="btn btn-primary btn-block">Buat
+                                Akun Baru</a>
                             <!-- <button type="submit" class="btn btn-primary btn-block">Sign In</button> -->
                         </div>
                         <!-- /.col -->
