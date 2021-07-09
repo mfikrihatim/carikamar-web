@@ -84,7 +84,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <!-- <img src="<?php echo $foto; ?>" class="img-circle elevation-2" alt="User Image"> -->
+                        <img src="<?php echo $foto; ?>" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block"><?php echo $nama; ?></a>
@@ -165,7 +165,16 @@
                                         class="nav-link <?php if($this->uri->segment(2)=="DataMasterFasilitasKamarHeader"){echo 'active';}?>">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
-                                            Kamar Header
+                                            Fasilitas Kamar Header
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                <a href="<?php echo site_url('Master_fasilitas_kamar_detail/DataMasterFasilitasKamarDetail'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="DataMasterFasilitasKamarDetail"){echo 'active';}?>">
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                        Fasilitas Kamar Detail
                                         </p>
                                     </a>
                                 </li>
