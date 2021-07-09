@@ -20,22 +20,25 @@
                          <div class="col-12">
                              <div class="card">
                                  <div class="card-header">
-                                     <a href="<?php echo site_url('Master_user/VFormAddUser'); ?>" class="btn btn-success">
+                                     <a href="<?php echo site_url('Master_user/VFormAddUser'); ?>"
+                                         class="btn btn-success">
                                          Tambah data
                                      </a>
 
                                      <div class="card-tools">
                                          <div class="input-group input-group-sm" style="width: 150px;">
-                                             <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                                             <input type="text" name="table_search" class="form-control float-right"
+                                                 placeholder="Search">
 
                                              <div class="input-group-append">
-                                                 <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                                                 <button type="submit" class="btn btn-default"><i
+                                                         class="fas fa-search"></i></button>
                                              </div>
                                          </div>
                                      </div>
                                  </div>
                                  <!-- /.card-header -->
-                                 <div class="card-body table-responsive p-0" style="height: 300px;">
+                                 <div class="card-body table-responsive p-3" style="height: 100%;">
                                      <!-- <table class="table table-head-fixed text-nowrap"> -->
                                      <table id="example1" class="table table-bordered table-striped">
                                          <thead>
@@ -59,23 +62,25 @@
                                                     foreach ($DataUser as $index => $ReadDS) {
                                                         $index = $index + 1;
                                                 ?>
-                                                     <tr>
-                                                         <td><?php echo $index ?></td>
+                                             <tr>
+                                                 <td><?php echo $index ?></td>
+                                                 <td><?php echo $ReadDS->nama; ?></td>
+                                                 <td><?php echo $ReadDS->email; ?></td>
+                                                 <td><?php echo $ReadDS->password; ?></td>
+                                                 <td><img width="50px" height="50px" src="<?php echo $ReadDS->foto; ?>">
+                                                 </td>
+                                                 <td>
+                                                     <a href="<?php echo site_url('Master_user/DataUser/' . $ReadDS->id . '/view'); ?>"
+                                                         class="btn btn-xs btn-info">
+                                                         Edit
+                                                     </a>
+                                                     <a href="<?php echo site_url('Master_user/DeleteDataUser/' . $ReadDS->id); ?>"
+                                                         class="btn btn-xs btn-danger">
+                                                         Delete
+                                                     </a>
 
-                                                         <td><?php echo $ReadDS->nama; ?></td>
-                                                         <td><?php echo $ReadDS->email; ?></td>
-                                                         <td><?php echo $ReadDS->password; ?></td>
-                                                         <td><img width="50px" height="50px" src="<?php echo $ReadDS->foto; ?>"></td>
-                                                         <td>
-                                                             <a href="<?php echo site_url('Master_user/DataUser/' . $ReadDS->id . '/view'); ?>" class="btn btn-xs btn-info">
-                                                                 Edit
-                                                             </a>
-                                                             <a href="<?php echo site_url('Master_user/DeleteDataUser/' . $ReadDS->id); ?>" class="btn btn-xs btn-danger">
-                                                                 Delete
-                                                             </a>
-
-                                                         </td>
-                                                     </tr>
+                                                 </td>
+                                             </tr>
                                              <?php
                                                     }
                                                 } ?>
@@ -92,24 +97,24 @@
      </section>
  </div>
  <script>
-     window.onload = function() {
-         /** Your code here. **/
+window.onload = function() {
+    /** Your code here. **/
 
-         if (localStorage.getItem("user_id") != null) {
-             var userID = document.getElementsByName("user_id");
-             var username = document.getElementsByName("username");
-             for (var x = 0; x < userID.length; x++) // comparison should be "<" not "<="
-             {
-                 userID[x].value = localStorage.getItem("user_id");
-             }
+    if (localStorage.getItem("user_id") != null) {
+        var userID = document.getElementsByName("user_id");
+        var username = document.getElementsByName("username");
+        for (var x = 0; x < userID.length; x++) // comparison should be "<" not "<="
+        {
+            userID[x].value = localStorage.getItem("user_id");
+        }
 
-             for (var x = 0; x < username.length; x++) // comparison should be "<" not "<="
-             {
-                 username[x].value = localStorage.getItem("username");
-             }
+        for (var x = 0; x < username.length; x++) // comparison should be "<" not "<="
+        {
+            username[x].value = localStorage.getItem("username");
+        }
 
-         }
+    }
 
 
-     }
+}
  </script>

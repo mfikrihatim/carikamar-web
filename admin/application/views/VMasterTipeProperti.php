@@ -56,7 +56,7 @@
                                                          class="btn btn-xs btn-info">
                                                          Edit
                                                      </a>
-                                                     <a href="<?php echo site_url('Master_Tipe_Properti/DeleteDataTipeProperti/' . $ReadDS->id); ?>"
+                                                     <a href="<?php echo site_url('Master_Tipe_Properti/DeleteDataMasterTipeProperti/' . $ReadDS->id); ?>"
                                                          class="btn btn-xs btn-danger">
                                                          Delete
                                                      </a>

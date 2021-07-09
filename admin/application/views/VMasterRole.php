@@ -33,11 +33,8 @@
                                              <tr>
                                                  <th>No</th>
                                                  <!-- <th>Kode Pegawai</th> -->
-                                                 <th>Nama Tipe Kamar</th>
+                                                 <th>Nama Role</th>
                                                  <th>Deskripsi</th>
-
-
-
                                                  <th>Tools</th>
                                                  <!-- <th>
  													&nbsp;
@@ -46,22 +43,22 @@
                                          </thead>
                                          <tbody>
                                              <?php
-                                                if (!empty($DataTipeKamar)) {
-                                                    foreach ($DataTipeKamar as $index => $ReadDS) {
+                                                if (!empty($DataRole)) {
+                                                    foreach ($DataRole as $index => $ReadDS) {
                                                         $index = $index + 1;
                                                 ?>
                                              <tr>
                                                  <td><?php echo $index ?></td>
 
-                                                 <td><?php echo $ReadDS->nama_tipe_kamar; ?></td>
+                                                 <td><?php echo $ReadDS->nama_role; ?></td>
                                                  <td><?php echo $ReadDS->deskripsi; ?></td>
 
                                                  <td>
-                                                     <a href="<?php echo site_url('Master_tipe_kamar/index/' . $ReadDS->id . '/view'); ?>"
+                                                     <a href="<?php echo site_url('Master_Role/DataRole/' . $ReadDS->id . '/view'); ?>"
                                                          class="btn btn-xs btn-info">
                                                          Edit
                                                      </a>
-                                                     <a href="<?php echo site_url('Master_tipe_kamar/DeleteDataMasterTipeKamar/' . $ReadDS->id); ?>"
+                                                     <a href="<?php echo site_url('Master_Role/DeleteDataMasterRole/' . $ReadDS->id); ?>"
                                                          class="btn btn-xs btn-danger">
                                                          Delete
                                                      </a>
