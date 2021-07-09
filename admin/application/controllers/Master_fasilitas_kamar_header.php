@@ -9,7 +9,7 @@ class Master_fasilitas_kamar_header extends CI_Controller
         $this->load->model('MSudi');
     }
 
-    public function index()
+    public function DataMasterFasilitasKamarHeader()
     {
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
@@ -53,7 +53,7 @@ class Master_fasilitas_kamar_header extends CI_Controller
 
 
         $this->MSudi->AddData('master_fasilitas_kamar_header', $add);
-        redirect(site_url('Master_fasilitas_kamar_header/index'));
+        redirect(site_url('Master_fasilitas_kamar_header/DataMasterFasilitasKamarHeader'));
     }
     public function UpdateDataMasterFasilitasKamarHeader()
     {
@@ -67,7 +67,7 @@ class Master_fasilitas_kamar_header extends CI_Controller
         $update['urutan'] = $this->input->post('urutan');
         $update['status_id'] = 1;
         $this->MSudi->UpdateData('master_fasilitas_kamar_header', 'id', $id, $update);
-        redirect(site_url('Master_fasilitas_kamar_header/index'));
+        redirect(site_url('Master_fasilitas_kamar_header/DataMasterFasilitasKamarHeader'));
     }
 
 
@@ -82,6 +82,6 @@ class Master_fasilitas_kamar_header extends CI_Controller
 
 
         $this->MSudi->UpdateData('master_fasilitas_kamar_header', 'id', $id, $update);
-        redirect(site_url('Master_fasilitas_kamar_header/index'));
+        redirect(site_url('Master_fasilitas_kamar_header/DataMasterFasilitasKamarHeader'));
     }
 }

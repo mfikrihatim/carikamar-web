@@ -115,8 +115,8 @@
                             </a>
                             <ul class="nav nav-treeview ">
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_user/index'); ?>"
-                                        class="nav-link <?php if($this->uri->segment(2)=="index"){echo 'active';}?>">
+                                    <a href="<?php echo site_url('Master_user/DataUser'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="DataUser"){echo 'active';}?>">
                                         <i class="far fa-user nav-icon"></i>
                                         <p>
                                             User
@@ -142,7 +142,9 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_tipe_kamar/index'); ?>" class="nav-link">
+                                <a href="<?php echo site_url('Master_tipe_kamar/DataMasterTipeKamar'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="DataMasterTipeKamar"){echo 'active';}?>">
+                                    
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Tipe Kamar
@@ -150,7 +152,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_tipe_kasur/index'); ?>" class="nav-link">
+                                <a href="<?php echo site_url('Master_tipe_kasur/DataMasterTipeKasur'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="DataMasterTipeKasur"){echo 'active';}?>">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Tipe Kasur
@@ -158,8 +161,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_fasilitas_kamar_header/index'); ?>"
-                                        class="nav-link">
+                                <a href="<?php echo site_url('Master_fasilitas_kamar_header/DataMasterFasilitasKamarHeader'); ?>"
+                                        class="nav-link <?php if($this->uri->segment(2)=="DataMasterFasilitasKamarHeader"){echo 'active';}?>">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
                                             Kamar Header
