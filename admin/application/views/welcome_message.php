@@ -115,6 +115,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="<?php echo site_url('Master_tipe_kasur/index'); ?>" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Master Tipe Kasur
+                                </p>
+                            </a>
+                        </li>
 
                         <li class="nav-item">
                             <a href="<?php echo site_url('Welcome/Logout'); ?>" class="nav-link" onclick="Logout()">
