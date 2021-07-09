@@ -69,7 +69,12 @@ class Informasi_umum_detail extends CI_Controller
         $add['jumlah_kamar'] = $this->input->post('jumlah_kamar');
         $add['flag_chanel_manager'] = $this->input->post('flag_chanel_manager');
         $add['status_id'] = 1;
-
+        $add['created_by'] = $data['id'];
+        $add['created_date'] = date("Y-m-d H:i:s");
+        $add['updated_by'] = null;
+        $add['updated_date'] = null;
+        $add['deleted_by'] = null;
+        $add['deleted_date'] = null;
 
         $this->MSudi->AddData('informasi_umum_detail', $add);
         redirect(site_url('Informasi_umum_detail/DataInformasiUmumDetail'));
@@ -92,6 +97,8 @@ class Informasi_umum_detail extends CI_Controller
         $update['jumlah_kamar'] = $this->input->post('jumlah_kamar');
         $update['flag_chanel_manager'] = $this->input->post('flag_chanel_manager');
         $update['status_id'] = 1;
+        $update['updated_by'] = $data['id'];
+        $update['updated_date'] = date("Y-m-d H:i:s");
         $this->MSudi->UpdateData('informasi_umum_detail', 'id', $id, $update);
         redirect(site_url('Informasi_umum_detail/DataInformasiUmumDetail'));
     }
@@ -103,7 +110,8 @@ class Informasi_umum_detail extends CI_Controller
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
         $id = $this->uri->segment('3');
-
+        $update['updated_by'] = $data['id'];
+        $update['updated_date'] = date("Y-m-d H:i:s");
         $update['status_id'] = 0;
 
 
