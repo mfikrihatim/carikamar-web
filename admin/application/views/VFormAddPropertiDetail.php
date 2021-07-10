@@ -30,42 +30,107 @@
                                  method="post" role="form">
                                  <div class="card-body">
                                      <div class="form-group">
-                                         <label>Mata Uang</label>
-                                         <input name="mata_uang" type="text" class="form-control"
-                                             placeholder="Mata Uang">
+                                         <label>Pilih Informasi Umum </label>
+                                         <select class="form-control" name="informasi_umum_detail_id" required>
+                                             <option value="">Pilih Informasi Umum</option>
+                                             <?php
+                                                //  $voucher = $this->MSudi->GetData('tb_voucher');
+                                                foreach ($DataInformasiUmumDetail as $ReadDS) {
+                                                ?>
+                                             <option value="<?php echo $ReadDS->id; ?>">
+                                                 <?php echo $ReadDS->nama_properti; ?></option>
+                                             <?php
+                                                }
+                                                ?>
+                                         </select>
                                      </div>
-                                     <div class="form-group">
-                                         <label>Flag Kawasan</label>
-                                         <input name="flag_kawasan" type="checkbox" class="form-control"
-                                             placeholder="Flag Kawasan">
+                                     <div class="row">
+                                         <div class="col-6">
+                                             <div class="form-group">
+                                                 <label>Mata Uang</label>
+                                                 <input name="mata_uang" type="text" class="form-control"
+                                                     placeholder="Mata Uang">
+                                             </div>
+                                         </div>
+                                         <div class="col-6">
+                                             <div class="form-group">
+                                                 <label>Flag Kawasan</label>
+                                                 <div class="input-group">
+                                                     <label class="form-check-label ml-4 mr-3">
+                                                         <input class="form-check-input" type="checkbox"
+                                                             name="flag_kawasan" value="1" id="submit" /> 1
+                                                     </label>
+                                                 </div>
+                                             </div>
+                                         </div>
                                      </div>
-                                     <div class="form-group">
-                                         <label>Waktu Checkin</label>
-                                         <input name="waktu_checkin" type="datetime" class="form-control"
-                                             placeholder="Waktu Checkin">
+                                     <div class="row">
+                                         <div class="col-6">
+                                             <div class="form-group">
+                                                 <label>Waktu Checkin</label>
+                                                 <input name="waktu_checkin" type="time" class="form-control"
+                                                     placeholder="Waktu Checkin">
+                                             </div>
+                                         </div>
+                                         <div class="col-6">
+                                             <div class="form-group">
+                                                 <label>Waktu Checkout</label>
+                                                 <input name="waktu_checkout" type="time" class="form-control"
+                                                     placeholder="Waktu Checkout">
+                                             </div>
+                                         </div>
                                      </div>
-                                     <div class="form-group">
-                                         <label>Waktu Checkout</label>
-                                         <input name="waktu_checkout" type="datetime" class="form-control"
-                                             placeholder="Waktu Checkout">
-                                     </div>
-                                     <div class="form-group">
-                                         <label>Jarak Ke Kota</label>
-                                         <input name="jarak_ke_kota" type="text" class="form-control"
-                                             placeholder="Jarak Ke Kota">
-                                     </div>
-                                     <div class="form-group">
-                                         <label>Jumlah Lantai</label>
-                                         <input name="jumlah_lantai" type="numeric" class="form-control"
-                                             placeholder="Jumlah Lantai">
+                                     <div class="row">
+                                         <div class="col-6">
+                                             <div class="form-group">
+                                                 <label>Jarak Ke Kota</label>
+                                                 <input name="jarak_ke_kota" type="text" class="form-control"
+                                                     placeholder="Jarak Ke Kota">
+                                             </div>
+                                         </div>
+                                         <div class="col-6">
+                                             <div class="form-group">
+                                                 <label>Jumlah Lantai</label>
+                                                 <input name="jumlah_lantai" type="numeric" class="form-control"
+                                                     placeholder="Jumlah Lantai">
+                                             </div>
+                                         </div>
                                      </div>
                                      <div class="form-group">
                                          <label>Biaya Sarapan Tambahan</label>
                                          <input name="biaya_sarapan_tambahan" type="text" class="form-control"
                                              placeholder="Biaya Sarapan Tambahan">
                                      </div>
-                                     <!-- <input type="hidden" name="user_id" id="user_id" value="" class="form-control">
-                                     <input type="hidden" name="userlogin" id="userlogin" value="" class="form-control"> -->
+                                     <div class="form-group">
+                                         <label>Pilih Alasan Batal </label>
+                                         <select class="form-control" name="master_cancel_id" required>
+                                             <option value="">Pilih Informasi Umum</option>
+                                             <?php
+                                                //  $voucher = $this->MSudi->GetData('tb_voucher');
+                                                foreach ($DataPropertiDetailMasterCancel as $ReadDS) {
+                                                ?>
+                                             <option value="<?php echo $ReadDS->id; ?>">
+                                                 <?php echo $ReadDS->nama; ?></option>
+                                             <?php
+                                                }
+                                                ?>
+                                         </select>
+                                     </div>
+                                     <div class="form-group">
+                                         <label>Pilih Jenis </label>
+                                         <select class="form-control" name="master_style_id" required>
+                                             <option value="">Pilih Informasi Umum</option>
+                                             <?php
+                                                //  $voucher = $this->MSudi->GetData('tb_voucher');
+                                                foreach ($DataPropertiDetailMasterStyle as $ReadDS) {
+                                                ?>
+                                             <option value="<?php echo $ReadDS->id; ?>">
+                                                 <?php echo $ReadDS->nama; ?></option>
+                                             <?php
+                                                }
+                                                ?>
+                                         </select>
+                                     </div>
                                      <div class="form-group">
                                          <button type="submit" class="btn btn-primary">Submit</button>
                                      </div>
