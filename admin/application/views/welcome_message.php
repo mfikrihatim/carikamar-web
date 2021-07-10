@@ -268,6 +268,16 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
+                                    <a href="<?php echo site_url('Fasilitas_kamar/DataFasilitasKamar'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "DataFasilitasKamar") {
+                                                                                                                    echo 'active';
+                                                                                                                } ?> "> 
+                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        <p>
+                                            Fasilitas Kamar
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
                                     <a href="<?php echo site_url('Master_fasilitas_kamar_header/index'); ?>" class="nav-link">
                                         <i class="nav-icon fas fa-tachometer-alt"></i>
                                         <p>
