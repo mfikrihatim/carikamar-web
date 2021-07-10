@@ -4,14 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Sigma Labsindo</title>
+    <title>CariKamar</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?php echo base_url('assets/plugins/fontawesome-free/css/all.min.css'); ?>">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="<?php echo base_url('assets/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'); ?>">
+    <link rel="stylesheet"
+        href="<?php echo base_url('assets/https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'); ?>">
     <!-- icheck bootstrap -->
     <link rel="stylesheet" href="<?php echo base_url('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css'); ?>">
     <!-- Theme style -->
@@ -23,7 +24,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Sigma Labsindo</b></a>
+            <a href="../../index2.html"><b>CariKamar</b></a>
         </div>
         <!-- /.login-logo -->
         <div class="card">
