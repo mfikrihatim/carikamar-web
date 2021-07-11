@@ -34,6 +34,7 @@
         href="<?php echo base_url('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="shortcut icon" href="<?php echo base_url('img/500px.png'); ?>">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -46,26 +47,23 @@
                 <li class="nav-item">
                     <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
                 </li>
-                <!-- <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="#" class="nav-link">Contact</a>
-                </li> -->
             </ul>
 
-            <!-- SEARCH FORM -->
-            <!-- <form class="form-inline ml-3">
-                <div class="input-group input-group-sm">
-                    <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                        aria-label="Search">
-                    <div class="input-group-append">
-                        <button class="btn btn-navbar" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
+            <!-- Right navbar links -->
+            <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-user-alt"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <div class="dropdown-divider"></div>
+                        <a href="<?php echo site_url('Welcome/Logout'); ?>" class="dropdown-item" onclick="Logout()">
+                            <i class=" fas fa-sign-out-alt"></i> Logout
+                        </a>
                     </div>
-                </div>
-            </form> -->
+                </li>
+            </ul>
+
 
         </nav>
         <!-- /.navbar -->
@@ -73,11 +71,11 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
-                <img src="<?php echo base_url('assets/dist/img/AdminLTELogo.png'); ?>" alt="AdminLTE Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+            <!-- <a href="index3.html" class="brand-link text-center">
+                <img src="<?php echo base_url('img/polos.png'); ?>" alt="AdminLTE Logo" class="brand-image  elevation-3"
+                    style="opacity: .8">
                 <span class="brand-text font-weight-light">CariKamar</span>
-            </a>
+            </a> -->
 
             <!-- Sidebar -->
             <div class="sidebar">
@@ -99,32 +97,23 @@
                         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                         <li class="nav-item">
-                            <a href="<?php echo site_url('Welcome/index'); ?>" class="nav-link">
+                            <a href="<?php echo site_url('Welcome/index'); ?>"
+                                class="nav-link <?php if ($this->uri->segment(2) == "index") {echo 'active';} ?>">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Dashboard
+                                    Beranda
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item <?php if ($this->uri->segment(2) == "DataUser") {
-                                                echo 'menu-open';
-                                            } ?> <?php if ($this->uri->segment(2) == "DataRole") {
-                                                        echo 'menu-open';
-                                                    } ?> <?php if ($this->uri->segment(2) == "DataTipeProperti") {
-                                                                echo 'menu-open';
-                                                            } ?>
-                                <?php if ($this->uri->segment(2) == "DataMasterTipeKamar") {
-                                    echo 'menu-open';
-                                } ?> <?php if ($this->uri->segment(2) == "DataMasterTipeKasur") {
-                                            echo 'menu-open';
-                                        } ?> <?php if ($this->uri->segment(2) == "DataMasterFasilitasKamarHeader") {
-                                                    echo 'menu-open';
-                                                } ?>
-                                <?php if ($this->uri->segment(2) == "DataMasterFasilitasKamarDetail") {
-                                    echo 'menu-open';
-                                } ?> <?php if ($this->uri->segment(2) == "DataCancel") {
-                                            echo 'menu-open';
-                                        } ?>">
+                        <li class="nav-item <?php if ($this->uri->segment(2) == "DataUser") {echo 'menu-open'; } ?> 
+                                    <?php if ($this->uri->segment(2) == "DataRole") {echo 'menu-open';} ?> 
+                                    <?php if ($this->uri->segment(2) == "DataTipeProperti") {echo 'menu-open';} ?>
+                                    <?php if ($this->uri->segment(2) == "DataMasterTipeKamar") {echo 'menu-open';} ?> 
+                                    <?php if ($this->uri->segment(2) == "DataMasterTipeKasur") {echo 'menu-open';} ?> 
+                                    <?php if ($this->uri->segment(2) == "DataMasterFasilitasKamarHeader") {echo 'menu-open';} ?>
+                                    <?php if ($this->uri->segment(2) == "DataMasterFasilitasKamarDetail") {echo 'menu-open';} ?> 
+                                    <?php if ($this->uri->segment(2) == "DataCancel") {echo 'menu-open';} ?> 
+                                    <?php if ($this->uri->segment(2) == "DataStyle") {echo 'menu-open';} ?>">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
@@ -134,9 +123,8 @@
                             </a>
                             <ul class="nav nav-treeview ">
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_user/DataUser'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "DataUser") {
-                                                                                                                    echo 'active';
-                                                                                                                } ?>">
+                                    <a href="<?php echo site_url('Master_user/DataUser'); ?>"
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataUser") {echo 'active';} ?>">
                                         <i class="far fa-user nav-icon"></i>
                                         <p>
                                             User
@@ -144,9 +132,8 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_Role/DataRole'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "DataRole") {
-                                                                                                                    echo 'active';
-                                                                                                                } ?>">
+                                    <a href="<?php echo site_url('Master_Role/DataRole'); ?>"
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataRole") {echo 'active';} ?>">
                                         <i class="far fa-user nav-icon"></i>
                                         <p>
                                             Jenis Role
@@ -155,10 +142,8 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="<?php echo site_url('Master_Tipe_Properti/DataTipeProperti'); ?>"
-                                        class="nav-link <?php if ($this->uri->segment(2) == "DataTipeProperti") {
-                                                                                                                                    echo 'active';
-                                                                                                                                } ?> ">
-                                        <i class="far fa-user nav-icon"></i>
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataTipeProperti") {echo 'active';} ?> ">
+                                        <i class="nav-icon fas fa-home"></i>
                                         <p>
                                             Tipe Properti
                                         </p>
@@ -166,11 +151,8 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="<?php echo site_url('Master_tipe_kamar/DataMasterTipeKamar'); ?>"
-                                        class="nav-link <?php if ($this->uri->segment(2) == "DataMasterTipeKamar") {
-                                                                                                                                    echo 'active';
-                                                                                                                                } ?>">
-
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataMasterTipeKamar")  {echo 'active';} ?>">
+                                        <i class="nav-icon fas fa-person-booth"></i>
                                         <p>
                                             Tipe Kamar
                                         </p>
@@ -178,10 +160,8 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="<?php echo site_url('Master_tipe_kasur/DataMasterTipeKasur'); ?>"
-                                        class="nav-link <?php if ($this->uri->segment(2) == "DataMasterTipeKasur") {
-                                                                                                                                    echo 'active';
-                                                                                                                                } ?>">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataMasterTipeKasur") {echo 'active';} ?>">
+                                        <i class="nav-icon fas fa-bed"></i>
                                         <p>
                                             Tipe Kasur
                                         </p>
@@ -189,10 +169,8 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="<?php echo site_url('Master_fasilitas_kamar_header/DataMasterFasilitasKamarHeader'); ?>"
-                                        class="nav-link <?php if ($this->uri->segment(2) == "DataMasterFasilitasKamarHeader") {
-                                                                                                                                                            echo 'active';
-                                                                                                                                                        } ?>">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataMasterFasilitasKamarHeader") {echo 'active';} ?>">
+                                        <i class="nav-icon fas fa-box"></i>
                                         <p>
                                             Fasilitas Kamar Header
                                         </p>
@@ -201,20 +179,17 @@
                                 <li class="nav-item">
 
                                     <a href="<?php echo site_url('Master_fasilitas_kamar_detail/DataMasterFasilitasKamarDetail'); ?>"
-                                        class="nav-link <?php if ($this->uri->segment(2) == "DataMasterFasilitasKamarDetail") {
-                                                                                                                                                            echo 'active';
-                                                                                                                                                        } ?>">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataMasterFasilitasKamarDetail") {echo 'active';} ?>">
+                                        <i class="nav-icon fas fa-box"></i>
                                         <p>
                                             Fasilitas Kamar Detail
                                         </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_Style/DataStyle'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "DataStyle") {
-                                                                                                                    echo 'active';
-                                                                                                                } ?>">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <a href="<?php echo site_url('Master_Style/DataStyle'); ?>"
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataStyle") {echo 'active';} ?>">
+                                        <i class="nav-icon far fa-circle"></i>
                                         <p>
                                             Tipe Style
                                         </p>
@@ -222,10 +197,8 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="<?php echo site_url('Master_Cancel/DataCancel'); ?>"
-                                        class="nav-link <?php if ($this->uri->segment(2) == "DataCancel") {
-                                                                                                                        echo 'active';
-                                                                                                                    } ?>">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataCancel") {echo 'active';} ?>">
+                                        <i class="nav-icon far fa-circle"></i>
                                         <p>
                                             Tipe Cancel
                                         </p>
@@ -233,9 +206,13 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item <?php if ($this->uri->segment(2) == "DataInformasiUmumDetail") {echo 'menu-open';} ?>
+                            <?php if ($this->uri->segment(2) == "DataInformasiUmumKontak") {echo 'menu-open';} ?>
+                            <?php if ($this->uri->segment(2) == "DataPropertiDetail") {echo 'menu-open';} ?> 
+                            <?php if ($this->uri->segment(2) == "DataFasilitasProperti") {echo 'menu-open';} ?>
+                            <?php if ($this->uri->segment(2) == "DataFasilitasKamar") {echo 'menu-open';} ?>">
                             <a href="#" class="nav-link ">
-                                <i class="nav-icon fas fa-book"></i>
+                                <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     Data Klien
                                     <i class="fas fa-angle-left right"></i>
@@ -244,10 +221,8 @@
                             <ul class="nav nav-treeview ">
                                 <li class="nav-item">
                                     <a href="<?php echo site_url('Informasi_umum_detail/DataInformasiUmumDetail'); ?>"
-                                        class="nav-link <?php if ($this->uri->segment(2) == "DataInformasiUmumDetail") {
-                                                                                                                                            echo 'active';
-                                                                                         } ?>">
-                                        <i class="far fa-user nav-icon"></i>
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataInformasiUmumDetail") {echo 'active';} ?>">
+                                        <i class="nav-icon fas fa-chalkboard-teacher"></i>
                                         <p>
                                             Informasi Umum
                                         </p>
@@ -255,10 +230,8 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="<?php echo site_url('Informasi_umum_kontak/DataInformasiUmumKontak'); ?>"
-                                        class="nav-link <?php if ($this->uri->segment(2) == "DataInformasiUmumKontak") {
-                                                                                                                    echo 'active';
-                                                                                                                } ?> ">
-                                        <i class="far fa-user nav-icon"></i>
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataInformasiUmumKontak") {echo 'active';} ?> ">
+                                        <i class="nav-icon fas fa-address-book"></i>
                                         <p>
                                             Informasi Umum Kontak
                                         </p>
@@ -266,18 +239,17 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="<?php echo site_url('Properti_Detail/DataPropertiDetail'); ?>"
-                                        class="nav-link">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataPropertiDetail") {echo 'active';} ?>">
+                                        <i class="nav-icon fas fa-info-circle"></i>
                                         <p>
                                             Detail Properti
                                         </p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Fasilitas_Properti/DataFasilitasProperti'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "DataTipeKamar") {
-                                                                                                                    echo 'active';
-                                                                                                                } ?> ">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <a href="<?php echo site_url('Fasilitas_Properti/DataFasilitasProperti'); ?>"
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataFasilitasProperti") {echo 'active';} ?> ">
+                                        <i class="nav-icon fas fa-info-circle"></i>
                                         <p>
                                             Fasilitas Properti
                                         </p>
@@ -285,10 +257,9 @@
                                 </li>
                                 <li class="nav-item">
 
-                                    <a href="<?php echo site_url('Fasilitas_kamar/DataFasilitasKamar'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "DataFasilitasKamar") {
-                                                                                                                    echo 'active';
-                                                                                                                } ?> ">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <a href="<?php echo site_url('Fasilitas_kamar/DataFasilitasKamar'); ?>"
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataFasilitasKamar") {echo 'active';} ?> ">
+                                        <i class="nav-icon fas fa-info-circle"></i>
                                         <p>
                                             Fasilitas Kamar
                                         </p>
@@ -296,19 +267,10 @@
                                 </li>
                                 <li class="nav-item">
                                     <a href="<?php echo site_url('Master_fasilitas_kamar_header/index'); ?>"
-                                        class="nav-link">
-
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                                        class="nav-link ">
+                                        <i class="nav-icon fas fa-info-circle"></i>
                                         <p>
                                             Kamar Header
-                                        </p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_Cancel/DataCancel'); ?>" class="nav-link">
-                                        <i class="nav-icon fas fa-tachometer-alt"></i>
-                                        <p>
-                                            Tipe Cancel
                                         </p>
                                     </a>
                                 </li>
@@ -316,12 +278,12 @@
                         </li>
 
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?php echo site_url('Welcome/Logout'); ?>" class="nav-link" onclick="Logout()">
                                 <i class="nav-icon fa fa-arrow-left"></i>
                                 <p>Logout</p>
                             </a>
-                        </li>
+                        </li> -->
 
                     </ul>
                 </nav>
@@ -340,10 +302,10 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer">
-        <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
+        <strong>Copyright &copy; 2021-Present <a href="http://adminlte.io">Cari</a>KAMAR</strong>
         All rights reserved.
         <div class="float-right d-none d-sm-inline-block">
-            <b>Version</b> 3.0.5
+            <b>Version</b> 1
         </div>
     </footer>
 
