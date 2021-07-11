@@ -17,26 +17,36 @@ class Properti_Detail extends CI_Controller
 
         if ($this->uri->segment(4) == 'view') {
             $id = $this->uri->segment(3);
-            $tampil = $this->MSudi->GetDataWhere('master_tipe_properti', 'id', $id)->row();
+            $data['DataInformasiUmumDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
+            $tampil = $this->MSudi->GetDataWhere('properti_detail', 'id', $id)->row();
             $data['detail']['id'] = $tampil->id;
             $data['detail']['informasi_umum_detail_id'] = $tampil->informasi_umum_detail_id;
             $data['detail']['mata_uang'] = $tampil->mata_uang;
             $data['detail']['flag_kawasan'] = $tampil->flag_kawasan;
             $data['detail']['waktu_checkin'] = $tampil->waktu_checkin;
             $data['detail']['waktu_checkout'] = $tampil->waktu_checkout;
-            $data['detail']['jarak_kekota'] = $tampil->jarak_kekota;
+            $data['detail']['jarak_ke_kota'] = $tampil->jarak_ke_kota;
             $data['detail']['jumlah_lantai'] = $tampil->jumlah_lantai;
             $data['detail']['biaya_sarapan_tambahan'] = $tampil->biaya_sarapan_tambahan;
-            $data['detail']['master_cancel_id'] = $tampil->master_cancel_id;
-            $data['detail']['master_style_id'] = $tampil->master_style_id;
+            // $data['detail']['master_cancel_id'] = $tampil->master_cancel_id;
+            // $data['detail']['master_style_id'] = $tampil->master_style_id;
             $data['content'] = 'VFormUpdatePropertiDetail';
         } else {
-            // $join="tbl_staff.kd_staff = tbl_users.kd_staff AND tbl_pegawai.kd_pegawai = tbl_staff.kd_pegawai";
-            // $data['DataUser']=$this->MSudi->GetData2Join('tbl_users','tbl_staff','tbl_pegawai', $join)->result();
-            $data['DataPropertiDetail'] = $this->MSudi->GetDataWhere('properti_detail', 'status_id', 1)->result();
+            $join = "informasi_umum_detail.id = properti_detail.informasi_umum_detail_id";
+            $join1 = "properti_detail_master_cancel.id = properti_detail.master_cancel_id";
+            $join2 = "properti_detail_master_style.id = properti_detail.master_style_id";
+
+            $this->db->select('properti_detail.id, informasi_umum_detail.nama_properti as nama_properti, properti_detail.mata_uang, properti_detail.flag_kawasan, properti_detail.waktu_checkin, properti_detail.waktu_checkout,
+            properti_detail.jarak_ke_kota, properti_detail.jumlah_lantai, properti_detail.biaya_sarapan_tambahan, properti_detail_master_cancel.nama as nama_cancel, properti_detail_master_style.nama as nama_style , properti_detail.status_id');
+            $this->db->from('properti_detail');
+            $this->db->join('informasi_umum_detail', $join);
+            $this->db->join('properti_detail_master_cancel', $join1);
+            $this->db->join('properti_detail_master_style', $join2);
+            $this->db->where('properti_detail.status_id', 1);
+            $data['DataPropertiDetail'] = $this->db->get()->result();
+
             $data['content'] = 'VPropertiDetail';
         }
-
 
         $this->load->view('welcome_message', $data);
     }
@@ -45,7 +55,9 @@ class Properti_Detail extends CI_Controller
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
         $data['foto'] = $this->session->userdata('foto');
-
+        $data['DataInformasiUmumDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
+        $data['DataPropertiDetailMasterCancel'] = $this->MSudi->GetDataWhere('properti_detail_master_cancel', 'status_id', 1)->result();
+        $data['DataPropertiDetailMasterStyle'] = $this->MSudi->GetDataWhere('properti_detail_master_style', 'status_id', 1)->result();
         $data['content'] = 'VFormAddPropertiDetail';
         $this->load->view('welcome_message', $data);
     }

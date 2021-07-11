@@ -14,7 +14,7 @@ class Welcome extends CI_Controller
 		if ($this->session->userdata('Login')) {
 			$data['nama'] = $this->session->userdata('nama');
 			$data['foto'] = $this->session->userdata('foto');
-			$data['content'] = 'VBlank';
+			$data['content'] = 'VBeranda';
 			$this->load->view('welcome_message', $data);
 		} else {
 			redirect(site_url('Login'));
