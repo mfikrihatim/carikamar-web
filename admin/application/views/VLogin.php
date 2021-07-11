@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CariKamar</title>
+    <title>CariKAMAR</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -19,17 +19,20 @@
     <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/adminlte.min.css'); ?>">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link rel="shortcut icon" href="<?php echo base_url('img/500px.png'); ?>">
 </head>
 
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>CariKamar</b></a>
+            <a href="../../index2.html"><b>Cari</b>Kamar</a>
         </div>
         <!-- /.login-logo -->
-        <div class="card">
-            <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
+        <div class="card" style="height: 100%;">
+            <div class=" card-body login-card-body">
+                <h1 class=" text-center">Welcome Back!</h1>
+                <p class="login-box-msg">Log in to manage your accommodation from checking reservations to managing room
+                    availability!</p>
 
                 <form action="" method="post">
                     <div class="input-group mb-3">
