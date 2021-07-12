@@ -27,9 +27,9 @@
             <div class="card-body">
                 <p class="login-box-msg">Registrasi</p>
 
-                <form action="../AdminLTE-3.1.0/index.html" method="post">
+                <form action="<?php echo site_url('Login/buat_akun_baru'); ?>" method="post" enctype="multipart/form-data">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Nama" />
+                        <input type="text" name="nama" class="form-control" placeholder="Nama" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user"></span>
@@ -37,7 +37,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email" />
+                        <input type="email"  name="email" class="form-control" placeholder="Email" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" />
+                        <input type="password" name="password" class="form-control" placeholder="Password" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -53,7 +53,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Retype password" />
+                        <input type="password" name="retype_password" class="form-control" placeholder="Retype password" />
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -100,6 +100,18 @@
     <script src="<?php echo base_url('AdminLTE-3.1.0/plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url('AdminLTE-3.1.0/dist/js/adminlte.min.js'); ?>"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function(){
+	   	$('#submit').click(function() {
+			var pass = $('#pass').val();
+			var pass2 = $('#pass2').val();						
+			if (pass != pass2) {				
+				alert("password tidak sama!");
+			}
+		});
+	});
+</script>
 </body>
 
 </html>
