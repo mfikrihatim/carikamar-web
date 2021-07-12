@@ -14,7 +14,7 @@ class GeneralInformation extends CI_Controller
 		// if ($this->session->userdata('Login')) {
 		// 	$data['nama'] = $this->session->userdata('nama');
 		// 	$data['level'] = $this->session->userdata('level');
-
+		$data['DataMasterTipeProperti'] = $this->MSudi->GetDataWhere('master_tipe_properti', 'status_id', 1)->result();
 		$data['content'] = 'list-general-information';
 		$this->load->view('welcome_message', $data);
 		// } else {
@@ -25,60 +25,42 @@ class GeneralInformation extends CI_Controller
 	public function AddGeneralInformation()
 	{
 
-		$token = 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
-
-		// if (isset($_POST['userlogin'])) {
-		// 	if ($_POST['userlogin'] != null && $_POST['userlogin'] != '') {
-		$url = "http://localhost/carikamar-web/index.php/api/Informasi_Umum_Detail/Informasi_Umum_Detail";
-
-		$context =
-			array(
-				'tipe_properti_id'	=> 1,
-				'nama_properti'	=> $this->input->post('nama_properti'),
-				'nama_badan_hukum'	=> $this->input->post('nama_badan_hukum'),
-				'lokasi_maps'	=> 123,
-				'alamat_jalan'	=> 234,
-				'kode_pos'	=> 456,
-				'no_telp'	=> 45674,
-				'jumlah_kamar'	=> 2,
-				'flag_chanel_manager'	=> 2,
-			);
-
-		$content = $this->MSudi->CallAPI("POST", $url, $context, $token);
-
-
-		// $data['content'] = 'VLaporanKerusakan';
-		// $this->load->view('welcome_message', $data);
-
-		if ($content['status'] == 200) {
-			$this->load->helper('url');
-
-			/*Redirect the user to some site*/
-			redirect(site_url('generalinformation'));
-		} else {
-			$this->load->helper('url');
-			/*Redirect the user to some site*/
-			// redirect(site_url('Welcome/VFormAddUser'));
-			$message = $content['message'];
-			$redirect = site_url("generalinformation");
-			echo "<script>
-							alert('$message');
-							window.location.href='$redirect';
-						  </script>";
-
-			// echo "<script type='text/javascript'>alert('$message');</script>";
-		}
-		// 	} else {
-		// 		$this->load->helper('url');
-
-		// 		/*Redirect the user to some site*/
-		// 		redirect(site_url('Welcome'));
-		// 	}
-		// } else {
-		// 	$this->load->helper('url');
-
-		// 	/*Redirect the user to some site*/
-		// 	redirect(site_url('Welcome'));
-		// }
+		$add['tipe_properti_id'] = $this->input->post('tipe_properti_id');
+		$add['nama_properti'] = $this->input->post('nama_properti');
+		$add['nama_badan_hukum'] = $this->input->post('nama_badan_hukum');
+		$add['alamat_jalan'] = $this->input->post('alamat_jalan');
+		$add['kode_pos'] = $this->input->post('kode_pos');
+		$add['no_telp'] = $this->input->post('no_telp');
+		$add['jumlah_kamar'] = $this->input->post('jumlah_kamar');
+		$add['flag_chanel_manager'] = $this->input->post('flag_chanel_manager');
+		$add['created_by'] =1;
+		$add['created_date'] = date("Y-m-d H:i:s");
+		$add['updated_by'] = null;
+		$add['updated_date'] = null;
+		$add['deleted_by'] = null;
+		$add['deleted_date'] = null;
+		$add['status_id'] = 1;
+		
+		
+		$informasi_umum_detail_id = $this->MSudi->AddData('informasi_umum_detail', $add);
+		$add1['informasi_umum_detail_id'] = $informasi_umum_detail_id;
+		$add1['jenis_kontak'] = $this->input->post('jenis_kontak');
+		$add1['nama_lengkap'] = $this->input->post('nama_lengkap');
+		$add1['email'] = $this->input->post('email');
+		$add1['no_hp'] = $this->input->post('no_hp');
+		$add1['no_telp_kantor'] = $this->input->post('no_telp_kantor');
+		$add1['extension'] = $this->input->post('extension');
+		$add1['jabatan'] = $this->input->post('jabatan');
+		$add1['flag_fullday'] = $this->input->post('flag_fullday');
+		$add1['created_by'] =1;
+		$add1['created_date'] = date("Y-m-d H:i:s");
+		$add1['updated_by'] = null;
+		$add1['updated_date'] = null;
+		$add1['deleted_by'] = null;
+		$add1['deleted_date'] = null;
+		$add1['status_id'] = 1;
+		$this->MSudi->AddData('informasi_umum_kontak', $add1);
+		redirect(site_url('generalinformation/index'));
+		
 	}
 }
