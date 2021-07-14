@@ -74,13 +74,19 @@ class Informasi_Umum_Detail extends RestController
                         'jumlah_kamar' => $this->input->post('jumlah_kamar'),
                         'flag_chanel_manager' => $this->input->post('flag_chanel_manager'),
                         // 'password' => $this->input->post('password'),
+                        'created_by' => $this->input->post('userlogin'),
+                        'created_date' => date("Y-m-d H:i:s"),
+                        'updated_by' => null,
+                        'updated_date' => null,
+                        'deleted_by' => null,
+                        'deleted_date' => null,
                         'status_id' => 1
                     );
 
                     $query = $this->MSudi->AddData('informasi_umum_detail', $insert);
                     $this->response([
                         'status' => 200,
-                        'message' => 'success',
+                        'message' => 'Input success',
                         'data' => $query
                     ], 200);
                 } else {
@@ -116,13 +122,15 @@ class Informasi_Umum_Detail extends RestController
                     'no_telp' => $this->input->post('no_telp'),
                     'jumlah_kamar' => $this->input->post('jumlah_kamar'),
                     'flag_chanel_manager' => $this->input->post('flag_chanel_manager'),
+                    'updated_by' => $this->input->post('userlogin'),
+                    'updated_date' => date("Y-m-d H:i:s"),
                     'status_id' => 1
                 );
 
                 $query = $this->MSudi->UpdateData('informasi_umum_detail', 'id', $update['id'], $update);
                 $this->response([
                     'status' => 200,
-                    'message' => 'success',
+                    'message' => 'Update success',
                     'data' => $query
                 ], 200);
             } else {
@@ -148,13 +156,15 @@ class Informasi_Umum_Detail extends RestController
             if ($header['Authorization'] == $this->token) {
                 $delete = array(
                     'status_id' => 0,
+                    'deleted_by' => $_GET['userlogin'],
+                    'deleted_date' => date("Y-m-d H:i:s"),
                     'id' => $_GET['id']
                 );
 
                 $query = $this->MSudi->UpdateData('informasi_umum_detail', 'id', $delete['id'], $delete);
                 $this->response([
                     'status' => 200,
-                    'message' => 'success',
+                    'message' => 'Delete success',
                     'data' => $query
                 ], 200);
             } else {
