@@ -82,6 +82,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card-body text-center">
                                     <a href="<?php echo site_url('generalinformation/Index'); ?>"
                                         class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
+
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -156,7 +157,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card-body">
                                     <p class="card-text">Senang Anda ingin bergabung! Klik tombol di bawah untuk
                                         memulai. Proses registrasi dapat berlangsung hingga 15 menit.</p>
-                                    <a href="#" class="btn btn-primary">Daftarkan Akomodasi Baru</a>
+                                    <a href="<?php echo site_url('Welcome/VAkomodasi'); ?>"
+                                        class="btn btn-primary">Daftarkan Akomodasi Baru</a>
                                 </div>
                             </div>
                         </div>
