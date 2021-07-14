@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 use chriskacerguis\RestServer\RestController;
 
-class Informasi_Umum_Detail extends RestController
+class Master_tipe_kasur extends RestController
 {
 
     function __construct()
@@ -18,24 +18,24 @@ class Informasi_Umum_Detail extends RestController
         if (isset($header['Authorization'])) {
             if ($header['Authorization'] == $this->token) {
                 if (isset($_GET['id'])) {
-                    $query = $this->MSudi->GetDataWhere2('informasi_umum_detail', 'status_id', 1, 'id', $_GET['id'])->result();
+                    $query = $this->MSudi->GetDataWhere2('master_tipe_kasur', 'status_id', 1, 'id', $_GET['id'])->result();
                     $this->response([
                         'status' => 200,
                         'message' => 'success',
                         'data' => $query
                     ], 200);
                 } else if (isset($_GET['count'])) {
-                    $query = $this->MSudi->GetDataWhereCount('informasi_umum_detail', 'status_id', 1);
+                    $query = $this->MSudi->GetDataWhereCount('master_tipe_kasur', 'status_id', 1);
                     $this->response([
                         'status' => 200,
                         'message' => 'success',
                         'data' => $query
                     ], 200);
                 } else {
-                    $query = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
+                    $query = $this->MSudi->GetDataWhere('master_tipe_kasur', 'status_id', 1)->result();
                     $this->response([
                         'status' => 200,
-                        'message' => 'success',
+                        'message' => 'Get Data success',
                         'data' => $query
                     ], 200);
                 }
@@ -64,26 +64,12 @@ class Informasi_Umum_Detail extends RestController
             if (isset($header['Authorization'])) {
                 if ($header['Authorization'] == $this->token) {
                     $insert = array(
-                        'tipe_properti_id' => $this->input->post('tipe_properti_id'),
-                        'nama_properti' => $this->input->post('nama_properti'),
-                        'nama_badan_hukum' => $this->input->post('nama_badan_hukum'),
-                        'lokasi_maps' => $this->input->post('lokasi_maps'),
-                        'alamat_jalan' => $this->input->post('alamat_jalan'),
-                        'kode_pos' => $this->input->post('kode_pos'),
-                        'no_telp' => $this->input->post('no_telp'),
-                        'jumlah_kamar' => $this->input->post('jumlah_kamar'),
-                        'flag_chanel_manager' => $this->input->post('flag_chanel_manager'),
-                        // 'password' => $this->input->post('password'),
-                        'created_by' => $this->input->post('userlogin'),
-                        'created_date' => date("Y-m-d H:i:s"),
-                        'updated_by' => null,
-                        'updated_date' => null,
-                        'deleted_by' => null,
-                        'deleted_date' => null,
+                        'nama_tipe_kasur' => $this->input->post('nama_tipe_kasur'),
+                        'deskripsi' => $this->input->post('deskripsi'),
                         'status_id' => 1
                     );
 
-                    $query = $this->MSudi->AddData('informasi_umum_detail', $insert);
+                    $query = $this->MSudi->AddData('master_tipe_kasur', $insert);
                     $this->response([
                         'status' => 200,
                         'message' => 'Input success',
@@ -113,21 +99,12 @@ class Informasi_Umum_Detail extends RestController
             if ($header['Authorization'] == $this->token) {
                 $update = array(
                     'id' => $this->input->post('id'),
-                    'tipe_properti_id' => $this->input->post('tipe_properti_id'),
-                    'nama_properti' => $this->input->post('nama_properti'),
-                    'nama_badan_hukum' => $this->input->post('nama_badan_hukum'),
-                    'lokasi_maps' => $this->input->post('lokasi_maps'),
-                    'alamat_jalan' => $this->input->post('alamat_jalan'),
-                    'kode_pos' => $this->input->post('kode_pos'),
-                    'no_telp' => $this->input->post('no_telp'),
-                    'jumlah_kamar' => $this->input->post('jumlah_kamar'),
-                    'flag_chanel_manager' => $this->input->post('flag_chanel_manager'),
-                    'updated_by' => $this->input->post('userlogin'),
-                    'updated_date' => date("Y-m-d H:i:s"),
+                    'nama_tipe_kasur' => $this->input->post('nama_tipe_kasur'),
+                    'deskripsi' => $this->input->post('deskripsi'),
                     'status_id' => 1
                 );
 
-                $query = $this->MSudi->UpdateData('informasi_umum_detail', 'id', $update['id'], $update);
+                $query = $this->MSudi->UpdateData('master_tipe_kasur', 'id', $update['id'], $update);
                 $this->response([
                     'status' => 200,
                     'message' => 'Update success',
@@ -156,12 +133,11 @@ class Informasi_Umum_Detail extends RestController
             if ($header['Authorization'] == $this->token) {
                 $delete = array(
                     'status_id' => 0,
-                    'deleted_by' => $_GET['userlogin'],
-                    'deleted_date' => date("Y-m-d H:i:s"),
+
                     'id' => $_GET['id']
                 );
 
-                $query = $this->MSudi->UpdateData('informasi_umum_detail', 'id', $delete['id'], $delete);
+                $query = $this->MSudi->UpdateData('master_tipe_kasur', 'id', $delete['id'], $delete);
                 $this->response([
                     'status' => 200,
                     'message' => 'Delete success',

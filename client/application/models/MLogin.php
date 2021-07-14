@@ -6,13 +6,14 @@ class MLogin extends CI_Model
 		parent::__construct();
 	}
 
-	function GoLogin($username, $password, $level)
+	function GoLogin($email, $password)
 	{
 		$this->db->select('*');
-		$this->db->from('tbl_user');
-		$this->db->where('username', $username);
+		$this->db->from('master_user');
+		$this->db->where('email', $email);
 		$this->db->where('password', $password);
-		$this->db->where('level', $level);
+		$this->db->where('role_id', 1);
+		$this->db->where('status_id', 1);
 		$query = $this->db->get();
 		if ($query->num_rows() == 1) {
 			$row = $query->row();
@@ -20,7 +21,7 @@ class MLogin extends CI_Model
 			$this->session->set_userdata('id', $row->id);
 			$this->session->set_userdata('username', $row->username);
 			$this->session->set_userdata('nama', $row->nama);
-			$this->session->set_userdata('level', $row->level);
+			$this->session->set_userdata('role_id', $row->role_id);
 			return $row->id;
 		} else {
 			return false;

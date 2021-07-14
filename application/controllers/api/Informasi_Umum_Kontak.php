@@ -35,7 +35,7 @@ class Informasi_Umum_Kontak extends RestController
                     $query = $this->MSudi->GetDataWhere('informasi_umum_kontak', 'status_id', 1)->result();
                     $this->response([
                         'status' => 200,
-                        'message' => 'success',
+                        'message' => 'Get Data success',
                         'data' => $query
                     ], 200);
                 }
@@ -73,13 +73,19 @@ class Informasi_Umum_Kontak extends RestController
                         'extension' => $this->input->post('extension'),
                         'jabatan' => $this->input->post('jabatan'),
                         'flag_fullday' => $this->input->post('flag_fullday'),
+                        'created_by' => $this->input->post('userlogin'),
+                        'created_date' => date("Y-m-d H:i:s"),
+                        'updated_by' => null,
+                        'updated_date' => null,
+                        'deleted_by' => null,
+                        'deleted_date' => null,
                         'status_id' => 1
                     );
 
                     $query = $this->MSudi->AddData('informasi_umum_kontak', $insert);
                     $this->response([
                         'status' => 200,
-                        'message' => 'success',
+                        'message' => 'input data success',
                         'data' => $query
                     ], 200);
                 } else {
@@ -115,13 +121,15 @@ class Informasi_Umum_Kontak extends RestController
                     'extension' => $this->input->post('extension'),
                     'jabatan' => $this->input->post('jabatan'),
                     'flag_fullday' => $this->input->post('flag_fullday'),
+                    'updated_by' => $this->input->post('userlogin'),
+                    'updated_date' => date("Y-m-d H:i:s"),
                     'status_id' => 1
                 );
 
                 $query = $this->MSudi->UpdateData('informasi_umum_kontak', 'id', $update['id'], $update);
                 $this->response([
                     'status' => 200,
-                    'message' => 'success',
+                    'message' => 'update data success',
                     'data' => $query
                 ], 200);
             } else {
@@ -147,13 +155,15 @@ class Informasi_Umum_Kontak extends RestController
             if ($header['Authorization'] == $this->token) {
                 $delete = array(
                     'status_id' => 0,
+                    'deleted_by' => $_GET['userlogin'],
+                    'deleted_date' => date("Y-m-d H:i:s"),
                     'id' => $_GET['id']
                 );
 
                 $query = $this->MSudi->UpdateData('informasi_umum_kontak', 'id', $delete['id'], $delete);
                 $this->response([
                     'status' => 200,
-                    'message' => 'success',
+                    'message' => 'delete data success',
                     'data' => $query
                 ], 200);
             } else {

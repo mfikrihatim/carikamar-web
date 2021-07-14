@@ -29,9 +29,9 @@
             <div class="card-body">
                 <p class="login-box-msg">Selamat Datang Kembali!</p>
 
-                <form action="../../index3.html" method="post">
+                <form action="" method="post">
                     <div class="input-group mb-3">
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" name="email" class="form-control" placeholder="Email">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password"  class="form-control" placeholder="Password">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
@@ -49,12 +49,12 @@
                     <div class="row">
                         <div class="col-8">
                             <p class="mb-1">
-                                <a href="forgot-password.html">I forgot my password</a>
+                                <a href="forgot-password.html">Lupa Password ?</a>
                             </p>
                         </div>
                         <div class="col-8">
                             <p class="mb-0">
-                                <a href="register.html" class="text-center">Register a new membership</a>
+                                <a href="<?php echo site_url('Login/register'); ?>" class="text-center">Buat Akun Baru</a>
                             </p>
                         </div>
                         <!-- /.col -->
@@ -65,18 +65,7 @@
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-lg-12">
-                            <a href="<?php echo site_url('generalinformation/Index'); ?>"
-                                class="btn btn-primary btn-block">Login</a>
-                            <!-- <button type="submit" class="btn btn-primary btn-block">Sign In</button> -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <h6 class="text-center">Atau</h6>
-                    <div class="row">
-                        <!-- /.col -->
-                        <div class="col-lg-12">
-                            <a href="<?php echo site_url('Login/register'); ?>" class="btn btn-primary btn-block">Buat
-                                Akun Baru</a>
+                             <button type="submit" name="login" class="btn btn-primary btn-block">Login</button>
                             <!-- <button type="submit" class="btn btn-primary btn-block">Sign In</button> -->
                         </div>
                         <!-- /.col -->
