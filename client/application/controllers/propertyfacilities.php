@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class PropertyFacilities extends CI_Controller
+class propertyfacilities extends CI_Controller
 {
 	public function index()
 	{
@@ -15,5 +15,4 @@ class PropertyFacilities extends CI_Controller
 		// 	redirect(site_url('Login'));
 		// }
 	}
-
 }

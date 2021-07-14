@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class PropertyDetail extends CI_Controller
+class propertydetail extends CI_Controller
 {
 	function __construct()
 	{
 		parent::__construct();
-	
+
 		$this->load->model('MSudi');
 	}
 	public function index()
@@ -35,23 +35,21 @@ class PropertyDetail extends CI_Controller
 		$add['jumlah_lantai'] = $this->input->post('jumlah_lantai');
 		$add['biaya_sarapan_tambahan'] = $this->input->post('biaya_sarapan_tambahan');
 		$add['master_cancel_id'] = $this->input->post('master_cancel_id');
-		
+
 		$master_style_id = $this->input->post("master_style_id");
-		if($master_style_id == null)
-		$master_style_id =  [];
+		if ($master_style_id == null)
+			$master_style_id =  [];
 		$add['master_style_id'] = json_encode($master_style_id);
-		$add['created_by'] =1;
+		$add['created_by'] = 1;
 		$add['created_date'] = date("Y-m-d H:i:s");
 		$add['updated_by'] = null;
 		$add['updated_date'] = null;
 		$add['deleted_by'] = null;
 		$add['deleted_date'] = null;
 		$add['status_id'] = 1;
-		
-		
+
+
 		$this->MSudi->AddData('properti_detail', $add);
 		redirect(site_url('propertydetail/index'));
-		
 	}
-
 }
