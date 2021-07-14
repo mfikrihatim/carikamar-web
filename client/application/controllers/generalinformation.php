@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class GeneralInformation extends CI_Controller
+class generalinformation extends CI_Controller
 {
 	function __construct()
 	{
 		parent::__construct();
-		
+
 		$this->load->model('MSudi');
 	}
 	public function index()
@@ -33,15 +33,15 @@ class GeneralInformation extends CI_Controller
 		$add['no_telp'] = $this->input->post('no_telp');
 		$add['jumlah_kamar'] = $this->input->post('jumlah_kamar');
 		$add['flag_chanel_manager'] = $this->input->post('flag_chanel_manager');
-		$add['created_by'] =1;
+		$add['created_by'] = 1;
 		$add['created_date'] = date("Y-m-d H:i:s");
 		$add['updated_by'] = null;
 		$add['updated_date'] = null;
 		$add['deleted_by'] = null;
 		$add['deleted_date'] = null;
 		$add['status_id'] = 1;
-		
-		
+
+
 		$informasi_umum_detail_id = $this->MSudi->AddData('informasi_umum_detail', $add);
 		$add1['informasi_umum_detail_id'] = $informasi_umum_detail_id;
 		$add1['jenis_kontak'] = $this->input->post('jenis_kontak');
@@ -52,7 +52,7 @@ class GeneralInformation extends CI_Controller
 		$add1['extension'] = $this->input->post('extension');
 		$add1['jabatan'] = $this->input->post('jabatan');
 		$add1['flag_fullday'] = $this->input->post('flag_fullday');
-		$add1['created_by'] =1;
+		$add1['created_by'] = 1;
 		$add1['created_date'] = date("Y-m-d H:i:s");
 		$add1['updated_by'] = null;
 		$add1['updated_date'] = null;
@@ -61,6 +61,5 @@ class GeneralInformation extends CI_Controller
 		$add1['status_id'] = 1;
 		$this->MSudi->AddData('informasi_umum_kontak', $add1);
 		redirect(site_url('generalinformation/index'));
-		
 	}
 }
