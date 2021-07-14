@@ -9,8 +9,21 @@ class Welcome extends CI_Controller
 		// 	$data['nama'] = $this->session->userdata('nama');
 		// 	$data['level'] = $this->session->userdata('level');
 
-		$data['content'] = 'list-general-information';
-		$this->load->view('welcome_message', $data);
+		// $data['content'] = 'list-general-information';
+		$this->load->view('VHome');
+		// } else {
+		// 	redirect(site_url('Login'));
+		// }
+	}
+
+	public function VAkomodasi()
+	{
+		// if ($this->session->userdata('Login')) {
+		// 	$data['nama'] = $this->session->userdata('nama');
+		// 	$data['level'] = $this->session->userdata('level');
+
+		// $data['content'] = 'list-general-information';
+		$this->load->view('VAkomodasi');
 		// } else {
 		// 	redirect(site_url('Login'));
 		// }
