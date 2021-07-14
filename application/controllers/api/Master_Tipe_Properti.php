@@ -63,53 +63,54 @@ class Master_Tipe_Properti extends RestController
             $header = $this->input->request_headers();
             if (isset($header['Authorization'])) {
                 if ($header['Authorization'] == $this->token) {
-                    if(isset($_POST['image'])){
+
+                    if (isset($_POST['image'])) {
                         $data['filenames'] = $_POST['image'];
                         // array_push( $data['filenames'],$_POST['image']);
                     }
                     if (isset($_FILES['foto'])) {
-    
+
                         $data = array();
                         $data['filenames'] = [];
                         // Count total files
                         $countfiles = count($_FILES['foto']['name']);
-    
+
                         // Looping all files
                         for ($i = 0; $i < $countfiles; $i++) {
-    
+
                             if (!empty($_FILES['foto']['name'][$i])) {
-    
+
                                 // Define new $_FILES array - $_FILES['file']
                                 $_FILES['foto']['name'] = $_FILES['foto']['name'][$i];
                                 $_FILES['foto']['type'] = $_FILES['foto']['type'][$i];
                                 $_FILES['foto']['tmp_name'] = $_FILES['foto']['tmp_name'][$i];
                                 $_FILES['foto']['error'] = $_FILES['foto']['error'][$i];
                                 $_FILES['foto']['size'] = $_FILES['foto']['size'][$i];
-    
+
                                 // Set preference
-                                $config['upload_path'] = 'uploads/';
+                                $config['upload_path'] = 'uploads/master_tipe_properti/';
                                 $config['allowed_types'] = 'jpg|jpeg|png|gif|JPG';
                                 // $config['max_size'] = '500000000'; // max_size in kb
                                 $config['file_name'] = $_FILES['foto']['name'][$i];
-    
+
                                 //Load upload library
                                 $this->load->library('upload', $config);
-    
+
                                 try {
-    
+
                                     // File upload
                                     if ($this->upload->do_upload('foto')) {
                                         // Get data about the file
                                         $uploadData = $this->upload->data();
-                                        $filename = site_url('uploads/') . $uploadData['file_name'];
+                                        $filename = site_url('uploads/master_tipe_properti/') . $uploadData['file_name'];
                                         $replcate = str_replace("index.php/", "", $filename);
                                         $filename = $replcate;
-    
+
                                         // Initialize array
                                         array_push($data['filenames'], $filename);
                                     }
                                 }
-    
+
                                 //catch exception
                                 catch (Exception $e) {
                                     echo 'Message: ' . $e->getMessage();
@@ -118,12 +119,11 @@ class Master_Tipe_Properti extends RestController
                         }
                     }
                     if (isset($_FILES['foto'])) {
-    
+
                         $image = json_encode($data['filenames']);
                         $replcate = str_replace("\/", "/", $image);
                         $data['filenames'] = $replcate;
-                    }else if (isset($_POST['image'])) {
-    
+                    } else if (isset($_POST['image'])) {
                     } else {
                         $data['filenames'] = "[]";
                     }
@@ -132,6 +132,12 @@ class Master_Tipe_Properti extends RestController
                         'nama_tipe' => $this->input->post('nama_tipe'),
                         'deskripsi' => $this->input->post('deskripsi'),
                         'foto' => $data['filenames'],
+                        'created_by' => $this->input->post('userlogin'),
+                        'created_date' => date("Y-m-d H:i:s"),
+                        'updated_by' => null,
+                        'updated_date' => null,
+                        'deleted_by' => null,
+                        'deleted_date' => null,
                         'status_id' => 1
                     );
 
@@ -163,11 +169,66 @@ class Master_Tipe_Properti extends RestController
         $header = $this->input->request_headers();
         if (isset($header['Authorization'])) {
             if ($header['Authorization'] == $this->token) {
+
+                // Check form submit or not
+                if (isset($_FILES['files'])) {
+
+                    $data = array();
+                    $data['filenames'] = [];
+                    // Count total files
+                    $countfiles = count($_FILES['files']['name']);
+
+                    // Looping all files
+                    for ($i = 0; $i < $countfiles; $i++) {
+
+                        if (!empty($_FILES['files']['name'][$i])) {
+
+                            // Define new $_FILES array - $_FILES['file']
+                            $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                            $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                            $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                            $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                            $_FILES['file']['size'] = $_FILES['files']['size'][$i];
+
+                            // Set preference
+                            $config['upload_path'] = 'uploads/master_tipe_properti/';
+                            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                            // $config['max_size'] = '500000000'; // max_size in kb
+                            $config['file_name'] = $_FILES['files']['name'][$i];
+
+                            //Load upload library
+                            $this->load->library('upload', $config);
+
+                            // File upload
+                            if ($this->upload->do_upload('file')) {
+                                // Get data about the file
+                                $uploadData = $this->upload->data();
+                                $filename = site_url('uploads/master_tipe_properti/') . $uploadData['file_name'];
+                                $replcate = str_replace("index.php/", "", $filename);
+                                $filename = $replcate;
+
+                                // Initialize array
+                                array_push($data['filenames'], $filename);
+                            }
+                        }
+                    }
+                }
+                if (isset($_FILES['files'])) {
+
+                    $image = json_encode($data['filenames']);
+                    $replcate = str_replace("\/", "/", $image);
+                    $data['filenames'] = $replcate;
+                } else {
+                    $data['filenames'] = "[]";
+                }
+
                 $update = array(
                     'id' => $this->input->post('id'),
                     'nama_tipe' => $this->input->post('nama_tipe'),
                     'deskripsi' => $this->input->post('deskripsi'),
-                    // 'foto' => $data['filenames'],
+                    'updated_by' => $this->input->post('userlogin'),
+                    'updated_date' => date("Y-m-d H:i:s"),
+                    'foto' => $data['filenames'],
                     'status_id' => 1
                 );
 
@@ -200,6 +261,8 @@ class Master_Tipe_Properti extends RestController
             if ($header['Authorization'] == $this->token) {
                 $delete = array(
                     'status_id' => 0,
+                    'deleted_by' => $_GET['userlogin'],
+                    'deleted_date' => date("Y-m-d H:i:s"),
                     'id' => $_GET['id']
                 );
 
