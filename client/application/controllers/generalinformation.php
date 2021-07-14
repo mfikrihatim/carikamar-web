@@ -6,7 +6,7 @@ class GeneralInformation extends CI_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->token = 'Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImZhZWE3Y2Q2YWFhYjM1YmIyYmE4MjE3ZTgyNWNkODE5I';
+		
 		$this->load->model('MSudi');
 	}
 	public function index()

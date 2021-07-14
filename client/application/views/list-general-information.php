@@ -31,7 +31,7 @@
                             <input class="form-check-input" type="radio" name="tipe_properti_id" value="<?php echo $ReadDS->id; ?>" />
                             
                                 <b><?php echo $ReadDS->nama_tipe; ?></b><br />
-                               
+                                <?php echo $ReadDS->deskripsi; ?><br>
                            
                             <?php
                                 }

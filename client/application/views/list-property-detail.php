@@ -3,30 +3,40 @@
     <div class="card">
         <div class="card-header">Property Details</div>
         <div class="card-body">
-            <div class="row">
-                <div class="col-4">
-                    Main Currency
-                </div>
-                <div class="col-7">
-                    * load Currency berdasarkan country yang di pilih di General Information
-                </div>
-            </div>
+        <div class="form-group">
+					<label>Pilih Informati Umum Detail</label>
+					<select class="form-control" name="informasi_umum_detail_id" required>
+						<option value="">Pilih Informati Umum Detail</option>
+                  <?php
+           
+							foreach($DataInformationDetail as $ReadDS){
+						?>
+						<option value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_properti; ?></option>
+						<?php
+							}
+						?>
+                  </select>
+				 </div>
             <hr />
+            <div class="form-group">
+					<label>Mata Uang</label>
+					<input type="text" name="mata_uang" class="form-control" placeholder="Masukan Mata Uang"required >
+				</div>
             <div class="row mt-3">
                 <div class="col-4">
                     Reception Area
                 </div>
                 <div class="col-7">
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked>
+                        <input class="form-check-input" type="radio" name="flag_kawasan"
+                            value="1">
                         <label class="form-check-label" for="exampleRadios1">
                             Available 24 Hours
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
-                            value="option1" checked>
+                        <input class="form-check-input" type="radio" name="flag_kawasan"
+                            value="2">
                         <label class="form-check-label" for="exampleRadios1">
                             Not Available 24 Hours
                         </label>
@@ -44,7 +54,7 @@
                             <div class="form-group">
                                 <p>From:</p>
                                 <div class="input-group date" id="checkin_from" data-target-input="nearest">
-                                    <input type="text" class="form-control col-6 datetimepicker-input"
+                                    <input type="text" name="waktu_checkin" class="form-control col-6 datetimepicker-input"
                                         data-toggle="datetimepicker" data-target="#checkin_from" />
                                     <div class="input-group-append" data-target="#checkin_from"
                                         data-toggle="datetimepicker">
@@ -53,17 +63,7 @@
                                 </div>
                                 <!-- /.input group -->
                             </div>
-                            <div class="form-group">
-                                <p>Until:</p>
-                                <div class="input-group date" id="checkin_until" data-target-input="nearest">
-                                    <input type="text" class="form-control col-6 datetimepicker-input"
-                                        data-toggle="datetimepicker" data-target="#checkin_until" />
-                                    <div class="input-group-append" data-target="#checkin_until"
-                                        data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="far fa-clock"></i></div>
-                                    </div>
-                                </div>
-                            </div>
+                           
                             <!-- /.form group -->
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                             <div class="form-group">
                                 <p>From:</p>
                                 <div class="input-group date" id="checkout_from" data-target-input="nearest">
-                                    <input type="text" class="form-control col-6 datetimepicker-input"
+                                    <input type="text" name="waktu_checkout" class="form-control col-6 datetimepicker-input"
                                         data-toggle="datetimepicker" data-target="#checkout_from" />
                                     <div class="input-group-append" data-target="#checkout_from"
                                         data-toggle="datetimepicker">
@@ -87,17 +87,7 @@
                                 </div>
                                 <!-- /.input group -->
                             </div>
-                            <div class="form-group">
-                                <p>Until:</p>
-                                <div class="input-group date" id="checkout_until" data-target-input="nearest">
-                                    <input type="text" class="form-control col-6 datetimepicker-input"
-                                        data-toggle="datetimepicker" data-target="#checkout_until" />
-                                    <div class="input-group-append" data-target="#checkout_until"
-                                        data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="far fa-clock"></i></div>
-                                    </div>
-                                </div>
-                            </div>
+                          
                             <!-- /.form group -->
                         </div>
                     </div>
