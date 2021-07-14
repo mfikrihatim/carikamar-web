@@ -17,7 +17,7 @@ class Login extends CI_Controller {
 				if($notif){
 					$this->load->library('session');
 					$this->session->set_userdata('Login','OnLogin');
-					redirect(site_url('generalinformation/index'));
+					redirect(site_url('Welcome'));
 				}			
 				else{
 					$this->load->library('session');

@@ -28,36 +28,26 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <body class="hold-transition layout-top-nav">
     <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white" style="padding: 30px 0.5rem;">
+        <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
-                <a href="<?php echo base_url('assets/AdminLTE-3.1.0/index3.html'); ?>" class="navbar-brand">
-                    <img src="<?php echo base_url('assets/AdminLTE-3.1.0/dist/img/AdminLTELogo.png'); ?>"
-                        alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: 0.8" />
-                    <span class="brand-text font-weight-light">CariKamar</span>
+                <a href="../../index3.html" class="navbar-brand">
+                    <!-- <img src="../AdminLTE-3.1.0/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
+                        class="brand-image img-circle elevation-3" style="opacity: 0.8" /> -->
+                    <span class="brand-text font-weight-bold text-primary" style="font-size: 2.5rem;">CariKamar</span>
                 </a>
-
-                <button class="navbar-toggler order-1" type="button" data-toggle="collapse"
-                    data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-
                 <!-- Right navbar links -->
                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-                    <!-- Messages Dropdown Menu -->
                     <li class="nav-item dropdown">
                         <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="fas fa-comments"></i>
-                            <span class="badge badge-danger navbar-badge">3</span>
+                            <i class="fas fa-th-large"></i>
                         </a>
-                    </li>
-                    <!-- Notifications Dropdown Menu -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="far fa-bell"></i>
-                            <span class="badge badge-warning navbar-badge">15</span>
-                        </a>
+                        <div class="dropdown-menu dropdown-menu-lg-right dropdown-menu-right text-center">
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item"> <i class="fas fa-key"></i> Ubah Password </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item"> <i class="fas fa-sign-out-alt"></i> Keluar </a>
+                            <div class="dropdown-divider"></div>
+                        </div>
                     </li>
                 </ul>
             </div>
