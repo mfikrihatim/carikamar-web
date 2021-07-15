@@ -38,7 +38,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item"> <i class="fas fa-key"></i> Ubah Password </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item"> <i class="fas fa-sign-out-alt"></i> Keluar </a>
+                            <a href="<?php echo site_url('Welcome/Logout'); ?>" class="nav-link" onclick="Logout()"></i> Keluar </a>
                             <div class="dropdown-divider"></div>
                         </div>
                     </li>
