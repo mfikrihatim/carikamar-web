@@ -11,28 +11,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>CariKamar - Tera</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet"
-        href="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/fontawesome-free/css/all.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/fontawesome-free/css/all.min.css'); ?>">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/dist/css/adminlte.min.css'); ?>">
     <!--- Custome Css -->
     <link rel="stylesheet" href="custome.css'); ?>">
     <!-- Tempusdominus Bootstrap 4 -->
-    <link rel="stylesheet"
-        href="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css'); ?>">
 </head>
 <style>
-.card-widget:hover {
-    background-color: rgb(31, 196, 247);
-    color: beige;
-}
+    .card-widget:hover {
+        background-color: rgb(31, 196, 247);
+        color: beige;
+    }
 
-.card-widget {
-    border-radius: 20px;
-}
+    .card-widget {
+        border-radius: 20px;
+    }
 </style>
 
 <body class="hold-transition layout-top-nav">
@@ -79,8 +76,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
                                         <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
+                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>" alt="User Avatar">
                                         </div>
                                         <!-- /.widget-user-image -->
                                         <h3 class="widget-user-username">Nadia Carmichael</h3>
@@ -95,8 +91,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
                                         <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
+                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>" alt="User Avatar">
                                         </div>
                                         <!-- /.widget-user-image -->
                                         <h3 class="widget-user-username">Nadia Carmichael</h3>
@@ -110,8 +105,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
                                         <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
+                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>" alt="User Avatar">
                                         </div>
                                         <!-- /.widget-user-image -->
                                         <h3 class="widget-user-username">Nadia Carmichael</h3>
@@ -126,8 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
                                         <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
+                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>" alt="User Avatar">
                                         </div>
                                         <!-- /.widget-user-image -->
                                         <h3 class="widget-user-username">Nadia Carmichael</h3>
@@ -151,8 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
                                         <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
+                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>" alt="User Avatar">
                                         </div>
                                         <!-- /.widget-user-image -->
                                         <h3 class="widget-user-username">Nadia Carmichael</h3>
@@ -167,8 +159,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
                                         <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
+                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>" alt="User Avatar">
                                         </div>
                                         <!-- /.widget-user-image -->
                                         <h3 class="widget-user-username">Nadia Carmichael</h3>
@@ -182,8 +173,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
                                         <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
+                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>" alt="User Avatar">
                                         </div>
                                         <!-- /.widget-user-image -->
                                         <h3 class="widget-user-username">Nadia Carmichael</h3>
@@ -198,8 +188,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
                                         <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
+                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>" alt="User Avatar">
                                         </div>
                                         <!-- /.widget-user-image -->
                                         <h3 class="widget-user-username">Nadia Carmichael</h3>
@@ -242,17 +231,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/moment/moment.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/inputmask/jquery.inputmask.min.js'); ?>"></script>
     <!-- Tempusdominus Bootstrap 4 -->
-    <script
-        src="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js'); ?>">
+    <script src="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js'); ?>">
     </script>
 
     </script>
     <script>
-    $('#myButton').click(function() {
-        $('#myDiv').toggle('slow', function() {
-            // Animation complete.
+        $('#myButton').click(function() {
+            $('#myDiv').toggle('slow', function() {
+                // Animation complete.
+            });
         });
-    });
     </script>
 </body>
 
