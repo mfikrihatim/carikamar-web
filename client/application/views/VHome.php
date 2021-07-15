@@ -77,7 +77,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- /.card-header -->
                                 <img class="card-img-top" src="<?php echo base_url('assets/tera/hotel.jpg" alt="Card image cap'); ?>">
                                 <div class="card-body text-center">
-                                    <a href="<?php echo site_url('generalinformation/index'); ?>" class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
+                                    <a href="<?php echo site_url('General_information/index'); ?>" class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
 
                                 </div>
                                 <!-- /.card-body -->
@@ -98,7 +98,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- /.card-header -->
                                 <img class="card-img-top" src="<?php echo base_url('assets/tera/hotel.jpg" alt="Card image cap'); ?>">
                                 <div class="card-body text-center">
-                                    <a href="<?php echo site_url('generalinformation/index'); ?>" class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
+                                    <a href="<?php echo site_url('General_information/index'); ?>" class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -118,7 +118,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <!-- /.card-header -->
                                 <img class="card-img-top" src="<?php echo base_url('assets/tera/hotel.jpg" alt="Card image cap'); ?>">
                                 <div class="card-body text-center">
-                                    <a href="<?php echo site_url('generalinformation/index'); ?>" class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
+                                    <a href="<?php echo site_url('General_information/index'); ?>" class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
