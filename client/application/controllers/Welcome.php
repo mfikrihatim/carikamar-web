@@ -28,4 +28,12 @@ class Welcome extends CI_Controller
 		// 	redirect(site_url('Login'));
 		// }
 	}
+	public function Logout()
+	{
+		$data['email'] = $this->session->userdata('email');
+		$data['foto'] = $this->session->userdata('foto');
+		$this->load->library('session');
+		$this->session->unset_userdata('Login');
+		redirect(site_url('Login'));
+	}
 }
