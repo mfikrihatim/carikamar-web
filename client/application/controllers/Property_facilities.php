@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class rooms extends CI_Controller
+class Property_facilities extends CI_Controller
 {
 	public function index()
 	{
@@ -9,9 +9,8 @@ class rooms extends CI_Controller
 		// 	$data['nama'] = $this->session->userdata('nama');
 		// 	$data['level'] = $this->session->userdata('level');
 
-		$data['content'] = 'list-rooms';
+		$data['content'] = 'list-property-facilities';
 		$this->load->view('welcome_message', $data);
-
 		// } else {
 		// 	redirect(site_url('Login'));
 		// }

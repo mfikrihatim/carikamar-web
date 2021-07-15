@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class propertydetail extends CI_Controller
+class Property_detail extends CI_Controller
 {
 	function __construct()
 	{
@@ -50,6 +50,6 @@ class propertydetail extends CI_Controller
 
 
 		$this->MSudi->AddData('properti_detail', $add);
-		redirect(site_url('propertydetail/index'));
+		redirect(site_url('Property_detail/index'));
 	}
 }

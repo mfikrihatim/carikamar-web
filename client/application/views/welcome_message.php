@@ -59,40 +59,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="row mb-3 mt-3">
                         <div class="col-3">
                             <div class="card">
-                                <a href="<?php echo site_url('jenis_hotel/index'); ?>" class="c-sidebar-item">
+                                <a href="<?php echo site_url('Jenishotel/index'); ?>" class="c-sidebar-item">
                                     <div class="card-body pt-3 pb-3">
                                         <div class="c-sidebar-body">1. Property Information</div>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('generalinformation/index'); ?>" class="c-sidebar-item ">
-                                    <div class="card-body pt-3 pb-3 mr-1 <?php if ($this->uri->segment(1) == "generalinformation") {
+                                <a href="<?php echo site_url('General_information/index'); ?>" class="c-sidebar-item ">
+                                    <div class="card-body pt-3 pb-3 mr-1 <?php if ($this->uri->segment(1) == "General_information") {
                                                                                 echo 'active';
                                                                             } ?>">
                                         General Information
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('propertydetail/index'); ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "propertydetail") {
-                                                                                                                    echo 'active';
-                                                                                                                } ?>">
+                                <a href="<?php echo site_url('Property_detail/index'); ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "Property_detail") {
+                                                                                                                        echo 'active';
+                                                                                                                    } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Property Detail
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('propertyfacilities/index'); ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "propertyfacilities") {
-                                                                                                                        echo 'active';
-                                                                                                                    } ?>">
+                                <a href="<?php echo site_url('Property_facilities/index'); ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "Property_facilities") {
+                                                                                                                            echo 'active';
+                                                                                                                        } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Property Facilities
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('rooms/index'); ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "rooms") {
+                                <a href="<?php echo site_url('Room/index'); ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "Room") {
                                                                                                             echo 'active';
                                                                                                         } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
-                                        Rooms
+                                        Room
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
