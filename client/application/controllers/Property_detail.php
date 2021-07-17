@@ -23,7 +23,7 @@ class Property_detail extends CI_Controller
 		// 	redirect(site_url('Login'));
 		// }
 	}
-	public function AddGeneralInformation()
+	public function AddPropertyDetail()
 	{
 
 		$add['informasi_umum_detail_id'] = $this->input->post('informasi_umum_detail_id');
