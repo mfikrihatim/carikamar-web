@@ -11,14 +11,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>CariKamar - Tera</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet"
-        href="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/fontawesome-free/css/all.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/fontawesome-free/css/all.min.css'); ?>">
     <!-- Theme style -->
-    <link rel="stylesheet"
-        href="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/icheck-bootstrap/icheck-bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/dist/css/adminlte.min.css'); ?>">
     <!--- Custome Css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/tera/custome.css'); ?>">
@@ -45,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item"> <i class="fas fa-key"></i> Ubah Password </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item"> <i class="fas fa-sign-out-alt"></i> Keluar </a>
+                            <a href="<?php echo site_url('Welcome/Logout'); ?>" class="nav-link" onclick="Logout()"></i> Keluar </a>
                             <div class="dropdown-divider"></div>
                         </div>
                     </li>
@@ -62,40 +59,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="row mb-3 mt-3">
                         <div class="col-3">
                             <div class="card">
-                                <a href="<?php echo site_url('jenis_hotel/Index'); ?>" class="c-sidebar-item">
+                                <a href="<?php echo site_url('Jenishotel/index'); ?>" class="c-sidebar-item">
                                     <div class="card-body pt-3 pb-3">
                                         <div class="c-sidebar-body">1. Property Information</div>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('generalinformation/Index'); ?>" class="c-sidebar-item ">
-                                    <div
-                                        class="card-body pt-3 pb-3 mr-1 <?php if($this->uri->segment(1)=="generalinformation"){echo 'active';}?>">
+                                <a href="<?php echo site_url('General_information/index'); ?>" class="c-sidebar-item ">
+                                    <div class="card-body pt-3 pb-3 mr-1 <?php if ($this->uri->segment(1) == "General_information") {
+                                                                                echo 'active';
+                                                                            } ?>">
                                         General Information
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('propertydetail/index'); ?>"
-                                    class="c-sidebar-item <?php if($this->uri->segment(1)=="propertydetail"){echo 'active';}?>">
+                                <a href="<?php echo site_url('Property_detail/index'); ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "Property_detail") {
+                                                                                                                        echo 'active';
+                                                                                                                    } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Property Detail
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('propertyfacilities/Index'); ?>"
-                                    class="c-sidebar-item <?php if($this->uri->segment(1)=="propertyfacilities"){echo 'active';}?>">
+                                <a href="<?php echo site_url('Property_facilities/index'); ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "Property_facilities") {
+                                                                                                                            echo 'active';
+                                                                                                                        } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Property Facilities
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('rooms/Index'); ?>"
-                                    class="c-sidebar-item <?php if($this->uri->segment(1)=="rooms"){echo 'active';}?>">
+                                <a href="<?php echo site_url('Room/index'); ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "Room") {
+                                                                                                            echo 'active';
+                                                                                                        } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
-                                        Rooms
+                                        Room
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="#" class="c-sidebar-item">
+                                <a href="<?php echo site_url('Room_facilities/index'); ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "Room_facilities") {
+                                                                                                                        echo 'active';
+                                                                                                                    } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Room Facilities
                                         <span class="badge badge-info">8</span>
@@ -159,38 +162,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false">
     </script>
     <script>
-    function initialize() {
-        var myLatlng = new google.maps.LatLng(-6.249777186004247, 106.84204062500002);
-        var mapProp = {
-            center: myLatlng,
-            zoom: 5,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
-        };
-        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            map: map,
-            title: "Hello World!",
-            draggable: true,
-        });
-        document.getElementById("lat").value = -6.249777186004247;
-        document.getElementById("lng").value = 106.84204062500002;
-        // marker drag event
-        google.maps.event.addListener(marker, "drag", function(event) {
-            document.getElementById("lat").value = event.latLng.lat();
-            document.getElementById("lng").value = event.latLng.lng();
-        });
+        function initialize() {
+            var myLatlng = new google.maps.LatLng(-6.249777186004247, 106.84204062500002);
+            var mapProp = {
+                center: myLatlng,
+                zoom: 5,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: "Hello World!",
+                draggable: true,
+            });
+            document.getElementById("lat").value = -6.249777186004247;
+            document.getElementById("lng").value = 106.84204062500002;
+            // marker drag event
+            google.maps.event.addListener(marker, "drag", function(event) {
+                document.getElementById("lat").value = event.latLng.lat();
+                document.getElementById("lng").value = event.latLng.lng();
+            });
 
-        //marker drag event end
-        google.maps.event.addListener(marker, "dragend", function(event) {
-            document.getElementById("lat").value = event.latLng.lat();
-            document.getElementById("lng").value = event.latLng.lng();
-            /* alert("lat=>" + event.latLng.lat());
+            //marker drag event end
+            google.maps.event.addListener(marker, "dragend", function(event) {
+                document.getElementById("lat").value = event.latLng.lat();
+                document.getElementById("lng").value = event.latLng.lng();
+                /* alert("lat=>" + event.latLng.lat());
         alert("long=>" + event.latLng.lng()); */
-        });
-    }
+            });
+        }
 
-    google.maps.event.addDomListener(window, "load", initialize);
+        google.maps.event.addDomListener(window, "load", initialize);
     </script>
 
     <!-- duplicate contact -->
@@ -208,35 +211,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/moment/moment.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/inputmask/jquery.inputmask.min.js'); ?>"></script>
     <!-- Tempusdominus Bootstrap 4 -->
-    <script
-        src="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js'); ?>">
+    <script src="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js'); ?>">
     </script>
 
     <script>
-    function duplicateContact() {
-        $("#duplicate-contact").clone().appendTo("#row-contact");
-        console.log("cuk");
-    }
+        function duplicateContact() {
+            $("#duplicate-contact").clone().appendTo("#row-contact");
+            console.log("cuk");
+        }
 
-    //Timepicker
-    $("#checkin_from").datetimepicker({
-        format: "LT",
-    });
-    $("#checkin_until").datetimepicker({
-        format: "LT",
-    });
-    $("#checkout_from").datetimepicker({
-        format: "LT",
-    });
-    $("#checkout_until").datetimepicker({
-        format: "LT",
-    });
-    /*
-    $(function () {
-      var $contact = $('#main-contact').clone();
-      $('#row-contact').html($contact);
-    });
-    */
+        //Timepicker
+        $("#checkin_from").datetimepicker({
+            format: "LT",
+        });
+        $("#checkin_until").datetimepicker({
+            format: "LT",
+        });
+        $("#checkout_from").datetimepicker({
+            format: "LT",
+        });
+        $("#checkout_until").datetimepicker({
+            format: "LT",
+        });
+        /*
+        $(function () {
+          var $contact = $('#main-contact').clone();
+          $('#row-contact').html($contact);
+        });
+        */
     </script>
 
 </body>

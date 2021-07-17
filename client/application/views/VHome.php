@@ -11,11 +11,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <title>CariKamar</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet"
-        href="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/fontawesome-free/css/all.min.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/fontawesome-free/css/all.min.css'); ?>">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/dist/css/adminlte.min.css'); ?>">
 </head>
@@ -40,7 +38,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <div class="dropdown-divider"></div>
                             <a href="#" class="dropdown-item"> <i class="fas fa-key"></i> Ubah Password </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item"> <i class="fas fa-sign-out-alt"></i> Keluar </a>
+                            <a href="<?php echo site_url('Welcome/Logout'); ?>" class="nav-link" onclick="Logout()"></i> Keluar </a>
                             <div class="dropdown-divider"></div>
                         </div>
                     </li>
@@ -77,11 +75,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <!-- /.card-tools -->
                                 </div>
                                 <!-- /.card-header -->
-                                <img class="card-img-top"
-                                    src="<?php echo base_url('assets/tera/hotel.jpg" alt="Card image cap'); ?>">
+                                <img class="card-img-top" src="<?php echo base_url('assets/tera/hotel.jpg" alt="Card image cap'); ?>">
                                 <div class="card-body text-center">
-                                    <a href="<?php echo site_url('generalinformation/Index'); ?>"
-                                        class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
+                                    <a href="<?php echo site_url('General_information/index'); ?>" class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
 
                                 </div>
                                 <!-- /.card-body -->
@@ -100,11 +96,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <!-- /.card-tools -->
                                 </div>
                                 <!-- /.card-header -->
-                                <img class="card-img-top"
-                                    src="<?php echo base_url('assets/tera/hotel.jpg" alt="Card image cap'); ?>">
+                                <img class="card-img-top" src="<?php echo base_url('assets/tera/hotel.jpg" alt="Card image cap'); ?>">
                                 <div class="card-body text-center">
-                                    <a href="<?php echo site_url('generalinformation/Index'); ?>"
-                                        class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
+                                    <a href="<?php echo site_url('General_information/index'); ?>" class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -122,11 +116,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <!-- /.card-tools -->
                                 </div>
                                 <!-- /.card-header -->
-                                <img class="card-img-top"
-                                    src="<?php echo base_url('assets/tera/hotel.jpg" alt="Card image cap'); ?>">
+                                <img class="card-img-top" src="<?php echo base_url('assets/tera/hotel.jpg" alt="Card image cap'); ?>">
                                 <div class="card-body text-center">
-                                    <a href="<?php echo site_url('generalinformation/Index'); ?>"
-                                        class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
+                                    <a href="<?php echo site_url('General_information/index'); ?>" class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -157,8 +149,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card-body">
                                     <p class="card-text">Senang Anda ingin bergabung! Klik tombol di bawah untuk
                                         memulai. Proses registrasi dapat berlangsung hingga 15 menit.</p>
-                                    <a href="<?php echo site_url('Welcome/VAkomodasi'); ?>"
-                                        class="btn btn-primary">Daftarkan Akomodasi Baru</a>
+                                    <a href="<?php echo site_url('Welcome/VAkomodasi'); ?>" class="btn btn-primary">Daftarkan Akomodasi Baru</a>
                                 </div>
                             </div>
                         </div>
@@ -191,7 +182,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- AdminLTE App -->
     <script src=" <?php echo base_url('assets/AdminLTE-3.1.0/dist/js/adminlte.min.js'); ?>"></script>
     <!-- AdminLTE for demo purposes -->
-    <script src="<?php echo base_url('assets/AdminLTE-3.1.0/dist/js/demo.js');?>"></script>
+    <script src="<?php echo base_url('assets/AdminLTE-3.1.0/dist/js/demo.js'); ?>"></script>
 </body>
 
 </html>

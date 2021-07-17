@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class PropertyFacilities extends CI_Controller
+class Jenishotel extends CI_Controller
 {
 	public function index()
 	{
@@ -9,11 +9,10 @@ class PropertyFacilities extends CI_Controller
 		// 	$data['nama'] = $this->session->userdata('nama');
 		// 	$data['level'] = $this->session->userdata('level');
 
-		$data['content'] = 'list-property-facilities';
+		$data['content1'] = 'list-jenis';
 		$this->load->view('welcome_message', $data);
 		// } else {
 		// 	redirect(site_url('Login'));
 		// }
 	}
-
 }
