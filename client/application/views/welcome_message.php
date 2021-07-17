@@ -96,7 +96,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="#" class="c-sidebar-item">
+                                <a href="<?php echo site_url('Room_facilities/index'); ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "Room_facilities") {
+                                                                                                                        echo 'active';
+                                                                                                                    } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Room Facilities
                                         <span class="badge badge-info">8</span>

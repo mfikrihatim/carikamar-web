@@ -14,6 +14,7 @@ class Property_facilities extends CI_Controller
 		// if ($this->session->userdata('Login')) {
 		// 	$data['nama'] = $this->session->userdata('nama');
 		// 	$data['level'] = $this->session->userdata('level');
+		$data['DataInformationDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
 		$data['DataMasterFasilitasPropertiHeader'] = $this->MSudi->GetDataWhere('master_fasilitas_properti_header', 'status_id', 1)->result();
 		$join = " master_fasilitas_properti_header.id = master_fasilitas_properti_detail.fasilitas_properti_header_id";
 		$this->db->select('master_fasilitas_properti_detail.id, 
@@ -36,19 +37,9 @@ class Property_facilities extends CI_Controller
 	{
 
 		$add['informasi_umum_detail_id'] = $this->input->post('informasi_umum_detail_id');
-		$add['mata_uang'] = $this->input->post('mata_uang');
-		$add['flag_kawasan'] = $this->input->post('flag_kawasan');
-		$add['waktu_checkin'] = $this->input->post('waktu_checkin');
-		$add['waktu_checkout'] = $this->input->post('waktu_checkout');
-		$add['jarak_ke_kota'] = $this->input->post('jarak_ke_kota');
-		$add['jumlah_lantai'] = $this->input->post('jumlah_lantai');
-		$add['biaya_sarapan_tambahan'] = $this->input->post('biaya_sarapan_tambahan');
-		$add['master_cancel_id'] = $this->input->post('master_cancel_id');
-
-		$master_style_id = $this->input->post("master_style_id");
-		if ($master_style_id == null)
-			$master_style_id =  [];
-		$add['master_style_id'] = json_encode($master_style_id);
+		$add['fasilitas_properti_detail_id'] = $this->input->post('fasilitas_properti_detail_id');
+		$add['flag_free'] = $this->input->post('flag_free');
+		$add['flag_fullday'] = $this->input->post('flag_fullday');
 		$add['created_by'] = 1;
 		$add['created_date'] = date("Y-m-d H:i:s");
 		$add['updated_by'] = null;
@@ -58,7 +49,7 @@ class Property_facilities extends CI_Controller
 		$add['status_id'] = 1;
 
 
-		$this->MSudi->AddData('properti_detail', $add);
-		redirect(site_url('Property_detail/index'));
+		$this->MSudi->AddData('fasilitas_properti', $add);
+		redirect(site_url('Property_facilities/index'));
 	}
 }
