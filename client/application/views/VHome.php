@@ -23,7 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
-                <a href="../../index3.html" class="navbar-brand">
+                <a href="<?php echo site_url('Welcome'); ?>" class="navbar-brand">
                     <!-- <img src="../AdminLTE-3.1.0/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
                         class="brand-image img-circle elevation-3" style="opacity: 0.8" /> -->
                     <span class="brand-text font-weight-bold text-primary" style="font-size: 2.5rem;">CariKamar</span>
