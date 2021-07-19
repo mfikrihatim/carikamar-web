@@ -25,7 +25,7 @@ class Room extends CI_Controller
 		// 	redirect(site_url('Login'));
 		// }
 	}
-	
+
 	public function AddTipeKamar()
 	{
 
@@ -40,9 +40,10 @@ class Room extends CI_Controller
 		$add['ukuran_kamar_panjang'] = $this->input->post('ukuran_kamar_panjang');
 		$add['harga_kamar'] = $this->input->post('harga_kamar');
 		$add['flag_included_breakfast'] = $this->input->post('flag_included_breakfast');
-		
+		$add['jumlah_kamar'] = $this->input->post('jumlah_kamar');
 
-		foreach($add['nama_kamar'] as $index => $data){
+
+		foreach ($add['nama_kamar'] as $index => $data) {
 			$insert = array(
 				'informasi_umum_detail_id' => $add['informasi_umum_detail_id'][$index],
 				'nama_kamar' => $add['nama_kamar'][$index],
@@ -55,6 +56,7 @@ class Room extends CI_Controller
 				'ukuran_kamar_panjang' => $add['ukuran_kamar_panjang'][$index],
 				'harga_kamar' => $add['harga_kamar'][$index],
 				'flag_included_breakfast' => $add['flag_included_breakfast'][$index],
+				'jumlah_kamar' => $add['jumlah_kamar'][$index],
 				'created_by' => 1,
 				'created_date' => date("Y-m-d H:i:s"),
 				'updated_by' => null,
