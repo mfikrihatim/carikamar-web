@@ -123,7 +123,7 @@
                             </a>
                             <ul class="nav nav-treeview ">
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_user/DataUser'); ?>"
+                                    <a href="<?php echo site_url('Master_User/DataUser'); ?>"
                                         class="nav-link <?php if ($this->uri->segment(2) == "DataUser") {echo 'active';} ?>">
                                         <i class="far fa-user nav-icon"></i>
                                         <p>

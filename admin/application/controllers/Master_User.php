@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Master_user extends CI_Controller
+class Master_User extends CI_Controller
 {
     function __construct()
     {
@@ -75,7 +75,7 @@ class Master_user extends CI_Controller
             $add['foto'] = $replcate;
         }
         $this->MSudi->AddData('master_user', $add);
-        redirect(site_url('Master_user/DataUser'));
+        redirect(site_url('Master_User/DataUser'));
     }
     public function UpdateDataUser()
     {
@@ -109,7 +109,7 @@ class Master_user extends CI_Controller
         }
 
         $this->MSudi->UpdateData('master_user', 'id', $id, $update);
-        redirect(site_url('Master_user/DataUser'));
+        redirect(site_url('Master_User/DataUser'));
     }
 
 
@@ -126,6 +126,6 @@ class Master_user extends CI_Controller
 
 
         $this->MSudi->UpdateData('master_user', 'id', $id, $update);
-        redirect(site_url('Master_user/DataUser'));
+        redirect(site_url('Master_User/DataUser'));
     }
 }
