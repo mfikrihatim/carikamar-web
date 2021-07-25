@@ -5,7 +5,7 @@
          <div class="container-fluid">
              <div class="row mb-2">
                  <div class="col-sm-6">
-                     <h1 class="m-0 text-dark">Edit Informasi Pembayaran</h1>
+                     <h1 class="m-0 text-dark">Edit Infomasi Penandatangan Kontrak</h1>
                  </div>
 
              </div><!-- /.row -->
@@ -21,7 +21,7 @@
                  <div class="box-header with-border">
                      <div class="row">
                          <div class="col-12">
-                             <form action="<?php echo site_url('Informasi_pembayaran/UpdateDataInformasiPembayaran'); ?>" method="post" enctype="multipart/form-data">
+                             <form action="<?php echo site_url('Informasi_penandatangan_kontrak/UpdateDataInformasiPenandatanganKontrak'); ?>" method="post" enctype="multipart/form-data">
                                  <div class="card-body">
                                      <div class="form-group">
                                          <label>Informasi Umum Detail</label>
@@ -45,31 +45,23 @@
                                      </div>
                                      <!-- Password -->
                                      <div class="form-group">
-                                         <div class="form-group">
-                                             <label>pilihan Metode</label>
-                                             <select class="form-control" name="pilihan_metode" required>
-                                                 <option value="">Pilihan Metode</option>
-                                                 <option value="1" <?php if ($detail['pilihan_metode'] == "1") {
-                                                                        echo 'selected';
-                                                                    } ?>>Bank Transfer</option>
-                                                 <option value="2" <?php if ($detail['pilihan_metode'] == "2") {
-                                                                        echo 'selected';
-                                                                    } ?>>VCC</option>
-                                             </select>
+                                             <label>Nama Lengkap</label>
+
+                                             <input type="text" class="form-control" name="nama_lengkap" value="<?php echo $detail['nama_lengkap']; ?>" placeholder="Masukan Nama Lengkap">
                                          </div>
                                          <div class="form-group">
-                                             <label>Master Bank</label>
+                                             <label>Master Role Kontrak</label>
 
-                                             <select class="form-control" name="master_bank_id" required>
+                                             <select class="form-control" name="role_kontrak_id" required>
 
-                                                 <option value="">Pilih Master Bank</option>
+                                                 <option value="">Pilih Role Kontrak</option>
                                                  <?php
-                                                    foreach ($MasterBank as $ReadDS) {
-                                                        if ($ReadDS->id == $detail['master_bank_id']) {
+                                                    foreach ($MasterRoleKontrak as $ReadDS) {
+                                                        if ($ReadDS->id == $detail['role_kontrak_id']) {
                                                     ?>
-                                                         <option value="<?php echo $ReadDS->id; ?>" selected><?php echo $ReadDS->nama_bank; ?></option>
+                                                         <option value="<?php echo $ReadDS->id; ?>" selected><?php echo $ReadDS->nama_role_kontrak; ?></option>
                                                      <?php } else { ?>
-                                                         <option value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_bank; ?></option>
+                                                         <option value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_role_kontrak; ?></option>
                                                  <?php
                                                         }
                                                     }
@@ -78,28 +70,26 @@
                                          </div>
 
                                          <div class="form-group">
-                                             <label>Nomor Akun</label>
+                                             <label>Email</label>
 
-                                             <input type="number" class="form-control" name="nomor_akun" value="<?php echo $detail['nomor_akun']; ?>" placeholder="Masukan Nomor Akun">
+                                             <input type="email" class="form-control" name="email" value="<?php echo $detail['email']; ?>" placeholder="Masukan Email">
                                          </div>
                                          <div class="form-group">
-                                             <label>Pemilik Akun</label>
+                                             <label>No Handphone</label>
 
-                                             <input type="text" class="form-control" name="pemilik_akun" value="<?php echo $detail['pemilik_akun']; ?>" placeholder="Masukan Nama Pemilik Akun">
+                                             <input type="number" class="form-control" name="no_hp" value="<?php echo $detail['no_hp']; ?>" placeholder="Masukan no handphone">
                                          </div>
                                          <div class="form-group">
-                                             <label>Rencana Pembayaran</label>
-                                             <select class="form-control" name="rencana_pembayaran" required>
+                                             <label>Flag Menyetujui</label>
+                                             <select class="form-control" name="flag_menyetujui" required>
                                                  <option value="">Pilihan Rencana Pembayaran</option>
-                                                 <option value="1" <?php if ($detail['rencana_pembayaran'] == "1") {
+                                                 <option value="1" <?php if ($detail['flag_menyetujui'] == "1") {
                                                                         echo 'selected';
-                                                                    } ?>>In Advance</option>
-                                                 <option value="2" <?php if ($detail['rencana_pembayaran'] == "2") {
+                                                                    } ?>>Ya</option>
+                                                 <option value="0" <?php if ($detail['flag_menyetujui'] == "0") {
                                                                         echo 'selected';
-                                                                    } ?>>Weekly</option>
-                                                 <option value="3" <?php if ($detail['rencana_pembayaran'] == "3") {
-                                                                        echo 'selected';
-                                                                    } ?>>Monthly</option>
+                                                                    } ?>>TIDAK</option>
+                                                
                                              </select>
                                          </div>
 
