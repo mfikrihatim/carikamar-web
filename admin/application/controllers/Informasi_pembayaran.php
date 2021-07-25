@@ -16,6 +16,8 @@ class Informasi_pembayaran extends CI_Controller
         $data['foto'] = $this->session->userdata('foto');
         if ($this->uri->segment(4) == 'view') {
             $id = $this->uri->segment(3);
+            $data['InformasiUmumDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
+            $data['MasterBank'] = $this->MSudi->GetDataWhere('master_bank', 'status_id', 1)->result();
             $tampil = $this->MSudi->GetDataWhere('informasi_pembayaran', 'id', $id)->row();
             $data['detail']['id'] = $tampil->id;
             $data['detail']['informasi_umum_detail_id'] = $tampil->informasi_umum_detail_id;
@@ -56,6 +58,8 @@ class Informasi_pembayaran extends CI_Controller
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
         $data['foto'] = $this->session->userdata('foto');
+        $data['InformasiUmumDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
+        $data['MasterBank'] = $this->MSudi->GetDataWhere('master_bank', 'status_id', 1)->result();
         $data['content'] = 'VFormAddInformasiPembayaran';
         $this->load->view('welcome_message', $data);
     }
@@ -66,13 +70,22 @@ class Informasi_pembayaran extends CI_Controller
         $data['email'] = $this->session->userdata('email');
         $data['foto'] = $this->session->userdata('foto');
 
-        $add['nama_role_kontrak'] = $this->input->post('nama_role_kontrak');
-        $add['deskripsi'] = $this->input->post('deskripsi');
+        $add['informasi_umum_detail_id'] = $this->input->post('informasi_umum_detail_id');
+        $add['pilihan_metode'] = $this->input->post('pilihan_metode');
+        $add['master_bank_id'] = $this->input->post('master_bank_id');
+        $add['nomor_akun'] = $this->input->post('nomor_akun');
+        $add['pemilik_akun'] = $this->input->post('pemilik_akun');
+        $add['rencana_pembayaran'] = $this->input->post('rencana_pembayaran');
         $add['status_id'] = 1;
-
+        $add['created_by'] = $data['id'];
+        $add['created_date'] = date("Y-m-d H:i:s");
+        $add['updated_by'] = null;
+        $add['updated_date'] = null;
+        $add['deleted_by'] = null;
+        $add['deleted_date'] = null;
 
         $this->MSudi->AddData('informasi_pembayaran', $add);
-        redirect(site_url('Informasi_pembayaran/DataMasterRoleKontrak'));
+        redirect(site_url('Informasi_pembayaran/DataInformasiPembayaran'));
     }
     public function UpdateDataInformasiPembayaran()
     {
@@ -83,11 +96,17 @@ class Informasi_pembayaran extends CI_Controller
 
 
         $id = $this->input->post('id');
-        $update['nama_role_kontrak'] = $this->input->post('nama_role_kontrak');
-        $update['deskripsi'] = $this->input->post('deskripsi');
+        $update['informasi_umum_detail_id'] = $this->input->post('informasi_umum_detail_id');
+        $update['pilihan_metode'] = $this->input->post('pilihan_metode');
+        $update['master_bank_id'] = $this->input->post('master_bank_id');
+        $update['nomor_akun'] = $this->input->post('nomor_akun');
+        $update['pemilik_akun'] = $this->input->post('pemilik_akun');
+        $update['rencana_pembayaran'] = $this->input->post('rencana_pembayaran');
         $update['status_id'] = 1;
+        $update['updated_by'] = $data['id'];
+        $update['updated_date'] = date("Y-m-d H:i:s");
         $this->MSudi->UpdateData('informasi_pembayaran', 'id', $id, $update);
-        redirect(site_url('Informasi_pembayaran/DataMasterRoleKontrak'));
+        redirect(site_url('Informasi_pembayaran/DataInformasiPembayaran'));
     }
 
 
@@ -100,9 +119,10 @@ class Informasi_pembayaran extends CI_Controller
         $id = $this->uri->segment('3');
 
         $update['status_id'] = 0;
-
+        $update['deleted_by'] = $data['id'];
+        $update['deleted_date'] = date("Y-m-d H:i:s");
 
         $this->MSudi->UpdateData('informasi_pembayaran', 'id', $id, $update);
-        redirect(site_url('Informasi_pembayaran/DataMasterRoleKontrak'));
+        redirect(site_url('Informasi_pembayaran/DataInformasiPembayaran'));
     }
 }
