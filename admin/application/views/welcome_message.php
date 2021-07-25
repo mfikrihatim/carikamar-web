@@ -233,6 +233,7 @@
                             <?php if ($this->uri->segment(2) == "DataFasilitasProperti") {echo 'menu-open';} ?>
                             <?php if ($this->uri->segment(2) == "DataFasilitasKamar") {echo 'menu-open';} ?>
                             <?php if ($this->uri->segment(2) == "DataInformasiPembayaran") {echo 'menu-open';} ?>
+                            <?php if ($this->uri->segment(2) == "DataInformasiPenandatanganKontrak") {echo 'menu-open';} ?>
                             ">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-users"></i>
@@ -303,6 +304,15 @@
                                         <i class="nav-icon fas fa-info-circle"></i>
                                         <p>
                                             Informasi Pembayaran
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Informasi_penandatangan_kontrak/DataInformasiPenandatanganKontrak'); ?>"
+                                    class="nav-link <?php if ($this->uri->segment(2) == "DataInformasiPenandatanganKontrak") {echo 'active';} ?> ">
+                                        <i class="nav-icon fas fa-info-circle"></i>
+                                        <p>
+                                            Informasi Penandatangan <br>Kontrak
                                         </p>
                                     </a>
                                 </li>

@@ -4,7 +4,7 @@
      <div class="content-header">
          <div class="container-fluid">
              <div class="col-sm-6">
-                 <h1 class="m-0 text-dark">Data Informasi Pembayaran</h1>
+                 <h1 class="m-0 text-dark">Data Informasi Penandatangan Kontrak</h1>
              </div>
          </div><!-- /.container-fluid -->
      </div>
@@ -20,8 +20,8 @@
                          <div class="col-12">
                              <div class="card">
                                  <div class="card-header">
-                                     <a href="<?php echo site_url('Informasi_pembayaran/VFormAddInformasiPembayaran'); ?>" class="btn btn-success">
-                                         Tambah Data Informasi Pembayaran
+                                     <a href="<?php echo site_url('Informasi_penandatangan_kontrak/VFormAddInformasiPenandatanganKontrak'); ?>" class="btn btn-success">
+                                         Tambah Data Informasi Penandatangan Kontrak
                                      </a>
                                  </div>
                                  <!-- /.card-header -->
@@ -33,11 +33,11 @@
                                                  <th>No</th>
                                                  <!-- <th>Kode Pegawai</th> -->
                                                  <th>Informasi Umum Detail</th>
-                                                 <th>Pilihan Metode</th>
-                                                 <th>Bank</th>
-                                                 <th>Nomor Akun</th>
-                                                 <th>Pemilik Akun</th>
-                                                 <th>Rencana Pembayaran</th>
+                                                 <th>Nama Lengkap</th>
+                                                 <th>Role Kontrak</th>
+                                                 <th>Email</th>
+                                                 <th>No Handphone</th>
+                                                 <th>Status</th>
                                                  <th>Tools</th>
                                                  <!-- <th>
  													&nbsp;
@@ -46,37 +46,31 @@
                                          </thead>
                                          <tbody>
                                              <?php
-                                                if (!empty($InformasiPembayaran)) {
-                                                    foreach ($InformasiPembayaran as $index => $ReadDS) {
+                                                if (!empty($InformasiPenandatanganKontrak)) {
+                                                    foreach ($InformasiPenandatanganKontrak as $index => $ReadDS) {
                                                         $index = $index + 1;
                                                 ?>
                                                      <tr>
                                                          <td><?php echo $index ?></td>
                                                          <td><?php echo $ReadDS->nama_properti; ?></td>
+                                                         <td><?php echo $ReadDS->nama_lengkap; ?></td>
+                                                         <td><?php echo $ReadDS->nama_role_kontrak; ?></td>
+                                                         <td><?php echo $ReadDS->email; ?></td>
+                                                         <td><?php echo $ReadDS->no_hp; ?></td>
+                                                      
                                                          <td>
-                                                             <?php if ($ReadDS->pilihan_metode == "1") {
-                                                                    echo 'Bank Transfer';
+                                                             <?php if ($ReadDS->flag_menyetujui == "0") {
+                                                                    echo 'Tidak Disetujui';
                                                                 } else {
-                                                                    echo 'VCC';
+                                                                    echo 'Disetujui';
                                                                 } ?></td>
-                                                         <td><?php echo $ReadDS->nama_bank; ?></td>
-                                                         <td><?php echo $ReadDS->nomor_akun; ?></td>
-                                                         <td><?php echo $ReadDS->pemilik_akun; ?></td>
-                                                         <td>
-                                                             <?php if ($ReadDS->rencana_pembayaran == "1") {
-                                                                    echo 'In Advance';
-                                                                } else if ($ReadDS->rencana_pembayaran == "2") {
-                                                                    echo 'Weekly';
-                                                                } else {
-                                                                    echo 'Monthly';
-                                                                } ?></td>
-
+                                                     
 
                                                          <td>
-                                                             <a href="<?php echo site_url('Informasi_pembayaran/DataInformasiPembayaran/' . $ReadDS->id . '/view'); ?>" class="btn btn-xs btn-info">
+                                                             <a href="<?php echo site_url('Informasi_penandatangan_kontrak/DataInformasiPenandatanganKontrak/' . $ReadDS->id . '/view'); ?>" class="btn btn-xs btn-info">
                                                                  Edit
                                                              </a>
-                                                             <a href="<?php echo site_url('Informasi_pembayaran/DeleteDataInformasiPembayaran/' . $ReadDS->id); ?>" class="btn btn-xs btn-danger">
+                                                             <a href="<?php echo site_url('Informasi_penandatangan_kontrak/DeleteDataInformasiPenandatanganKontrak/' . $ReadDS->id); ?>" class="btn btn-xs btn-danger">
                                                                  Delete
                                                              </a>
 
