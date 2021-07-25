@@ -113,7 +113,10 @@
                                     <?php if ($this->uri->segment(2) == "DataMasterFasilitasKamarHeader") {echo 'menu-open';} ?>
                                     <?php if ($this->uri->segment(2) == "DataMasterFasilitasKamarDetail") {echo 'menu-open';} ?> 
                                     <?php if ($this->uri->segment(2) == "DataCancel") {echo 'menu-open';} ?> 
+                                    <?php if ($this->uri->segment(2) == "DataMasterBank") {echo 'menu-open';} ?>
+                                    <?php if ($this->uri->segment(2) == "DataMasterRoleKontrak") {echo 'menu-open';} ?>
                                     <?php if ($this->uri->segment(2) == "DataStyle") {echo 'menu-open';} ?>">
+                                   
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
@@ -204,13 +207,34 @@
                                         </p>
                                     </a>
                                 </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_bank/DataMasterBank'); ?>"
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataMasterBank") {echo 'active';} ?>">
+                                        <i class="nav-icon far fa-circle"></i>
+                                        <p>
+                                            Bank
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_role_kontrak/DataMasterRoleKontrak'); ?>"
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataMasterRoleKontrak") {echo 'active';} ?>">
+                                        <i class="nav-icon far fa-circle"></i>
+                                        <p>
+                                            Master Role Kontrak
+                                        </p>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item <?php if ($this->uri->segment(2) == "DataInformasiUmumDetail") {echo 'menu-open';} ?>
                             <?php if ($this->uri->segment(2) == "DataInformasiUmumKontak") {echo 'menu-open';} ?>
                             <?php if ($this->uri->segment(2) == "DataPropertiDetail") {echo 'menu-open';} ?> 
                             <?php if ($this->uri->segment(2) == "DataFasilitasProperti") {echo 'menu-open';} ?>
-                            <?php if ($this->uri->segment(2) == "DataFasilitasKamar") {echo 'menu-open';} ?>">
+                            <?php if ($this->uri->segment(2) == "DataFasilitasKamar") {echo 'menu-open';} ?>
+                            <?php if ($this->uri->segment(2) == "DataInformasiPembayaran") {echo 'menu-open';} ?>
+                            <?php if ($this->uri->segment(2) == "DataInformasiPenandatanganKontrak") {echo 'menu-open';} ?>
+                            ">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
@@ -271,6 +295,24 @@
                                         <i class="nav-icon fas fa-info-circle"></i>
                                         <p>
                                             Kamar Header
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Informasi_pembayaran/DataInformasiPembayaran'); ?>"
+                                    class="nav-link <?php if ($this->uri->segment(2) == "DataInformasiPembayaran") {echo 'active';} ?> ">
+                                        <i class="nav-icon fas fa-info-circle"></i>
+                                        <p>
+                                            Informasi Pembayaran
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Informasi_penandatangan_kontrak/DataInformasiPenandatanganKontrak'); ?>"
+                                    class="nav-link <?php if ($this->uri->segment(2) == "DataInformasiPenandatanganKontrak") {echo 'active';} ?> ">
+                                        <i class="nav-icon fas fa-info-circle"></i>
+                                        <p>
+                                            Informasi Penandatangan <br>Kontrak
                                         </p>
                                     </a>
                                 </li>
