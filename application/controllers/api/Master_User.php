@@ -63,54 +63,56 @@ class Master_User extends RestController
             $header = $this->input->request_headers();
             if (isset($header['Authorization'])) {
                 if ($header['Authorization'] == $this->token) {
+
+
                     // Check form submit or not
-                    if(isset($_POST['image'])){
+                    if (isset($_POST['image'])) {
                         $data['filenames'] = $_POST['image'];
                         // array_push( $data['filenames'],$_POST['image']);
                     }
-                    if (isset($_FILES['foto'])) {
-    
+                    if (isset($_FILES['files'])) {
+
                         $data = array();
                         $data['filenames'] = [];
                         // Count total files
-                        $countfiles = count($_FILES['foto']['name']);
-    
+                        $countfiles = count($_FILES['files']['name']);
+
                         // Looping all files
                         for ($i = 0; $i < $countfiles; $i++) {
-    
-                            if (!empty($_FILES['foto']['name'][$i])) {
-    
+
+                            if (!empty($_FILES['files']['name'][$i])) {
+
                                 // Define new $_FILES array - $_FILES['file']
-                                $_FILES['foto']['name'] = $_FILES['foto']['name'][$i];
-                                $_FILES['foto']['type'] = $_FILES['foto']['type'][$i];
-                                $_FILES['foto']['tmp_name'] = $_FILES['foto']['tmp_name'][$i];
-                                $_FILES['foto']['error'] = $_FILES['foto']['error'][$i];
-                                $_FILES['foto']['size'] = $_FILES['foto']['size'][$i];
-    
+                                $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                                $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                                $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                                $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                                $_FILES['file']['size'] = $_FILES['files']['size'][$i];
+
                                 // Set preference
                                 $config['upload_path'] = 'uploads/';
                                 $config['allowed_types'] = 'jpg|jpeg|png|gif|JPG';
                                 // $config['max_size'] = '500000000'; // max_size in kb
-                                $config['file_name'] = $_FILES['foto']['name'][$i];
-    
+                                $config['file_name'] = $_FILES['files']['name'][$i];
+
                                 //Load upload library
                                 $this->load->library('upload', $config);
-    
+
                                 try {
-    
+
                                     // File upload
-                                    if ($this->upload->do_upload('foto')) {
+                                    if ($this->upload->do_upload('file')) {
                                         // Get data about the file
                                         $uploadData = $this->upload->data();
                                         $filename = site_url('uploads/') . $uploadData['file_name'];
                                         $replcate = str_replace("index.php/", "", $filename);
                                         $filename = $replcate;
-    
+
                                         // Initialize array
                                         array_push($data['filenames'], $filename);
                                     }
                                 }
-    
+
                                 //catch exception
                                 catch (Exception $e) {
                                     echo 'Message: ' . $e->getMessage();
@@ -118,13 +120,12 @@ class Master_User extends RestController
                             }
                         }
                     }
-                    if (isset($_FILES['foto'])) {
-    
+                    if (isset($_FILES['files'])) {
+
                         $image = json_encode($data['filenames']);
                         $replcate = str_replace("\/", "/", $image);
                         $data['filenames'] = $replcate;
-                    }else if (isset($_POST['image'])) {
-    
+                    } else if (isset($_POST['image'])) {
                     } else {
                         $data['filenames'] = "[]";
                     }
@@ -165,61 +166,63 @@ class Master_User extends RestController
         $header = $this->input->request_headers();
         if (isset($header['Authorization'])) {
             if ($header['Authorization'] == $this->token) {
-                // if (isset($_FILES['files'])) {
-                //     $data = array();
-                //     $data['filenames'] = [];
-                //     // Count total files
-                //     $countfiles = count($_FILES['foto']['name']);
+                 // Check form submit or not
+                 if (isset($_FILES['files'])) {
 
-                //     // Looping all files
-                //     for ($i = 0; $i < $countfiles; $i++) {
+                    $data = array();
+                    $data['filenames'] = [];
+                    // Count total files
+                    $countfiles = count($_FILES['files']['name']);
 
-                //         if (!empty($_FILES['foto']['name'][$i])) {
+                    // Looping all files
+                    for ($i = 0; $i < $countfiles; $i++) {
 
-                //             // Define new $_FILES array - $_FILES['file']
-                //             $_FILES['foto']['name'] = $_FILES['foto']['name'][$i];
-                //             $_FILES['foto']['type'] = $_FILES['foto']['type'][$i];
-                //             $_FILES['foto']['tmp_name'] = $_FILES['foto']['tmp_name'][$i];
-                //             $_FILES['foto']['error'] = $_FILES['foto']['error'][$i];
-                //             $_FILES['foto']['size'] = $_FILES['foto']['size'][$i];
+                        if (!empty($_FILES['files']['name'][$i])) {
 
-                //             // Set preference
-                //             $config['upload_path'] = 'uploads/';
-                //             $config['allowed_types'] = 'jpg|jpeg|png|gif';
-                //             // $config['max_size'] = '500000000'; // max_size in kb
-                //             $config['file_name'] = $_FILES['foto']['name'][$i];
+                            // Define new $_FILES array - $_FILES['file']
+                            $_FILES['file']['name'] = $_FILES['files']['name'][$i];
+                            $_FILES['file']['type'] = $_FILES['files']['type'][$i];
+                            $_FILES['file']['tmp_name'] = $_FILES['files']['tmp_name'][$i];
+                            $_FILES['file']['error'] = $_FILES['files']['error'][$i];
+                            $_FILES['file']['size'] = $_FILES['files']['size'][$i];
 
-                //             //Load upload library
-                //             $this->load->library('upload', $config);
+                            // Set preference
+                            $config['upload_path'] = 'uploads/';
+                            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                            // $config['max_size'] = '500000000'; // max_size in kb
+                            $config['file_name'] = $_FILES['files']['name'][$i];
 
-                //             // File upload
-                //             if ($this->upload->do_upload('foto')) {
-                //                 // Get data about the file
-                //                 $uploadData = $this->upload->data();
-                //                 $filename = site_url('uploads/') . $uploadData['file_name'];
-                //                 $replcate = str_replace("index.php/", "", $filename);
-                //                 $filename = $replcate;
+                            //Load upload library
+                            $this->load->library('upload', $config);
 
-                //                 // Initialize array
-                //                 array_push($data['filenames'], $filename);
-                //             }
-                //         }
-                //     }
-                // }
-                // if (isset($_FILES['foto'])) {
+                            // File upload
+                            if ($this->upload->do_upload('file')) {
+                                // Get data about the file
+                                $uploadData = $this->upload->data();
+                                $filename = site_url('uploads/') . $uploadData['file_name'];
+                                $replcate = str_replace("index.php/", "", $filename);
+                                $filename = $replcate;
 
-                //     $image = json_encode($data['filenames']);
-                //     $replcate = str_replace("\/", "/", $image);
-                //     $data['filenames'] = $replcate;
-                // } else {
-                //     $data['filenames'] = "[]";
-                // }
+                                // Initialize array
+                                array_push($data['filenames'], $filename);
+                            }
+                        }
+                    }
+                }
+                if (isset($_FILES['files'])) {
+
+                    $image = json_encode($data['filenames']);
+                    $replcate = str_replace("\/", "/", $image);
+                    $data['filenames'] = $replcate;
+                } else {
+                    $data['filenames'] = "[]";
+                }
                 $update = array(
                     'id' => $this->input->post('id'),
                     'nama' => $this->input->post('nama'),
                     'email' => $this->input->post('email'),
                     'password' => $this->input->post('password'),
-                    // 'foto' => $data['filenames'],
+                    'foto' => $data['filenames'],
                     'status_id' => 1
                 );
 
