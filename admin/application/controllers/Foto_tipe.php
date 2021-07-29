@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Master_Perjanjian_Kontrak extends CI_Controller
+class Foto_tipe extends CI_Controller
 {
     function __construct()
     {
@@ -9,52 +9,52 @@ class Master_Perjanjian_Kontrak extends CI_Controller
         $this->load->model('MSudi');
     }
 
-    public function DataPerjanjianKontrak()
+    public function DataFotoTipe()
     {
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
         $data['foto'] = $this->session->userdata('foto');
         if ($this->uri->segment(4) == 'view') {
             $id = $this->uri->segment(3);
-            $tampil = $this->MSudi->GetDataWhere('master_perjanjian_kontrak', 'id', $id)->row();
+            $tampil = $this->MSudi->GetDataWhere('foto_tipe', 'id', $id)->row();
             $data['detail']['id'] = $tampil->id;
-            $data['detail']['detail_perjanjian_kontrak'] = $tampil->detail_perjanjian_kontrak;
-            $data['detail']['deskripsi'] = $tampil->deskripsi;
-            $data['content'] = 'VFormUpdateMasterPerjanjian';
+            $data['detail']['nama_tipe_foto'] = $tampil->nama_tipe_foto;
+            $data['detail']['flag_foto'] = $tampil->flag_foto;
+            $data['content'] = 'VFormUpdateFotoTipe';
         } else {
             // $join="tbl_staff.kd_staff = tbl_users.kd_staff AND tbl_pegawai.kd_pegawai = tbl_staff.kd_pegawai";
             // $data['DataUser']=$this->MSudi->GetData2Join('tbl_users','tbl_staff','tbl_pegawai', $join)->result();
-            $data['DataPerjanjianKontrak'] = $this->MSudi->GetDataWhere('master_perjanjian_kontrak', 'status_id', 1)->result();
-            $data['content'] = 'VMasterPerjanjianKontrak';
+            $data['FotoTipe'] = $this->MSudi->GetDataWhere('foto_tipe', 'status_id', 1)->result();
+            $data['content'] = 'VFotoTipe';
         }
 
 
         $this->load->view('welcome_message', $data);
     }
-    public function VFormAddMasterPerjanjianKontrak()
+    public function VFormAddFotoTipe()
     {
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
         $data['foto'] = $this->session->userdata('foto');
-        $data['content'] = 'VFormAddMasterPerjanjianKontrak';
+        $data['content'] = 'VFormAddFotoTipe';
         $this->load->view('welcome_message', $data);
     }
-    public function AddDataMasterPerjanjianKontrak()
+    public function AddDataFotoTipe()
     {
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
         $data['foto'] = $this->session->userdata('foto');
 
-        $add['detail_perjanjian_kontrak'] = $this->input->post('detail_perjanjian_kontrak');
-        $add['deskripsi'] = $this->input->post('deskripsi');
+        $add['nama_tipe_foto'] = $this->input->post('nama_tipe_foto');
+        $add['flag_foto'] = $this->input->post('flag_foto');
         $add['status_id'] = 1;
 
 
-        $this->MSudi->AddData('master_perjanjian_kontrak', $add);
-        redirect(site_url('Master_Perjanjian_Kontrak/DataPerjanjianKontrak'));
+        $this->MSudi->AddData('foto_tipe', $add);
+        redirect(site_url('Foto_tipe/DataFotoTipe'));
     }
-    public function UpdateDataMasterPerjanjianKontrak()
+    public function UpdateDataFotoTipe()
     {
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
@@ -63,15 +63,15 @@ class Master_Perjanjian_Kontrak extends CI_Controller
 
 
         $id = $this->input->post('id');
-        $update['detail_perjanjian_kontrak'] = $this->input->post('detail_perjanjian_kontrak');
-        $update['deskripsi'] = $this->input->post('deskripsi');
+        $update['nama_tipe_foto'] = $this->input->post('nama_tipe_foto');
+        $update['flag_foto'] = $this->input->post('flag_foto');
         $update['status_id'] = 1;
-        $this->MSudi->UpdateData('master_perjanjian_kontrak', 'id', $id, $update);
-        redirect(site_url('Master_Perjanjian_Kontrak/DataPerjanjianKontrak'));
+        $this->MSudi->UpdateData('foto_tipe', 'id', $id, $update);
+        redirect(site_url('Foto_tipe/DataFotoTipe'));
     }
 
 
-    public function DeleteDataMasterPerjanjianKontrak()
+    public function DeleteDataFotoTipe()
     {
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
@@ -82,7 +82,7 @@ class Master_Perjanjian_Kontrak extends CI_Controller
         $update['status_id'] = 0;
 
 
-        $this->MSudi->UpdateData('master_perjanjian_kontrak', 'id', $id, $update);
-        redirect(site_url('Master_Perjanjian_Kontrak/DataPerjanjianKontrak'));
+        $this->MSudi->UpdateData('foto_tipe', 'id', $id, $update);
+        redirect(site_url('Foto_tipe/DataFotoTipe'));
     }
 }
