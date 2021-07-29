@@ -109,7 +109,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="#" class="c-sidebar-item">
+                                <a href="<?php echo site_url('Photos/index'); ?>"
+                                    class="c-sidebar-item <?php if ($this->uri->segment(1) == "Photos") { echo 'active'; } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Photos
                                         <span class="badge badge-info">8</span>
@@ -118,13 +119,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <a href="<?php echo site_url('Payment_Information/index'); ?>"
                                     class="c-sidebar-item <?php if ($this->uri->segment(1) == "Payment_Information") { echo 'active'; } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
-                                        Room Facilities
+                                        Payment Information
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
                                 <a href="#" class="c-sidebar-item dsb">
                                     <div class="card-body pt-3 pb-3 mr-1 disabled">
-                                        Review Property
+                                        Payment Method
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
