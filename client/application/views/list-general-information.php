@@ -3,7 +3,8 @@
     <h1 class="mb-3 mt-1">General Information</h1>
     <div class="card">
         <div class="card-header">Property Details</div>
-        <form action="<?php echo site_url('General_information/AddGeneralInformation'); ?>" method="post" role="form" enctype='multipart/form-data'>
+        <form action="<?php echo site_url('General_information/AddGeneralInformation'); ?>" method="post" role="form"
+            enctype='multipart/form-data'>
             <div class="card-body">
                 <div class="row">
                     <div class="col-4">Property Name*</div>
@@ -28,30 +29,31 @@
                             //  $voucher = $this->MSudi->GetData('tb_voucher');
                             foreach ($DataMasterTipeProperti as $ReadDS) {
                             ?>
-                                <input class="form-check-input" type="radio" name="tipe_properti_id" value="<?php echo $ReadDS->id; ?>" />
+                            <input class="form-check-input" type="radio" name="tipe_properti_id"
+                                value="<?php echo $ReadDS->id; ?>" />
 
-                                <b><?php echo $ReadDS->nama_tipe; ?></b><br />
-                                <?php echo $ReadDS->deskripsi; ?><br>
+                            <b><?php echo $ReadDS->nama_tipe; ?></b><br />
+                            <?php echo $ReadDS->deskripsi; ?><br>
 
                             <?php
                             }
                             ?>
                         </div>
-
                     </div>
                 </div>
                 <hr />
                 <div class="row mt-3">
                     <div class="col-4">Property Address</div>
                     <div class="col-7">
-                        <div id="googleMap" style="height: 400px"></div>
+                        <!-- <div id="googleMap" style="height: 400px"></div>
                         <input type="hidden" name="lat" id="lat" />
-                        <input type="hidden" name="lng" id="lng" />
+                        <input type="hidden" name="lng" id="lng" /> -->
 
 
-                        <div class="form-group mt-3">
+                        <div class="form-group ">
                             <p>Street Address*</p>
-                            <textarea class="form-control" name="alamat_jalan" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" name="alamat_jalan" id="exampleFormControlTextarea1"
+                                rows="3"></textarea>
                         </div>
                         <div class="form-group mt-3">
                             <p>Postal Code*</p>
@@ -123,7 +125,8 @@
                                         <p class="mt-3">Jabatan*</p>
                                         <input type="text" name="jabatan" class="form-control" />
                                         <div class="form-check form-check-inline mt-3">
-                                            <input class="form-check-input mr-3" type="checkbox" name="flag_fullday" id="exampleRadios1" value="1" />
+                                            <input class="form-check-input mr-3" type="checkbox" name="flag_fullday"
+                                                id="exampleRadios1" value="1" />
                                             <label class="form-check-label" for="exampleRadios1">
                                                 Contactable 24 Hours
                                             </label>

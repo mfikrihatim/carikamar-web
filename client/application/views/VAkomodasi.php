@@ -81,7 +81,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 persis sama untuk akomodasi Anda, pilihlah salah satu kategori yang paling mewakili.</p>
                         </div>
                         <div class="col-md-6">
-                            <a href="#" style="color: black;" onclick="ShowDiv()" id="myButton">
+                            <a href="<?php echo site_url('General_information/index'); ?>" style="color: black;"
+                                id="myButton">
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
                                         <div class="widget-user-image">
@@ -97,7 +98,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.widget-user -->
                         </div>
                         <div class="col-md-6">
-                            <a href="#" style="color: black;" onclick="ShowDiv()" id="myButton">
+                            <a href="<?php echo site_url('General_information/index'); ?>" style="color: black;"
+                                id="myButton">
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
                                         <div class="widget-user-image">
@@ -112,48 +114,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </div>
                         <div class="col-md-6">
-                            <a href="#" style="color: black;" onclick="ShowDiv()" id="myButton">
-                                <div class="card card-widget widget-user-2">
-                                    <div class="widget-user-header">
-                                        <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
-                                        </div>
-                                        <!-- /.widget-user-image -->
-                                        <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                        <h5 class="widget-user-desc">Lead Developer</h5>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- /.widget-user -->
-                        </div>
-                        <div class="col-md-6">
-                            <a href="#" style="color: black;" onclick="ShowDiv()" id="myButton">
-                                <div class="card card-widget widget-user-2">
-                                    <div class="widget-user-header">
-                                        <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
-                                        </div>
-                                        <!-- /.widget-user-image -->
-                                        <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                        <h5 class="widget-user-desc">Lead Developer</h5>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- /.widget-user -->
-                        </div>
-                    </div>
-                </div>
-                <div class="container" style="display: none;" id="myDiv">
-                    <div class="row">
-                        <div class="col-12 mt-3">
-                            <h4>Tentang kategori akomodasi Anda</h4>
-                            <p>Apa kategori akomodasi Anda? Catatan: Jika Anda tidak dapat menemukan kategori yang
-                                persis sama untuk akomodasi Anda, pilihlah salah satu kategori yang paling mewakili.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <a href="<?php echo site_url('General_information/index'); ?>" style="color: black;">
+                            <a href="<?php echo site_url('General_information/index'); ?>" style="color: black;"
+                                id="myButton">
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
                                         <div class="widget-user-image">
@@ -169,38 +131,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.widget-user -->
                         </div>
                         <div class="col-md-6">
-                            <a href="<?php echo site_url('General_information/index'); ?>" style="color: black;">
-                                <div class="card card-widget widget-user-2">
-                                    <div class="widget-user-header">
-                                        <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
-                                        </div>
-                                        <!-- /.widget-user-image -->
-                                        <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                        <h5 class="widget-user-desc">Lead Developer</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6">
-                            <a href="<?php echo site_url('General_information/index'); ?>" style="color: black;">
-                                <div class="card card-widget widget-user-2">
-                                    <div class="widget-user-header">
-                                        <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
-                                        </div>
-                                        <!-- /.widget-user-image -->
-                                        <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                        <h5 class="widget-user-desc">Lead Developer</h5>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- /.widget-user -->
-                        </div>
-                        <div class="col-md-6">
-                            <a href="<?php echo site_url('General_information/index'); ?>" style="color: black;">
+                            <a href="<?php echo site_url('General_information/index'); ?>" style="color: black;"
+                                id="myButton">
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
                                         <div class="widget-user-image">
@@ -253,13 +185,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </script>
 
     </script>
-    <script>
+    <!-- <script>
     $('#myButton').click(function() {
         $('#myDiv').toggle('slow', function() {
             // Animation complete.
         });
     });
-    </script>
+    </script> -->
 </body>
 
 </html>
