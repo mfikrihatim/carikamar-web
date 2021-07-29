@@ -1,6 +1,6 @@
 <!-- /.col -->
 <div class="col-sm-9">
-    <h1 class="mb-3 mt-1">General Information</h1>
+    <h1 class="mb-3 mt-1">Payment Information</h1>
     <div class="card">
         <div class="card-header">Property Details</div>
         <form action="<?php echo site_url('General_information/AddGeneralInformation'); ?>" method="post" role="form"
