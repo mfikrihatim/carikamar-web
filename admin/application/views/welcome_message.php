@@ -142,6 +142,9 @@
                                         <?php if ($this->uri->segment(2) == "DataPerjanjianKontrak") {
                                             echo 'menu-open';
                                         } ?>
+                                         <?php if ($this->uri->segment(2) == "DataReviewKontrak") {
+                                                echo 'menu-open';
+                                            } ?>
                                     <?php if ($this->uri->segment(2) == "DataStyle") {
                                         echo 'menu-open';
                                     } ?>">
@@ -302,6 +305,16 @@
                                         <i class="nav-icon far fa-circle"></i>
                                         <p>
                                             Perjanjian Kontrak
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Review_Kontrak/DataReviewKontrak'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "DataReviewKontrak") {
+                                                                                                                                echo 'active';
+                                                                                                                            } ?>">
+                                        <i class="nav-icon far fa-circle"></i>
+                                        <p>
+                                            Review Kontrak
                                         </p>
                                     </a>
                                 </li>
