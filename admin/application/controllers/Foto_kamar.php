@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Foto_properti extends CI_Controller
+class Foto_kamar extends CI_Controller
 {
     function __construct()
     {
@@ -9,92 +9,92 @@ class Foto_properti extends CI_Controller
         $this->load->model('MSudi');
     }
 
-    public function DataFotoProperti()
+    public function DataFotoKamar()
     {
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
         $data['foto'] = $this->session->userdata('foto');
         if ($this->uri->segment(4) == 'view') {
             $id = $this->uri->segment(3);
-            $tampil = $this->MSudi->GetDataWhere('foto_properti', 'id', $id)->row();
-            $data['InformasiUmumDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
+            $tampil = $this->MSudi->GetDataWhere('foto_kamar', 'id', $id)->row();
+            $data['TipeKamar'] = $this->MSudi->GetDataWhere('tipe_kamar', 'status_id', 1)->result();
             $data['FotoTipe'] = $this->MSudi->GetDataWhere('foto_tipe', 'status_id', 1)->result();
             $data['detail']['id'] = $tampil->id;
-            $data['detail']['informasi_umum_detail_id'] = $tampil->informasi_umum_detail_id;
-            $arrayFotoProperti = json_decode($tampil->foto, TRUE);
-            $data['detail']['foto'] = $arrayFotoProperti;
+            $data['detail']['tipe_kamar_id'] = $tampil->tipe_kamar_id;
+            $arrayFotoKamar = json_decode($tampil->foto, TRUE);
+            $data['detail']['foto'] = $arrayFotoKamar;
             $data['detail']['foto_tipe_id'] = $tampil->foto_tipe_id;
-            $data['content'] = 'VFormUpdateFotoProperti';
+            $data['content'] = 'VFormUpdateFotoKamar';
         } else {
             // $join="tbl_staff.kd_staff = tbl_users.kd_staff AND tbl_pegawai.kd_pegawai = tbl_staff.kd_pegawai";
             // $data['DataUser']=$this->MSudi->GetData2Join('tbl_users','tbl_staff','tbl_pegawai', $join)->result();
-            $join = " informasi_umum_detail.id = foto_properti.informasi_umum_detail_id";
-            $join1 = " foto_tipe.id = foto_properti.foto_tipe_id";
-            $this->db->select('foto_properti.id,
-            foto_properti.informasi_umum_detail_id,
-            informasi_umum_detail.nama_properti,
-            foto_properti.foto,
+            $join = " tipe_kamar.id = foto_kamar.tipe_kamar_id";
+            $join1 = " foto_tipe.id = foto_kamar.foto_tipe_id";
+            $this->db->select('foto_kamar.id,
+            foto_kamar.tipe_kamar_id,
+            tipe_kamar.nama_kamar,
+            foto_kamar.foto,
              foto_tipe.nama_tipe_foto, 
-             foto_properti.status_id');
-            $this->db->from('foto_properti');
-            $this->db->join('informasi_umum_detail', $join);
+             foto_kamar.status_id');
+            $this->db->from('foto_kamar');
+            $this->db->join('tipe_kamar', $join);
             $this->db->join('foto_tipe', $join1);
-            $this->db->where('foto_properti.status_id', 1);
-            $data['FotoProperti'] = $this->db->get()->result();
-            $data['content'] = 'VFotoProperti';
+            $this->db->where('foto_kamar.status_id', 1);
+            $data['FotoKamar'] = $this->db->get()->result();
+            $data['content'] = 'VFotoKamar';
         }
 
 
         $this->load->view('welcome_message', $data);
     }
-    public function VFormAddFotoProperti()
+    public function VFormAddFotoKamar()
     {
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
         $data['foto'] = $this->session->userdata('foto');
-        $data['InformasiUmumDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
+        $data['TipeKamar'] = $this->MSudi->GetDataWhere('tipe_kamar', 'status_id', 1)->result();
         $data['FotoTipe'] = $this->MSudi->GetDataWhere('foto_tipe', 'status_id', 1)->result();
-        $data['content'] = 'VFormAddFotoProperti';
+        $data['content'] = 'VFormAddFotoKamar';
         $this->load->view('welcome_message', $data);
     }
-    public function AddDataFotoProperti()
+    public function AddDataFotoKamar()
     {
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
         $data['foto'] = $this->session->userdata('foto');
 
-        $add['informasi_umum_detail_id'] = $this->input->post('informasi_umum_detail_id');
+        $add['tipe_kamar_id'] = $this->input->post('tipe_kamar_id');
 
         $data = array();
         $data['filenames'] = [];
-        $files = (isset($_FILES['fotoProperti'])) ? $_FILES['fotoProperti'] : array();
+        $files = (isset($_FILES['fotoKamar'])) ? $_FILES['fotoKamar'] : array();
 
         if (isset($files['name'])) {
-            if (isset($_FILES['fotoProperti'])) {
+            if (isset($_FILES['fotoKamar'])) {
 
                 $data = array();
                 $data['filenames'] = [];
                 // Count total files
-                $countfiles = count($_FILES['fotoProperti']['name']);
+                $countfiles = count($_FILES['fotoKamar']['name']);
 
                 // Looping all files
                 for ($i = 0; $i < $countfiles; $i++) {
 
-                    if (!empty($_FILES['fotoProperti']['name'][$i])) {
+                    if (!empty($_FILES['fotoKamar']['name'][$i])) {
 
                         // Define new $_FILES array - $_FILES['file']
-                        $_FILES['file']['name'] = $_FILES['fotoProperti']['name'][$i];
-                        $_FILES['file']['type'] = $_FILES['fotoProperti']['type'][$i];
-                        $_FILES['file']['tmp_name'] = $_FILES['fotoProperti']['tmp_name'][$i];
-                        $_FILES['file']['error'] = $_FILES['fotoProperti']['error'][$i];
-                        $_FILES['file']['size'] = $_FILES['fotoProperti']['size'][$i];
+                        $_FILES['file']['name'] = $_FILES['fotoKamar']['name'][$i];
+                        $_FILES['file']['type'] = $_FILES['fotoKamar']['type'][$i];
+                        $_FILES['file']['tmp_name'] = $_FILES['fotoKamar']['tmp_name'][$i];
+                        $_FILES['file']['error'] = $_FILES['fotoKamar']['error'][$i];
+                        $_FILES['file']['size'] = $_FILES['fotoKamar']['size'][$i];
 
                         // Set preference
-                        $config['upload_path'] = '././upload/properti';
+                        $config['upload_path'] = '././upload/kamar';
                         $config['allowed_types'] = 'pdf|doc|docx|jpg|jpeg|png|gif|JPG';
                         // $config['max_size'] = '500000000'; // max_size in kb
-                        $config['file_name'] = $_FILES['fotoProperti']['name'][$i];
+                        $config['file_name'] = $_FILES['fotoKamar']['name'][$i];
 
                         //Load upload library
                         $this->load->library('upload', $config);
@@ -105,7 +105,7 @@ class Foto_properti extends CI_Controller
                             if ($this->upload->do_upload('file')) {
                                 // Get data about the file
                                 $uploadData = $this->upload->data();
-                                $filename = site_url('upload/') . 'properti/' . $uploadData['file_name'];
+                                $filename = site_url('upload/') . 'kamar/' . $uploadData['file_name'];
                                 $replcate = str_replace("index.php/", "", $filename);
                                 $filename = $replcate;
 
@@ -143,10 +143,10 @@ class Foto_properti extends CI_Controller
         $add['deleted_by'] = null;
         $add['deleted_date'] = null;
 
-        $this->MSudi->AddData('foto_properti', $add);
-        redirect(site_url('Foto_properti/DataFotoProperti'));
+        $this->MSudi->AddData('foto_kamar', $add);
+        redirect(site_url('Foto_kamar/DataFotoKamar'));
     }
-    public function UpdateDataFotoProperti()
+    public function UpdateDataFotoKamar()
     {
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
@@ -155,36 +155,36 @@ class Foto_properti extends CI_Controller
 
 
         $id = $this->input->post('id');
-        $update['informasi_umum_detail_id'] = $this->input->post('informasi_umum_detail_id');
+        $update['tipe_kamar_id'] = $this->input->post('tipe_kamar_id');
         $data = array();
         $data['filenames'] = [];
-        $files = (isset($_FILES['fotoProperti'])) ? $_FILES['fotoProperti'] : array();
+        $files = (isset($_FILES['fotoKamar'])) ? $_FILES['fotoKamar'] : array();
 
         if (isset($files['name'])) {
-            if (isset($_FILES['fotoProperti'])) {
+            if (isset($_FILES['fotoKamar'])) {
 
                 $data = array();
                 $data['filenames'] = [];
                 // Count total files
-                $countfiles = count($_FILES['fotoProperti']['name']);
+                $countfiles = count($_FILES['fotoKamar']['name']);
 
                 // Looping all files
                 for ($i = 0; $i < $countfiles; $i++) {
 
-                    if (!empty($_FILES['fotoProperti']['name'][$i])) {
+                    if (!empty($_FILES['fotoKamar']['name'][$i])) {
 
                         // Define new $_FILES array - $_FILES['file']
-                        $_FILES['file']['name'] = $_FILES['fotoProperti']['name'][$i];
-                        $_FILES['file']['type'] = $_FILES['fotoProperti']['type'][$i];
-                        $_FILES['file']['tmp_name'] = $_FILES['fotoProperti']['tmp_name'][$i];
-                        $_FILES['file']['error'] = $_FILES['fotoProperti']['error'][$i];
-                        $_FILES['file']['size'] = $_FILES['fotoProperti']['size'][$i];
+                        $_FILES['file']['name'] = $_FILES['fotoKamar']['name'][$i];
+                        $_FILES['file']['type'] = $_FILES['fotoKamar']['type'][$i];
+                        $_FILES['file']['tmp_name'] = $_FILES['fotoKamar']['tmp_name'][$i];
+                        $_FILES['file']['error'] = $_FILES['fotoKamar']['error'][$i];
+                        $_FILES['file']['size'] = $_FILES['fotoKamar']['size'][$i];
 
                         // Set preference
-                        $config['upload_path'] = '././upload/properti/';
+                        $config['upload_path'] = '././upload/kamar/';
                         $config['allowed_types'] = 'pdf|doc|docx|jpg|jpeg|png|gif|JPG';
                         // $config['max_size'] = '500000000'; // max_size in kb
-                        $config['file_name'] = $_FILES['fotoProperti']['name'][$i];
+                        $config['file_name'] = $_FILES['fotoKamar']['name'][$i];
 
                         //Load upload library
                         $this->load->library('upload', $config);
@@ -195,7 +195,7 @@ class Foto_properti extends CI_Controller
                             if ($this->upload->do_upload('file')) {
                                 // Get data about the file
                                 $uploadData = $this->upload->data();
-                                $filename = site_url('upload/') . 'properti/' . $uploadData['file_name'];
+                                $filename = site_url('upload/') . 'kamar/' . $uploadData['file_name'];
                                 $replcate = str_replace("index.php/", "", $filename);
                                 $filename = $replcate;
 
@@ -225,12 +225,12 @@ class Foto_properti extends CI_Controller
         $update['status_id'] = 1;
         $update['updated_by'] = $data['id'];
         $update['updated_date'] = date("Y-m-d H:i:s");
-        $this->MSudi->UpdateData('foto_properti', 'id', $id, $update);
-        redirect(site_url('Foto_properti/DataFotoProperti'));
+        $this->MSudi->UpdateData('foto_kamar', 'id', $id, $update);
+        redirect(site_url('Foto_kamar/DataFotoKamar'));
     }
 
 
-    public function DeleteDataFotoproperti()
+    public function DeleteDataFotoKamar()
     {
         $data['id'] = $this->session->userdata('id');
         $data['nama'] = $this->session->userdata('nama');
@@ -242,7 +242,7 @@ class Foto_properti extends CI_Controller
         $update['deleted_by'] = $data['id'];
         $update['deleted_date'] = date("Y-m-d H:i:s");
 
-        $this->MSudi->UpdateData('foto_properti', 'id', $id, $update);
-        redirect(site_url('Foto_properti/DataFotoProperti'));
+        $this->MSudi->UpdateData('foto_kamar', 'id', $id, $update);
+        redirect(site_url('Foto_kamar/DataFotoKamar'));
     }
 }
