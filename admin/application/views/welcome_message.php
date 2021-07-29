@@ -115,7 +115,8 @@
                                     <?php if ($this->uri->segment(2) == "DataCancel") {echo 'menu-open';} ?> 
                                     <?php if ($this->uri->segment(2) == "DataMasterBank") {echo 'menu-open';} ?>
                                     <?php if ($this->uri->segment(2) == "DataMasterRoleKontrak") {echo 'menu-open';} ?>
-                                    <?php if ($this->uri->segment(2) == "DataFototipe") {echo 'menu-open';} ?>
+                                    <?php if ($this->uri->segment(2) == "DataFotoTipe") {echo 'menu-open';} ?>
+                                    <?php if ($this->uri->segment(2) == "DataFotoProperti") {echo 'menu-open';} ?>
                                     <?php if ($this->uri->segment(2) == "DataStyle") {echo 'menu-open';} ?>">
                                    
                             <a href="#" class="nav-link ">
@@ -232,6 +233,15 @@
                                         <i class="nav-icon far fa-circle"></i>
                                         <p>
                                             Foto Tipe
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Foto_properti/DataFotoProperti'); ?>"
+                                        class="nav-link <?php if ($this->uri->segment(2) == "DataFotoProperti") {echo 'active';} ?>">
+                                        <i class="nav-icon far fa-circle"></i>
+                                        <p>
+                                            Foto Properti
                                         </p>
                                     </a>
                                 </li>
