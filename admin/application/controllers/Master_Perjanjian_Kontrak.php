@@ -25,7 +25,7 @@ class Master_Perjanjian_Kontrak extends CI_Controller
             // $join="tbl_staff.kd_staff = tbl_users.kd_staff AND tbl_pegawai.kd_pegawai = tbl_staff.kd_pegawai";
             // $data['DataUser']=$this->MSudi->GetData2Join('tbl_users','tbl_staff','tbl_pegawai', $join)->result();
             $data['DataPerjanjianKontrak'] = $this->MSudi->GetDataWhere('master_perjanjian_kontrak', 'status_id', 1)->result();
-            $data['content'] = 'VMasterPerjanjian';
+            $data['content'] = 'VMasterPerjanjianKontrak';
         }
 
 
@@ -36,7 +36,7 @@ class Master_Perjanjian_Kontrak extends CI_Controller
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
         $data['foto'] = $this->session->userdata('foto');
-        $data['content'] = 'VFormAddMasterPerjanjian';
+        $data['content'] = 'VFormAddMasterPerjanjianKontrak';
         $this->load->view('welcome_message', $data);
     }
     public function AddDataMasterPerjanjianKontrak()
@@ -63,7 +63,8 @@ class Master_Perjanjian_Kontrak extends CI_Controller
 
 
         $id = $this->input->post('id');
-        $update['nama'] = $this->input->post('nama');
+        $update['detail_perjanjian_kontrak'] = $this->input->post('detail_perjanjian_kontrak');
+        $update['deskripsi'] = $this->input->post('deskripsi');
         $update['status_id'] = 1;
         $this->MSudi->UpdateData('master_perjanjian_kontrak', 'id', $id, $update);
         redirect(site_url('Master_Perjanjian_Kontrak/DataPerjanjianKontrak'));
