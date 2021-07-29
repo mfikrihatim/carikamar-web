@@ -139,6 +139,9 @@
                                      <?php if ($this->uri->segment(2) == "DataFotoKamar") {
                                             echo 'menu-open';
                                         } ?>
+                                        <?php if ($this->uri->segment(2) == "DataPerjanjianKontrak") {
+                                            echo 'menu-open';
+                                        } ?>
                                     <?php if ($this->uri->segment(2) == "DataStyle") {
                                         echo 'menu-open';
                                     } ?>">
@@ -289,6 +292,16 @@
                                         <i class="nav-icon far fa-circle"></i>
                                         <p>
                                             Foto Kamar
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="<?php echo site_url('Master_Perjanjian_Kontrak/DataPerjanjianKontrak'); ?>" class="nav-link <?php if ($this->uri->segment(2) == "DataPerjanjianKontrak") {
+                                                                                                                                                echo 'active';
+                                                                                                                                            } ?>">
+                                        <i class="nav-icon far fa-circle"></i>
+                                        <p>
+                                            Perjanjian Kontrak
                                         </p>
                                     </a>
                                 </li>
