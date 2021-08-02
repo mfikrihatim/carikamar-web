@@ -9,24 +9,25 @@
                 <div class="row">
                     <div class="col-4">Property Name*</div>
                     <div class="col-7">
-                        <input type="text" class="form-control" name="nama_properti" />
+                        <input type="text" class="form-control" name="nama_properti"
+                            value="<?php echo $detail['nama_properti']; ?>" />
                     </div>
                 </div>
                 <hr />
-                <div class="row mt-3">
+                <!-- <div class="row mt-3">
                     <div class="col-4">Legal Entity Name</div>
                     <div class="col-7">
                         <input type="text" class="form-control" name="nama_badan_hukum" />
                     </div>
                 </div>
-                <hr />
+                <hr /> -->
 
-                <div class="row mt-3">
+                <!-- <div class="row mt-3">
                     <div class="col-4">Property Type*</div>
                     <div class="col-7">
                         <div class="form-check mb-1">
                             <?php
-                            //  $voucher = $this->MSudi->GetData('tb_voucher');
+                             $voucher = $this->MSudi->GetData('tb_voucher');
                             foreach ($DataMasterTipeProperti as $ReadDS) {
                             ?>
                             <input class="form-check-input" type="radio" name="tipe_properti_id"
@@ -40,16 +41,14 @@
                             ?>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <hr />
-                <div class="row mt-3">
+                <!-- <div class="row mt-3">
                     <div class="col-4">Property Address</div>
                     <div class="col-7">
-                        <!-- <div id="googleMap" style="height: 400px"></div>
+                        <div id="googleMap" style="height: 400px"></div>
                         <input type="hidden" name="lat" id="lat" />
-                        <input type="hidden" name="lng" id="lng" /> -->
-
-
+                        <input type="hidden" name="lng" id="lng" />
                         <div class="form-group ">
                             <p>Street Address*</p>
                             <textarea class="form-control" name="alamat_jalan" id="exampleFormControlTextarea1"
@@ -79,7 +78,7 @@
                 <div class="row mt-3">
                     <div class="col-4">
                         Flag Chanel Manager
-                        <!-- <span class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Channel Manager allows you to manage availability, rates, and inventory across all of your OTA channels from a single source"></span> -->
+                        <span class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Channel Manager allows you to manage availability, rates, and inventory across all of your OTA channels from a single source"></span>
                     </div>
                     <div class="col-7">
                         <div class="form-check form-check-inline">
@@ -96,10 +95,10 @@
                         </div>
                     </div>
 
-                </div>
+                </div> -->
                 <br>
 
-                <div class="card">
+                <!-- <div class="card">
 
                     <div class="card-body">
                         <div class="card-header">
@@ -168,7 +167,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>

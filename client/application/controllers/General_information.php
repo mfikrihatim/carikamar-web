@@ -17,6 +17,7 @@ class General_information extends CI_Controller
         $data['DataMasterTipeProperti'] = $this->MSudi->GetDataWhere('master_tipe_properti', 'status_id', 1)->result();
         $data['content'] = 'list-general-information';
         $this->load->view('welcome_message', $data);
+        // echo json_encode($data);
         // } else {
         // 	redirect(site_url('Login'));
         // }
@@ -24,7 +25,7 @@ class General_information extends CI_Controller
 
     public function AddGeneralInformation()
     {
-
+        $user_id = $this->session->userdata('id');
         $add['tipe_properti_id'] = $this->input->post('tipe_properti_id');
         $add['nama_properti'] = $this->input->post('nama_properti');
         $add['nama_badan_hukum'] = $this->input->post('nama_badan_hukum');
@@ -33,6 +34,7 @@ class General_information extends CI_Controller
         $add['no_telp'] = $this->input->post('no_telp');
         $add['jumlah_kamar'] = $this->input->post('jumlah_kamar');
         $add['flag_chanel_manager'] = $this->input->post('flag_chanel_manager');
+        $add['user_id'] = $user_id;
         $add['created_by'] = 1;
         $add['created_date'] = date("Y-m-d H:i:s");
         $add['updated_by'] = null;

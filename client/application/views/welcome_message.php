@@ -23,6 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!--- Custome Css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/tera/custome.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/dist/css/adminlte.min.css'); ?>">
+    <link rel="shortcut icon" href="<?php echo base_url('img/500px.png'); ?>">
 </head>
 
 <body class="hold-transition layout-top-nav">
