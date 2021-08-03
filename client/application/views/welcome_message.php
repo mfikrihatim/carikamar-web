@@ -77,7 +77,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('Property_detail/index'); ?>"
+                                <a id="Property_detail" href="<?php echo site_url('Property_detail/index'); ?>"
                                     class="c-sidebar-item <?php if ($this->uri->segment(1) == "Property_detail") {
                                                                                                                         echo 'active';
                                                                                                                     } ?>">

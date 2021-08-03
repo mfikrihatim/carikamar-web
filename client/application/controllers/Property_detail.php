@@ -9,12 +9,15 @@ class Property_detail extends CI_Controller
 
 		$this->load->model('MSudi');
 	}
-	public function index()
+	public function index($informasi_umum_detail_id)
 	{
 		// if ($this->session->userdata('Login')) {
 		// 	$data['nama'] = $this->session->userdata('nama');
 		// 	$data['level'] = $this->session->userdata('level');
 		$data['DataInformationDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
+		if(count($data['DataInformationDetail']) == 0){
+		
+		}
 		$data['DataPropertiMasterCancel'] = $this->MSudi->GetDataWhere('properti_detail_master_cancel', 'status_id', 1)->result();
 		$data['DataPropertiMasterStyle'] = $this->MSudi->GetDataWhere('properti_detail_master_style', 'status_id', 1)->result();
 		$data['content'] = 'list-property-detail';

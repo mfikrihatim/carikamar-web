@@ -3,15 +3,19 @@
     <h1 class="mb-3 mt-1">General Information</h1>
     <div class="card">
         <div class="card-header">Property Details</div>
-        <form action="<?php echo site_url('General_information/AddGeneralInformation'); ?>" method="post" role="form"
+        <form action="<?php echo site_url('General_information/UpdateGeneralInformation'); ?>" method="post" role="form"
             enctype='multipart/form-data'>
             <div class="card-body">
                 <div class="row">
+                    <input type="hidden" name="id" value="<?php echo $detail['id']; ?>" class="form-control">
                     <div class="col-4">Property Name*</div>
                     <div class="col-7">
                         <input type="text" class="form-control" name="nama_properti"
                             value="<?php echo $detail['nama_properti']; ?>" />
                     </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
                 <hr />
                 <!-- <div class="row mt-3">
@@ -168,9 +172,7 @@
                         </div>
                     </div>
                 </div> -->
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
+
             </div>
         </form>
     </div>

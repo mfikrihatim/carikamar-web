@@ -77,6 +77,12 @@ class MSudi extends CI_Model
         $query = $this->db->get($tabel);
         return $query->result();
     }
+
+    function GetDataMax($tabel, $perpage, $start)
+    {
+        $query = $this->db->get($tabel , $perpage, $start);
+        return $query->result();
+    }
     function GetDataWithDistinct($tabel)
     {
         // $this->db->distinct();
