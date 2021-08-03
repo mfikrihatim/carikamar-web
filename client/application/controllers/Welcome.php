@@ -11,11 +11,14 @@ class Welcome extends CI_Controller
     }
 	public function index()
 	{
-		// if ($this->session->userdata('Login')) {
-		// 	$data['nama'] = $this->session->userdata('nama');
-		// 	$data['level'] = $this->session->userdata('level');
+		$config['base_url'] = 'http://localhost/carikamar-web/client/index.php/Welcome/index/';
+		$config['total_rows'] = 10;
+		$config['per_page'] = 3;
 
-		// $data['content'] = 'list-general-information';
+		$start = $this->uri->segment(3);
+		$this->pagination->initialize($config);
+
+		
 		if ($this->uri->segment(4) == 'view') {
             $id = $this->uri->segment(3);
             $tampil = $this->MSudi->GetDataWhere('informasi_umum_detail', 'id', $id)->row(3);
@@ -26,7 +29,7 @@ class Welcome extends CI_Controller
         } else {
             // $join="tbl_staff.kd_staff = tbl_users.kd_staff AND tbl_pegawai.kd_pegawai = tbl_staff.kd_pegawai";
             // $data['DataUser']=$this->MSudi->GetData2Join('tbl_users','tbl_staff','tbl_pegawai', $join)->result();
-            $data['DataInformasiDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
+            $data['DataInformasiDetail'] = $this->MSudi->GetDataMax('informasi_umum_detail', $config['per_page'], $start);
             $data['content'] = 'VHome';
         }
 		

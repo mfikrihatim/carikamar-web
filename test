@@ -1,0 +1,45 @@
+                        <div class="col-md-4">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Primary</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <!-- /.card-tools -->
+                                </div>
+                                <!-- /.card-header -->
+                                <img class="card-img-top"
+                                    src="<?php echo base_url('assets/tera/hotel.jpg" alt="Card image cap'); ?>">
+                                <div class="card-body text-center">
+                                    <a href="<?php echo site_url('General_information/index'); ?>"
+                                        class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">Primary</h3>
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <!-- /.card-tools -->
+                                </div>
+                                <!-- /.card-header -->
+                                <img class="card-img-top"
+                                    src="<?php echo base_url('assets/tera/hotel.jpg" alt="Card image cap'); ?>">
+                                <div class="card-body text-center">
+                                    <a href="<?php echo site_url('General_information/index'); ?>"
+                                        class="btn btn-primary" style="width: 100%">Informasi Belum Lengkap</a>
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+                            <!-- /.card -->
+                        </div>
+                    </div>
