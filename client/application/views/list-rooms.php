@@ -1,6 +1,10 @@
 <div class="col-sm-9">
     <h1 class="mb-3 mt-1">Rooms</h1>
-    <form action="<?php echo site_url('Room/AddTipeKamar'); ?>" method="post" role="form" enctype='multipart/form-data'>
+    <form id="input">
+        <!-- <input type="text" name="informasi_umum_detail_id" id="informasi_umum_detail_id" class="form-control"
+                style="display:none" value="" /> -->
+                <input type="text" name="id" id="tipe_kamar_id" class="form-control"
+                style="display:none" value="" />
         <div class="card">
             <div class="card-header">Rooms Type</div>
             <div class="card-body">
@@ -181,7 +185,7 @@
             </div>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
+        <button id="simpan" type="button" class="btn btn-primary">Submit</button>
         </div>
     </form>
 
@@ -200,3 +204,30 @@
             });
         });
     </script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#simpan").on('click', function() {
+        var input = $('#input').serialize();
+        var url = "<?php echo site_url('Room/SaveTipeKamar'); ?>";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: input,
+            dataType: "JSON",
+            success: function(data, status, xhr) {
+                var result = data;
+                $('#informasi_umum_detail_id').val(result.informasi_umum_detail_id);
+                $('#tipe_kamar_id').val(result.id);
+                $("#Property_detail").attr("href",
+                    "<?php echo site_url('Property_detail/index'); ?>" + "/" + result
+                    .informasi_umum_detail_id);
+                alert("Data Tersimpan");
+            }
+        });
+    })
+
+
+
+});
+</script>
