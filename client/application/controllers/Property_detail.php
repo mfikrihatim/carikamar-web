@@ -14,7 +14,7 @@ class Property_detail extends CI_Controller
 		// if ($this->session->userdata('Login')) {
 		// 	$data['nama'] = $this->session->userdata('nama');
 		// 	$data['level'] = $this->session->userdata('level');
-		// $data['DataInformationDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
+		$data['DataInformationDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
 		// if(count($data['DataInformationDetail']) == 0){
 
 		// }
@@ -29,7 +29,8 @@ class Property_detail extends CI_Controller
 	public function AddPropertyDetail()
 	{
 
-		$add['informasi_umum_detail_id'] = $this->input->post('informasi_umum_detail_id');
+		
+        $informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id');
 		$add['mata_uang'] = $this->input->post('mata_uang');
 		$add['flag_kawasan'] = $this->input->post('flag_kawasan');
 		$add['waktu_checkin'] = $this->input->post('waktu_checkin');
@@ -58,6 +59,7 @@ class Property_detail extends CI_Controller
 	public function SavePropertyDetail()
 	{
 		$informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id');
+		$properti_detail_id = $this->input->post('id');
 		$add['mata_uang'] = $this->input->post('mata_uang');
 		$add['flag_kawasan'] = $this->input->post('flag_kawasan');
 		$add['waktu_checkin'] = $this->input->post('waktu_checkin');
@@ -66,7 +68,6 @@ class Property_detail extends CI_Controller
 		$add['jumlah_lantai'] = $this->input->post('jumlah_lantai');
 		$add['biaya_sarapan_tambahan'] = $this->input->post('biaya_sarapan_tambahan');
 		$add['master_cancel_id'] = $this->input->post('master_cancel_id');
-
 		$master_style_id = $this->input->post("master_style_id");
 		if ($master_style_id == null)
 			$master_style_id =  [];
@@ -87,7 +88,7 @@ class Property_detail extends CI_Controller
 
 		$result = array(
             'informasi_umum_detail_id' => $informasi_umum_detail_id,
-            'informasi_umum_kontak_id' => $informasi_umum_kontak_id
+            'id' => $properti_detail_id
         );
         echo json_encode($result);
 	}

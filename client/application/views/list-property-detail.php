@@ -2,12 +2,15 @@
     <h1 class="mb-3 mt-1">Property Detail</h1>
     <div class="card">
         <div class="card-header">Property Details</div>
-        <form action="<?php echo site_url('Property_detail/AddPropertyDetail'); ?>" method="post" role="form"
-            enctype='multipart/form-data'>
+        <form id="input">
+        <!-- <input type="text" name="informasi_umum_detail_id" id="informasi_umum_detail_id" class="form-control"
+                style="display:none" value="" /> -->
+            <input type="text" name="id" id="properti_detail_id" class="form-control"
+                style="display:none" value="" />
             <div class="card-body">
                 <div class="form-group">
                     <label>Pilih Informati Umum Detail</label>
-                    <select class="form-control" name="informasi_umum_detail_id" required>
+                    <select class="form-control" name="informasi_umum_detail_id" id="informasi_umum_detail_id" required>
                         <option value="">Pilih Informati Umum Detail</option>
                         <?php
 
@@ -22,7 +25,7 @@
                 <hr />
                 <div class="form-group">
                     <label>Mata Uang</label>
-                    <input type="text" name="mata_uang" class="form-control"
+                    <input type="text" name="mata_uang" id="mata_uang" class="form-control"
                 
                         placeholder="Masukan Mata Uang" required>
                         <!-- <input type="text" name="mata_uang" class="form-control"
@@ -35,13 +38,13 @@
                     </div>
                     <div class="col-7">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flag_kawasan" value="1">
+                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="1">
                             <label class="form-check-label" for="exampleRadios1">
                                 Available 24 Hours
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flag_kawasan" value="2">
+                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="2">
                             <label class="form-check-label" for="exampleRadios1">
                                 Not Available 24 Hours
                             </label>
@@ -59,7 +62,7 @@
                                 <div class="form-group">
                                     <p>From:</p>
                                     <div class="input-group date" id="checkin_from" data-target-input="nearest">
-                                        <input type="text" name="waktu_checkin"
+                                        <input type="text" name="waktu_checkin" id="waktu_checkin"
                                             class="form-control col-6 datetimepicker-input" data-toggle="datetimepicker"
                                             data-target="#checkin_from" />
                                         <div class="input-group-append" data-target="#checkin_from"
@@ -108,7 +111,7 @@
                     </div>
                     <div class="col-7">
                         <div class="input-group">
-                            <input type="text" name="jarak_ke_kota" class="form-control col-3"
+                            <input type="text" name="jarak_ke_kota" id="jarak_ke_kota" class="form-control col-3"
                                 id="inlineFormInputGroupUsername">
                             <div class="input-group-append">
                                 <div class="input-group-text">km</div>
@@ -124,7 +127,7 @@
                     </div>
                     <div class="col-7">
                         <div class="input-group">
-                            <input type="text" name="jumlah_lantai" class="form-control col-3"
+                            <input type="text" name="jumlah_lantai" id="jumlah_lantai" class="form-control col-3"
                                 id="inlineFormInputGroupUsername">
                             <div class="input-group-append">
                                 <div class="input-group-text">floors</div>
@@ -143,7 +146,7 @@
                             <div class="input-group-prepend">
                                 <div class="input-group-text">IDR</div>
                             </div>
-                            <input type="text" name="biaya_sarapan_tambahan" class="form-control col-4"
+                            <input type="text" name="biaya_sarapan_tambahan" id="biaya_sarapan_tambahan" class="form-control col-4"
                                 id="inlineFormInputGroupUsername">
                         </div>
                     </div>
@@ -161,7 +164,7 @@
                 <div class="col-7">
                     <div class="form-group">
                         <label for="exampleFormControlSelect1">Example select</label>
-                        <select class="form-control" name="master_cancel_id" required>
+                        <select class="form-control" name="master_cancel_id" id="master_cancel_id" required>
                             <option value="">Example select</option>
                             <?php
 
@@ -194,7 +197,7 @@
                         <div class="form-group">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="master_style_id[]" value="<?php echo $ReadDS->id; ?>">
+                                    <input type="checkbox" name="master_style_id[]" id="master_style_id[]" value="<?php echo $ReadDS->id; ?>">
                                     <?php echo $ReadDS->nama; ?>
                                 </label>
                             </div>
@@ -209,8 +212,38 @@
         </div>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
+    <button id="simpan" type="button" class="btn btn-primary">Submit</button>
     </div>
     </form>
 </div>
-</div><!-- /.col -->
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#simpan").on('click', function() {
+        var input = $('#input').serialize();
+        var url = "<?php echo site_url('Property_detail/SavePropertyDetail'); ?>";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: input,
+            dataType: "JSON",
+            success: function(data, status, xhr) {
+                var result = data;
+                $('#informasi_umum_detail_id').val(result.informasi_umum_detail_id);
+                $('#properti_detail_id').val(result.id);
+                $("#Property_detail").attr("href",
+                    "<?php echo site_url('Property_detail/index'); ?>" + "/" + result
+                    .informasi_umum_detail_id);
+                alert("Data Tersimpan");
+            }
+        });
+    })
+
+
+
+});
+</script>
+
+<!-- /.col -->
