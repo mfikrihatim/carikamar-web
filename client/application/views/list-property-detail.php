@@ -23,8 +23,11 @@
                 <div class="form-group">
                     <label>Mata Uang</label>
                     <input type="text" name="mata_uang" class="form-control"
-                        value="<?php if($data->mata_uang != ''){echo $data->mata_uang;}  ?>"
+                
                         placeholder="Masukan Mata Uang" required>
+                        <!-- <input type="text" name="mata_uang" class="form-control"
+                        value="<?php if($data->mata_uang != ''){echo $data->mata_uang;}  ?>"
+                        placeholder="Masukan Mata Uang" required> -->
                 </div>
                 <div class="row mt-3">
                     <div class="col-4">
