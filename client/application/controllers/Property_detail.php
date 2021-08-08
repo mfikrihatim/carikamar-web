@@ -83,7 +83,7 @@ class Property_detail extends CI_Controller
 		if($properti_detail_id == null || $properti_detail_id == ''){
             $properti_detail_id = $this->MSudi->AddData('properti_detail', $add);
         }else{
-           $this->MSudi->UpdateData('properti_detail', 'id', $informasi_umum_detail_id, $add);       
+           $this->MSudi->UpdateData('properti_detail', 'id', $properti_detail_id, $add);       
         }
 
 		$result = array(
