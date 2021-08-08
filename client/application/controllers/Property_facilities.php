@@ -52,4 +52,24 @@ class Property_facilities extends CI_Controller
 		$this->MSudi->AddData('fasilitas_properti', $add);
 		redirect(site_url('Property_facilities/index'));
 	}
+
+	public function SavePropertyFasilitas()
+	{
+
+		$add['informasi_umum_detail_id'] = $this->input->post('informasi_umum_detail_id');
+		$add['fasilitas_properti_detail_id'] = $this->input->post('fasilitas_properti_detail_id');
+		$add['flag_free'] = $this->input->post('flag_free');
+		$add['flag_fullday'] = $this->input->post('flag_fullday');
+		$add['created_by'] = 1;
+		$add['created_date'] = date("Y-m-d H:i:s");
+		$add['updated_by'] = null;
+		$add['updated_date'] = null;
+		$add['deleted_by'] = null;
+		$add['deleted_date'] = null;
+		$add['status_id'] = 1;
+
+
+		$this->MSudi->AddData('fasilitas_properti', $add);
+		redirect(site_url('Property_facilities/index'));
+	}
 }
