@@ -156,7 +156,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card-body">
                                     <img src="<?php echo base_url('assets/AdminLTE-3.1.0/dist/img/credit/paypal.png'); ?>" alt="">
                                 </div>
-                                <button class="btn btn-sm btn-primary"> View </button>
+                                <a href="<?= site_url('Property_detail/editPropertyLive') ?>" class="btn btn-sm btn-primary">View</a>
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -168,7 +168,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <div class="card-body">
                                     <img src="<?php echo base_url('assets/AdminLTE-3.1.0/dist/img/credit/paypal.png'); ?>" alt="">
                                 </div>
-                                <button class="btn btn-sm btn-primary"> View </button>
+                                <a href="<?= site_url('Property_detail/editPropertyLive') ?>" class="btn btn-sm btn-primary">View</a>
                             </div>
                         </div>
                     </div>
