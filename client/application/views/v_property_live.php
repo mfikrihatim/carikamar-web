@@ -33,7 +33,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <span class="brand-text font-weight-bold text-primary" style="font-size: 2.5rem;">CariKamar</span>
                 </a>
                 <!-- Right navbar links -->
-               
                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                     <div class="mt-2">
                         <small>Welcome</small><br>
@@ -143,34 +142,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </div>
                         </div>
                         <div class="col-md-4 text-right">
-                            <button class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Akomodasi Baru</button>
+                            <a href="<?php echo site_url('Welcome/VAkomodasi'); ?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Akomodasi Baru</a>
                         </div>
                     </div>
                     <!-- /.row -->
                     <div class="row mt-5">
                         <div class="col-lg-4">
-                            <div class="card card-primary card-outline">
-                                <div class="card-header">
-                                    <h4 class="card-title m-0">Saya memiliki akomodasi yang telah didaftarkan di TERA
-                                    </h4>
+                            <div class="card card-primary">
+                                <div class="card-header bg-success">
+                                    <h4 class="card-title m-0">1123|Hotel 88</h4>
+                                    <button class="btn btn-sm btn-light float-right">Live</button>
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-text">Hubungi Market Manager Anda untuk menghubungkan akun Anda ke
-                                        akomodasi yang telah Anda daftarkan</p>
+                                    <img src="<?php echo base_url('assets/AdminLTE-3.1.0/dist/img/credit/paypal.png'); ?>" alt="">
                                 </div>
+                                <button class="btn btn-sm btn-primary"> View </button>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="card card-primary card-outline">
-                                <div class="card-header">
-                                    <h5 class="card-title m-0">Saya ingin mendaftarkan akomodasi baru</h5>
+                        <div class="col-lg-4">
+                            <div class="card card-primary">
+                                <div class="card-header bg-success">
+                                    <h4 class="card-title m-0">1123|Hotel Oyo</h4>
+                                    <button class="btn btn-sm btn-light float-right">Live</button>
                                 </div>
                                 <div class="card-body">
-                                    <p class="card-text">Senang Anda ingin bergabung! Klik tombol di bawah untuk
-                                        memulai. Proses registrasi dapat berlangsung hingga 15 menit.</p>
-                                    <a href="<?php echo site_url('Welcome/VAkomodasi'); ?>"
-                                        class="btn btn-primary">Daftarkan Akomodasi Baru</a>
+                                    <img src="<?php echo base_url('assets/AdminLTE-3.1.0/dist/img/credit/paypal.png'); ?>" alt="">
                                 </div>
+                                <button class="btn btn-sm btn-primary"> View </button>
                             </div>
                         </div>
                     </div>
@@ -179,7 +177,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- /.container-fluid -->
         </section>
         <!-- /.content -->
-
         <!-- Control Sidebar -->
         <aside class="control-sidebar control-sidebar-dark">
             <!-- Control sidebar content goes here -->

@@ -42,7 +42,7 @@ class General_information extends CI_Controller
 
         if($informasi_umum_detail_id == null || $informasi_umum_detail_id == ''){
             $informasi_umum_detail_id = $this->MSudi->AddData('informasi_umum_detail', $add);
-        }else{
+        } else {
            $this->MSudi->UpdateData('informasi_umum_detail', 'id', $informasi_umum_detail_id, $add);       
         }
         

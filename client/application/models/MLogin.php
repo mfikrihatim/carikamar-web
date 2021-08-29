@@ -19,12 +19,18 @@ class MLogin extends CI_Model
 			$row = $query->row();
 			$this->load->library('session');
 			$this->session->set_userdata('id', $row->id);
-			$this->session->set_userdata('username', $row->username);
 			$this->session->set_userdata('nama', $row->nama);
 			$this->session->set_userdata('role_id', $row->role_id);
 			return $row->id;
 		} else {
 			return false;
 		}
+	}
+	public function getUserByid($user_email,$id_user = null){
+		if ($id_user) {
+			$this->db->where('id', $id_user);
+		}
+		$this->db->where('email', $user_email);
+		return $this->db->get('master_user')->row_object();
 	}
 }

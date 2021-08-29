@@ -47,13 +47,13 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col-md-6">
                             <p class="mb-1">
                                 <a href="forgot-password.html">Lupa Password ?</a>
                             </p>
                         </div>
-                        <div class="col-8">
-                            <p class="mb-0">
+                        <div class="col-md-6">
+                            <p class="mb-1">
                                 <a href="<?php echo site_url('Login/register'); ?>" class="text-center">Buat Akun Baru</a>
                             </p>
                         </div>
@@ -61,8 +61,7 @@
 
                         <!-- /.col -->
                     </div>
-                    <br>
-                    <div class="row">
+                    <div class="row mt-1">
                         <!-- /.col -->
                         <div class="col-lg-12">
                              <button type="submit" name="login" class="btn btn-primary btn-block">Login</button>

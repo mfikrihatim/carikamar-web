@@ -3,30 +3,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends CI_Controller {
 	function __construct(){
-	parent::__construct();
-	$this->load->model('MLogin');
-	$this->load->model('MSudi');
+		parent::__construct();
+		$this->load->model('MLogin');
+		$this->load->model('MSudi');
 	}
 
-	public function index()
-	{
+	public function index(){
 		if (isset($_POST['login'])){
-				$email = $_POST['email'];
-				$password = $_POST['password'];
-				$notif = $this->MLogin->GoLogin($email, $password);
-				if($notif){
-					$this->load->library('session');
-					$this->session->set_userdata('Login','OnLogin');
-					redirect(site_url('Welcome'));
-				}			
-				else{
-					$this->load->library('session');
-					$this->session->unset_userdata('Login');
-					redirect(site_url('Login'));
-				}
+			$email 	  = $this->input->post('email');
+			$password = $this->input->post('password');
+			$user = $this->MLogin->getUserByid($email);
+			if ($user) {
+				$this->session->set_userdata([
+					'id_user' => $user->id,
+					'email'   => $user->email,
+					'nama'    => $user->nama,
+					'Login'   => 'Login',
+					'OnLogin' => 'OnLogin'
+				]);
+				redirect(site_url('Welcome'));
+			} else {
+				$this->load->library('session');
+				$this->session->unset_userdata('Login');
+				redirect(site_url('Login'));
 			}
+		} else {
+			$this->load->view('VLogin');
+		}
 
-		$this->load->view('VLogin');
 	}
 	public function register()
 	{
