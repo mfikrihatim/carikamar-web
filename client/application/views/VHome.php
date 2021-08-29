@@ -119,7 +119,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             </a>
                                         </div> -->
                                     </div>
-                                    
                                 </div>
                                 <!-- /.card-body -->
                             </div>
@@ -143,7 +142,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </div>
                         </div>
                         <div class="col-md-4 text-right">
-                            <button class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Akomodasi Baru</button>
+                            <a href="<?= site_url('Welcome/VAkomodasi')?>" class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Akomodasi Baru</a>
+                            <!-- <button class="btn btn-primary"><i class="fas fa-plus"></i> Tambah Akomodasi Baru</button> -->
                         </div>
                     </div>
                     <!-- /.row -->
