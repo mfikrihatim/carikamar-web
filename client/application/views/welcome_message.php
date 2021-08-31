@@ -32,25 +32,74 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
                 <a href="<?php echo site_url('Welcome'); ?>" class="navbar-brand">
-                    <!-- <img src="../AdminLTE-3.1.0/dist/img/AdminLTELogo.png" alt="AdminLTE Logo"
-                        class="brand-image img-circle elevation-3" style="opacity: 0.8" /> -->
                     <span class="brand-text font-weight-bold text-primary" style="font-size: 2.5rem;">CariKamar</span>
                 </a>
+                <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+                    <!-- Left navbar links -->
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="index3.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Contact</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
+                        <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                        <li><a href="#" class="dropdown-item">Some action </a></li>
+                        <li><a href="#" class="dropdown-item">Some other action</a></li>
+
+                        <li class="dropdown-divider"></li>
+
+                        <!-- Level two dropdown-->
+                        <li class="dropdown-submenu dropdown-hover">
+                            <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Hover for action</a>
+                            <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
+                            <li>
+                                <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
+                            </li>
+
+                            <!-- Level three dropdown-->
+                            <li class="dropdown-submenu">
+                                <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
+                                <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
+                                <li><a href="#" class="dropdown-item">3rd level</a></li>
+                                <li><a href="#" class="dropdown-item">3rd level</a></li>
+                                </ul>
+                            </li>
+                            <!-- End Level three -->
+
+                            <li><a href="#" class="dropdown-item">level 2</a></li>
+                            <li><a href="#" class="dropdown-item">level 2</a></li>
+                            </ul>
+                        </li>
+                        <!-- End Level two -->
+                        </ul>
+                    </li>
+                    </ul>
+
+                    <!-- SEARCH FORM -->
+                    <form class="form-inline ml-0 ml-md-3">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                        <button class="btn btn-navbar" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
                 <!-- Right navbar links -->
                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="#">
-                            <i class="fas fa-th-large"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-lg-right dropdown-menu-right text-center">
-                            <div class="dropdown-divider"></div>
-                            <a href="#" class="dropdown-item"> <i class="fas fa-key"></i> Ubah Password </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="<?php echo site_url('Welcome/Logout'); ?>" class="nav-link" onclick="Logout()"></i>
-                                Keluar </a>
-                            <div class="dropdown-divider"></div>
-                        </div>
-                    </li>
+                    <div class="mt-2">
+                        <small>Welcome</small><br>
+                        <small><?php echo $this->session->userdata('email') ?></small>
+                    </div>
+                    <a class="nav-link mt-3" href="<?php echo site_url('Welcome/Logout'); ?>">
+                        <i class="fa fa-power-off text-red"></i>
+                        <span class="nav-link-text">Logout</span>
+                    </a>
                 </ul>
             </div>
         </nav>
@@ -64,7 +113,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <div class="row mb-3 mt-3">
                         <div class="col-3">
                             <div class="card">
-                                <a href="<?php echo site_url('Jenishotel/index'); ?>" class="c-sidebar-item">
+                                <a href="<?php echo site_url('Jenishotel/index'); ?>" class="c-sidebar-item" readonly>
                                     <div class="card-body pt-3 pb-3">
                                         <div class="c-sidebar-body">1. Property Information</div>
                                     </div>
@@ -74,7 +123,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                                                 echo 'active';
                                                                             } ?>">
                                         General Information
-                                        <span class="badge badge-info">8</span>
+                                        <span class="badge badge-success">8</span>
                                     </div>
                                 </a>
                                 <a id="Property_detail" href="<?php echo site_url('Property_detail/index'); ?>"

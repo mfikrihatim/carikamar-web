@@ -12,14 +12,14 @@
                 <div class="row">
                     <div class="col-4">Property Name*</div>
                     <div class="col-7">
-                        <input type="text" class="form-control" name="nama_properti" id="nama_properti" />
+                        <input type="text" class="form-control" name="nama_properti" id="nama_properti" value="<?= empty($DataMasterProperti->nama_properti) ? '' : $DataMasterProperti->nama_properti ?>"/>
                     </div>
                 </div>
                 <hr />
                 <div class="row mt-3">
                     <div class="col-4">Legal Entity Name</div>
                     <div class="col-7">
-                        <input type="text" class="form-control" name="nama_badan_hukum" id="nama_badan_hukum" />
+                        <input type="text" class="form-control" name="nama_badan_hukum" id="nama_badan_hukum" value='<?= empty($DataMasterProperti->nama_badan_hukum) ? '' : $DataMasterProperti->nama_badan_hukum ?>'/>
                     </div>
                 </div>
                 <hr />
@@ -32,15 +32,10 @@
                             //  $voucher = $this->MSudi->GetData('tb_voucher');
                             foreach ($DataMasterTipeProperti as $ReadDS) {
                             ?>
-                            <input class="form-check-input" type="radio" name="tipe_properti_id" id="tipe_properti_id"
-                                value="<?php echo $ReadDS->id; ?>" />
-
-                            <b><?php echo $ReadDS->nama_tipe; ?></b><br />
-                            <?php echo $ReadDS->deskripsi; ?><br>
-
-                            <?php
-                            }
-                            ?>
+                                <input class="form-check-input" type="radio" name="tipe_properti_id" id="tipe_properti_id" value="<?= $ReadDS->id ?>" <?= $DataMasterProperti->tipe_properti_id == $ReadDS->id ? 'checked' : NULL ?>/>
+                                <b><?php echo $ReadDS->nama_tipe; ?></b><br />
+                                <?php echo $ReadDS->deskripsi; ?><br>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -55,11 +50,11 @@
 
                         <div class="form-group ">
                             <p>Street Address*</p>
-                            <textarea class="form-control" name="alamat_jalan" id="alamat_jalan" rows="3"></textarea>
+                            <textarea class="form-control" name="alamat_jalan" id="alamat_jalan" rows="3"><?= $DataMasterProperti->alamat_jalan ?></textarea>
                         </div>
                         <div class="form-group mt-3">
                             <p>Postal Code*</p>
-                            <input type="text" name="kode_pos" class="form-control" id="kode_pos" />
+                            <input type="text" name="kode_pos" class="form-control" id="kode_pos" value="<?= $DataMasterProperti->kode_pos ?>"/>
                         </div>
                     </div>
                 </div>
@@ -67,14 +62,14 @@
                 <div class="row mt-3">
                     <div class="col-4">Phone Number</div>
                     <div class="col-7">
-                        <input type="text" name="no_telp" id="no_telp" class="form-control" />
+                        <input type="text" name="no_telp" id="no_telp" class="form-control" value="<?= $DataMasterProperti->no_telp ?>"/>
                     </div>
                 </div>
                 <hr />
                 <div class="row mt-3">
                     <div class="col-4">Number of Rooms*</div>
                     <div class="col-7">
-                        <input type="text" name="jumlah_kamar" id="jumlah_kamar" class="form-control" />
+                        <input type="text" name="jumlah_kamar" id="jumlah_kamar" class="form-control" value="<?= $DataMasterProperti->jumlah_kamar ?>"/>
                     </div>
                 </div>
                 <hr />
@@ -85,15 +80,13 @@
                     </div>
                     <div class="col-7">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="flag_chanel_manager"
-                                id="flag_chanel_manager" value="1" checked />
+                            <input class="form-check-input" type="radio" name="flag_chanel_manager" value="1" <?= $DataMasterProperti->flag_chanel_manager == 1 ? 'checked' : NULL ?> />
                             <label class="form-check-label" for="exampleRadios1">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="flag_chanel_manager"
-                                id="flag_chanel_manager" value="0" checked />
+                            <input class="form-check-input" type="radio" name="flag_chanel_manager" value="0" <?= $DataMasterProperti->flag_chanel_manager == 0 ? 'checked' : NULL ?> />
                             <label class="form-check-label" for="exampleRadios1">
                                 No
                             </label>
@@ -112,26 +105,23 @@
                         <div class="row" id="row-contact">
                             <div class="col-6" id="main-contact">
                                 <div class="card">
-
                                     <div class="card-body">
                                         <p>Jenis Kontak</p>
-                                        <input type="text" name="jenis_kontak" id="jenis_kontak" class="form-control" />
+                                        <input type="text" name="jenis_kontak" id="jenis_kontak" class="form-control" value='<?= empty($DataMasterKontak->jenis_kontak) ? '' : $DataMasterKontak->jenis_kontak ?>' />
                                         <p class="mt-3">Nama Lengkap*</p>
-                                        <input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control" />
+                                        <input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control" value='<?= empty($DataMasterKontak->jenis_kontak) ? '' : $DataMasterKontak->jenis_kontak ?>' />
                                         <p class="mt-3">Email*</p>
-                                        <input type="email" name="email" id="email" class="form-control" />
+                                        <input type="email" name="email" id="email" class="form-control" value="<?= empty($DataMasterKontak->email) ? '' : $DataMasterKontak->email ?>" />
                                         <p class="mt-3">Phone Number*</p>
-                                        <input type="number" name="no_hp" id="no_hp" class="form-control" />
+                                        <input type="number" name="no_hp" id="no_hp" class="form-control" value="<?= empty($DataMasterKontak->no_hp) ? '' : $DataMasterKontak->no_hp ?>"/>
                                         <p class="mt-3">Telfon Kantor*</p>
-                                        <input type="number" name="no_telp_kantor" id="no_telp_kantor"
-                                            class="form-control" />
+                                        <input type="number" name="no_telp_kantor" id="no_telp_kantor" class="form-control" value="<?= empty($DataMasterKontak->no_telp_kantor) ? '' : $DataMasterKontak->no_telp_kantor ?>" />
                                         <p class="mt-3">Extension*</p>
-                                        <input type="text" name="extension" id="extension" class="form-control" />
+                                        <input type="text" name="extension" id="extension" class="form-control" value="<?= empty($DataMasterKontak->extension) ? '' : $DataMasterKontak->extension ?>"/>
                                         <p class="mt-3">Jabatan*</p>
-                                        <input type="text" name="jabatan" id="jabatan" class="form-control" />
+                                        <input type="text" name="jabatan" id="jabatan" class="form-control" value="<?= empty($DataMasterKontak->jabatan) ? '' : $DataMasterKontak->jabatan ?>"/>
                                         <div class="form-check form-check-inline mt-3">
-                                            <input class="form-check-input mr-3" type="checkbox" name="flag_fullday"
-                                                id="flag_fullday" id="exampleRadios1" value="1" />
+                                            <input class="form-check-input mr-3" type="checkbox" name="flag_fullday" id="flag_fullday" id="exampleRadios1" value="1" <?= $DataMasterKontak->flag_fullday == 0 ? NULL : 'checked' ?> />
                                             <label class="form-check-label" for="exampleRadios1">
                                                 Contactable 24 Hours
                                             </label>

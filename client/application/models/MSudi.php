@@ -205,4 +205,9 @@ class MSudi extends CI_Model
         $this->db->or_like('keterangan', $keyword);
         return $this->db->get()->result();
     }
+
+    public function getWhereGeneralInformation($current_session){
+        $this->db->where('fk_id_users',$current_session);
+        return $this->db->get('informasi_umum_detail')->row_object();
+    }
 }
