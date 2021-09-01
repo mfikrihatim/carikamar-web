@@ -9,28 +9,18 @@
                 style="display:none" value="" />
             <div class="card-body">
                 <div class="form-group">
-                    <label>Pilih Informati Umum Detail</label>
+                    <label>Pilih Information Umum Detail</label>
                     <select class="form-control" name="informasi_umum_detail_id" id="informasi_umum_detail_id" required>
-                        <option value="">Pilih Informati Umum Detail</option>
-                        <?php
-
-                        foreach ($DataInformationDetail as $ReadDS) {
-                        ?>
-                        <option value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_properti; ?></option>
-                        <?php
-                        }
-                        ?>
+                        <option value="">-- Select Nama Property --</option>
+                        <?php foreach ($SelectInformationDetails as $ReadDS) {?>
+                            <option value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_properti; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
                 <hr />
                 <div class="form-group">
                     <label>Mata Uang</label>
-                    <input type="text" name="mata_uang" id="mata_uang" class="form-control"
-                
-                        placeholder="Masukan Mata Uang" required>
-                        <!-- <input type="text" name="mata_uang" class="form-control"
-                        value="<?php if($data->mata_uang != ''){echo $data->mata_uang;}  ?>"
-                        placeholder="Masukan Mata Uang" required> -->
+                    <input type="text" name="mata_uang" id="mata_uang" class="form-control"placeholder="Masukan Mata Uang" required value="<?= !empty($DataPropertyDetail->mata_uang) ? $DataPropertyDetail->mata_uang : NULL ?>">
                 </div>
                 <div class="row mt-3">
                     <div class="col-4">
@@ -38,13 +28,13 @@
                     </div>
                     <div class="col-7">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="1">
+                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="1" <?= $DataPropertyDetail->flag_kawasan == 1 ? 'checked' : NULL ?>>
                             <label class="form-check-label" for="exampleRadios1">
                                 Available 24 Hours
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="2">
+                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="2"  <?= $DataPropertyDetail->flag_kawasan == 2 ? 'checked' : NULL ?>>
                             <label class="form-check-label" for="exampleRadios1">
                                 Not Available 24 Hours
                             </label>
@@ -64,20 +54,16 @@
                                     <div class="input-group date" id="checkin_from" data-target-input="nearest">
                                         <input type="text" name="waktu_checkin" id="waktu_checkin"
                                             class="form-control col-6 datetimepicker-input" data-toggle="datetimepicker"
-                                            data-target="#checkin_from" />
+                                            data-target="#checkin_from" value="<?= !empty($DataPropertyDetail->waktu_checkin) ? $DataPropertyDetail->waktu_checkin : NULL ?>"/>
                                         <div class="input-group-append" data-target="#checkin_from"
                                             data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="far fa-clock"></i></div>
                                         </div>
                                     </div>
-                                    <!-- /.input group -->
                                 </div>
-
-                                <!-- /.form group -->
                             </div>
                         </div>
                     </div>
-
                     <div class="col-4">
                         Check-Out Time
                     </div>
@@ -87,32 +73,25 @@
                                 <div class="form-group">
                                     <p>From:</p>
                                     <div class="input-group date" id="checkout_from" data-target-input="nearest">
-                                        <input type="text" name="waktu_checkout"
-                                            class="form-control col-6 datetimepicker-input" data-toggle="datetimepicker"
-                                            data-target="#checkout_from" />
+                                        <input type="text" name="waktu_checkout" class="form-control col-6 datetimepicker-input" data-toggle="datetimepicker" data-target="#checkout_from" value="<?= !empty($DataPropertyDetail->waktu_checkout) ? $DataPropertyDetail->waktu_checkout : NULL ?>"/>
                                         <div class="input-group-append" data-target="#checkout_from"
                                             data-toggle="datetimepicker">
                                             <div class="input-group-text"><i class="far fa-clock"></i></div>
                                         </div>
                                     </div>
-                                    <!-- /.input group -->
                                 </div>
-
-                                <!-- /.form group -->
                             </div>
                         </div>
                     </div>
                 </div>
                 <hr />
-
                 <div class="row mt-3">
                     <div class="col-4">
                         Distance to City Center*
                     </div>
                     <div class="col-7">
                         <div class="input-group">
-                            <input type="text" name="jarak_ke_kota" id="jarak_ke_kota" class="form-control col-3"
-                                id="inlineFormInputGroupUsername">
+                            <input type="text" name="jarak_ke_kota" id="jarak_ke_kota" class="form-control col-3" id="inlineFormInputGroupUsername" value="<?= !empty($DataPropertyDetail->jarak_ke_kota) ? $DataPropertyDetail->jarak_ke_kota : NULL ?>">
                             <div class="input-group-append">
                                 <div class="input-group-text">km</div>
                             </div>
@@ -127,8 +106,7 @@
                     </div>
                     <div class="col-7">
                         <div class="input-group">
-                            <input type="text" name="jumlah_lantai" id="jumlah_lantai" class="form-control col-3"
-                                id="inlineFormInputGroupUsername">
+                            <input type="text" name="jumlah_lantai" id="jumlah_lantai" class="form-control col-3" id="inlineFormInputGroupUsername" value="<?= !empty($DataPropertyDetail->jumlah_lantai) ? $DataPropertyDetail->jumlah_lantai : NULL ?>" >
                             <div class="input-group-append">
                                 <div class="input-group-text">floors</div>
                             </div>
@@ -147,7 +125,7 @@
                                 <div class="input-group-text">IDR</div>
                             </div>
                             <input type="text" name="biaya_sarapan_tambahan" id="biaya_sarapan_tambahan" class="form-control col-4"
-                                id="inlineFormInputGroupUsername">
+                                id="inlineFormInputGroupUsername" value="<?= !empty($DataPropertyDetail->biaya_sarapan_tambahan) ? number_format($DataPropertyDetail->biaya_sarapan_tambahan) : NULL ?>">
                         </div>
                     </div>
                 </div>
@@ -163,17 +141,11 @@
                 </div>
                 <div class="col-7">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect1">Example select</label>
+                        <!-- <label for="exampleFormControlSelect1">Example select</label> -->
                         <select class="form-control" name="master_cancel_id" id="master_cancel_id" required>
-                            <option value="">Example select</option>
-                            <?php
-
-                            foreach ($DataPropertiMasterCancel as $ReadDS) {
-                            ?>
-                            <option value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama; ?></option>
-                            <?php
-                            }
-                            ?>
+                            <?php  foreach ($DataPropertiMasterCancel as $ReadDS) { ?>
+                                <option <?= $DataPropertyDetail->master_cancel_id === $ReadDS->id ? 'selected' : '' ?> value="<?= $ReadDS->id  ?>" ><?= $ReadDS->nama; ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
@@ -187,24 +159,15 @@
             <div class="row mt-3">
                 <div class="col-6">
                     <div class="form-check form-check-inline">
-
-
-                        <?php
-
-                        foreach ($DataPropertiMasterStyle as $ReadDS) {
-                        ?>
-
+                        <?php foreach ($DataPropertiMasterStyle as $dpms) { ?>
                         <div class="form-group">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="master_style_id[]" id="master_style_id[]" value="<?php echo $ReadDS->id; ?>">
-                                    <?php echo $ReadDS->nama; ?>
+                                    <input type="checkbox" name="master_style_id[]" id="master_style_id[]" value="<?php echo $dpms->id; ?>"  <?= $DataPropertyDetail->master_style_id === $dpms->id ? 'checked' : '' ?>>
+                                    <?php echo $dpms->nama; ?>
                                 </label>
                             </div>
-                            <?php
-                            // $no++;
-                        }
-                            ?>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

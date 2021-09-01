@@ -8,28 +8,24 @@ class General_information extends CI_Controller
         parent::__construct();
         $this->load->model('MSudi');
         if (!$this->session->userdata('OnLogin')) {
-			redirect('Auth');
+            redirect('Welcome/Logout');
 		}
     }
 
-    public function index(){
-        $current_session = $this->session->userdata('id_user');
-        $check_data_informasi = $this->MSudi->getWhereGeneralInformation($current_session);
-        // var_dump($current_session);
+    public function index($id_general_information = null){
+        $current_session      = $this->session->userdata('id_user');
+    
+        $check_data_informasi = $this->MSudi->getWhereGeneralInformation($current_session,$id_general_information);
         if (!empty($check_data_informasi)) {
-            // echo 'jika tidak kosong';
-            $data['DataMasterProperti'] = $this->MSudi->getWhereGeneralInformation($current_session);
-            $data['DataMasterKontak'] = $this->MSudi->GetDataWhere('informasi_umum_kontak', 'fk_id_users', $current_session)->row_object();
+            $data['DataMasterProperti']     = $this->MSudi->getWhereGeneralInformation($current_session,$id_general_information);
+            $data['DataMasterKontak']       = $this->MSudi->GetDataWhere('informasi_umum_kontak', 'fk_id_users', $current_session)->row_object();
             $data['DataMasterTipeProperti'] = $this->MSudi->GetDataWhere('master_tipe_properti', 'status_id', 1)->result();
+            $data['CurrentUrl']             = $id_general_information;
         } else { 
-            // echo 'jika kosong';
             $data['DataMasterTipeProperti'] = $this->MSudi->GetDataWhere('master_tipe_properti', 'status_id', 1)->result();
-
         }
-        // var_dump($data);
         $data['content'] = 'list-general-information';
         $this->load->view('welcome_message', $data);
-
     }
 
 

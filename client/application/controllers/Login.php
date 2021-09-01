@@ -6,9 +6,12 @@ class Login extends CI_Controller {
 		parent::__construct();
 		$this->load->model('MLogin');
 		$this->load->model('MSudi');
-		if ($this->session->userdata('OnLogin') === 'OnLogin') {
-			redirect('Welcome');
-		}
+		// if ($this->session->userdata('OnLogin') === 'OnLogin') {
+		// 	redirect('Welcome');
+		// } else {
+		// 	redirect('Login');
+			
+		// }
 	}
 
 	public function index(){

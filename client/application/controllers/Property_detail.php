@@ -8,24 +8,24 @@ class Property_detail extends CI_Controller
 		parent::__construct();
 
 		$this->load->model('MSudi');
+		if (!$this->session->userdata('OnLogin')) {
+			redirect('Welcome/Logout');
+		}
 	}
-	public function index()
-	{
-		// if ($this->session->userdata('Login')) {
-		// 	$data['nama'] = $this->session->userdata('nama');
-		// 	$data['level'] = $this->session->userdata('level');
-		$data['DataInformationDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
-		// if(count($data['DataInformationDetail']) == 0){
 
-		// }
+	public function index($id_general_information = null){
+        $current_session = $this->session->userdata('id_user');
+		$data['SelectInformationDetails'] = $this->MSudi->GetDataWhere('informasi_umum_detail','fk_id_users',$current_session)->result();
+		// var_dump($data['SelectInformationDetails']);die;
+		$data['DataPropertyDetail']    = $this->MSudi->getWherePropertyDetail($current_session,$id_general_information);
+		$data['CurrentUrl']            = $id_general_information;
+
 		$data['DataPropertiMasterCancel'] = $this->MSudi->GetDataWhere('properti_detail_master_cancel', 'status_id', 1)->result();
 		$data['DataPropertiMasterStyle'] = $this->MSudi->GetDataWhere('properti_detail_master_style', 'status_id', 1)->result();
 		$data['content'] = 'list-property-detail';
 		$this->load->view('welcome_message', $data);
-		// } else {
-		// 	redirect(site_url('Login'));
-		// }
 	}
+
 	public function PropertyLive(){
 		$config['base_url'] = 'http://localhost/carikamar-web/client/index.php/Welcome/index/';
 		$config['total_rows'] = 10;
@@ -62,8 +62,6 @@ class Property_detail extends CI_Controller
             $data['content'] = 'update-general-information';
 			$this->load->view('welcome_message', $data);
         } else {
-            // $join="tbl_staff.kd_staff = tbl_users.kd_staff AND tbl_pegawai.kd_pegawai = tbl_staff.kd_pegawai";
-            // $data['DataUser']=$this->MSudi->GetData2Join('tbl_users','tbl_staff','tbl_pegawai', $join)->result();
             $data['DataInformasiDetail'] = $this->MSudi->GetDataMax('informasi_umum_detail', $config['per_page'], $start);
             $data['content'] = 'VHome';
         }

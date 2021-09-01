@@ -38,7 +38,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Left navbar links -->
                     <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="index3.html" class="nav-link">Home</a>
+                        <a href="<?php echo site_url('Welcome'); ?>" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Contact</a>
@@ -118,7 +118,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="c-sidebar-body">1. Property Information</div>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('General_information/index'); ?>" class="c-sidebar-item ">
+                                <a href="<?php echo site_url('General_information/index/').$CurrentUrl ?>" class="c-sidebar-item ">
                                     <div class="card-body pt-3 pb-3 mr-1 <?php if ($this->uri->segment(1) == "General_information") {
                                                                                 echo 'active';
                                                                             } ?>">
@@ -126,7 +126,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <span class="badge badge-success">8</span>
                                     </div>
                                 </a>
-                                <a id="Property_detail" href="<?php echo site_url('Property_detail/index'); ?>"
+                                <a id="Property_detail" href="<?php echo site_url('Property_detail/index/').$CurrentUrl ?>"
                                     class="c-sidebar-item <?php if ($this->uri->segment(1) == "Property_detail") {
                                                                                                                         echo 'active';
                                                                                                                     } ?>">
@@ -135,7 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('Property_facilities/index'); ?>"
+                                <a href="<?php echo site_url('Property_facilities/index/').$CurrentUrl ?>"
                                     class="c-sidebar-item <?php if ($this->uri->segment(1) == "Property_facilities") {
                                                                                                                             echo 'active';
                                                                                                                         } ?>">
@@ -144,7 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('Room/index'); ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "Room") {
+                                <a href="<?php echo site_url('Room/index/').$CurrentUrl ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "Room") {
                                                                                                             echo 'active';
                                                                                                         } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
@@ -152,21 +152,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('Room_facilities/index'); ?>"
+                                <a href="<?php echo site_url('Room_facilities/index/').$CurrentUrl ?>"
                                     class="c-sidebar-item <?php if ($this->uri->segment(1) == "Room_facilities") { echo 'active'; } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Room Facilities
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('Photos/index'); ?>"
+                                <a href="<?php echo site_url('Photos/index/').$CurrentUrl ?>"
                                     class="c-sidebar-item <?php if ($this->uri->segment(1) == "Photos") { echo 'active'; } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Photos
                                         <span class="badge badge-info">8</span>
                                     </div>
                                 </a>
-                                <a href="<?php echo site_url('Payment_Information/index'); ?>"
+                                <a href="<?php echo site_url('Payment_Information/index/').$CurrentUrl ?>"
                                     class="c-sidebar-item <?php if ($this->uri->segment(1) == "Payment_Information") { echo 'active'; } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Payment Information

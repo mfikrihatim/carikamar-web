@@ -34,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Left navbar links -->
                     <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a href="index3.html" class="nav-link">Home</a>
+                        <a href="<?php echo site_url('Welcome'); ?>" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">Contact</a>
@@ -156,35 +156,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                             <i class="fas fa-minus"></i>
                                         </button>
                                     </div>
-                                    <!-- /.card-tools -->
                                 </div>
-                                <!-- /.card-header -->
                                 <div class="card-body ">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <a href="<?php echo site_url('General_information/index'); ?>"
-                                                class="btn btn-warning" >Informasi Belum Lengkap</a>
+                                            <a href="<?php echo site_url('General_information/index/').$ReadDS->id; ?>" class="btn btn-warning" >Informasi Belum Lengkap</a>
                                         </div>
-                                        <!-- <div class="col-md-12">
-                                            <a href="<?php echo site_url('Welcome/index/' . $ReadDS->id . '/view'); ?>"
-                                                class="btn btn-primary" >
-                                                edit
-                                            </a>
-                                        </div> -->
                                     </div>
                                 </div>
-                                <!-- /.card-body -->
                             </div>
-                            <!-- /.card -->
                         </div>
                         <?php
                             }
                         } 
                         ?>
                     </div>
-                    
                     <?php echo $this->pagination->create_links(); ?>
-
                     <div class="row">
                         <div class="col-md-8">
                             <div class="input-group mb-3">

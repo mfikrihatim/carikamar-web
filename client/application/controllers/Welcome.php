@@ -74,9 +74,9 @@ class Welcome extends CI_Controller
 	public function Logout()
 	{
 		$data['email'] = $this->session->userdata('email');
-		$data['foto'] = $this->session->userdata('foto');
+		// $data['foto'] = $this->session->userdata('foto');
 		$this->load->library('session');
-		$this->session->unset_userdata('Login');
+		$this->session->unset_userdata('email');
 		redirect(site_url('Login'));
 	}
 }
