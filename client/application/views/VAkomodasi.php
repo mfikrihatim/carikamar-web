@@ -81,7 +81,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 persis sama untuk akomodasi Anda, pilihlah salah satu kategori yang paling mewakili.</p>
                         </div>
                         <div class="col-md-6">
-                            <a href="<?php echo site_url('General_information/index'); ?>" style="color: black;"
+                            <a href="<?php echo site_url('General_information/AddAkomodasi'); ?>" style="color: black;"
                                 id="myButton">
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
@@ -98,7 +98,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <!-- /.widget-user -->
                         </div>
                         <div class="col-md-6">
-                            <a href="<?php echo site_url('General_information/index'); ?>" style="color: black;"
+                            <a href="<?php echo site_url('General_information/AddAkomodasi'); ?>" style="color: black;"
                                 id="myButton">
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">
@@ -114,7 +114,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             </a>
                         </div>
                         <div class="col-md-6">
-                            <a href="<?php echo site_url('General_information/index'); ?>" style="color: black;"
+                            <a href="<?php echo site_url('General_information/AddAkomodasi'); ?>" style="color: black;"
                                 id="myButton">
                                 <div class="card card-widget widget-user-2">
                                     <div class="widget-user-header">

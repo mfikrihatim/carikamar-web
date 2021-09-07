@@ -27,11 +27,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </head>
 
 <body class="hold-transition layout-top-nav">
+    
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
             <div class="container">
                 <a href="<?php echo site_url('Welcome'); ?>" class="navbar-brand">
+                
                     <span class="brand-text font-weight-bold text-primary" style="font-size: 2.5rem;">CariKamar</span>
                 </a>
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
@@ -118,6 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="c-sidebar-body">1. Property Information</div>
                                     </div>
                                 </a>
+                              
                                 <a href="<?php echo site_url('General_information/index/').$CurrentUrl ?>" class="c-sidebar-item ">
                                     <div class="card-body pt-3 pb-3 mr-1 <?php if ($this->uri->segment(1) == "General_information") {
                                                                                 echo 'active';

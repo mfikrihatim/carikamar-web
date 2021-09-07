@@ -9,11 +9,12 @@ class Property_facilities extends CI_Controller
 
 		$this->load->model('MSudi');
 	}
-	public function index()
+	public function index($id_general_information = null)
 	{
 		// if ($this->session->userdata('Login')) {
 		// 	$data['nama'] = $this->session->userdata('nama');
 		// 	$data['level'] = $this->session->userdata('level');
+		$data['CurrentUrl']            = $id_general_information;
 		$data['DataInformationDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
 		$data['DataMasterFasilitasPropertiHeader'] = $this->MSudi->GetDataWhere('master_fasilitas_properti_header', 'status_id', 1)->result();
 		$join = " master_fasilitas_properti_header.id = master_fasilitas_properti_detail.fasilitas_properti_header_id";
