@@ -21,6 +21,9 @@ class General_information extends CI_Controller
             $data['DataMasterKontak']       = $this->MSudi->GetDataWhere('informasi_umum_kontak', 'fk_id_users', $current_session)->row_object();
             $data['DataMasterTipeProperti'] = $this->MSudi->GetDataWhere('master_tipe_properti', 'status_id', 1)->result();
         } else { 
+            $data['CurrentUrl']             = null;
+            $data['DataMasterProperti']     = null;
+            $data['DataMasterKontak']       = null;
             $data['DataMasterTipeProperti'] = $this->MSudi->GetDataWhere('master_tipe_properti', 'status_id', 1)->result();
         }
         

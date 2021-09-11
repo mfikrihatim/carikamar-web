@@ -32,7 +32,7 @@
                             //  $voucher = $this->MSudi->GetData('tb_voucher');
                             foreach ($DataMasterTipeProperti as $ReadDS) {
                             ?>
-                                <input class="form-check-input" type="radio" name="tipe_properti_id" id="tipe_properti_id" value="<?= $ReadDS->id ?>" <?= $DataMasterProperti->tipe_properti_id == $ReadDS->id ? 'checked' : NULL ?>/>
+                                <input class="form-check-input" type="radio" name="tipe_properti_id" id="tipe_properti_id" value="<?= $ReadDS->id ?>"/>
                                 <b><?php echo $ReadDS->nama_tipe; ?></b><br />
                                 <?php echo $ReadDS->deskripsi; ?><br>
                             <?php } ?>
@@ -50,11 +50,11 @@
 
                         <div class="form-group ">
                             <p>Street Address*</p>
-                            <textarea class="form-control" name="alamat_jalan" id="alamat_jalan" rows="3"><?= $DataMasterProperti->alamat_jalan ?></textarea>
+                            <textarea class="form-control" name="alamat_jalan" id="alamat_jalan" rows="3"><?= !empty($DataMasterProperti->alamat_jalan) ? $DataMasterProperti->alamat_jalan : null ?></textarea>
                         </div>
                         <div class="form-group mt-3">
                             <p>Postal Code*</p>
-                            <input type="text" name="kode_pos" class="form-control" id="kode_pos" value="<?= $DataMasterProperti->kode_pos ?>"/>
+                            <input type="text" name="kode_pos" class="form-control" id="kode_pos" value="<?= !empty($DataMasterProperti->kode_pos) ? $DataMasterProperti->kode_pos : null ?>"/>
                         </div>
                     </div>
                 </div>
@@ -62,14 +62,14 @@
                 <div class="row mt-3">
                     <div class="col-4">Phone Number</div>
                     <div class="col-7">
-                        <input type="text" name="no_telp" id="no_telp" class="form-control" value="<?= $DataMasterProperti->no_telp ?>"/>
+                        <input type="text" name="no_telp" id="no_telp" class="form-control" value="<?= !empty($DataMasterProperti->no_telp) ? $DataMasterProperti->no_telp : null ?>"/>
                     </div>
                 </div>
                 <hr />
                 <div class="row mt-3">
                     <div class="col-4">Number of Rooms*</div>
                     <div class="col-7">
-                        <input type="text" name="jumlah_kamar" id="jumlah_kamar" class="form-control" value="<?= $DataMasterProperti->jumlah_kamar ?>"/>
+                        <input type="text" name="jumlah_kamar" id="jumlah_kamar" class="form-control" value="<?= !empty($DataMasterProperti->jumlah_kamar) ? $DataMasterProperti->jumlah_kamar : null ?>"/>
                     </div>
                 </div>
                 <hr />
@@ -80,13 +80,13 @@
                     </div>
                     <div class="col-7">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="flag_chanel_manager" value="1" <?= $DataMasterProperti->flag_chanel_manager == 1 ? 'checked' : NULL ?> />
+                            <input class="form-check-input" type="radio" name="flag_chanel_manager" value="1" <?= !empty($DataMasterProperti->flag_chanel_manager) == 1 ? 'checked' : NULL ?> />
                             <label class="form-check-label" for="exampleRadios1">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="flag_chanel_manager" value="0" <?= $DataMasterProperti->flag_chanel_manager == 0 ? 'checked' : NULL ?> />
+                            <input class="form-check-input" type="radio" name="flag_chanel_manager" value="0" <?= !empty($DataMasterProperti->flag_chanel_manager) == 0 ? 'checked' : NULL ?> />
                             <label class="form-check-label" for="exampleRadios1">
                                 No
                             </label>
@@ -121,7 +121,7 @@
                                         <p class="mt-3">Jabatan*</p>
                                         <input type="text" name="jabatan" id="jabatan" class="form-control" value="<?= empty($DataMasterKontak->jabatan) ? '' : $DataMasterKontak->jabatan ?>"/>
                                         <div class="form-check form-check-inline mt-3">
-                                            <input class="form-check-input mr-3" type="checkbox" name="flag_fullday" id="flag_fullday" id="exampleRadios1" value="1" <?= $DataMasterKontak->flag_fullday == 0 ? NULL : 'checked' ?> />
+                                            <input class="form-check-input mr-3" type="checkbox" name="flag_fullday" id="flag_fullday" id="exampleRadios1" value="1" <?= empty($DataMasterKontak->flag_fullday) == 0 ? NULL : 'checked' ?> />
                                             <label class="form-check-label" for="exampleRadios1">
                                                 Contactable 24 Hours
                                             </label>

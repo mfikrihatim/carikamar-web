@@ -28,13 +28,13 @@
                     </div>
                     <div class="col-7">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="1" <?= $DataPropertyDetail->flag_kawasan == 1 ? 'checked' : NULL ?>>
+                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="1" <?= !empty($DataPropertyDetail->flag_kawasan) == 1 ? 'checked' : NULL ?>>
                             <label class="form-check-label" for="exampleRadios1">
                                 Available 24 Hours
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="2"  <?= $DataPropertyDetail->flag_kawasan == 2 ? 'checked' : NULL ?>>
+                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="2"  <?= !empty($DataPropertyDetail->flag_kawasan) == 2 ? 'checked' : NULL ?>>
                             <label class="form-check-label" for="exampleRadios1">
                                 Not Available 24 Hours
                             </label>
@@ -144,7 +144,7 @@
                         <!-- <label for="exampleFormControlSelect1">Example select</label> -->
                         <select class="form-control" name="master_cancel_id" id="master_cancel_id" required>
                             <?php  foreach ($DataPropertiMasterCancel as $ReadDS) { ?>
-                                <option <?= $DataPropertyDetail->master_cancel_id === $ReadDS->id ? 'selected' : '' ?> value="<?= $ReadDS->id  ?>" ><?= $ReadDS->nama; ?></option>
+                                <option <?= !empty($DataPropertyDetail->master_cancel_id) === $ReadDS->id ? 'selected' : '' ?> value="<?= $ReadDS->id  ?>" ><?= $ReadDS->nama; ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -163,7 +163,7 @@
                         <div class="form-group">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="master_style_id[]" id="master_style_id[]" value="<?php echo $dpms->id; ?>"  <?= $DataPropertyDetail->master_style_id === $dpms->id ? 'checked' : '' ?>>
+                                    <input type="checkbox" name="master_style_id[]" id="master_style_id[]" value="<?php echo $dpms->id; ?>"  <?= !empty($DataPropertyDetail->master_style_id) === $dpms->id ? 'checked' : '' ?>>
                                     <?php echo $dpms->nama; ?>
                                 </label>
                             </div>
