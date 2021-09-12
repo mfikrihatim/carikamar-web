@@ -14,6 +14,9 @@ class Payment_Information extends CI_Controller
         // if ($this->session->userdata('Login')) {
         // 	$data['nama'] = $this->session->userdata('nama');
         // 	$data['level'] = $this->session->userdata('level');
+        $data['CurrentUrl']             = null;
+        $data['DataMasterProperti']     = null;
+        $data['DataMasterKontak']       = null;
         $data['DataMasterBank'] = $this->MSudi->GetDataWhere('master_bank', 'status_id', 1)->result();
         $data['content'] = 'list-payment-information';
         $this->load->view('welcome_message', $data);

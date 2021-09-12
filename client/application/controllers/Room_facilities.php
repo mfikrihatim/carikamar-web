@@ -14,6 +14,9 @@ class Room_facilities extends CI_Controller
         // if ($this->session->userdata('Login')) {
         // 	$data['nama'] = $this->session->userdata('nama');
         // 	$data['level'] = $this->session->userdata('level');
+        $data['CurrentUrl']             = null;
+        $data['DataMasterProperti']     = null;
+        $data['DataMasterKontak']       = null;
         $data['DataInformationDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
         $data['DataFasilitasKamarHeader'] = $this->MSudi->GetDataWhere('master_fasilitas_kamar_header', 'status_id', 1)->result();
 

@@ -15,6 +15,9 @@ class Photos extends CI_Controller
         // 	$data['nama'] = $this->session->userdata('nama');
         // 	$data['level'] = $this->session->userdata('level');
         // $data['DataMasterTipeProperti'] = $this->MSudi->GetDataWhere('master_tipe_properti', 'status_id', 1)->result();
+        $data['CurrentUrl']             = null;
+        $data['DataMasterProperti']     = null;
+        $data['DataMasterKontak']       = null;
         $data['content'] = 'list-photos';
         $this->load->view('welcome_message', $data);
         // } else {
