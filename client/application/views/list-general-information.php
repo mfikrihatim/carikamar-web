@@ -46,7 +46,24 @@
                         <!-- <div id="googleMap" style="height: 400px"></div>
                         <input type="hidden" name="lat" id="lat" />
                         <input type="hidden" name="lng" id="lng" /> -->
-
+                         <div class="form-group mt-3">
+                            <p>Maps*</p>
+                            <div id="googleMapJancok" style="height: 400px"></div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea class="form-control" readonly="" id="alamat_maps"></textarea>
+                                </div>
+                            </div><br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" name="lat" id="lat_maps" placeholder="Lat ..." readonly="">
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" name="lat" id="lng_maps" placeholder="Long ..." readonly="">
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="form-group ">
                             <p>Street Address*</p>

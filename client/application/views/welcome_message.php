@@ -23,6 +23,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!--- Custome Css -->
     <link rel="stylesheet" href="<?php echo base_url('assets/tera/custome.css'); ?>">
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/dist/css/adminlte.min.css'); ?>">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="shortcut icon" href="<?php echo base_url('img/500px.png'); ?>">
 </head>
 
@@ -217,15 +218,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- ./wrapper -->
 
     <!-- Maps -->
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false">
-    </script>
-    <script>
+    <!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script> -->
+   <!--  <script>
     function initialize() {
-        var myLatlng = new google.maps.LatLng(-6.249777186004247, 106.84204062500002);
+        // var myLatlng = new google.maps.LatLng(-6.249777186004247, 106.84204062500002);
+        var myLatlng = {lat: -6.249777186004247, lng: 106.84204062500002}
+
         var mapProp = {
             center: myLatlng,
             zoom: 5,
-            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            // mapTypeId: google.maps.MapTypeId.ROADMAP,
         };
         var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
         var marker = new google.maps.Marker({
@@ -251,8 +253,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
         });
     }
 
-    google.maps.event.addDomListener(window, "load", initialize);
-    </script>
+    document.addEventListener("DOMContentLoaded", function(event) { 
+      initialize()
+    });
+
+    // google.maps.event.addDomListener(window, "load", initialize);
+    </script> -->
 
     <!-- duplicate contact -->
 
@@ -272,7 +278,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script
         src="<?php echo base_url('assets/AdminLTE-3.1.0/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js'); ?>">
     </script>
-
+    <!-- <script src="https://maps.google.com/maps/api/js?key=AIzaSyAC-c39BanoTJLSBIS--wYX_4zlc4-IFYk"></script> -->
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyC87fftpSPt2ttOpm3kvzwdfyOmZX9Mu9A"></script>
+    <!-- <script src="https://maps.google.com/maps/api/js?key=AIzaSyD07ZX25HHNAPLJMp0Kfld4BDu9D1RTltc"></script> -->
     <script>
     function duplicateContact() {
         $("#duplicate-contact").clone().appendTo("#row-contact");
@@ -298,6 +306,162 @@ scratch. This page gets rid of all links and provides the needed markup only.
       $('#row-contact').html($contact);
     });
     */
+    </script>
+    <script type="text/javascript">
+        let map;
+        let marker;
+        let geocoder;
+        let responseDiv;
+        let response;
+
+        window.onload = function () {
+            initMap();
+        };
+
+        function addMarkerInfo() {
+            var MarkerMaps = async () => {
+                var myLatlng = {lat: -6.249777186004247, lng: 106.84204062500002}
+                var icons = "https://i.ibb.co/1Qctzk1/map-marker.png"
+                const marker = new google.maps.Marker({
+                    position: myLatlng,
+                    icon: {
+                        url: icons,
+                    },
+                    map: map,
+                    title: "Hello World!",
+                    draggable: true,
+
+                });
+            }
+            MarkerMaps()
+        }
+
+        function closeOtherInfo() {
+            if (InforObj.length > 0) {
+                InforObj[0].set("marker", null);
+                InforObj[0].close();
+                InforObj.length = 0;
+            }
+        }
+
+        function clear() {
+          marker.setMap(null);
+          responseDiv.style.display = "none";
+        }
+
+        function geocode(request) {
+          clear();
+          geocoder
+            .geocode(request)
+            .then((result) => {
+              const { results } = result;
+
+              map.setCenter(results[0].geometry.location);
+              marker.setPosition(results[0].geometry.location);
+              marker.setMap(map);
+              // responseDiv.style.display = "block";
+              // response.innerText = JSON.stringify(result, null, 2);
+              result.results.map((data, index) => {
+                var html = `
+                  <table><tbody>
+                      <tr valign="top">
+                        <td style="padding: 2px">
+                          <span id="result-0-marker-img" style="display:block;background-image:url('https://developers-dot-devsite-v2-prod.appspot.com…s/documentation/utils/geocoder/images/markerA.png');width:20px;height:34px;"></span>
+                        </td>
+                        <td style="padding: 2px;">
+                          <p class="result-formatted-address">
+                          ${data.formatted_address}</p>
+                          <p class="result-location">
+                            Location:
+                          ${data.geometry.location.lat()}.${data.geometry.location.lng()}</p>
+                          <div id="details-result-0">
+                        </div></td>
+                      </tr>
+                    </tbody></table>
+                `  
+                responseDiv.style.display = "block";
+                // response.innerHTML = html;
+                $('#lat_maps').val(data.geometry.location.lat())
+                $('#lng_maps').val(data.geometry.location.lng())
+                $('#alamat_maps').text(data.formatted_address)
+              })
+              return result
+            })
+            .catch((e) => {
+              alert("Geocode was not successful for the following reason: " + e);
+            });
+        }
+
+        function initMap() {
+            var centerCords = {
+                lat: -6.24977718600424,
+                lng: 106.84204062500002
+            };
+            
+            map = new google.maps.Map(document.getElementById('googleMapJancok'), {
+              center: centerCords,
+              zoom: 16,
+              // styles: sat_map_style,
+              streetViewControl: false,
+              mapTypeControl: false,
+              overviewMapControl: false,
+              zoomControl: false,
+              fullscreenControl: false,
+              // mapTypeId: 'roadmap'
+            });
+            addMarkerInfo();
+
+            geocoder = new google.maps.Geocoder();
+
+            const inputText = document.createElement("input");
+
+            inputText.type = "text";
+            inputText.placeholder = "Enter a location";
+            // inputText.classList.add("input", "style: width: 100px;");
+
+            const submitButton = document.createElement("input");
+
+            submitButton.type = "button";
+            submitButton.value = "Cari Lokasi";
+            submitButton.classList.add("button", "btn-primary");
+
+            const clearButton = document.createElement("input");
+
+            clearButton.type = "button";
+            clearButton.value = "Clear";
+            clearButton.classList.add("button", "btn-secondary");
+            response = document.createElement("div");
+            response.id = "response";
+            response.innerText = "";
+            responseDiv = document.createElement("div");
+            responseDiv.id = "response-container";
+            responseDiv.appendChild(response);
+
+            const instructionsElement = document.createElement("p");
+
+            instructionsElement.id = "instructions";
+            // instructionsElement.innerHTML ="<strong>Instructions</strong>: Enter an address in the textbox to geocode or click on the map to reverse geocode.";
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(inputText);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(submitButton);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(clearButton);
+            map.controls[google.maps.ControlPosition.LEFT_TOP].push(instructionsElement);
+            map.controls[google.maps.ControlPosition.LEFT_TOP].push(responseDiv);
+
+            marker = new google.maps.Marker({
+                map,
+            });
+            map.addListener("click", (e) => {
+                geocode({ location: e.latLng });
+            });
+            submitButton.addEventListener("click", () =>
+                geocode({ address: inputText.value })
+            );
+            clearButton.addEventListener("click", () => {
+                clear();
+            });
+
+            clear();
+        }
     </script>
 
 </body>
