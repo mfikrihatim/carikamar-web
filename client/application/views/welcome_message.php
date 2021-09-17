@@ -313,14 +313,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
         let geocoder;
         let responseDiv;
         let response;
+        var lat_now = "<?= $lat ?>";
+        var lng_now = "<?= $lng ?>";
 
         window.onload = function () {
             initMap();
         };
 
         function addMarkerInfo() {
+            
             var MarkerMaps = async () => {
-                var myLatlng = {lat: -6.249777186004247, lng: 106.84204062500002}
+                var myLatlng = {lat: parseFloat(lat_now), lng: parseFloat(lng_now)}
                 var icons = "https://i.ibb.co/1Qctzk1/map-marker.png"
                 const marker = new google.maps.Marker({
                     position: myLatlng,
@@ -393,9 +396,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }
 
         function initMap() {
+            
             var centerCords = {
-                lat: -6.24977718600424,
-                lng: 106.84204062500002
+                lat: parseFloat(lat_now), lng: parseFloat(lng_now) 
             };
             
             map = new google.maps.Map(document.getElementById('googleMapJancok'), {

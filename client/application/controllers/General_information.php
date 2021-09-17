@@ -22,6 +22,7 @@ class General_information extends CI_Controller
             $data['DataMasterTipeProperti'] = $this->MSudi->GetDataWhere('master_tipe_properti', 'status_id', 1)->result();
             $data['CountSidebarGeneralInformation'] = $this->MSudi->query_manual("SELECT COUNT(*) as ttl_count FROM informasi_umum_detail WHERE fk_id_users = '$current_session' ")->row_object();
             
+            // Check Location Lat Long
             if (!empty($data['DataMasterProperti']->lokasi_maps) || $data['DataMasterProperti']->lokasi_maps != "") {
                 $data['lat_long']  = $data['DataMasterProperti']->lokasi_maps;
                 $ex_lat_lng = explode(",", $data['lat_long']);

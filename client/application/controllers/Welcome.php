@@ -35,7 +35,6 @@ class Welcome extends CI_Controller
 		
 		$start = $this->uri->segment(3);
 		$this->pagination->initialize($config);
-
 		
 		if ($this->uri->segment(4) == 'view') {
             $id = $this->uri->segment(3);

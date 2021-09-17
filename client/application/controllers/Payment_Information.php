@@ -19,6 +19,8 @@ class Payment_Information extends CI_Controller
         $data['DataMasterProperti']     = null;
         $data['DataMasterKontak']       = null;
         $data['DataMasterBank'] = $this->MSudi->GetDataWhere('master_bank', 'status_id', 1)->result();
+        $data['dataInformationPembayaran'] = $this->MSudi->GetDataWhereDouble('informasi_pembayaran', 'status_id', 1, 'informasi_umum_detail_id', $id_general_information)->row_object();
+        
         $data['content'] = 'list-payment-information';
         $this->load->view('welcome_message', $data);
         // } else {
