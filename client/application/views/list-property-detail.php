@@ -178,7 +178,7 @@
                                                     <?php if (in_array($dpms->id, $arrayData)) { ?>
                                                         checked="checked"
                                                     <?php } ?>
-                                                value="<?echo $dpms->id ?>" />
+                                                value="<?php echo $dpms->id ?>" />
                                                 <?php echo $dpms->nama; ?>
                                             </label>
                                         </div>
