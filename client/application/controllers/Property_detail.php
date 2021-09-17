@@ -16,8 +16,9 @@ class Property_detail extends CI_Controller
 	public function index($id_general_information = null){
         $current_session = $this->session->userdata('id_user');
 		$data['SelectInformationDetails'] = $this->MSudi->GetDataWhere('informasi_umum_detail','fk_id_users',$current_session)->result();
-		// var_dump($data['SelectInformationDetails']);die;
+		// var_dump($data['SelectInformationDetails'][0]->id);die;
 		$data['DataPropertyDetail']    = $this->MSudi->getWherePropertyDetail($current_session,$id_general_information);
+		// var_dump($data['DataPropertyDetail']); die;
 		$data['CurrentUrl']            = $id_general_information;
 
 		$data['DataPropertiMasterCancel'] = $this->MSudi->GetDataWhere('properti_detail_master_cancel', 'status_id', 1)->result();
@@ -75,8 +76,8 @@ class Property_detail extends CI_Controller
 
 	public function AddPropertyDetail()
 	{
-
-		
+		$current_session      = $this->session->userdata('id_user');
+		$add['fk_id_users'] = $current_session;
         $informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id');
 		$add['mata_uang'] = $this->input->post('mata_uang');
 		$add['flag_kawasan'] = $this->input->post('flag_kawasan');
@@ -105,8 +106,11 @@ class Property_detail extends CI_Controller
 	}
 	public function SavePropertyDetail()
 	{
+		$current_session      = $this->session->userdata('id_user');
 		$informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id');
 		$properti_detail_id = $this->input->post('id');
+		$add['fk_id_users'] = $current_session;
+		$add['informasi_umum_detail_id'] = $informasi_umum_detail_id;
 		$add['mata_uang'] = $this->input->post('mata_uang');
 		$add['flag_kawasan'] = $this->input->post('flag_kawasan');
 		$add['waktu_checkin'] = $this->input->post('waktu_checkin');
@@ -126,7 +130,7 @@ class Property_detail extends CI_Controller
 		$add['deleted_by'] = null;
 		$add['deleted_date'] = null;
 		$add['status_id'] = 1;
-		
+		// var_dump($properti_detail_id); die;
 		if($properti_detail_id == null || $properti_detail_id == ''){
             $properti_detail_id = $this->MSudi->AddData('properti_detail', $add);
         }else{

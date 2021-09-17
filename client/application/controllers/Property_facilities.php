@@ -70,6 +70,7 @@ class Property_facilities extends CI_Controller
 		$add['deleted_date'] = null;
 		$add['status_id'] = 1;
 
+		var_dump($add); die;
 
 		if($fasilitas_properti_id == null || $fasilitas_properti_id == ''){
             $fasilitas_properti_id = $this->MSudi->AddData('fasilitas_properti', $add);

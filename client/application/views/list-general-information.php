@@ -5,9 +5,9 @@
         <div class="card-header">Property Details</div>
         <form id="input">
             <input type="text" name="informasi_umum_detail_id" id="informasi_umum_detail_id" class="form-control"
-                style="display:none" value="" />
+                style="display:none" value="<?= $DataMasterProperti->id ?>" />
             <input type="text" name="informasi_umum_kontak_id" id="informasi_umum_kontak_id" class="form-control"
-                style="display:none" value="" />
+                style="display:none" value="<?= $DataMasterKontak->id ?>" />
             <div class="card-body">
                 <div class="row">
                     <div class="col-4">Property Name*</div>
@@ -32,7 +32,7 @@
                             //  $voucher = $this->MSudi->GetData('tb_voucher');
                             foreach ($DataMasterTipeProperti as $ReadDS) {
                             ?>
-                                <input class="form-check-input" type="radio" name="tipe_properti_id" id="tipe_properti_id" value="<?= $ReadDS->id ?>"/>
+                                <input class="form-check-input" type="radio" name="tipe_properti_id" id="tipe_properti_id" <?= $ReadDS->id === $DataMasterProperti->tipe_properti_id ? "checked" : "" ?> value="<?= $ReadDS->id ?>"  />
                                 <b><?php echo $ReadDS->nama_tipe; ?></b><br />
                                 <?php echo $ReadDS->deskripsi; ?><br>
                             <?php } ?>
@@ -51,16 +51,11 @@
                             <div id="googleMapJancok" style="height: 400px"></div>
                             <br>
                             <div class="row">
-                                <div class="col-md-12">
-                                    <textarea class="form-control" readonly="" id="alamat_maps"></textarea>
-                                </div>
-                            </div><br>
-                            <div class="row">
                                 <div class="col-md-6">
-                                    <input class="form-control" type="text" name="lat" id="lat_maps" placeholder="Lat ..." readonly="">
+                                    <input class="form-control" type="text" name="lat_maps" id="lat_maps" placeholder="Lat ..." readonly="" value="<?= $lat ?>">
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control" type="text" name="lat" id="lng_maps" placeholder="Long ..." readonly="">
+                                    <input class="form-control" type="text" name="lng_maps" id="lng_maps" placeholder="Long ..." readonly="" value="<?= $lng ?>">
                                 </div>
                             </div>
                         </div>
@@ -192,6 +187,8 @@
 
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script>
 $(document).ready(function() {
     $("#simpan").on('click', function() {
@@ -206,10 +203,19 @@ $(document).ready(function() {
                 var result = data;
                 $('#informasi_umum_detail_id').val(result.informasi_umum_detail_id);
                 $('#informasi_umum_kontak_id').val(result.informasi_umum_kontak_id);
-                $("#Property_detail").attr("href",
-                    "<?php echo site_url('Property_detail/index'); ?>" + "/" + result
-                    .informasi_umum_detail_id);
-                alert("Data Tersimpan");
+                // $("#Property_detail").attr("href",
+                //     "<?php echo site_url('Property_detail/index'); ?>" + "/" + result
+                //     .informasi_umum_detail_id);
+                swal({
+                  title: "Success!",
+                  text: "Berhasil Update Data.",
+                  type: "success",
+                  timer: 5000,
+                  showConfirmButton: true
+                })
+                .then((response) => {
+                      window.location.href = "<?php echo site_url('General_information/index/').$DataMasterProperti->id ?>"
+                })
             }
         });
     })

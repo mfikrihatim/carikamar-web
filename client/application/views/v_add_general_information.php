@@ -46,14 +46,26 @@
                         <input type="hidden" name="lat" id="lat" />
                         <input type="hidden" name="lng" id="lng" /> -->
 
-
+                        <div class="form-group mt-3">
+                            <p>Maps*</p>
+                            <div id="googleMapJancok" style="height: 400px"></div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" name="lat_maps" id="lat_maps" placeholder="Lat ..." readonly="" value="">
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form-control" type="text" name="lng_maps" id="lng_maps" placeholder="Long ..." readonly="" value="">
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group ">
                             <p>Street Address*</p>
-                            <textarea class="form-control" name="alamat_jalan" id="alamat_jalan" rows="3"><?= !empty($DataMasterProperti->alamat_jalan) ? $DataMasterProperti->alamat_jalan : null ?></textarea>
+                            <textarea class="form-control" name="alamat_jalan" id="alamat_jalan" rows="3"></textarea>
                         </div>
                         <div class="form-group mt-3">
                             <p>Postal Code*</p>
-                            <input type="text" name="kode_pos" class="form-control" id="kode_pos" value="<?= !empty($DataMasterProperti->kode_pos) ? $DataMasterProperti->kode_pos : null ?>"/>
+                            <input type="text" name="kode_pos" class="form-control" id="kode_pos" value=""/>
                         </div>
                     </div>
                 </div>
@@ -173,3 +185,41 @@
 </div>
 
 
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+
+$(document).ready(function() {
+    $("#simpan").on('click', function() {
+        var input = $('#input').serialize();
+        var url = "<?php echo site_url('General_information/SaveGeneralInformation'); ?>";
+        $.ajax({
+            url: url,
+            type: "POST",
+            data: input,
+            dataType: "JSON",
+            success: function(data, status, xhr) {
+                var result = data;
+                $('#informasi_umum_detail_id').val(result.informasi_umum_detail_id);
+                $('#informasi_umum_kontak_id').val(result.informasi_umum_kontak_id);
+                $("#Property_detail").attr("href",
+                    "<?php echo site_url('Property_detail/index'); ?>" + "/" + result
+                    .informasi_umum_detail_id);
+                // alert("Data Tersimpan");
+                swal({
+                  title: "Success!",
+                  text: "Berhasil Manambahkan Data.",
+                  type: "success",
+                  timer: 5000,
+                  showConfirmButton: true
+                })
+                .then((response) => {
+                      window.location.href = `index/${result.informasi_umum_detail_id}`
+                })
+            }
+        });
+    })
+});
+</script>

@@ -9,18 +9,20 @@ class Room extends CI_Controller
 
 		$this->load->model('MSudi');
 	}
-	public function index()
+	public function index($id_general_information = null)
 	{
 		// if ($this->session->userdata('Login')) {
 		// 	$data['nama'] = $this->session->userdata('nama');
 		// 	$data['level'] = $this->session->userdata('level');
-		$data['CurrentUrl']             = null;
+		// $data['CurrentUrl']             = null;
+	    $data['CurrentUrl']             = $id_general_information;
 		$data['DataMasterProperti']     = null;
 		$data['DataMasterKontak']       = null;
 		$data['DataInformationDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
+		$data['DataInformationDetailEdit'] = $this->MSudi->query_manual("SELECT * FROM tipe_kamar WHERE status_id = 1 AND informasi_umum_detail_id = '$id_general_information'")->result();
 		$data['DataMasterTipeKamar'] = $this->MSudi->GetDataWhere('master_tipe_kamar', 'status_id', 1)->result();
 		$data['DataMasterTipeKasur'] = $this->MSudi->GetDataWhere('master_tipe_kasur', 'status_id', 1)->result();
-
+		// print_r($data['DataInformationDetailEdit']); die;
 		$data['content'] = 'list-rooms';
 		$this->load->view('welcome_message', $data);
 
@@ -79,6 +81,7 @@ class Room extends CI_Controller
 
 		$informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id');
 		$tipe_kamar_id = $this->input->post('id');
+		$add['id'] = $this->input->post('id');
 		$add['nama_kamar'] = $this->input->post('nama_kamar');
 		$add['master_tipe_kamar_id'] = $this->input->post('master_tipe_kamar_id');
 		$add['master_tipe_kasur_id'] = $this->input->post('master_tipe_kasur_id');
@@ -94,8 +97,8 @@ class Room extends CI_Controller
 
 		foreach ($add['nama_kamar'] as $index => $data) {
 			$insert = array(
-				// 'id' => $tipe_kamar_id,
-				'informasi_umum_detail_id' => $informasi_umum_detail_id,
+				// 'id' => $tipe_kamar_id[$index],
+				'informasi_umum_detail_id' => $informasi_umum_detail_id[$index],
 				'nama_kamar' => $add['nama_kamar'][$index],
 				'master_tipe_kamar_id' => $add['master_tipe_kamar_id'][$index],
 				'master_tipe_kasur_id' => $add['master_tipe_kasur_id'][$index],
@@ -115,11 +118,15 @@ class Room extends CI_Controller
 				'deleted_date' => null,
 				'status_id' => 1,
 			);
+			
+			// print_r($add['flag_included_breakfast'][$index]);
+
 			if($tipe_kamar_id == null || $tipe_kamar_id == ''){
-				$tipe_kamar_id = $this->MSudi->AddData('tipe_kamar', $insert);
+				$this->MSudi->AddData('tipe_kamar', $insert);
 			}else{
-			   $this->MSudi->UpdateData('tipe_kamar', 'id', $tipe_kamar_id, $insert);       
+			   $this->MSudi->UpdateData('tipe_kamar', 'id', $add['id'][$index], $insert);       
 			}
+
 			// $this->MSudi->AddData('tipe_kamar', $insert);
 		}
 		$result = array(

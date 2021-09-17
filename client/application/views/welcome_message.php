@@ -383,7 +383,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 // response.innerHTML = html;
                 $('#lat_maps').val(data.geometry.location.lat())
                 $('#lng_maps').val(data.geometry.location.lng())
-                $('#alamat_maps').text(data.formatted_address)
+                $('#alamat_jalan').text(data.formatted_address)
               })
               return result
             })

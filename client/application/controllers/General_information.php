@@ -20,6 +20,17 @@ class General_information extends CI_Controller
             $data['DataMasterProperti']     = $this->MSudi->getWhereGeneralInformation($current_session,$id_general_information);
             $data['DataMasterKontak']       = $this->MSudi->GetDataWhere('informasi_umum_kontak', 'fk_id_users', $current_session)->row_object();
             $data['DataMasterTipeProperti'] = $this->MSudi->GetDataWhere('master_tipe_properti', 'status_id', 1)->result();
+            $data['CountSidebarGeneralInformation'] = $this->MSudi->query_manual("SELECT COUNT(*) as ttl_count FROM informasi_umum_detail WHERE fk_id_users = '$current_session' ")->row_object();
+            
+            if (!empty($data['DataMasterProperti']->lokasi_maps) || $data['DataMasterProperti']->lokasi_maps != "") {
+                $data['lat_long']  = $data['DataMasterProperti']->lokasi_maps;
+                $ex_lat_lng = explode(",", $data['lat_long']);
+                $data['lat'] = $ex_lat_lng[0]; 
+                $data['lng'] = $ex_lat_lng[1]; 
+            }else{
+                $data['lat'] = ""; 
+                $data['lng'] = "";
+            }
         } else { 
             $data['CurrentUrl']             = null;
             $data['DataMasterProperti']     = null;
@@ -44,10 +55,15 @@ class General_information extends CI_Controller
     public function SaveGeneralInformation()
     {
         $user_id = $this->session->userdata('id');
+        $current_session      = $this->session->userdata('id_user');
+        $lat_lng = $this->input->post('lat_maps').','.$this->input->post('lng_maps');
         $informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id');
+
         $add['tipe_properti_id'] = $this->input->post('tipe_properti_id');
+        $add['fk_id_users'] = $current_session;
         $add['nama_properti'] = $this->input->post('nama_properti');
         $add['nama_badan_hukum'] = $this->input->post('nama_badan_hukum');
+        $add['lokasi_maps'] = $lat_lng;
         $add['alamat_jalan'] = $this->input->post('alamat_jalan');
         $add['kode_pos'] = $this->input->post('kode_pos');
         $add['no_telp'] = $this->input->post('no_telp');
@@ -67,30 +83,39 @@ class General_information extends CI_Controller
         } else {
            $this->MSudi->UpdateData('informasi_umum_detail', 'id', $informasi_umum_detail_id, $add);       
         }
+        $date_now = date('Y-m-d H:i:s');
+        $check_data_informasi = $this->MSudi->GetDataWhereDouble('informasi_umum_detail', 'nama_properti', $add['nama_properti'], 'fk_id_users', $current_session)->row_object(); 
         
-        $informasi_umum_kontak_id = $this->input->post('informasi_umum_kontak_id');
-        $add1['informasi_umum_detail_id'] = $informasi_umum_detail_id;
-        $add1['jenis_kontak'] = $this->input->post('jenis_kontak');
-        $add1['nama_lengkap'] = $this->input->post('nama_lengkap');
-        $add1['email'] = $this->input->post('email');
-        $add1['no_hp'] = $this->input->post('no_hp');
-        $add1['no_telp_kantor'] = $this->input->post('no_telp_kantor');
-        $add1['extension'] = $this->input->post('extension');
-        $add1['jabatan'] = $this->input->post('jabatan');
-        $add1['flag_fullday'] = $this->input->post('flag_fullday');
-        $add1['created_by'] = 1;
-        $add1['created_date'] = date("Y-m-d H:i:s");
-        $add1['updated_by'] = null;
-        $add1['updated_date'] = null;
-        $add1['deleted_by'] = null;
-        $add1['deleted_date'] = null;
-        $add1['status_id'] = 1;
+        if (!empty($check_data_informasi)) {
+            
+            $informasi_umum_kontak_id = $this->input->post('informasi_umum_kontak_id');
+            $informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id') != "" ? $this->input->post('informasi_umum_kontak_id') : $check_data_informasi->id ;
 
-        if($informasi_umum_kontak_id == null || $informasi_umum_kontak_id == ''){
-            $informasi_umum_kontak_id = $this->MSudi->AddData('informasi_umum_kontak', $add1);
-        }else{
-            $this->MSudi->UpdateData('informasi_umum_kontak', 'id', $informasi_umum_kontak_id, $add1);       
+            $add1['informasi_umum_detail_id'] = $informasi_umum_detail_id;
+            $add1['jenis_kontak'] = $this->input->post('jenis_kontak');
+            $add1['fk_id_users'] = $current_session;
+            $add1['nama_lengkap'] = $this->input->post('nama_lengkap');
+            $add1['email'] = $this->input->post('email');
+            $add1['no_hp'] = $this->input->post('no_hp');
+            $add1['no_telp_kantor'] = $this->input->post('no_telp_kantor');
+            $add1['extension'] = $this->input->post('extension');
+            $add1['jabatan'] = $this->input->post('jabatan');
+            $add1['flag_fullday'] = $this->input->post('flag_fullday');
+            $add1['created_by'] = 1;
+            $add1['created_date'] = date("Y-m-d H:i:s");
+            $add1['updated_by'] = null;
+            $add1['updated_date'] = null;
+            $add1['deleted_by'] = null;
+            $add1['deleted_date'] = null;
+            $add1['status_id'] = 1;
+
+            if($informasi_umum_kontak_id == null || $informasi_umum_kontak_id == ''){
+                $informasi_umum_kontak_id = $this->MSudi->AddData('informasi_umum_kontak', $add1);
+            }else{
+                $this->MSudi->UpdateData('informasi_umum_kontak', 'id', $informasi_umum_kontak_id, $add1);       
+            }
         }
+
 
 
         $result = array(

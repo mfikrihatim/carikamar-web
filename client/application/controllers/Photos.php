@@ -9,13 +9,14 @@ class Photos extends CI_Controller
 
         $this->load->model('MSudi');
     }
-    public function index()
+    public function index($id_general_information = null)
     {
         // if ($this->session->userdata('Login')) {
         // 	$data['nama'] = $this->session->userdata('nama');
         // 	$data['level'] = $this->session->userdata('level');
         // $data['DataMasterTipeProperti'] = $this->MSudi->GetDataWhere('master_tipe_properti', 'status_id', 1)->result();
-        $data['CurrentUrl']             = null;
+        // $data['CurrentUrl']             = null;
+        $data['CurrentUrl']             = $id_general_information;
         $data['DataMasterProperti']     = null;
         $data['DataMasterKontak']       = null;
         $data['content'] = 'list-photos';

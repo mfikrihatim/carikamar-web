@@ -3,6 +3,25 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class MSudi extends CI_Model
 {
+    function generateRandom($length = 20) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
+    }
+
+    public function generate_uuid() {
+        return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+          mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ),
+          mt_rand( 0, 0xffff ),
+          mt_rand( 0, 0x0fff ) | 0x4000,
+          mt_rand( 0, 0x3fff ) | 0x8000,
+          mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff ), mt_rand( 0, 0xffff )
+        );
+      }
     function CallAPI($method, $url, $data = null, $token)
     {
         // Initialize curl
@@ -57,6 +76,11 @@ class MSudi extends CI_Model
         $last_id = $this->db->insert_id();
         return $last_id;
     }
+
+    function query_manual($data) {
+        $sql = $this->db->query($data); return $sql;
+    }
+
     function cek_user($username)
     {
         $sql = $this->db->query("SELECT username FROM tb_admin where username='$username'");

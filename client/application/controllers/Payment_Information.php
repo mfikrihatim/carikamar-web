@@ -9,12 +9,13 @@ class Payment_Information extends CI_Controller
 
         $this->load->model('MSudi');
     }
-    public function index()
+    public function index($id_general_information = null)
     {
         // if ($this->session->userdata('Login')) {
         // 	$data['nama'] = $this->session->userdata('nama');
         // 	$data['level'] = $this->session->userdata('level');
-        $data['CurrentUrl']             = null;
+        // $data['CurrentUrl']             = null;
+        $data['CurrentUrl']             = $id_general_information;
         $data['DataMasterProperti']     = null;
         $data['DataMasterKontak']       = null;
         $data['DataMasterBank'] = $this->MSudi->GetDataWhere('master_bank', 'status_id', 1)->result();
@@ -30,6 +31,7 @@ class Payment_Information extends CI_Controller
 		$informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id');
 		$informasi_pembayaran_id = $this->input->post('id');
 		$add['pilihan_metode'] = $this->input->post('pilihan_metode');
+        $add['informasi_umum_detail_id'] = $informasi_umum_detail_id;
 		$add['master_bank_id'] = $this->input->post('master_bank_id');
 		$add['nomor_akun'] = $this->input->post('nomor_akun');
         $add['pemilik_akun'] = $this->input->post('pemilik_akun');

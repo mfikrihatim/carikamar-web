@@ -1,11 +1,11 @@
-<!-- /.col -->
+    <!-- /.col -->
 <div class="col-sm-9">
     <h1 class="mb-3 mt-1">Payment Information</h1>
     <div class="card">
         <div class="card-header">Property Details</div>
         <form id="input">
             <input type="text" name="informasi_umum_detail_id" id="informasi_umum_detail_id" class="form-control"
-                style="display:none" value="1" />
+                style="display:none" value="<?= $CurrentUrl ?>" />
         <input type="text" name="id" id="informasi_pembayaran_id" class="form-control"
                 style="display:none" value="" />
             <div class="card-body">

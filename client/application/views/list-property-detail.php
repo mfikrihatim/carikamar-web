@@ -3,17 +3,16 @@
     <div class="card">
         <div class="card-header">Property Details</div>
         <form id="input">
-        <!-- <input type="text" name="informasi_umum_detail_id" id="informasi_umum_detail_id" class="form-control"
-                style="display:none" value="" /> -->
-            <input type="text" name="id" id="properti_detail_id" class="form-control"
-                style="display:none" value="" />
+        <input type="text" name="informasi_umum_detail_id" id="informasi_umum_detail_id" class="form-control"
+                style="display: none;" value="<?= !empty($DataPropertyDetail) ? $DataPropertyDetail->informasi_umum_detail_id != "" ? $DataPropertyDetail->informasi_umum_detail_id : NULL: NULL ?>" />
+            <input type="text" name="id" id="properti_detail_id" class="form-control" value="<?= !empty($DataPropertyDetail) ? $DataPropertyDetail->id != "" ? $DataPropertyDetail->id : NULL: NULL ?>" style="display: none;"/>
             <div class="card-body">
                 <div class="form-group">
                     <label>Pilih Information Umum Detail</label>
                     <select class="form-control" name="informasi_umum_detail_id" id="informasi_umum_detail_id" required>
                         <option value="">-- Select Nama Property --</option>
                         <?php foreach ($SelectInformationDetails as $ReadDS) {?>
-                            <option value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_properti; ?></option>
+                            <option <?= !empty($DataPropertyDetail) ? $DataPropertyDetail->informasi_umum_detail_id != "" ? $DataPropertyDetail->informasi_umum_detail_id == $ReadDS->id ? "selected" : NULL : NULL : NULL  ?> value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_properti; ?></option>
                         <?php } ?>
                     </select>
                 </div>
@@ -28,13 +27,13 @@
                     </div>
                     <div class="col-7">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="1" <?= !empty($DataPropertyDetail->flag_kawasan) == 1 ? 'checked' : NULL ?>>
+                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="1" <?= !empty($DataPropertyDetail) ? $DataPropertyDetail->flag_kawasan == 1 ? "checked" : NULL : NULL  ?>>
                             <label class="form-check-label" for="exampleRadios1">
                                 Available 24 Hours
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="2"  <?= !empty($DataPropertyDetail->flag_kawasan) == 2 ? 'checked' : NULL ?>>
+                            <input class="form-check-input" type="radio" name="flag_kawasan" id="flag_kawasan" value="2"  <?= !empty($DataPropertyDetail) ? $DataPropertyDetail->flag_kawasan == 2 ? "checked" : NULL : NULL  ?>>
                             <label class="form-check-label" for="exampleRadios1">
                                 Not Available 24 Hours
                             </label>
@@ -144,7 +143,7 @@
                         <!-- <label for="exampleFormControlSelect1">Example select</label> -->
                         <select class="form-control" name="master_cancel_id" id="master_cancel_id" required>
                             <?php  foreach ($DataPropertiMasterCancel as $ReadDS) { ?>
-                                <option <?= !empty($DataPropertyDetail->master_cancel_id) === $ReadDS->id ? 'selected' : '' ?> value="<?= $ReadDS->id  ?>" ><?= $ReadDS->nama; ?></option>
+                                <option <?= !empty($DataPropertyDetail) ? $DataPropertyDetail->master_cancel_id == $ReadDS->id ? "selected" : NULL : NULL ?> value="<?= $ReadDS->id  ?>" ><?= $ReadDS->nama; ?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -159,16 +158,44 @@
             <div class="row mt-3">
                 <div class="col-6">
                     <div class="form-check form-check-inline">
-                        <?php foreach ($DataPropertiMasterStyle as $dpms) { ?>
+                        <!-- <?php foreach ($DataPropertiMasterStyle as $dpms) { ?>
                         <div class="form-group">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox" name="master_style_id[]" id="master_style_id[]" value="<?php echo $dpms->id; ?>"  <?= !empty($DataPropertyDetail->master_style_id) === $dpms->id ? 'checked' : '' ?>>
+                                    <input type="checkbox" name="master_style_id[]" id="master_style_id[]" value="<?php echo $dpms->id; ?>"  <?= $DataPropertyDetail->master_style_id === $dpms->id ? 'checked' : '' ?>>
                                     <?php echo $dpms->nama; ?>
                                 </label>
                             </div>
-                            <?php } ?>
-                        </div>
+                        <?php } ?> -->
+                        <?php if (!empty($DataPropertyDetail)): ?>
+                            <?php  foreach (json_decode($DataPropertyDetail->master_style_id) as $style_id): $arrayData[$style_id] = $style_id; ?>
+                            <?php endforeach ?>                        
+                            <div class="form-group">
+                                <?php foreach ($DataPropertiMasterStyle as $dpms): ?>
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" name="master_style_id[]" id="master_style_id[]" 
+                                                    <?php if (in_array($dpms->id, $arrayData)) { ?>
+                                                        checked="checked"
+                                                    <?php } ?>
+                                                value="<?echo $dpms->id ?>" />
+                                                <?php echo $dpms->nama; ?>
+                                            </label>
+                                        </div>
+                                <?php endforeach ?>
+                            </div>
+                        <?php else: ?>
+                                <div class="form-group">
+                                <?php foreach ($DataPropertiMasterStyle as $dpms) { ?>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="master_style_id[]" id="master_style_id[]" value="<?php echo $dpms->id; ?>">
+                                            <?php echo $dpms->nama; ?>
+                                        </label>
+                                    </div>
+                                <?php } ?>
+                                </div>
+                        <?php endif ?>
                     </div>
                 </div>
             </div>
@@ -182,6 +209,7 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 $(document).ready(function() {
     $("#simpan").on('click', function() {
@@ -196,10 +224,20 @@ $(document).ready(function() {
                 var result = data;
                 $('#informasi_umum_detail_id').val(result.informasi_umum_detail_id);
                 $('#properti_detail_id').val(result.id);
-                $("#Property_detail").attr("href",
+                /*$("#Property_detail").attr("href",
                     "<?php echo site_url('Property_detail/index'); ?>" + "/" + result
                     .informasi_umum_detail_id);
-                alert("Data Tersimpan");
+                alert("Data Tersimpan");*/
+                swal({
+                  title: "Success!",
+                  text: "Berhasil Update Data.",
+                  type: "success",
+                  timer: 5000,
+                  showConfirmButton: true
+                })
+                .then((response) => {
+                      window.location.href = `${result.informasi_umum_detail_id}`
+                })
             }
         });
     })
