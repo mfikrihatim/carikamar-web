@@ -29,6 +29,7 @@ input[type="file"] {
     background: white;
     color: black;
 }
+section { flex-grow: 1;}.file-drop-area { position: relative; display: flex; align-items: center; width: 450px; max-width: 100%; padding: 25px; border: 1px dashed rgb(0 55 255 / 40%); border-radius: 3px; transition: 0.2s; &.is-active { background-color: rgba(255, 255, 255, 0.05); }}.fake-btn { flex-shrink: 0; background-color: rgb(240 237 255); border: 1px solid rgb(0 55 255 / 10%); border-radius: 3px; padding: 8px 15px; margin-right: 10px; font-size: 12px; text-transform: uppercase;}.file-msg { font-size: small; font-weight: 300; line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}.file-input { position: absolute; left: 0; top: 0; height: 100%; width: 100%; cursor: pointer; opacity: 0; &:focus { outline: none; }}
 </style>
 <!-- /.col -->
 <div class="col-sm-9">
@@ -44,10 +45,16 @@ input[type="file"] {
                         <!-- <span class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Channel Manager allows you to manage availability, rates, and inventory across all of your OTA channels from a single source"></span> -->
                     </div>
                     <div class="col-7">
-                        <div class="field" align="left">
+                        <label>Upload Files Photo</label>
+                        <div class="file-drop-area">
+                            <span class="fake-btn">Choose files</span>
+                            <span class="file-msg">or tarik dan jatuhkan file di sini</span>
+                            <input type="file" id="files" class="file-input form-control" name="files[]" multiple="">
+                        </div>
+                        <!-- <div class="field" align="left">
                             <h3>Upload your images</h3>
                             <input type="file" id="files" name="files[]" multiple />
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -95,4 +102,32 @@ $(document).ready(function() {
         alert("Your browser doesn't support to File API")
     }
 });
+
+var $fileInput = $('.file-input');
+  var $droparea = $('.file-drop-area');
+
+  // highlight drag area
+  $fileInput.on('dragenter focus click', function() {
+    $droparea.addClass('is-active');
+  });
+
+  // back to normal state
+  $fileInput.on('dragleave blur drop', function() {
+    $droparea.removeClass('is-active');
+  });
+
+  // change inner text
+  $fileInput.on('change', function() {
+    var filesCount = $(this)[0].files.length;
+    var $textContainer = $(this).prev();
+
+    if (filesCount === 1) {
+      // if single file is selected, show file name
+      var fileName = $(this).val().split('\\').pop();
+      $textContainer.text(fileName);
+    } else {
+      // otherwise show number of files
+      $textContainer.text(filesCount + ' files selected');
+    }
+  });
 </script>
