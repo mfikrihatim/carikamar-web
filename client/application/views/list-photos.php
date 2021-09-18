@@ -57,7 +57,11 @@ section { flex-grow: 1;}.file-drop-area { position: relative; display: flex; ali
                         </div> -->
                     </div>
                 </div>
-
+                <br>
+                <div class="row" id="result-image">
+                    <!-- <div id="result-image"> -->
+                    <!-- </div> -->
+                </div>
             </div>
         </form>
     </div>
@@ -71,21 +75,34 @@ $(document).ready(function() {
     if (window.File && window.FileList && window.FileReader) {
         $("#files").on("change", function(e) {
             var files = e.target.files,
-                filesLength = files.length;
+            filesLength = files.length;
+            // console.log(files);
             for (var i = 0; i < filesLength; i++) {
                 var f = files[i]
                 var fileReader = new FileReader();
                 fileReader.onload = (function(e) {
                     var file = e.target;
-                    $("<span class=\"pip\">" +
+                    var html = `<div class="col-2" id="remove-image">
+                        <div class="img">
+                            <img src="${file.result}" style="width: 100px; height: 100px;">
+                        </div>
+                        <br>
+                        <div class="float-left">
+                            <button type="button" id="remove" class="btn btn-sm btn-danger">Remove</button>
+                        </div>
+                    </div>`
+                    // console.log(html)
+                    $('#result-image').append(html)
+                    /*$("<span class=\"pip\">" +
                         "<img class=\"imageThumb\" src=\"" + e.target.result +
                         "\" title=\"" + file.name + "\"/>" +
                         "<br/><span class=\"remove\">Remove image</span>" +
-                        "</span>").insertAfter("#files");
-                    $(".remove").click(function() {
+                        "</span>").insertAfter("#files");*/
+                    /*$(`#remove${i}`).click(function(e) {
+                        console.log(e)
                         $(this).parent(".pip").remove();
                     });
-
+                    */
                     // Old code here
                     /*$("<img></img>", {
                       class: "imageThumb",
@@ -96,38 +113,44 @@ $(document).ready(function() {
                 });
                 fileReader.readAsDataURL(f);
             }
-            console.log(files);
+            // console.log(files);
         });
     } else {
         alert("Your browser doesn't support to File API")
     }
+
+    /* Remove Text Somasi */
+    $("body").on("click",`#remove`,function(e){ 
+      e.preventDefault();
+      $(`#remove-image`).remove();
+    });
 });
 
 var $fileInput = $('.file-input');
-  var $droparea = $('.file-drop-area');
+var $droparea = $('.file-drop-area');
 
-  // highlight drag area
-  $fileInput.on('dragenter focus click', function() {
-    $droparea.addClass('is-active');
-  });
+// highlight drag area
+$fileInput.on('dragenter focus click', function() {
+$droparea.addClass('is-active');
+});
 
-  // back to normal state
-  $fileInput.on('dragleave blur drop', function() {
-    $droparea.removeClass('is-active');
-  });
+// back to normal state
+$fileInput.on('dragleave blur drop', function() {
+$droparea.removeClass('is-active');
+});
 
-  // change inner text
-  $fileInput.on('change', function() {
-    var filesCount = $(this)[0].files.length;
-    var $textContainer = $(this).prev();
+// change inner text
+$fileInput.on('change', function() {
+var filesCount = $(this)[0].files.length;
+var $textContainer = $(this).prev();
 
-    if (filesCount === 1) {
-      // if single file is selected, show file name
-      var fileName = $(this).val().split('\\').pop();
-      $textContainer.text(fileName);
-    } else {
-      // otherwise show number of files
-      $textContainer.text(filesCount + ' files selected');
-    }
-  });
+if (filesCount === 1) {
+  // if single file is selected, show file name
+  var fileName = $(this).val().split('\\').pop();
+  $textContainer.text(fileName);
+} else {
+  // otherwise show number of files
+  $textContainer.text(filesCount + ' files selected');
+}
+});
 </script>
