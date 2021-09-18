@@ -11,7 +11,7 @@
 
                     foreach ($DataInformationDetail as $ReadDS) {
                     ?>
-                        <option value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_properti; ?></option>
+                        <option <?= !empty($DataFasilitasKamar) ? $DataFasilitasKamar->informasi_umum_detail_id != "" ? $DataFasilitasKamar->informasi_umum_detail_id == $ReadDS->id ? "selected" : "" : "" : "" ?> value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_properti; ?></option>
                     <?php
                     }
                     ?>
@@ -33,11 +33,17 @@
                         <!-- /.card-tools -->
                     </div>
 
-                    <!-- /.card-header -->
-                    <?php
+                    <?php if (!empty($DataFasilitasKamar)): ?>
+                        <?php foreach (json_decode($DataFasilitasKamar->availability_tipe_kamar_id) as $key): 
+                            $arrayData[$key] = $key;
+                            // print_r($arrayData);
+                        ?>
+                        <?php endforeach ?>
 
-                    foreach ($FasilitasKamar as $ReadDS) {
-                    ?>
+                    <?php endif ?>
+
+                    <!-- /.card-header -->
+                    <?php foreach ($FasilitasKamar as $ReadDS) { ?>
                         <div class="card-body">
                             <div class="row mt-1">
                                 <div class="col-6">
@@ -50,9 +56,7 @@
 
                             </div>
                         </div>
-                    <?php
-                    }
-                    ?>
+                    <?php } ?>
                 </div>
 
             <?php

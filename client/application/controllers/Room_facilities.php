@@ -9,16 +9,19 @@ class Room_facilities extends CI_Controller
 
         $this->load->model('MSudi');
     }
-    public function index()
+    public function index($id_general_information = null)
     {
         // if ($this->session->userdata('Login')) {
         // 	$data['nama'] = $this->session->userdata('nama');
         // 	$data['level'] = $this->session->userdata('level');
-        $data['CurrentUrl']             = null;
+        $data['CurrentUrl']             = $id_general_information;
         $data['DataMasterProperti']     = null;
         $data['DataMasterKontak']       = null;
         $data['DataInformationDetail'] = $this->MSudi->GetDataWhere('informasi_umum_detail', 'status_id', 1)->result();
         $data['DataFasilitasKamarHeader'] = $this->MSudi->GetDataWhere('master_fasilitas_kamar_header', 'status_id', 1)->result();
+        $data['DataFasilitasKamar']   = $this->MSudi->GetDataWhere('fasilitas_kamar', 'informasi_umum_detail_id', $id_general_information)->row_object();
+
+        // var_dump($data['DataFasilitasKamar']); die;
 
         $join = " master_fasilitas_kamar_header.id = master_fasilitas_kamar_detail.fasilitas_kamar_header_id";
         $this->db->select('master_fasilitas_kamar_detail.id, 
@@ -29,6 +32,9 @@ class Room_facilities extends CI_Controller
         $this->db->join('master_fasilitas_kamar_header', $join);
         $this->db->where('master_fasilitas_kamar_detail.status_id', 1);
         $data['FasilitasKamar'] = $this->db->get()->result();
+
+        // print_r($data['FasilitasKamar']); 
+
         $data['content'] = 'list-room-fasilitas';
         $this->load->view('welcome_message', $data);
         // } else {
@@ -42,9 +48,12 @@ class Room_facilities extends CI_Controller
         $add['fasilitas_kamar_detail_id'] = $this->input->post('fasilitas_kamar_detail_id');
 
         $availability_tipe_kamar_id = $this->input->post("availability_tipe_kamar_id");
-        if ($availability_tipe_kamar_id == null)
-            $availability_tipe_kamar_id =  [];
+        // $fasilitas_kamar_detail_id = $this->input->post("fasilitas_kamar_detail_id");
+        if ($availability_tipe_kamar_id == null) $availability_tipe_kamar_id =  [];
+        // if ($fasilitas_kamar_detail_id == null) $fasilitas_kamar_detail_id =  [];
         $add['availability_tipe_kamar_id'] = json_encode($availability_tipe_kamar_id);
+        // $add['fasilitas_kamar_detail_id'] = json_encode($fasilitas_kamar_detail_id);
+        $add['fasilitas_kamar_detail_id'] = $add['fasilitas_kamar_detail_id'];
         $add['created_by'] = 1;
         $add['created_date'] = date("Y-m-d H:i:s");
         $add['updated_by'] = null;
@@ -53,6 +62,7 @@ class Room_facilities extends CI_Controller
         $add['deleted_date'] = null;
         $add['status_id'] = 1;
 
+        // print_r($add['availability_tipe_kamar_id']);  die();
 
         $this->MSudi->AddData('fasilitas_kamar', $add);
         redirect(site_url('Room_facilities/index'));
