@@ -19,6 +19,17 @@ class Photos extends CI_Controller
         return $this->load->library('upload', $config);
     }
 
+    function getLastPathSegment($url) {
+        $path = parse_url($url, PHP_URL_PATH); // to get the path from a whole URL
+        $pathTrimmed = trim($path, '/'); // normalise with no leading or trailing slash
+        $pathTokens = explode('/', $pathTrimmed); // get segments delimited by a slash
+
+        if (substr($path, -23) !== '/') {
+            array_pop($pathTokens);
+        }
+        return end($pathTokens); // get the last segment
+    }
+
     public function index($id_general_information = null)
     {
         if ($this->session->userdata('Login')) {
@@ -74,8 +85,13 @@ class Photos extends CI_Controller
 
                     $gambar = $this->upload->data('file_name');
                     // $data[] = $gambar;
-                    // $filename = site_url('uploads/foto_properti/') . $gambar;
-                    $filename = "http://localhost/carikamar-web/uploads/foto_properti/" . $gambar;
+                    /*$filename = site_url('uploads/foto_properti/') . $gambar;
+                    $filename = "http://localhost/carikamar-web/uploads/foto_properti/" . $gambar;*/
+                    $dynamic_url = site_url();
+                    $arr = explode('/', $dynamic_url);
+                    $url = "http://".$_SERVER['SERVER_NAME']."/".$arr[count($arr) - 3]."/uploads/foto_properti/";
+                    $filename = $url.$gambar;
+                    
                     $replcate = str_replace("index.php/", "", $filename);
                     $data[]   = $replcate;
 
