@@ -1,20 +1,31 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
+date_default_timezone_set('Asia/Jakarta');
 
 class Photos extends CI_Controller
 {
     function __construct()
     {
         parent::__construct();
-
         $this->load->model('MSudi');
     }
+
+    public function imageConf() {
+        $config['upload_path'] = './../uploads/test';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|jfif';
+        $config['max_size']  = '20000000';
+        $config['overwrite']  = true;
+        $config['encrypt_name']  = true;
+        return $this->load->library('upload', $config);
+    }
+
     public function index($id_general_information = null)
     {
         // if ($this->session->userdata('Login')) {
         // 	$data['nama'] = $this->session->userdata('nama');
         // 	$data['level'] = $this->session->userdata('level');
-        // $data['DataMasterTipeProperti'] = $this->MSudi->GetDataWhere('master_tipe_properti', 'status_id', 1)->result();
+        $data['DataFotoProperty'] = $this->MSudi->GetDataWhere('foto_properti', 'informasi_umum_detail_id', $id_general_information)->row_object();
+
         // $data['CurrentUrl']             = null;
         $data['CurrentUrl']             = $id_general_information;
         $data['DataMasterProperti']     = null;
@@ -24,6 +35,79 @@ class Photos extends CI_Controller
         // } else {
         // 	redirect(site_url('Login'));
         // }
+    }
+
+    public function AddPhotos()
+    {
+        $informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id'); 
+        
+        if ($_FILES['files']) {
+            
+            $checkImage = $this->MSudi->GetDataWhere('foto_properti', 'informasi_umum_detail_id', $informasi_umum_detail_id)->row_object();
+            
+            if (!empty($checkImage)) {
+                foreach ((array) json_decode($checkImage->foto) as $key) {
+                    $image_path = './../uploads/test/';
+                    unlink($image_path.basename($key));
+                }
+            }
+
+            $files = $_FILES;
+            $cpt = count($_FILES['files']['name']);
+            $data = array();
+            // var_dump($cpt); die;
+            for($i=0; $i<$cpt; $i++)
+            {           
+                $_FILES['files']['name']      =   $files['files']['name'][$i];
+                $_FILES['files']['type']      =   $files['files']['type'][$i];
+                $_FILES['files']['tmp_name']  =   $files['files']['tmp_name'][$i];
+                $_FILES['files']['error']     =   $files['files']['error'][$i];
+                $_FILES['files']['size']      =   $files['files']['size'][$i];    
+                $this->imageConf();
+                if (!$this->upload->do_upload('files')){
+                    // $this->setMessages('Oooppsss','error',strip_tags($this->upload->display_errors()));
+                    // redirect('pages/inputcontent');
+                    echo strip_tags($this->upload->display_errors());
+                }else{
+
+                    $gambar = $this->upload->data('file_name');
+                    // $data[] = $gambar;
+                    // $filename = site_url('uploads/test/') . $gambar;
+                    $filename = "http://localhost/carikamar-web/uploads/test/" . $gambar;
+                    $replcate = str_replace("index.php/", "", $filename);
+                    $data[]   = $replcate;
+
+                }
+
+            }
+
+            $parsedataImage = json_encode($data);
+            $replace_character = str_replace("\/", "/", $parsedataImage);
+            $image_upload = $replace_character;
+            
+            $insert = array(
+                'informasi_umum_detail_id' => $informasi_umum_detail_id,
+                'foto' => $image_upload,
+                'foto_tipe_id' => 2,
+                'status_id'  => 0,
+                'created_by' => $this->session->userdata('id_user'),
+                'created_date' => date("Y-m-d H:i:s"),
+                'updated_by' => null,
+                'updated_date' => null,
+                'deleted_by' => null,
+                'deleted_date' => null,
+                'status_id' => 1
+            );
+            
+            if (!empty($checkImage)) {
+                $this->MSudi->UpdateData('foto_properti', 'informasi_umum_detail_id', $informasi_umum_detail_id, $insert);       
+                redirect(site_url('Photos/index/').$informasi_umum_detail_id);
+            }else{
+                $result = $this->MSudi->AddData('foto_properti', $insert);
+                redirect(site_url('Photos/index/').$informasi_umum_detail_id);
+            }
+        }
+
     }
 
     // public function AddGeneralInformation()

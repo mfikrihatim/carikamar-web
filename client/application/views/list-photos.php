@@ -34,40 +34,50 @@ section { flex-grow: 1;}.file-drop-area { position: relative; display: flex; ali
 <!-- /.col -->
 <div class="col-sm-9">
     <h1 class="mb-3 mt-1">Photos</h1>
-    <div class="card">
-        <div class="card-header">Property</div>
-        <form action="<?php echo site_url('General_information/AddGeneralInformation'); ?>" method="post" role="form"
-            enctype='multipart/form-data'>
-            <div class="card-body">
-                <div class="row ">
-                    <div class="col-4">
-                        Property
-                        <!-- <span class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Channel Manager allows you to manage availability, rates, and inventory across all of your OTA channels from a single source"></span> -->
-                    </div>
-                    <div class="col-7">
-                        <label>Upload Files Photo</label>
-                        <div class="file-drop-area">
-                            <span class="fake-btn">Choose files</span>
-                            <span class="file-msg">or tarik dan jatuhkan file di sini</span>
-                            <input type="file" id="files" class="file-input form-control" name="files[]" multiple="">
+    <form action="<?php echo site_url('Photos/AddPhotos'); ?>" method="post" role="form"
+        enctype='multipart/form-data'>
+        <input type="hidden" name="informasi_umum_detail_id" value="<?= $CurrentUrl?> ">
+        <div class="card">
+            <div class="card-header">Property</div>
+                <div class="card-body">
+                    <div class="row ">
+                        <div class="col-4">
+                            Property
+                            <!-- <span class="fas fa-question-circle" data-toggle="tooltip" data-placement="right" title="Channel Manager allows you to manage availability, rates, and inventory across all of your OTA channels from a single source"></span> -->
                         </div>
-                        <!-- <div class="field" align="left">
-                            <h3>Upload your images</h3>
-                            <input type="file" id="files" name="files[]" multiple />
-                        </div> -->
+                        <div class="col-7">
+                            <label>Upload Files Photo</label>
+                            <div class="file-drop-area">
+                                <span class="fake-btn">Choose files</span>
+                                <span class="file-msg">or tarik dan jatuhkan file di sini</span>
+                                <input type="file" id="files" class="file-input form-control" name="files[]" multiple="">
+                            </div>
+                            <!-- <div class="field" align="left">
+                                <h3>Upload your images</h3>
+                                <input type="file" id="files" name="files[]" multiple />
+                            </div> -->
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row" id="result-image">
+                    <?php if (!empty($DataFotoProperty)): ?>
+                        <?php foreach (json_decode($DataFotoProperty->foto) as $image): ?>
+                            <div class="col-2" id="remove-image">
+                                <div class="img">
+                                        <img src="<?= $image ?>" style="width: 100px; height: 100px;">
+                                </div>
+                            </div>
+                        <?php endforeach ?>
+                    <?php endif ?>
+                        <!-- <div id="result-image"> -->
+                        <!-- </div> -->
                     </div>
                 </div>
-                <br>
-                <div class="row" id="result-image">
-                    <!-- <div id="result-image"> -->
-                    <!-- </div> -->
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
 </div>
 <!-- /.col -->
 <script>
