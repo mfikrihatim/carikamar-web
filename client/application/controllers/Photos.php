@@ -21,9 +21,9 @@ class Photos extends CI_Controller
 
     public function index($id_general_information = null)
     {
-        // if ($this->session->userdata('Login')) {
-        // 	$data['nama'] = $this->session->userdata('nama');
-        // 	$data['level'] = $this->session->userdata('level');
+        if ($this->session->userdata('Login')) {
+        	$data['nama'] = $this->session->userdata('nama');
+        	$data['level'] = $this->session->userdata('level');
         $data['DataFotoProperty'] = $this->MSudi->GetDataWhere('foto_properti', 'informasi_umum_detail_id', $id_general_information)->row_object();
 
         // $data['CurrentUrl']             = null;
@@ -32,9 +32,9 @@ class Photos extends CI_Controller
         $data['DataMasterKontak']       = null;
         $data['content'] = 'list-photos';
         $this->load->view('welcome_message', $data);
-        // } else {
-        // 	redirect(site_url('Login'));
-        // }
+        } else {
+        	redirect(site_url('Login'));
+        }
     }
 
     public function AddPhotos()
@@ -45,6 +45,7 @@ class Photos extends CI_Controller
             
             $checkImage = $this->MSudi->GetDataWhere('foto_properti', 'informasi_umum_detail_id', $informasi_umum_detail_id)->row_object();
             
+            /* Check Gambar Di Storange */
             if (!empty($checkImage)) {
                 foreach ((array) json_decode($checkImage->foto) as $key) {
                     $image_path = './../uploads/foto_properti/';
@@ -55,7 +56,8 @@ class Photos extends CI_Controller
             $files = $_FILES;
             $cpt = count($_FILES['files']['name']);
             $data = array();
-            // var_dump($cpt); die;
+            
+            /* Loop Multiple Foto */
             for($i=0; $i<$cpt; $i++)
             {           
                 $_FILES['files']['name']      =   $files['files']['name'][$i];

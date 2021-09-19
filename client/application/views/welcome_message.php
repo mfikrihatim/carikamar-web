@@ -313,8 +313,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         let geocoder;
         let responseDiv;
         let response;
-        var lat_now = "<?= $lat ?>";
-        var lng_now = "<?= $lng ?>";
+        var lat_now = `<?= $lat ?>`;
+        var lng_now = `<?= $lng ?>`;
 
         window.onload = function () {
             initMap();
@@ -323,7 +323,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         function addMarkerInfo() {
             
             var MarkerMaps = async () => {
-                var myLatlng = {lat: parseFloat(lat_now), lng: parseFloat(lng_now)}
+                var myLatlng = {lat: parseFloat(lat_now), lng: parseFloat()}
                 var icons = "https://i.ibb.co/1Qctzk1/map-marker.png"
                 const marker = new google.maps.Marker({
                     position: myLatlng,

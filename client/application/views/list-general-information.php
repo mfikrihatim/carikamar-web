@@ -5,21 +5,21 @@
         <div class="card-header">Property Details</div>
         <form id="input">
             <input type="text" name="informasi_umum_detail_id" id="informasi_umum_detail_id" class="form-control"
-                style="display:none" value="<?= $DataMasterProperti->id ?>" />
+                style="display:none" value="<?= !empty($DataMasterProperti) ? $DataMasterProperti->id : "" ?>" />
             <input type="text" name="informasi_umum_kontak_id" id="informasi_umum_kontak_id" class="form-control"
-                style="display:none" value="<?= $DataMasterKontak->id ?>" />
+                style="display:none" value="<?= !empty($DataMasterKontak) ? $DataMasterKontak->id : "" ?>" />
             <div class="card-body">
                 <div class="row">
                     <div class="col-4">Property Name*</div>
                     <div class="col-7">
-                        <input type="text" class="form-control" name="nama_properti" id="nama_properti" value="<?= empty($DataMasterProperti->nama_properti) ? '' : $DataMasterProperti->nama_properti ?>"/>
+                        // <input type="text" class="form-control" name="nama_properti" id="nama_properti" value="<?= empty($DataMasterProperti) ? '' : $DataMasterProperti->nama_properti ?>"/>
                     </div>
                 </div>
                 <hr />
                 <div class="row mt-3">
                     <div class="col-4">Legal Entity Name</div>
                     <div class="col-7">
-                        <input type="text" class="form-control" name="nama_badan_hukum" id="nama_badan_hukum" value='<?= empty($DataMasterProperti->nama_badan_hukum) ? '' : $DataMasterProperti->nama_badan_hukum ?>'/>
+                        <input type="text" class="form-control" name="nama_badan_hukum" id="nama_badan_hukum" value='<?= empty($DataMasterProperti) ? '' : $DataMasterProperti->nama_badan_hukum ?>'/>
                     </div>
                 </div>
                 <hr />
@@ -32,7 +32,7 @@
                             //  $voucher = $this->MSudi->GetData('tb_voucher');
                             foreach ($DataMasterTipeProperti as $ReadDS) {
                             ?>
-                                <input class="form-check-input" type="radio" name="tipe_properti_id" id="tipe_properti_id" <?= $ReadDS->id === $DataMasterProperti->tipe_properti_id ? "checked" : "" ?> value="<?= $ReadDS->id ?>"  />
+                                <input class="form-check-input" type="radio" name="tipe_properti_id" id="tipe_properti_id" <?= !empty($DataMasterProperti) ? $DataMasterProperti->tipe_properti_id == $ReadDS->id ? "checked" : "" : "" ?> value="<?= $ReadDS->id ?>"  />
                                 <b><?php echo $ReadDS->nama_tipe; ?></b><br />
                                 <?php echo $ReadDS->deskripsi; ?><br>
                             <?php } ?>
@@ -52,21 +52,21 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input class="form-control" type="text" name="lat_maps" id="lat_maps" placeholder="Lat ..." readonly="" value="<?= $lat ?>">
+                                    <input class="form-control" type="text" name="lat_maps" id="lat_maps" placeholder="Lat ..." readonly="" value="<?= empty($lat) ? "" : $lat ?>">
                                 </div>
                                 <div class="col-md-6">
-                                    <input class="form-control" type="text" name="lng_maps" id="lng_maps" placeholder="Long ..." readonly="" value="<?= $lng ?>">
+                                    <input class="form-control" type="text" name="lng_maps" id="lng_maps" placeholder="Long ..." readonly="" value="<?= empty($lng) ? "" : $lng ?>">
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group ">
                             <p>Street Address*</p>
-                            <textarea class="form-control" name="alamat_jalan" id="alamat_jalan" rows="3"><?= !empty($DataMasterProperti->alamat_jalan) ? $DataMasterProperti->alamat_jalan : null ?></textarea>
+                            <textarea class="form-control" name="alamat_jalan" id="alamat_jalan" rows="3"><?= !empty($DataMasterProperti) ? $DataMasterProperti->alamat_jalan : null ?></textarea>
                         </div>
                         <div class="form-group mt-3">
                             <p>Postal Code*</p>
-                            <input type="text" name="kode_pos" class="form-control" id="kode_pos" value="<?= !empty($DataMasterProperti->kode_pos) ? $DataMasterProperti->kode_pos : null ?>"/>
+                            <input type="text" name="kode_pos" class="form-control" id="kode_pos" value="<?= !empty($DataMasterProperti) ? $DataMasterProperti->kode_pos : null ?>"/>
                         </div>
                     </div>
                 </div>
@@ -74,14 +74,14 @@
                 <div class="row mt-3">
                     <div class="col-4">Phone Number</div>
                     <div class="col-7">
-                        <input type="text" name="no_telp" id="no_telp" class="form-control" value="<?= !empty($DataMasterProperti->no_telp) ? $DataMasterProperti->no_telp : null ?>"/>
+                        <input type="text" name="no_telp" id="no_telp" class="form-control" value="<?= !empty($DataMasterProperti) ? $DataMasterProperti->no_telp : null ?>"/>
                     </div>
                 </div>
                 <hr />
                 <div class="row mt-3">
                     <div class="col-4">Number of Rooms*</div>
                     <div class="col-7">
-                        <input type="text" name="jumlah_kamar" id="jumlah_kamar" class="form-control" value="<?= !empty($DataMasterProperti->jumlah_kamar) ? $DataMasterProperti->jumlah_kamar : null ?>"/>
+                        <input type="text" name="jumlah_kamar" id="jumlah_kamar" class="form-control" value="<?= !empty($DataMasterProperti) ? $DataMasterProperti->jumlah_kamar : null ?>"/>
                     </div>
                 </div>
                 <hr />
@@ -92,13 +92,13 @@
                     </div>
                     <div class="col-7">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="flag_chanel_manager" value="1" <?= !empty($DataMasterProperti->flag_chanel_manager) == 1 ? 'checked' : NULL ?> />
+                            <input class="form-check-input" type="radio" name="flag_chanel_manager" value="1" <?= !empty($DataMasterProperti) ? $DataMasterProperti->flag_chanel_manager == 1 ? 'checked' : NULL : NULL ?> />
                             <label class="form-check-label" for="exampleRadios1">
                                 Yes
                             </label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="flag_chanel_manager" value="0" <?= !empty($DataMasterProperti->flag_chanel_manager) == 0 ? 'checked' : NULL ?> />
+                            <input class="form-check-input" type="radio" name="flag_chanel_manager" value="0" <?= !empty($DataMasterProperti) ? $DataMasterProperti->flag_chanel_manager == 0 ? 'checked' : NULL : NULL ?> />
                             <label class="form-check-label" for="exampleRadios1">
                                 No
                             </label>
@@ -214,7 +214,7 @@ $(document).ready(function() {
                   showConfirmButton: true
                 })
                 .then((response) => {
-                      window.location.href = "<?php echo site_url('General_information/index/').$DataMasterProperti->id ?>"
+                      // window.location.href = "<?php echo site_url('General_information/index/').$DataMasterProperti->id ?>"
                 })
             }
         });

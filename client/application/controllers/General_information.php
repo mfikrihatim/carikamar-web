@@ -15,6 +15,7 @@ class General_information extends CI_Controller
     public function index($id_general_information = null){
         $current_session      = $this->session->userdata('id_user');
         $check_data_informasi = $this->MSudi->getWhereGeneralInformation($current_session,$id_general_information);
+
         if (!empty($check_data_informasi)) {
             $data['CurrentUrl']             = $id_general_information;
             $data['DataMasterProperti']     = $this->MSudi->getWhereGeneralInformation($current_session,$id_general_information);
@@ -29,8 +30,9 @@ class General_information extends CI_Controller
                 $data['lat'] = $ex_lat_lng[0]; 
                 $data['lng'] = $ex_lat_lng[1]; 
             }else{
-                $data['lat'] = ""; 
-                $data['lng'] = "";
+                $lat = "40.714224"; $lng = "-73.961452";
+                $data['lat'] = floatval($lat); 
+                $data['lng'] = floatval($lng);
             }
         } else { 
             $data['CurrentUrl']             = null;
@@ -47,6 +49,9 @@ class General_information extends CI_Controller
         $data['CurrentUrl']             = null;
         $data['DataMasterProperti']     = null;
         $data['DataMasterKontak']       = null;
+        $lat = "40.714224"; $lng = "-73.961452";
+        $data['lat'] = floatval($lat); 
+        $data['lng'] = floatval($lng);
         $data['DataMasterTipeProperti'] = $this->MSudi->GetDataWhere('master_tipe_properti', 'status_id', 1)->result();
         $data['content'] = 'v_add_general_information';
         $this->load->view('welcome_message', $data);
