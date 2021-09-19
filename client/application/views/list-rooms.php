@@ -416,16 +416,16 @@ $(document).ready(function() {
                 //     "<?php echo site_url('Property_detail/index'); ?>" + "/" + result
                 //     .informasi_umum_detail_id);
                 // alert("Data Tersimpan");
-                // swal({
-                //   title: "Success!",
-                //   text: "Berhasil Update Data.",
-                //   type: "success",
-                //   timer: 5000,
-                //   showConfirmButton: true
-                // })
-                // .then((response) => {
-                //       window.location.href = ""
-                // })
+                swal({
+                  title: "Success!",
+                  text: "Berhasil Update Data.",
+                  type: "success",
+                  timer: 5000,
+                  showConfirmButton: true
+                })
+                .then((response) => {
+                      window.location.href = ""
+                })
             }
         });
     })
