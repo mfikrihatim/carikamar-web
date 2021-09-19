@@ -141,12 +141,12 @@ var $droparea = $('.file-drop-area');
 
 // highlight drag area
 $fileInput.on('dragenter focus click', function() {
-$droparea.addClass('is-active');
+    $droparea.addClass('is-active');
 });
 
 // back to normal state
 $fileInput.on('dragleave blur drop', function() {
-$droparea.removeClass('is-active');
+    $droparea.removeClass('is-active');
 });
 
 // change inner text
