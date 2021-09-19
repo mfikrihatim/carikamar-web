@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-4">Property Name*</div>
                     <div class="col-7">
-                        // <input type="text" class="form-control" name="nama_properti" id="nama_properti" value="<?= empty($DataMasterProperti) ? '' : $DataMasterProperti->nama_properti ?>"/>
+                        <input type="text" class="form-control" name="nama_properti" id="nama_properti" value="<?= empty($DataMasterProperti) ? '' : $DataMasterProperti->nama_properti ?>"/>
                     </div>
                 </div>
                 <hr />
@@ -214,7 +214,7 @@ $(document).ready(function() {
                   showConfirmButton: true
                 })
                 .then((response) => {
-                      // window.location.href = "<?php echo site_url('General_information/index/').$DataMasterProperti->id ?>"
+                      window.location.href = ""
                 })
             }
         });
