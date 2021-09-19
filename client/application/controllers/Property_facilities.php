@@ -60,6 +60,7 @@ class Property_facilities extends CI_Controller
 		$informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id');
 		$fasilitas_properti_id = $this->input->post('id');
 		$add['fasilitas_properti_detail_id'] = $this->input->post('fasilitas_properti_detail_id');
+		$add['informasi_umum_detail_id'] = $informasi_umum_detail_id;
 		$add['flag_free'] = $this->input->post('flag_free');
 		$add['flag_fullday'] = $this->input->post('flag_fullday');
 		$add['created_by'] = 1;
@@ -70,7 +71,6 @@ class Property_facilities extends CI_Controller
 		$add['deleted_date'] = null;
 		$add['status_id'] = 1;
 
-		var_dump($add); die;
 
 		if($fasilitas_properti_id == null || $fasilitas_properti_id == ''){
             $fasilitas_properti_id = $this->MSudi->AddData('fasilitas_properti', $add);

@@ -219,8 +219,5 @@ $(document).ready(function() {
             }
         });
     })
-
-
-
 });
 </script>

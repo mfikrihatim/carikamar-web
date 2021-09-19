@@ -22,8 +22,8 @@ class Photos extends CI_Controller
     public function index($id_general_information = null)
     {
         if ($this->session->userdata('Login')) {
-        	$data['nama'] = $this->session->userdata('nama');
-        	$data['level'] = $this->session->userdata('level');
+    	$data['nama'] = $this->session->userdata('nama');
+    	$data['level'] = $this->session->userdata('level');
         $data['DataFotoProperty'] = $this->MSudi->GetDataWhere('foto_properti', 'informasi_umum_detail_id', $id_general_information)->row_object();
 
         // $data['CurrentUrl']             = null;

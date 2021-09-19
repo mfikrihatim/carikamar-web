@@ -80,73 +80,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <p>Apa kategori akomodasi Anda? Catatan: Jika Anda tidak dapat menemukan kategori yang
                                 persis sama untuk akomodasi Anda, pilihlah salah satu kategori yang paling mewakili.</p>
                         </div>
-                        <div class="col-md-6">
-                            <a href="<?php echo site_url('General_information/AddAkomodasi'); ?>" style="color: black;"
-                                id="myButton">
-                                <div class="card card-widget widget-user-2">
-                                    <div class="widget-user-header">
-                                        <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
+                        <?php foreach ($dataListProperty as $key): ?>
+                            <div class="col-md-6">
+                                <a href="<?php echo site_url('General_information/AddAkomodasi'); ?>" style="color: black;"
+                                    id="myButton">
+                                    <div class="card card-widget widget-user-2">
+                                        <div class="widget-user-header">
+                                            <div class="widget-user-image">
+                                                <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
+                                                    alt="User Avatar">
+                                            </div>
+                                            <!-- /.widget-user-image -->
+                                            <h3 class="widget-user-username"><?= $key->nama_tipe ?></h3>
+                                            <h5 class="widget-user-desc"><?= $key->deskripsi ?></h5>
                                         </div>
-                                        <!-- /.widget-user-image -->
-                                        <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                        <h5 class="widget-user-desc">Lead Developer</h5>
                                     </div>
-                                </div>
-                            </a>
-                            <!-- /.widget-user -->
-                        </div>
-                        <div class="col-md-6">
-                            <a href="<?php echo site_url('General_information/AddAkomodasi'); ?>" style="color: black;"
-                                id="myButton">
-                                <div class="card card-widget widget-user-2">
-                                    <div class="widget-user-header">
-                                        <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
-                                        </div>
-                                        <!-- /.widget-user-image -->
-                                        <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                        <h5 class="widget-user-desc">Lead Developer</h5>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-6">
-                            <a href="<?php echo site_url('General_information/AddAkomodasi'); ?>" style="color: black;"
-                                id="myButton">
-                                <div class="card card-widget widget-user-2">
-                                    <div class="widget-user-header">
-                                        <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
-                                        </div>
-                                        <!-- /.widget-user-image -->
-                                        <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                        <h5 class="widget-user-desc">Lead Developer</h5>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- /.widget-user -->
-                        </div>
-                        <div class="col-md-6">
-                            <a href="<?php echo site_url('General_information/index'); ?>" style="color: black;"
-                                id="myButton">
-                                <div class="card card-widget widget-user-2">
-                                    <div class="widget-user-header">
-                                        <div class="widget-user-image">
-                                            <img src="<?php echo base_url('assets/tera/icon.png" alt="Card image cap'); ?>"
-                                                alt="User Avatar">
-                                        </div>
-                                        <!-- /.widget-user-image -->
-                                        <h3 class="widget-user-username">Nadia Carmichael</h3>
-                                        <h5 class="widget-user-desc">Lead Developer</h5>
-                                    </div>
-                                </div>
-                            </a>
-                            <!-- /.widget-user -->
-                        </div>
+                                </a>
+                                <!-- /.widget-user -->
+                            </div>
+                        <?php endforeach ?>
                     </div>
                 </div>
             </div>

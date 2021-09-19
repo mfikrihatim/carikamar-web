@@ -2,8 +2,8 @@
 <div class="col-sm-9">
     <h1 class="mb-3 mt-1">Property Facilities</h1>
     <form id="input">
-                <!-- <input type="text" name="informasi_umum_detail_id" id="informasi_umum_detail_id" class="form-control"
-                style="display:none" value="" /> -->
+                <input type="text" name="informasi_umum_detail_id" id="informasi_umum_detail_id" class="form-control"
+                style="display:none" value="<?= !empty($CurrentUrl) ? $CurrentUrl : "" ?>" />
                 <input type="text" name="id" id="fasilitas_properti_id" class="form-control"
                 style="display:none" value="" />
         <div class="card-body">
@@ -93,6 +93,8 @@
     </form>
 </div>
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <script>
 $(document).ready(function() {
     $("#simpan").on('click', function() {
@@ -107,10 +109,20 @@ $(document).ready(function() {
                 var result = data;
                 $('#informasi_umum_detail_id').val(result.informasi_umum_detail_id);
                 $('#fasilitas_properti_id').val(result.id);
-                $("#Property_detail").attr("href",
+                /*$("#Property_detail").attr("href",
                     "<?php echo site_url('Property_detail/index'); ?>" + "/" + result
-                    .informasi_umum_detail_id);
-                alert("Data Tersimpan");
+                    .informasi_umum_detail_id);*/
+                // alert("Data Tersimpan");
+                swal({
+                  title: "Success!",
+                  text: "Berhasil Menambahkan Data.",
+                  type: "success",
+                  timer: 5000,
+                  showConfirmButton: true
+                })
+                .then((response) => {
+                      window.location.href = ""
+                })
             }
         });
     })

@@ -60,15 +60,15 @@ class Welcome extends CI_Controller
 
 	public function VAkomodasi()
 	{
-		// if ($this->session->userdata('Login')) {
-		// 	$data['nama'] = $this->session->userdata('nama');
-		// 	$data['level'] = $this->session->userdata('level');
-
-		// $data['content'] = 'list-general-information';
-		$this->load->view('VAkomodasi');
-		// } else {
-		// 	redirect(site_url('Login'));
-		// }
+		if ($this->session->userdata('Login')) {
+			$data['nama'] = $this->session->userdata('nama');
+			$data['level'] = $this->session->userdata('level');
+			$data['dataListProperty'] = $this->MSudi->GetData('master_tipe_properti');
+			// $data['content'] = 'list-general-information';
+			$this->load->view('VAkomodasi', $data);
+		} else {
+			redirect(site_url('Login'));
+		}
 	}
 	public function Logout()
 	{
