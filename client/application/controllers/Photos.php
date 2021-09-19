@@ -11,7 +11,7 @@ class Photos extends CI_Controller
     }
 
     public function imageConf() {
-        $config['upload_path'] = './../uploads/test';
+        $config['upload_path'] = './../uploads/foto_properti';
         $config['allowed_types'] = 'gif|jpg|png|jpeg|jfif';
         $config['max_size']  = '20000000';
         $config['overwrite']  = true;
@@ -47,7 +47,7 @@ class Photos extends CI_Controller
             
             if (!empty($checkImage)) {
                 foreach ((array) json_decode($checkImage->foto) as $key) {
-                    $image_path = './../uploads/test/';
+                    $image_path = './../uploads/foto_properti/';
                     unlink($image_path.basename($key));
                 }
             }
@@ -72,8 +72,8 @@ class Photos extends CI_Controller
 
                     $gambar = $this->upload->data('file_name');
                     // $data[] = $gambar;
-                    // $filename = site_url('uploads/test/') . $gambar;
-                    $filename = "http://localhost/carikamar-web/uploads/test/" . $gambar;
+                    // $filename = site_url('uploads/foto_properti/') . $gambar;
+                    $filename = "http://localhost/carikamar-web/uploads/foto_properti/" . $gambar;
                     $replcate = str_replace("index.php/", "", $filename);
                     $data[]   = $replcate;
 
