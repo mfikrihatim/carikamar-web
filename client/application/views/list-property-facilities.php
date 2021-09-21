@@ -5,7 +5,7 @@
                 <input type="text" name="informasi_umum_detail_id" id="informasi_umum_detail_id" class="form-control"
                 style="display:none" value="<?= !empty($CurrentUrl) ? $CurrentUrl : "" ?>" />
                 <input type="text" name="id" id="fasilitas_properti_id" class="form-control"
-                style="display:none" value="" />
+                style="display: none" value="<?= !empty($DataFasilitasProperti) ? $DataFasilitasProperti->id != NULL ? $DataFasilitasProperti->id : "" : "" ?>" />
         <div class="card-body">
             <div class="form-group">
                 <label>Pilih Informati Umum Detail</label>
@@ -15,7 +15,7 @@
 
                     foreach ($DataInformationDetail as $ReadDS) {
                     ?>
-                        <option value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_properti; ?></option>
+                        <option <?= !empty($DataFasilitasProperti) ? $DataFasilitasProperti->informasi_umum_detail_id == $ReadDS->id ? "selected" : "" : "" ?> value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_properti; ?></option>
                     <?php
                     }
                     ?>
@@ -65,11 +65,11 @@
                 <label>Flag Free</label>
                 <div class="radio">
                     <label>
-                        <input type="radio" value="1" name="flag_free" id="optionsRadios1"  required>
+                        <input <?=  !empty($DataFasilitasProperti) ?  $DataFasilitasProperti->flag_free == 1 ? "checked" : "" : ""  ?> type="radio" value="1" name="flag_free" id="optionsRadios1"  required>
                         Yes
                     </label>
                     <label>
-                        <input type="radio" value="0" name="flag_free" id="optionsRadios1"  required>
+                        <input type="radio" value="0" name="flag_free" id="optionsRadios1" <?= !empty($DataFasilitasProperti) ? $DataFasilitasProperti->flag_free == 0 ? "checked" : "" : "" ?> required>
                         NO
                     </label>
                 </div>
@@ -78,11 +78,11 @@
                 <label>Flag Fullday</label>
                 <div class="radio">
                     <label>
-                        <input type="radio" value="1" name="flag_fullday"  id="optionsRadios1" required>
+                        <input <?= !empty($DataFasilitasProperti) ? $DataFasilitasProperti ->flag_fullday == 1 ? "checked" : "" : "" ?> type="radio" value="1" name="flag_fullday"  id="optionsRadios1" required>
                         Yes
                     </label>
                     <label>
-                        <input type="radio" value="0" name="flag_fullday"  id="optionsRadios1" required>
+                        <input <?= !empty($DataFasilitasProperti) ? $DataFasilitasProperti ->flag_fullday == 0 ? "checked" : "" : "" ?> type="radio" value="0" name="flag_fullday"  id="optionsRadios1" required>
                         NO
                     </label>
                 </div>

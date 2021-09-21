@@ -3,6 +3,7 @@
     <h1 class="mb-3 mt-1">Property Facilities</h1>
     <form action="<?php echo site_url('Room_facilities/AddFasilitasKamar'); ?>" method="post" role="form" enctype='multipart/form-data'>
         <div class="card-body">
+            <input style="display: none;" type="text" name="id_fasilitas_kamar" value="<?= !empty($DataFasilitasKamar) ? $DataFasilitasKamar->id : "" ?>">
             <div class="form-group">
                 <label>Pilih Informati Umum Detail</label>
                 <select class="form-control" name="informasi_umum_detail_id" required>
@@ -36,7 +37,6 @@
                     <?php if (!empty($DataFasilitasKamar)): ?>
                         <?php foreach (json_decode($DataFasilitasKamar->availability_tipe_kamar_id) as $key): 
                             $arrayData[$key] = $key;
-                            // print_r($arrayData);
                         ?>
                         <?php endforeach ?>
 
@@ -48,7 +48,11 @@
                             <div class="row mt-1">
                                 <div class="col-6">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input mr-2" type="checkbox" name="availability_tipe_kamar_id[]" id="exampleRadios1" value="<?php echo $ReadDS->id; ?>" />
+                                        <input 
+                                        <?php if (in_array($ReadDS->id, $arrayData)): ?>
+                                            checked="checked"
+                                        <?php endif ?>
+                                        class="form-check-input mr-2" type="checkbox" name="availability_tipe_kamar_id[]" id="exampleRadios1" value="<?php echo $ReadDS->id; ?>" />
                                         <input class="form-check-input mr-2" type="hidden" name="fasilitas_kamar_detail_id" id="exampleRadios1" value="<?php echo $ReadDS->id; ?>" />
                                         <label class="form-check-label" for="exampleRadios1"> <?php echo $ReadDS->nama; ?> </label>
                                     </div>

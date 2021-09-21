@@ -28,6 +28,8 @@ class Property_facilities extends CI_Controller
 		$this->db->join('master_fasilitas_properti_header', $join);
 		$this->db->where('master_fasilitas_properti_detail.status_id', 1);
 		$data['FasilitasProperti'] = $this->db->get()->result();
+		$data['DataFasilitasProperti'] = $this->MSudi->GetDataWhere('fasilitas_properti', 'informasi_umum_detail_id', $id_general_information)->row_object();
+
 		$data['content'] = 'list-property-facilities';
 		$this->load->view('welcome_message', $data);
 		// } else {
@@ -70,8 +72,7 @@ class Property_facilities extends CI_Controller
 		$add['deleted_by'] = null;
 		$add['deleted_date'] = null;
 		$add['status_id'] = 1;
-
-
+		// var_dump($add['flag_free']); die;
 		if($fasilitas_properti_id == null || $fasilitas_properti_id == ''){
             $fasilitas_properti_id = $this->MSudi->AddData('fasilitas_properti', $add);
         }else{
