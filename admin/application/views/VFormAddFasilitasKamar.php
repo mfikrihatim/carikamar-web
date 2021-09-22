@@ -18,7 +18,7 @@
      </div>
      <!-- /.content-header -->
      <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/css/multi-select.css'>
+     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/css/multi-select.css'>
      <!-- Main content -->
      <section class="content">
          <div class="container-fluid">
@@ -32,7 +32,7 @@
 
                                      <div class="form-group">
                                          <label>Pilih Informasi Umum Detail</label>
-                                         <select class="form-control" name="fasilitas_kamar_detail_id" required>
+                                         <select class="form-control" name="informasi_umum_detail_id" required>
                                              <option value="">Pilih Informasi Umum Detail</option>
                                              <?php
                                                 //  $voucher = $this->MSudi->GetData('tb_voucher');
@@ -46,7 +46,7 @@
                                      </div>
                                      <div class="form-group">
                                          <label>Fasilitas Kamar Detail</label>
-                                         <select class="form-control" name="informasi_umum_detail_id" required>
+                                         <select class="form-control" name="fasilitas_kamar_detail_id" required>
                                              <option value="">Pilih Fasilitas Kamar Detail</option>
                                              <?php
                                                 //  $voucher = $this->MSudi->GetData('tb_voucher');
@@ -58,21 +58,21 @@
                                                 ?>
                                          </select>
                                      </div>
-                         <div class="form-group">
-                              <div class="form-group">
-                                <label>Pilih Tipe Kamar</label>
-                                    <select class="form-control" multiple="multiple" name="availability_tipe_kamar_id[]" id="my-select">
-                                          <?php
-                                                //  $voucher = $this->MSudi->GetData('tb_voucher');
-                                                foreach ($TipeKamar as $ReadDS) {
-                                                ?>
-                                                 <option value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_kamar; ?></option>
-                                             <?php
-                                                }
-                                                ?>
-                                      </select>
-                            </div>
-                          </div>
+                                     <div class="form-group">
+                                         <div class="form-group">
+                                             <label>Pilih Tipe Kamar</label>
+                                             <select class="form-control" multiple="multiple" name="availability_tipe_kamar_id[]" id="my-select">
+                                                 <?php
+                                                    //  $voucher = $this->MSudi->GetData('tb_voucher');
+                                                    foreach ($TipeKamar as $ReadDS) {
+                                                    ?>
+                                                     <option value="<?php echo $ReadDS->id; ?>"><?php echo $ReadDS->nama_kamar; ?></option>
+                                                 <?php
+                                                    }
+                                                    ?>
+                                             </select>
+                                         </div>
+                                     </div>
 
                                      <div class="form-group">
                                          <button type="submit" class="btn btn-primary">Submit</button>
@@ -85,8 +85,8 @@
      </section>
  </div>
  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/js/jquery.multi-select.min.js'></script>
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/multi-select/0.9.12/js/jquery.multi-select.min.js'></script>
 
-    <script>
-        $('#my-select').multiSelect();
-    </script>
+ <script>
+     $('#my-select').multiSelect();
+ </script>

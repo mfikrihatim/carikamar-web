@@ -26,8 +26,7 @@
                  <div class="box-header with-border">
                      <div class="row">
                          <div class="col-12">
-                             <form action="<?php echo site_url('Fasilitas_Properti/AddDataFasilitasProperti'); ?>"
-                                 method="post" role="form">
+                             <form action="<?php echo site_url('Fasilitas_Properti/AddDataFasilitasProperti'); ?>" method="post" role="form">
                                  <div class="card-body">
                                      <div class="form-group">
                                          <label>Pilih Informasi Umum </label>
@@ -37,8 +36,8 @@
                                                 //  $voucher = $this->MSudi->GetData('tb_voucher');
                                                 foreach ($DataInformasiUmumDetail as $ReadDS) {
                                                 ?>
-                                             <option value="<?php echo $ReadDS->id; ?>">
-                                                 <?php echo $ReadDS->nama_properti; ?></option>
+                                                 <option value="<?php echo $ReadDS->id; ?>">
+                                                     <?php echo $ReadDS->nama_properti; ?></option>
                                              <?php
                                                 }
                                                 ?>
@@ -52,8 +51,8 @@
                                                 //  $voucher = $this->MSudi->GetData('tb_voucher');
                                                 foreach ($DataFasilitasPropertiDetail as $ReadDS) {
                                                 ?>
-                                             <option value="<?php echo $ReadDS->id; ?>">
-                                                 <?php echo $ReadDS->nama; ?></option>
+                                                 <option value="<?php echo $ReadDS->id; ?>">
+                                                     <?php echo $ReadDS->nama; ?></option>
                                              <?php
                                                 }
                                                 ?>
@@ -65,8 +64,7 @@
                                                  <label>Flag Free</label>
                                                  <div class="input-group">
                                                      <label class="form-check-label ml-4 mr-3">
-                                                         <input class="form-check-input" type="checkbox"
-                                                             name="flag_free" value="1" id="submit" /> 1
+                                                         <input class="form-check-input" type="checkbox" name="flag_free" value="1" id="submit" /> 1
                                                      </label>
                                                  </div>
                                              </div>
@@ -76,8 +74,7 @@
                                                  <label>Flag Fullday</label>
                                                  <div class="input-group">
                                                      <label class="form-check-label ml-4 mr-3">
-                                                         <input class="form-check-input" type="checkbox"
-                                                             name="flag_fullday" value="1" id="submit" /> 1
+                                                         <input class="form-check-input" type="checkbox" name="flag_fullday" value="1" id="submit" /> 1
                                                      </label>
                                                  </div>
                                              </div>
@@ -95,24 +92,24 @@
  </div>
 
  <script>
-// window.onload = function() {
-//     /** Your code here. **/
+     // window.onload = function() {
+     //     /** Your code here. **/
 
-//     if (localStorage.getItem("user_id") != null) {
-//         var userID = document.getElementsByName("user_id");
-//         var username = document.getElementsByName("userlogin");
-//         for (var x = 0; x < userID.length; x++) // comparison should be "<" not "<="
-//         {
-//             userID[x].value = localStorage.getItem("user_id");
-//         }
+     //     if (localStorage.getItem("user_id") != null) {
+     //         var userID = document.getElementsByName("user_id");
+     //         var username = document.getElementsByName("userlogin");
+     //         for (var x = 0; x < userID.length; x++) // comparison should be "<" not "<="
+     //         {
+     //             userID[x].value = localStorage.getItem("user_id");
+     //         }
 
-//         for (var x = 0; x < username.length; x++) // comparison should be "<" not "<="
-//         {
-//             username[x].value = localStorage.getItem("username");
-//         }
+     //         for (var x = 0; x < username.length; x++) // comparison should be "<" not "<="
+     //         {
+     //             username[x].value = localStorage.getItem("username");
+     //         }
 
-//     }
+     //     }
 
 
-// }
+     // }
  </script>

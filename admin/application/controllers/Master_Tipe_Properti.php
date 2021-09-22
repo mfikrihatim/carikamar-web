@@ -82,7 +82,7 @@ class Master_Tipe_Properti extends CI_Controller
 
 
         $this->MSudi->UpdateData('master_tipe_properti', 'id', $id, $update);
-        redirect(site_url('Master_tipe_properti/index'));
+        redirect(site_url('Master_tipe_properti/DataTipeProperti'));
     }
 
 
@@ -94,7 +94,7 @@ class Master_Tipe_Properti extends CI_Controller
         $data['foto'] = $this->session->userdata('foto');
 
         $id = $this->uri->segment('3');
-        
+
         $update['deleted_by'] = $data['id'];
         $update['deleted_date'] = date("Y-m-d H:i:s");
         $update['status_id'] = 0;

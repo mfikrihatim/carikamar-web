@@ -20,8 +20,7 @@
                          <div class="col-12">
                              <div class="card">
                                  <div class="card-header">
-                                     <a href="<?php echo site_url('Master_Tipe_Properti/VFormAddMasterTipeProperti'); ?>"
-                                         class="btn btn-success">
+                                     <a href="<?php echo site_url('Master_Tipe_Properti/VFormAddMasterTipeProperti'); ?>" class="btn btn-success">
                                          Tambah data
                                      </a>
                                  </div>
@@ -46,23 +45,21 @@
                                                     foreach ($DataMasterTipeProperti as $index => $ReadDS) {
                                                         $index = $index + 1;
                                                 ?>
-                                             <tr>
-                                                 <td><?php echo $index ?></td>
+                                                     <tr>
+                                                         <td><?php echo $index ?></td>
 
-                                                 <td><?php echo $ReadDS->nama_tipe; ?></td>
-                                                 <td><?php echo $ReadDS->deskripsi; ?></td>
-                                                 <td>
-                                                     <a href="<?php echo site_url('Master_Tipe_Properti/index/' . $ReadDS->id . '/view'); ?>"
-                                                         class="btn btn-xs btn-info">
-                                                         Edit
-                                                     </a>
-                                                     <a href="<?php echo site_url('Master_Tipe_Properti/DeleteDataMasterTipeProperti/' . $ReadDS->id); ?>"
-                                                         class="btn btn-xs btn-danger">
-                                                         Delete
-                                                     </a>
+                                                         <td><?php echo $ReadDS->nama_tipe; ?></td>
+                                                         <td><?php echo $ReadDS->deskripsi; ?></td>
+                                                         <td>
+                                                             <a href="<?php echo site_url('Master_Tipe_Properti/DataTipeProperti/' . $ReadDS->id . '/view'); ?>" class="btn btn-xs btn-info">
+                                                                 Edit
+                                                             </a>
+                                                             <a href="<?php echo site_url('Master_Tipe_Properti/DeleteDataMasterTipeProperti/' . $ReadDS->id); ?>" class="btn btn-xs btn-danger">
+                                                                 Delete
+                                                             </a>
 
-                                                 </td>
-                                             </tr>
+                                                         </td>
+                                                     </tr>
                                              <?php
                                                     }
                                                 } ?>

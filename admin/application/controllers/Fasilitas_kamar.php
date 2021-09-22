@@ -24,7 +24,7 @@ class Fasilitas_kamar extends CI_Controller
             $data['detail']['informasi_umum_detail_id'] = $tampil->informasi_umum_detail_id;
             $data['detail']['fasilitas_kamar_detail_id'] = $tampil->fasilitas_kamar_detail_id;
             $arrayTipeKamar = json_decode($tampil->availability_tipe_kamar_id, TRUE);
-			$data['detail']['availability_tipe_kamar_id'] = $arrayTipeKamar;
+            $data['detail']['availability_tipe_kamar_id'] = $arrayTipeKamar;
             $data['content'] = 'VFormUpdateFasilitasKamar';
         } else {
             $join = " informasi_umum_detail.id = fasilitas_kamar.informasi_umum_detail_id";

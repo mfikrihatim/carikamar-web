@@ -402,7 +402,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="<?php echo site_url('Master_fasilitas_kamar_header/index'); ?>" class="nav-link ">
+                                    <a href="<?php echo site_url('Master_fasilitas_kamar_header/DataMasterFasilitasKamarHeader'); ?>" class="nav-link ">
                                         <i class="nav-icon fas fa-info-circle"></i>
                                         <p>
                                             Kamar Header

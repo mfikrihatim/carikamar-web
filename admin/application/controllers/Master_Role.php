@@ -14,7 +14,7 @@ class Master_Role extends CI_Controller
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
         $data['foto'] = $this->session->userdata('foto');
-        
+
         if ($this->uri->segment(4) == 'view') {
             $id = $this->uri->segment(3);
             $tampil = $this->MSudi->GetDataWhere('master_role', 'id', $id)->row();
@@ -86,9 +86,9 @@ class Master_Role extends CI_Controller
         $data['nama'] = $this->session->userdata('nama');
         $data['email'] = $this->session->userdata('email');
         $data['foto'] = $this->session->userdata('foto');
-        
+
         $id = $this->uri->segment('3');
-        
+
         // $update['deleted_by'] = $data['id'];
         // $update['deleted_date'] = date("Y-m-d H:i:s");
         $update['status_id'] = 0;

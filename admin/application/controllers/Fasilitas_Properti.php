@@ -24,7 +24,7 @@ class Fasilitas_Properti extends CI_Controller
             $data['detail']['informasi_umum_detail_id'] = $tampil->informasi_umum_detail_id;
             $data['detail']['fasilitas_properti_detail_id'] = $tampil->fasilitas_properti_detail_id;
             $data['detail']['flag_free'] = $tampil->flag_free;
-            $data['detail']['flag_free'] = $tampil->flag_free;
+            $data['detail']['flag_fullday'] = $tampil->flag_fullday;
             $data['content'] = 'VFormUpdateFasilitasProperti';
         } else {
             $join = "informasi_umum_detail.id = fasilitas_properti.informasi_umum_detail_id";
@@ -90,8 +90,8 @@ class Fasilitas_Properti extends CI_Controller
         $id = $this->input->post('id');
         $update['informasi_umum_detail_id'] = $this->input->post('informasi_umum_detail_id');
         $update['fasilitas_properti_detail_id'] = $this->input->post('fasilitas_properti_detail_id');
-        $update['flag_free'] = $this->input->post('flag_free');
-        $update['flag_fullday'] = $this->input->post('flag_fullday');
+        $update['flag_free'] = (array_key_exists('flag_free', $_POST)) ? $_POST['flag_free'] : 0;
+        $update['flag_fullday'] = (array_key_exists('flag_fullday', $_POST)) ? $_POST['flag_fullday'] : 0;
 
         $update['updated_by'] = $data['id'];
         $update['updated_date'] = date("Y-m-d H:i:s");
@@ -110,7 +110,7 @@ class Fasilitas_Properti extends CI_Controller
         $data['foto'] = $this->session->userdata('foto');
 
         $id = $this->uri->segment('3');
-        
+
         $update['deleted_by'] = $data['id'];
         $update['deleted_date'] = date("Y-m-d H:i:s");
         $update['status_id'] = 0;
