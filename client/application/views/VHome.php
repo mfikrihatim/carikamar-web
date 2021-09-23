@@ -152,10 +152,32 @@ scratch. This page gets rid of all links and provides the needed markup only.
                         <?php
                         if (!empty($DataInformasiDetail)) {
                             foreach ($DataInformasiDetail as $index => $ReadDS) {
-                                $index = $index + 1;
+                            $index = $index + 1;
+                            $informasi_umum_detail_id = $ReadDS->id;
+                            $parse_image = $this->db->query("SELECT * FROM foto_properti WHERE informasi_umum_detail_id = '$informasi_umum_detail_id' ")->row_object();
+                            if (!empty($parse_image->foto) || !empty($parse_image)) {
+                                $image_parse = json_decode($parse_image->foto); $get_image_parse = $image_parse ? $image_parse[0] : "https://cdn.bodybigsize.com/wp-content/uploads/2020/03/noimage-15.png" ;
+                            }else{
+                                $get_image_parse = "https://cdn.bodybigsize.com/wp-content/uploads/2020/03/noimage-15.png";
+                            }
                         ?>
                         <div class="col-md-4">
-                            <div class="card card-primary">
+                            <div class="card">
+                                 <img class="card-img" src="<?= $get_image_parse ?>" alt="<?php echo $ReadDS->nama_properti; ?>" style="width: 100%; height: 200px;">
+                                <div class="card-img-overlay text-white d-flex flex-column justify-content-center">
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <h4 class="card-title"><?php echo $ReadDS->nama_properti; ?></h4>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <a href="<?php echo site_url('General_information/index/').$ReadDS->id; ?>" class="btn btn-warning" >Informasi Belum Lengkap</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="card card-primary">
                                 <div class="card-header">
                                     <h3 class="card-title"><?php echo $ReadDS->nama_properti; ?></h3>
                                     <div class="card-tools">
@@ -164,6 +186,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </button>
                                     </div>
                                 </div>
+                                <img class="card-img-top" src="<?= $get_image_parse ?>" alt="Card image cap">
                                 <div class="card-body ">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -171,7 +194,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <?php
                             }

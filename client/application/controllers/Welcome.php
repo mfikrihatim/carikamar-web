@@ -47,6 +47,7 @@ class Welcome extends CI_Controller
             // $join="tbl_staff.kd_staff = tbl_users.kd_staff AND tbl_pegawai.kd_pegawai = tbl_staff.kd_pegawai";
             // $data['DataUser']=$this->MSudi->GetData2Join('tbl_users','tbl_staff','tbl_pegawai', $join)->result();
             $data['DataInformasiDetail'] = $this->MSudi->GetDataMax('informasi_umum_detail', $config['per_page'], $start);
+            $data['db'] = ["db"=>$this->db];
             $data['content'] = 'VHome';
         }
 		

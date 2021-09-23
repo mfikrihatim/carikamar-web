@@ -74,7 +74,7 @@ section { flex-grow: 1;}.file-drop-area { position: relative; display: flex; ali
                                             <select class="form-control" name="tipe_kamar_id[]">
                                                 <?php foreach ($TipeKamar as $key): ?>
                                                     <option <?=  $foto_tipe_parse[$key_image] == $key->id ? "selected" : "" ?> value="<?= $key->id ?>" ><?= $key->nama_tipe_foto ?></option>
-                                                <?php endforeach ?>
+                                                <?php endforeach ?> 
                                             </select>
                                         </div>
                                     </div>
