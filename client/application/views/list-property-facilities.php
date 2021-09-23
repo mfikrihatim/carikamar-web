@@ -37,16 +37,23 @@
                         <!-- /.card-tools -->
                     </div>
 
-                    <!-- /.card-header -->
-                    <?php
+                    <?php if (!empty($DataFasilitasProperti)): ?>
+                        <?php foreach (json_decode($DataFasilitasProperti->fasilitas_properti_detail_id) as $key): $arrayData[$key] = $key; ?>
+                        <?php endforeach ?>
+                    <?php endif ?>
 
-                    foreach ($FasilitasProperti as $ReadDS) {
+                    <!-- /.card-header -->
+                    <?php foreach ($FasilitasProperti as $ReadDS) {
                     ?>
                         <div class="card-body">
                             <div class="row mt-1">
                                 <div class="col-6">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input mr-2" type="checkbox" name="fasilitas_properti_detail_id" id="exampleRadios1"  value="<?php echo $ReadDS->id; ?>" />
+                                        <input 
+                                            <?php if (in_array($ReadDS->id, $arrayData)): ?>
+                                                checked="checked"
+                                            <?php endif ?>
+                                        class="form-check-input mr-2" type="checkbox" name="fasilitas_properti_detail_id[]" id="exampleRadios1"  value="<?php echo $ReadDS->id; ?>" />
                                         <label class="form-check-label" for="exampleRadios1"> <?php echo $ReadDS->nama; ?> </label>
                                     </div>
                                 </div>
