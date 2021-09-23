@@ -36,6 +36,7 @@ class Photos extends CI_Controller
         	$data['nama'] = $this->session->userdata('nama');
         	$data['level'] = $this->session->userdata('level');
             $data['DataFotoProperty'] = $this->MSudi->GetDataWhere('foto_properti', 'informasi_umum_detail_id', $id_general_information)->row_object();
+            $data['TipeKamar'] = $this->MSudi->GetData('foto_tipe');
 
             // $data['CurrentUrl']             = null;
             $data['CurrentUrl']             = $id_general_information;
@@ -51,7 +52,7 @@ class Photos extends CI_Controller
     public function AddPhotos()
     {
         $informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id'); 
-        
+        $foto_tipe_id = $this->input->post('tipe_kamar_id');
         if ($_FILES['files']) {
             
             $checkImage = $this->MSudi->GetDataWhere('foto_properti', 'informasi_umum_detail_id', $informasi_umum_detail_id)->row_object();
@@ -60,6 +61,91 @@ class Photos extends CI_Controller
             if (!empty($checkImage)) {
                 foreach ((array) json_decode($checkImage->foto) as $key) {
                     $image_path = './../uploads/foto_properti/';
+                    unlink($image_path.basename($key));
+                }
+            }
+
+            $files = $_FILES;
+            $cpt = count($_FILES['files']['name']);
+            $data = array();
+            $arr_foto_tipe = array();
+            
+            /* Loop Multiple Foto */
+            for($i=0; $i<$cpt; $i++)
+            {           
+                $_FILES['files']['name']      =   $files['files']['name'][$i];
+                $_FILES['files']['type']      =   $files['files']['type'][$i];
+                $_FILES['files']['tmp_name']  =   $files['files']['tmp_name'][$i];
+                $_FILES['files']['error']     =   $files['files']['error'][$i];
+                $_FILES['files']['size']      =   $files['files']['size'][$i];   
+
+                $this->imageConf();
+                if (!$this->upload->do_upload('files')){
+                    // $this->setMessages('Oooppsss','error',strip_tags($this->upload->display_errors()));
+                    // redirect('pages/inputcontent');
+                    echo strip_tags($this->upload->display_errors());
+                }else{
+
+                    $gambar = $this->upload->data('file_name');
+                    // $data[] = $gambar;
+                    /*$filename = site_url('uploads/foto_properti/') . $gambar;
+                    $filename = "http://localhost/carikamar-web/uploads/foto_properti/" . $gambar;*/
+                    $dynamic_url = site_url();
+                    $arr = explode('/', $dynamic_url);
+                    $url = "http://".$_SERVER['SERVER_NAME']."/".$arr[count($arr) - 3]."/uploads/foto_properti/";
+                    $filename = $url.$gambar;
+                    
+                    $replcate = str_replace("index.php/", "", $filename);
+                    $data[]   = $replcate;
+                    $arr_foto_tipe[] = $foto_tipe_id[$i]; 
+                }
+
+            }
+
+            $parsedataImage = json_encode($data);
+            $replace_character = str_replace("\/", "/", $parsedataImage);
+            $image_upload = $replace_character;
+            
+            $insert = array(
+                'informasi_umum_detail_id' => $informasi_umum_detail_id,
+                'foto' => $image_upload,
+                'foto_tipe_id' => json_encode($arr_foto_tipe),
+                'status_id'  => 0,
+                'created_by' => $this->session->userdata('id_user'),
+                'created_date' => date("Y-m-d H:i:s"),
+                'updated_by' => null,
+                'updated_date' => null,
+                'deleted_by' => null,
+                'deleted_date' => null,
+                'status_id' => 1
+            );
+            
+            // var_dump($insert); die;
+
+            if (!empty($checkImage)) {
+                $this->MSudi->UpdateData('foto_properti', 'informasi_umum_detail_id', $informasi_umum_detail_id, $insert);       
+                redirect(site_url('Photos/index/').$informasi_umum_detail_id);
+            }else{
+                $result = $this->MSudi->AddData('foto_properti', $insert);
+                redirect(site_url('Photos/index/').$informasi_umum_detail_id);
+            }
+        }
+
+    }
+
+    public function AddPhotosKamar()
+    {
+        $informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id'); 
+        $tipe_kamar_id = $this->input->post('tipe_kamar_id'); 
+        
+        if ($_FILES['files']) {
+            
+            $checkImage = $this->MSudi->GetDataWhere('foto_kamar', 'informasi_umum_detail_id', $informasi_umum_detail_id)->row_object();
+            
+            /* Check Gambar Di Storange */
+            if (!empty($checkImage)) {
+                foreach ((array) json_decode($checkImage->foto) as $key) {
+                    $image_path = './../uploads/foto_kamar/';
                     unlink($image_path.basename($key));
                 }
             }
@@ -89,7 +175,7 @@ class Photos extends CI_Controller
                     $filename = "http://localhost/carikamar-web/uploads/foto_properti/" . $gambar;*/
                     $dynamic_url = site_url();
                     $arr = explode('/', $dynamic_url);
-                    $url = "http://".$_SERVER['SERVER_NAME']."/".$arr[count($arr) - 3]."/uploads/foto_properti/";
+                    $url = "http://".$_SERVER['SERVER_NAME']."/".$arr[count($arr) - 3]."/uploads/foto_kamar/";
                     $filename = $url.$gambar;
                     
                     $replcate = str_replace("index.php/", "", $filename);
@@ -104,7 +190,7 @@ class Photos extends CI_Controller
             $image_upload = $replace_character;
             
             $insert = array(
-                'informasi_umum_detail_id' => $informasi_umum_detail_id,
+                'tipe_kamar_id' => $tipe_kamar_id,
                 'foto' => $image_upload,
                 'foto_tipe_id' => 2,
                 'status_id'  => 0,
@@ -118,14 +204,13 @@ class Photos extends CI_Controller
             );
             
             if (!empty($checkImage)) {
-                $this->MSudi->UpdateData('foto_properti', 'informasi_umum_detail_id', $informasi_umum_detail_id, $insert);       
+                $this->MSudi->UpdateData('foto_kamar', 'informasi_umum_detail_id', $informasi_umum_detail_id, $insert);       
                 redirect(site_url('Photos/index/').$informasi_umum_detail_id);
             }else{
-                $result = $this->MSudi->AddData('foto_properti', $insert);
+                $result = $this->MSudi->AddData('foto_kamar', $insert);
                 redirect(site_url('Photos/index/').$informasi_umum_detail_id);
             }
         }
-
     }
 
     // public function AddGeneralInformation()

@@ -97,7 +97,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                     <div class="mt-2">
                         <small>Welcome</small><br>
-                        <small><?php echo $this->session->userdata('email') ?></small>
+                        <div class="dropdown">
+                              <p class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <?php echo $this->session->userdata('email') ?>
+                              </p>
+                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="<?= site_url('Profile') ?>">Change Password</a>
+                              </div>
+                        </div>
+                        <!-- <small><?php echo $this->session->userdata('email') ?></small> -->
                     </div>
                     <a class="nav-link mt-3" href="<?php echo site_url('Welcome/Logout'); ?>">
                         <i class="fa fa-power-off text-red"></i>
@@ -307,7 +315,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     });
     */
     </script>
-    
+
 </body>
 
 </html>

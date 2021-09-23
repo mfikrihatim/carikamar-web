@@ -50,8 +50,10 @@
                                 <div class="col-6">
                                     <div class="form-check form-check-inline">
                                         <input 
-                                            <?php if (in_array($ReadDS->id, $arrayData)): ?>
-                                                checked="checked"
+                                            <?php if (!empty($arrayData)): ?>
+                                                <?php if (in_array($ReadDS->id, $arrayData)): ?>
+                                                    checked="checked"
+                                                <?php endif ?>
                                             <?php endif ?>
                                         class="form-check-input mr-2" type="checkbox" name="fasilitas_properti_detail_id[]" id="exampleRadios1"  value="<?php echo $ReadDS->id; ?>" />
                                         <label class="form-check-label" for="exampleRadios1"> <?php echo $ReadDS->nama; ?> </label>

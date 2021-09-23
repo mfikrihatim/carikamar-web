@@ -60,24 +60,40 @@ section { flex-grow: 1;}.file-drop-area { position: relative; display: flex; ali
                     </div>
                     <br>
                     <div class="row" id="result-image">
-                    <?php if (!empty($DataFotoProperty)): ?>
-                        <?php foreach (json_decode($DataFotoProperty->foto) as $image): ?>
-                            <div class="col-2" id="remove-image">
-                                <div class="img">
-                                        <img src="<?= $image ?>" style="width: 100px; height: 100px;">
+                    <?php if (!empty($DataFotoProperty)):  $foto_tipe_parse = json_decode($DataFotoProperty->foto_tipe_id);  ?>
+                        <?php foreach (json_decode($DataFotoProperty->foto) as $key_image => $image): ?>
+                            <div class="col-4" id="remove-image">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="img">
+                                            <img src="<?= $image ?>" class="img-fluid">
+                                        </div>
+                                    </div>
+                                    <div class="card-footer">
+                                        <div class="form-group">
+                                            <select class="form-control" name="tipe_kamar_id[]">
+                                                <?php foreach ($TipeKamar as $key): ?>
+                                                    <option <?=  $foto_tipe_parse[$key_image] == $key->id ? "selected" : "" ?> value="<?= $key->id ?>" ><?= $key->nama_tipe_foto ?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach ?>
                     <?php endif ?>
-                        <!-- <div id="result-image"> -->
-                        <!-- </div> -->
+                    <!-- <div id="result-image"> -->
+                    <!-- </div> -->
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
         </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
     </form>
+    <br>
+    
+    <br>
 </div>
 <!-- /.col -->
 <script>
@@ -92,13 +108,22 @@ $(document).ready(function() {
                 var fileReader = new FileReader();
                 fileReader.onload = (function(e) {
                     var file = e.target;
-                    var html = `<div class="col-2" id="remove-image">
-                        <div class="img">
-                            <img src="${file.result}" style="width: 100px; height: 100px;">
-                        </div>
-                        <br>
-                        <div class="float-left">
-                            <button type="button" id="remove" class="btn btn-sm btn-danger">Remove</button>
+                    var html = `<div class="col-4" id="remove-image">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="img">
+                                    <img src="${file.result}" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="form-group">
+                                    <select class="form-control" name="tipe_kamar_id[]">
+                                        <?php foreach ($TipeKamar as $key): ?>
+                                            <option value="<?= $key->id ?>" ><?= $key->nama_tipe_foto ?></option>
+                                        <?php endforeach ?>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>`
                     // console.log(html)
@@ -120,6 +145,36 @@ $(document).ready(function() {
                       title: file.name + " | Click to remove"
                     }).insertAfter("#files").click(function(){$(this).remove();});*/
 
+                });
+                fileReader.readAsDataURL(f);
+            }
+            // console.log(files);
+        });
+    } else {
+        alert("Your browser doesn't support to File API")
+    }
+
+    if (window.File && window.FileList && window.FileReader) {
+        $("#files_1").on("change", function(e) {
+            var files = e.target.files,
+            filesLength = files.length;
+            // console.log(files);
+            for (var i = 0; i < filesLength; i++) {
+                var f = files[i]
+                var fileReader = new FileReader();
+                fileReader.onload = (function(e) {
+                    var file = e.target;
+                    var html = `<div class="col-2" id="remove-image">
+                        <div class="img">
+                            <img src="${file.result}" style="width: 100px; height: 100px;">
+                        </div>
+                        <br>
+                        <div class="float-left">
+                            <button type="button" id="remove" class="btn btn-sm btn-danger">Remove</button>
+                        </div>
+                    </div>`
+                    // console.log(html)
+                    $('#result-image-1').append(html)
                 });
                 fileReader.readAsDataURL(f);
             }
@@ -160,6 +215,28 @@ if (filesCount === 1) {
   $textContainer.text(fileName);
 } else {
   // otherwise show number of files
+  $textContainer.text(filesCount + ' files selected');
+}
+});
+
+/* Foto Kamar */
+var $fileInput = $('.file_kamar');
+var $droparea = $('.file-drop-kamar');
+$fileInput.on('dragenter focus click', function() {
+    $droparea.addClass('is-active');
+});
+
+$fileInput.on('dragleave blur drop', function() {
+    $droparea.removeClass('is-active');
+});
+
+$fileInput.on('change', function() {
+var filesCount = $(this)[0].files.length;
+var $textContainer = $(this).prev();
+if (filesCount === 1) {
+  var fileName = $(this).val().split('\\').pop();
+  $textContainer.text(fileName);
+} else {
   $textContainer.text(filesCount + ' files selected');
 }
 });
