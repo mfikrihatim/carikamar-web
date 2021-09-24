@@ -19,6 +19,85 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Theme style -->
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/dist/css/adminlte.min.css'); ?>">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+        /*Profile Card 1*/
+    .profile-card-1 {
+      font-family: 'Open Sans', Arial, sans-serif;
+      position: relative;
+      float: left;
+      overflow: hidden;
+      width: 100%;
+      color: #ffffff;
+      text-align: center;
+      height:368px;
+      border:none;
+    }
+    .profile-card-1 .background {
+       width:100%;
+       vertical-align: top;
+       /*opacity: 0.9;*/
+       /*-webkit-filter: blur(5px);*/
+       filter: blur(1px);
+       -webkit-transform: scale(1.8);
+       position: absolute;
+       /*transform: scale(2.8);*/
+    }
+    .profile-card-1 .card-content {
+      width: 100%;
+      padding: 15px 25px;
+      position: absolute;
+      background: rgba(0,0,0,0.4);
+      left: 0;
+      top: 50%;
+    }
+    .profile-card-1 .profile {
+      border-radius: 50%;
+      position: absolute;
+      bottom: 50%;
+      left: 50%;
+      max-width: 100px;
+      opacity: 1;
+      box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+      border: 2px solid rgba(255, 255, 255, 1);
+      -webkit-transform: translate(-50%, 0%);
+      transform: translate(-50%, 0%);
+    }
+    .profile-card-1 h2 {
+      margin: 0 0 5px;
+      font-weight: 600;
+      font-size:25px;
+    }
+    .profile-card-1 h2 small {
+      display: block;
+      font-size: 15px;
+      margin-top:10px;
+    }
+    .profile-card-1 i {
+      display: inline-block;
+        font-size: 16px;
+        color: #ffffff;
+        text-align: center;
+        border: 1px solid #fff;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 50%;
+        margin:0 5px;
+    }
+    .profile-card-1 .icon-block{
+        float:left;
+        width:100%;
+        margin-top:15px;
+    }
+    .profile-card-1 .icon-block a{
+        text-decoration:none;
+    }
+    .profile-card-1 i:hover {
+      background-color:#fff;
+      color:#2E3434;
+      text-decoration:none;
+    }
+    </style>
 
 </head>
 
@@ -162,22 +241,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             }
                         ?>
                         <div class="col-md-4">
-                            <div class="card">
-                                 <img class="card-img" src="<?= $get_image_parse ?>" alt="<?php echo $ReadDS->nama_properti; ?>" style="width: 100%; height: 200px;">
-                                <div class="card-img-overlay text-white d-flex flex-column justify-content-center">
+                            <!-- <div class="card profile-card-1">
+                                <img src="<?= $get_image_parse ?>" alt="profile-sample1" class="background"/>
+                                <div class="card-content">
+                                    <h2><?php echo $ReadDS->nama_properti; ?></h3>
                                 </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <h4 class="card-title"><?php echo $ReadDS->nama_properti; ?></h4>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <a href="<?php echo site_url('General_information/index/').$ReadDS->id; ?>" class="btn btn-warning" >Informasi Belum Lengkap</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div class="card card-primary">
+                            </div> -->
+                            <div class="card card-primary">
                                 <div class="card-header">
                                     <h3 class="card-title"><?php echo $ReadDS->nama_properti; ?></h3>
                                     <div class="card-tools">
@@ -194,7 +264,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         </div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                         <?php
                             }
