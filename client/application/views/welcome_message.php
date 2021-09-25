@@ -135,7 +135,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                                                 echo 'active';
                                                                             } ?>">
                                         General Information
-                                        <span class="badge badge-success">8</span>
+                                        <?php 
+                                            $countSidebarGeneralInformation = $this->db->query("SELECT COUNT(*) as ttl_count FROM informasi_umum_detail WHERE id = '$CurrentUrl'")->row_object();
+                                        ?>
+                                        <?= !empty($countSidebarGeneralInformation) ? $countSidebarGeneralInformation->ttl_count != 0 ? "<span class='badge badge-success'>".$countSidebarGeneralInformation->ttl_count."</span>" : "<span class='badge badge-danger'>0</span>" : "<span class='badge badge-danger'>0</span>" ?>
                                     </div>
                                 </a>
                                 <a id="Property_detail" href="<?php echo site_url('Property_detail/index/').$CurrentUrl ?>"
@@ -144,7 +147,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                                                                                     } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Property Detail
-                                        <span class="badge badge-info">8</span>
+                                        <?php 
+                                            $countSidebarPropertyDetail = $this->db->query("SELECT COUNT(*) as ttl_count FROM properti_detail WHERE id = '$CurrentUrl'")->row_object();
+                                        ?>
+                                        <?= !empty($countSidebarPropertyDetail) ? $countSidebarPropertyDetail->ttl_count != 0 ? "<span class='badge badge-success'>".$countSidebarPropertyDetail->ttl_count."</span>" : "<span class='badge badge-danger'>0</span>" : "<span class='badge badge-danger'>0</span>" ?>
                                     </div>
                                 </a>
                                 <a href="<?php echo site_url('Property_facilities/index/').$CurrentUrl ?>"
@@ -153,7 +159,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                                                                                         } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Property Facilities
-                                        <span class="badge badge-info">8</span>
+                                        <?php 
+                                            $countPropertiFasilitas = $this->db->query("SELECT COUNT(*) as ttl_count FROM fasilitas_properti WHERE informasi_umum_detail_id = '$CurrentUrl'")->row_object();
+                                        ?>
+                                        <?= !empty($countPropertiFasilitas) ? $countPropertiFasilitas->ttl_count != 0 ? "<span class='badge badge-success'>".$countPropertiFasilitas->ttl_count."</span>" : "<span class='badge badge-danger'>0</span>" : "<span class='badge badge-danger'>0</span>" ?> 
                                     </div>
                                 </a>
                                 <a href="<?php echo site_url('Room/index/').$CurrentUrl ?>" class="c-sidebar-item <?php if ($this->uri->segment(1) == "Room") {
@@ -161,28 +170,40 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                                                                                         } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Room
-                                        <span class="badge badge-info">8</span>
+                                        <?php 
+                                            $countRoom = $this->db->query("SELECT COUNT(*) as ttl_count FROM tipe_kamar WHERE informasi_umum_detail_id = '$CurrentUrl'")->row_object();
+                                        ?>
+                                        <?= !empty($countRoom) ? $countRoom->ttl_count != 0 ? "<span class='badge badge-success'>".$countRoom->ttl_count."</span>" : "<span class='badge badge-danger'>0</span>" : "<span class='badge badge-danger'>0</span>" ?>
                                     </div>
                                 </a>
                                 <a href="<?php echo site_url('Room_facilities/index/').$CurrentUrl ?>"
                                     class="c-sidebar-item <?php if ($this->uri->segment(1) == "Room_facilities") { echo 'active'; } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Room Facilities
-                                        <span class="badge badge-info">8</span>
+                                        <?php 
+                                            $countFasilitasKamar = $this->db->query("SELECT COUNT(*) as ttl_count FROM fasilitas_kamar WHERE informasi_umum_detail_id = '$CurrentUrl'")->row_object();
+                                        ?>
+                                        <?= !empty($countFasilitasKamar) ? $countFasilitasKamar->ttl_count != 0 ? "<span class='badge badge-success'>".$countFasilitasKamar->ttl_count."</span>" : "<span class='badge badge-danger'>0</span>" : "<span class='badge badge-danger'>0</span>" ?>
                                     </div>
                                 </a>
                                 <a href="<?php echo site_url('Photos/index/').$CurrentUrl ?>"
                                     class="c-sidebar-item <?php if ($this->uri->segment(1) == "Photos") { echo 'active'; } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Photos
-                                        <span class="badge badge-info">8</span>
+                                        <?php 
+                                            $countPhotosSidebar = $this->db->query("SELECT COUNT(*) as ttl_count FROM fasilitas_properti WHERE informasi_umum_detail_id = '$CurrentUrl'")->row_object();
+                                        ?>
+                                        <?= !empty($countPhotosSidebar) ? $countPhotosSidebar->ttl_count != 0 ? "<span class='badge badge-success'>".$countPhotosSidebar->ttl_count."</span>" : "<span class='badge badge-danger'>0</span>" : "<span class='badge badge-danger'>0</span>" ?>
                                     </div>
                                 </a>
                                 <a href="<?php echo site_url('Payment_Information/index/').$CurrentUrl ?>"
                                     class="c-sidebar-item <?php if ($this->uri->segment(1) == "Payment_Information") { echo 'active'; } ?>">
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Payment Information
-                                        <span class="badge badge-info">8</span>
+                                        <?php 
+                                            $countPaymentInfo = $this->db->query("SELECT COUNT(*) as ttl_count FROM informasi_pembayaran WHERE informasi_umum_detail_id = '$CurrentUrl'")->row_object();
+                                        ?>
+                                        <?= !empty($countPaymentInfo) ? $countPaymentInfo->ttl_count != 0 ? "<span class='badge badge-success'>".$countPaymentInfo->ttl_count."</span>" : "<span class='badge badge-danger'>0</span>" : "<span class='badge badge-danger'>0</span>" ?> 
                                     </div>
                                 </a>
                                 <a href="#" class="c-sidebar-item dsb">
