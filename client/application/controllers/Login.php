@@ -29,6 +29,7 @@ class Login extends CI_Controller {
 				]);
 				redirect(site_url('Welcome'));
 			} else {
+				$this->session->set_flashdata(['code' => 400, 'msg' => 'error', 'pesan' => 'Opps!, Email Dan Passowrd Salah']);
 				$this->load->library('session');
 				$this->session->unset_userdata('Login');
 				redirect(site_url('Login'));
