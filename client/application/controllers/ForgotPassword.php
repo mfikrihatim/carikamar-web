@@ -75,14 +75,42 @@ class ForgotPassword extends CI_Controller
             $check_token = $this->MSudi->GetDataWhere('token_forgot_password', 'token', $token)->row_object();
             
             if (!empty($check_token)) {
-                
-                $this->load->view('VForgotPasswordToken', $token);
+                $add['token'] = $check_token->token;
+                $this->load->view('VForgotPasswordToken', $add);
             }else{
 
                 echo "token_tidak_ditemukan";
             }
         }else{
             echo "paremeter salah";
+        }
+    }
+
+    public function ViewForgotPasswordTokenProcess($token)
+    {
+        if ($this->input->post() || $token) {
+            $password_new = $this->input->post('password_new');
+            $password_confirmation = $this->input->post('password_confirmation');
+
+            if ($password_new != $password_confirmation) {
+                
+                echo "password tidak cocok";
+            }else{
+
+                $tokenPass = $this->MSudi->GetDataWhere('token_forgot_password', 'token', $token)->row_object();
+                $userEmail = $this->MSudi->GetDataWhere('master_user', 'email', $tokenPass->email)->row_object();
+
+                if (!empty($userEmail)) {
+                    $data_update_pw = ['password' => $password_new];
+                    $this->MSudi->UpdateData('master_user', 'email', $userEmail->email, $data_update_pw);
+                    $this->session->set_flashdata(['code' => 400, 'msg' => 'success', 'pesan' => 'Berhasil Reset Password, Silahkan Login !']);
+                    return redirect(site_url('Login'));
+                }else{
+                    echo "gagal email tidak di temukan";
+                }
+            }
+        }else{
+            echo "internal error";
         }
     }
 }

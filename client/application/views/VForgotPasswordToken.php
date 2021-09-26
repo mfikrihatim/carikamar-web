@@ -40,7 +40,8 @@
                         <p class="" style="font-weight: 500; font-size: 15px;">It's okay. It's one of those days. Just enter your email below and you'll receive the instruction to reset your password.</p>
                     </div>
                 </div>
-                <form action="<?= site_url('ForgotPassword/ProcessCheckEmail') ?>" method="post">
+
+                <form action="<?= site_url('ForgotPassword/ViewForgotPasswordTokenProcess/') . $token ?>" method="post">
                     <label>Your Password New</label>
                     <div class="input-group mb-3">
                         <input type="password" name="password_new" class="form-control" placeholder="password">

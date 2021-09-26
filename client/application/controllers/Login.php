@@ -20,14 +20,21 @@ class Login extends CI_Controller {
 			$password = $this->input->post('password');
 			$user = $this->MLogin->getUserByid($email);
 			if ($user) {
-				$this->session->set_userdata([
-					'id_user' => $user->id,
-					'email'   => $user->email,
-					'nama'    => $user->nama,
-					'Login'   => 'Login',
-					'OnLogin' => 'OnLogin'
-				]);
-				redirect(site_url('Welcome'));
+				if ($user->password == $password) {
+					$this->session->set_userdata([
+						'id_user' => $user->id,
+						'email'   => $user->email,
+						'nama'    => $user->nama,
+						'Login'   => 'Login',
+						'OnLogin' => 'OnLogin'
+					]);
+					redirect(site_url('Welcome'));	
+				}else{
+					$this->session->set_flashdata(['code' => 400, 'msg' => 'error', 'pesan' => 'Opps!, Email Dan Passowrd Salah']);
+					$this->load->library('session');
+					$this->session->unset_userdata('Login');
+					redirect(site_url('Login'));
+				}
 			} else {
 				$this->session->set_flashdata(['code' => 400, 'msg' => 'error', 'pesan' => 'Opps!, Email Dan Passowrd Salah']);
 				$this->load->library('session');
