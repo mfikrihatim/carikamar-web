@@ -36,11 +36,8 @@
                 <br><br>
                 <div class="row">
                     <div class="col-md-12">
-                        <p class="" style="font-weight: 500; font-size: 20px;">Selamat Datang Kembali!</p>
-                        <p class="" style="font-weight: 500; font-size: 15px;">Masuk untuk mengelola akomodasi Anda mulai dari memeriksa reservasi hingga mengelola ketersediaan kamar!!</p>
-                    </div>
-                    <div class="col-md-12">
-                        
+                        <p class="" style="font-weight: 500; font-size: 20px;">Lupa Password ?</p>
+                        <p class="" style="font-weight: 500; font-size: 15px;">It's okay. It's one of those days. Just enter your email below and you'll receive the instruction to reset your password.</p>
                     </div>
                 </div>
                 <?php if ($this->session->flashdata('msg')): ?>
@@ -50,7 +47,7 @@
                     </div>
                     <br>
                 <?php endif ?>
-                <form action="" method="post">
+                <form action="<?= site_url('ForgotPassword/ProcessCheckEmail') ?>" method="post">
                     <label>Your email address</label>
                     <div class="input-group mb-3">
                         <input type="email" name="email" class="form-control" placeholder="Email">
@@ -60,39 +57,15 @@
                             </div>
                         </div>
                     </div>
-                    <label>Password</label>
-                    <div class="input-group mb-3">
-                        <input type="password" name="password"  class="form-control" placeholder="Password">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 15px;">
-                        <div class="col-md-6">
-                            <p class="mb-1">
-                                <a href="<?= site_url('ForgotPassword') ?>">Lupa Password ?</a>
-                            </p>
-                        </div>
-                    </div>
                     <div class="row mt-1">
                         <!-- /.col -->
                         <div class="col-lg-12">
-                             <button type="submit" name="login" class="btn btn-primary btn-block">Login</button>
+                             <button type="submit" name="login" class="btn btn-primary btn-block">Send Email</button>
                             <!-- <button type="submit" class="btn btn-primary btn-block">Sign In</button> -->
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
-                <div class="row" style="margin-top: 30px;">
-                    <div class="col-md-12">
-                        <p class="mb-1">
-                            <span sty>Not yet a partner ? </span><a href="<?php echo site_url('Login/register'); ?>" class="text-center">Buat Akun Baru</a>
-                        </p>
-                    </div>
-                </div>
-
                 <!-- <div class="social-auth-links text-center mt-2 mb-3">
                     <a href="#" class="btn btn-block btn-primary">
                         <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
@@ -132,6 +105,4 @@
             })
         </script>
     <?php } ?>
-</body>
-
 </html>

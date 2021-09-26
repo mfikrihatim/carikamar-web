@@ -191,7 +191,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <div class="card-body pt-3 pb-3 mr-1">
                                         Photos
                                         <?php 
-                                            $countPhotosSidebar = $this->db->query("SELECT COUNT(*) as ttl_count FROM fasilitas_properti WHERE informasi_umum_detail_id = '$CurrentUrl'")->row_object();
+                                            $countPhotosSidebar = $this->db->query("SELECT COUNT(*) as ttl_count FROM foto_properti WHERE informasi_umum_detail_id = '$CurrentUrl'")->row_object();
                                         ?>
                                         <?= !empty($countPhotosSidebar) ? $countPhotosSidebar->ttl_count != 0 ? "<span class='badge badge-success'>".$countPhotosSidebar->ttl_count."</span>" : "<span class='badge badge-danger'>0</span>" : "<span class='badge badge-danger'>0</span>" ?>
                                     </div>
