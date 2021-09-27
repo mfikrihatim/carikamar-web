@@ -121,7 +121,7 @@ class Room extends CI_Controller
 			
 			// print_r($add['flag_included_breakfast'][$index]);
 
-			if($tipe_kamar_id == null || $tipe_kamar_id == ''){
+			if($tipe_kamar_id[$index] == null || $tipe_kamar_id[$index] == ''){
 				$this->MSudi->AddData('tipe_kamar', $insert);
 			}else{
 			   $this->MSudi->UpdateData('tipe_kamar', 'id', $add['id'][$index], $insert);       
