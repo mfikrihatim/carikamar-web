@@ -39,7 +39,7 @@ class ForgotPassword extends CI_Controller
             $email_input = $this->input->post('email');
             $check_email = $this->MSudi->GetDataWhere("master_user", 'email', $email_input)->row_object();
             if (!empty($check_email)) {
-                $current_session = $this->session->userdata('id_user');
+                $current_session = $check_email->id;
                 $check_token_email = $this->MSudi->query_manual("SELECT * FROM token_forgot_password WHERE email = '$email_input'")->row_object();
 
                 $this->IniSendEmail();

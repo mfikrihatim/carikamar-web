@@ -218,6 +218,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                 </div>
                             </div>
+                            <div class="card">
+                                <a href="" class="c-sidebar-item" readonly>
+                                    <div class="card-body pt-3 pb-3">
+                                        <div class="c-sidebar-body">1. Contract Agreement</div>
+                                    </div>
+                                </a>
+                                <a href="<?php echo site_url('Contract/index/').$CurrentUrl ?>" class="c-sidebar-item ">
+                                    <div class="card-body pt-3 pb-3 mr-1 <?php if ($this->uri->segment(1) == "Contract") {
+                                                                                echo 'active';
+                                                                            } ?>">
+                                        Review Contract
+                                        <span class='badge badge-danger'>0</span>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                         <?php
                         $this->load->view($content);

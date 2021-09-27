@@ -60,9 +60,6 @@ class Login extends CI_Controller {
 		$add['email'] = $this->input->post('email');
 		$add['password'] = $this->input->post('password');
 		$add['password'] = $this->input->post('retype_password');
-		if ($_POST['password'] == $_POST['retype_password']) {
-
-		}
 		$add['created_by'] = $this->input->post('nama');
 		$add['created_date'] = date("Y-m-d H:i:s");
 		$add['updated_by'] = null;
@@ -73,11 +70,13 @@ class Login extends CI_Controller {
 		$add['role_id'] = 1;
 		if ($_POST['password'] == $_POST['retype_password']) {
 			$this->MSudi->AddData('master_user', $add);
-		redirect(site_url('Login/register'));
+			$this->session->set_flashdata(['code' => 400, 'msg' => 'success', 'pesan' => 'Yeay, Registrasi Succcess']);
+			redirect(site_url('Login/register'));
+		} else {
+			$this->session->set_flashdata(['code' => 400, 'msg' => 'error', 'pesan' => 'Opps!, Password yang Anda Masukan Tidak Sama']);
+			redirect(site_url('Login/register'));
+			// echo "<script>alert('Password yang Anda Masukan Tidak Sama');history.go(-1)</script>";
 		}
-		else {
-			echo "<script>alert('Password yang Anda Masukan Tidak Sama');history.go(-1)</script>";
-			}
 	
 	
 	}

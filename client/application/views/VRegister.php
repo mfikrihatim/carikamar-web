@@ -21,12 +21,31 @@
 <body class="hold-transition register-page" style="background-color: #19599e">
     <div class="register-box">
         <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="../AdminLTE-3.1.0/index2.html" class="h1"><b>Cari</b>KAMAR</a>
-            </div>
             <div class="card-body">
-                <p class="login-box-msg">Registrasi</p>
-
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-md-12">
+                        <div class="text-center">
+                            <a href="<?php echo base_url('assets/AdminLTE-3.1.0/index2.html'); ?>" class="h1"><b>CARIKAMAR</a>
+                        </div>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="" style="font-weight: 500; font-size: 20px;">Ayo Daftarkan Akomodasi !</p>
+                        <p class="" style="font-weight: 500; font-size: 15px;">Daftar untuk mengelola akomodasi Anda mulai dari memeriksa reservasi hingga mengelola ketersediaan kamar!!</p>
+                    </div>
+                    <div class="col-md-12">
+                        
+                    </div>
+                </div>
+                <?php if ($this->session->flashdata('msg')): ?>
+                    <br>
+                    <div class="alert <?= $this->session->flashdata('msg') == 'error' ? "alert-warning" : "alert-primary" ?>" role="alert">
+                      <?= $this->session->flashdata('pesan') ?>
+                    </div>
+                    <br>
+                <?php endif ?>
                 <form action="<?php echo site_url('Login/buat_akun_baru'); ?>" method="post" enctype="multipart/form-data">
                     <div class="input-group mb-3">
                         <input type="text" name="nama" class="form-control" placeholder="Nama" />
@@ -60,32 +79,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <!-- <div class="col-8">
-                <div class="icheck-primary">
-                  <input type="checkbox" id="agreeTerms" name="terms" value="agree" />
-                  <label for="agreeTerms"> I agree to the <a href="#">terms</a> </label>
-                </div>
-              </div> -->
+
+                    <div class="row mt-1">
                         <!-- /.col -->
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
+                        <div class="col-lg-12">
+                             <button type="submit" name="login" class="btn btn-primary btn-block">Daftar Sekarang</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
-
-                <!-- <div class="social-auth-links text-center">
-            <a href="#" class="btn btn-block btn-primary">
-              <i class="fab fa-facebook mr-2"></i>
-              Sign up using Facebook
-            </a>
-            <a href="#" class="btn btn-block btn-danger">
-              <i class="fab fa-google-plus mr-2"></i>
-              Sign up using Google+
-            </a>
-          </div> -->
-
+                <br>
                 <a href="<?php echo site_url('Login/index'); ?>" class="text-center">I already have a membership</a>
             </div>
             <!-- /.form-box -->
@@ -101,17 +104,31 @@
     <!-- AdminLTE App -->
     <script src="<?php echo base_url('AdminLTE-3.1.0/dist/js/adminlte.min.js'); ?>"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script>
-	$(document).ready(function(){
-	   	$('#submit').click(function() {
-			var pass = $('#pass').val();
-			var pass2 = $('#pass2').val();						
-			if (pass != pass2) {				
-				alert("password tidak sama!");
-			}
-		});
-	});
-</script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+    <?php if ($this->session->flashdata('msg')) { ?>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                swal({
+                    title: "<?= strtoupper($this->session->flashdata('msg')) ?>",
+                    text: "<?= $this->session->flashdata('pesan') ?>",
+                    type: "<?= $this->session->flashdata('msg') ?>",
+                    timer: 5000,
+                })
+            })
+        </script>
+    <?php } ?>
+    <script>
+    	$(document).ready(function(){
+    	   	$('#submit').click(function() {
+    			var pass = $('#pass').val();
+    			var pass2 = $('#pass2').val();						
+    			if (pass != pass2) {				
+    				alert("password tidak sama!");
+    			}
+    		});
+    	});
+    </script>
 </body>
 
 </html>
