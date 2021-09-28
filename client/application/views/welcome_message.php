@@ -25,6 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="<?php echo base_url('assets/AdminLTE-3.1.0/dist/css/adminlte.min.css'); ?>">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel="shortcut icon" href="<?php echo base_url('img/500px.png'); ?>">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/css/intlTelInput.css" rel="stylesheet" />
 </head>
 
 <body class="hold-transition layout-top-nav">
@@ -224,6 +225,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                         <div class="c-sidebar-body">1. Contract Agreement</div>
                                     </div>
                                 </a>
+                                <a href="<?php echo site_url('Contract/SignatoryInformation/').$CurrentUrl ?>" class="c-sidebar-item ">
+                                    <div class="card-body pt-3 pb-3 mr-1 <?php if ($this->uri->segment(1) == "Contract") {
+                                                                                echo 'active';
+                                                                            } ?>">
+                                        Contract Signatory Information
+                                        <span class='badge badge-danger'>0</span>
+                                    </div>
+                                </a>
                                 <a href="<?php echo site_url('Contract/index/').$CurrentUrl ?>" class="c-sidebar-item ">
                                     <div class="card-body pt-3 pb-3 mr-1 <?php if ($this->uri->segment(1) == "Contract") {
                                                                                 echo 'active';
@@ -325,6 +334,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- <script src="https://maps.google.com/maps/api/js?key=AIzaSyAC-c39BanoTJLSBIS--wYX_4zlc4-IFYk"></script> -->
     <script src="https://maps.google.com/maps/api/js?key=AIzaSyC87fftpSPt2ttOpm3kvzwdfyOmZX9Mu9A"></script>
     <!-- <script src="https://maps.google.com/maps/api/js?key=AIzaSyD07ZX25HHNAPLJMp0Kfld4BDu9D1RTltc"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.13/js/intlTelInput.min.js" integrity="sha512-QMUqEPmhXq1f3DnAVdXvu40C8nbTgxvBGvNruP6RFacy3zWKbNTmx7rdQVVM2gkd2auCWhlPYtcW2tHwzso4SA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.7/js/intlTelInput.js"></script>
     <script>
     function duplicateContact() {
         $("#duplicate-contact").clone().appendTo("#row-contact");
@@ -349,7 +361,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
       var $contact = $('#main-contact').clone();
       $('#row-contact').html($contact);
     });
-    */
+    */  
+    </script>
+    <script type="text/javascript">
+        $("#phone").intlTelInput({
+          initialCountry: "us",
+          geoIpLookup: function(success, failure) {
+            $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+                console.log(resp.country)
+              var countryCode = (resp && resp.country) ? resp.country : "us";
+              success(countryCode);
+            });
+          },
+          utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/js/utils.js"
+        });
     </script>
 
 </body>
