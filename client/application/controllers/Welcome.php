@@ -10,7 +10,7 @@ class Welcome extends CI_Controller
         $this->load->model('MSudi');
     }
 	public function index(){
-		$config['base_url'] = 'http://localhost/carikamar-web/client/index.php/Welcome/index/';
+		$config['base_url'] =  'https://caka.extranet.carikamar.id/client/index.php/Welcome/index/';
 		$config['total_rows'] = 10;
 		$config['per_page'] = 3;
 		// ini adalah styling utk pagination yah
