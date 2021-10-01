@@ -92,8 +92,9 @@ class Photos extends CI_Controller
                     $filename = "http://localhost/carikamar-web/uploads/foto_properti/" . $gambar;*/
                     $dynamic_url = site_url();
                     $arr = explode('/', $dynamic_url);
-                    $url = "https://".$_SERVER['SERVER_NAME']."/".$arr[count($arr) - 3]."/uploads/foto_properti/";
-                    $filename = $url.$gambar;
+                    // $url_local = "https://".$_SERVER['SERVER_NAME']."/".$arr[count($arr) - 3]."/uploads/foto_properti/";
+                    $url_hosting = "https://".$_SERVER['SERVER_NAME']."/uploads/foto_properti/";
+                    $filename = $url_hosting.$gambar;
                     
                     $replcate = str_replace("index.php/", "", $filename);
                     $data[]   = $replcate;

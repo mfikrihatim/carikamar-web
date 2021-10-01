@@ -121,6 +121,7 @@ class Room extends CI_Controller
 			
 			// print_r($add['flag_included_breakfast'][$index]);
 
+			// Jika tipe kamar id nya kosong maka akan insert kamar baru
 			if($tipe_kamar_id[$index] == null || $tipe_kamar_id[$index] == ''){
 				$this->MSudi->AddData('tipe_kamar', $insert);
 			}else{
