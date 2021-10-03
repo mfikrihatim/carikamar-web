@@ -37,10 +37,17 @@ class Contract extends CI_Controller
             
             $data['CurrentUrl']   = $id_general_information;
             $current_session      = $this->session->userdata('id_user');
+            $data['MasterRoleKontrak'] = $this->MSudi->GetData('master_role_kontrak');
             $data['check_review_contract'] = $this->MSudi->getWhereGeneralInformation($current_session,$id_general_information);
             $data['check_users'] = $this->MSudi->GetDataWhere('master_user', 'id', $current_session)->row_object();
             $data['MasterPerjanjianKontrak'] = $this->MSudi->GetData('master_perjanjian_kontrak');
             $data['InformasiPenjanjianKontrak'] = $this->MSudi->GetDataWhere('informasi_penandatangan_kontrak', 'informasi_umum_detail_id', $id_general_information)->row_object();
+
+            /* Role Kontak */
+            $data['role_kontak'] = '';
+            foreach ($data['MasterRoleKontrak'] as $key) {
+                $data['role_kontak'] .= !empty($data['InformasiPenjanjianKontrak']) ? $data['InformasiPenjanjianKontrak']->role_kontrak_id == $key->id ? $key->nama_role_kontrak : "" : "";
+            }
 
         }else{
             $data['CurrentUrl']   = null;
@@ -54,8 +61,10 @@ class Contract extends CI_Controller
     {
         if ($this->input->post()) {
             $informasi_umum_detail_id = $this->input->post('informasi_umum_detail_id');
+            $id_current = $this->input->post('id');
+            // print_r($id_current); die;
             $insert = array(
-                'informasi_umum_detail_id' => $this->input->post('informasi_umum_detail_id'), 
+                'informasi_umum_detail_id' => $this->input->post('id'), 
                 'nama_lengkap' => $this->input->post('nama_lengkap'), 
                 'role_kontrak_id' => $this->input->post('role_kontrak_id'), 
                 'email' => $this->input->post('email'), 
@@ -66,15 +75,16 @@ class Contract extends CI_Controller
                 'created_date' => date('Y-m-d H:s:i'), 
             );
 
+            // print_r($insert); die;
             if ($informasi_umum_detail_id != NULL ||  $informasi_umum_detail_id != "") {
                 # code...
                 $this->MSudi->UpdateData('informasi_penandatangan_kontrak', 'informasi_umum_detail_id', $informasi_umum_detail_id, $insert);       
-                return redirect(site_url('Contract/SignatoryInformation/'.$informasi_umum_detail_id));
+                return redirect(site_url('Contract/SignatoryInformation/'.$id_current));
             
             }else{
 
                 $this->MSudi->AddData('informasi_penandatangan_kontrak', $insert);
-                return redirect(site_url('Contract/SignatoryInformation/'.$informasi_umum_detail_id));
+                return redirect(site_url('Contract/SignatoryInformation/'.$id_current));
             }
 
             

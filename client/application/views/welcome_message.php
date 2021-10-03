@@ -226,7 +226,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                 </a>
                                 <a href="<?php echo site_url('Contract/SignatoryInformation/').$CurrentUrl ?>" class="c-sidebar-item ">
-                                    <div class="card-body pt-3 pb-3 mr-1 <?php if ($this->uri->segment(1) == "Contract") {
+                                    <div class="card-body pt-3 pb-3 mr-1 <?php if ($this->uri->segment(2) == "SignatoryInformation") {
                                                                                 echo 'active';
                                                                             } ?>">
                                         Contract Signatory Information
@@ -234,7 +234,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     </div>
                                 </a>
                                 <a href="<?php echo site_url('Contract/index/').$CurrentUrl ?>" class="c-sidebar-item ">
-                                    <div class="card-body pt-3 pb-3 mr-1 <?php if ($this->uri->segment(1) == "Contract") {
+                                    <div class="card-body pt-3 pb-3 mr-1 <?php if ($this->uri->segment(2) == "index") {
                                                                                 echo 'active';
                                                                             } ?>">
                                         Review Contract

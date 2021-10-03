@@ -93,7 +93,7 @@ class Photos extends CI_Controller
                     $dynamic_url = site_url();
                     $arr = explode('/', $dynamic_url);
                     // $url_local = "https://".$_SERVER['SERVER_NAME']."/".$arr[count($arr) - 3]."/uploads/foto_properti/";
-                    $url_hosting = "https://".$_SERVER['SERVER_NAME']."/uploads/foto_properti/";
+                    $url_hosting = "https://".$_SERVER['SERVER_NAME']."/uploads/foto_properti/"; //url hosting
                     $filename = $url_hosting.$gambar;
                     
                     $replcate = str_replace("index.php/", "", $filename);

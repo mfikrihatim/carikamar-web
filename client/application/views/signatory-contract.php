@@ -26,7 +26,7 @@
                 </div> -->
                 <form action="<?= site_url('Contract/PendatangananKontrakProses') ?>" method="post">
                     <div class="card-body">
-                        <!-- <input type="hidden" name="informasi_umum_detail_id" value="<?= !empty($CurrentUrl) ? $CurrentUrl : $CurrentUrl ?>"> -->
+                        <input type="hidden" name="id" value="<?= !empty($CurrentUrl) ? $CurrentUrl : $CurrentUrl ?>">
                         <input type="hidden" name="informasi_umum_detail_id" value="<?= !empty($InformasiPenjanjianKontrak) ? $InformasiPenjanjianKontrak->informasi_umum_detail_id : "" ?>">
                         <div class="row">
                             <div class="col-md-6">
@@ -34,7 +34,7 @@
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="nama_lengkap" class="form-control" value="<?= $check_users->nama ?>">
+                                    <input type="text" name="nama_lengkap" class="form-control" value="<?= !empty($InformasiPenjanjianKontrak) ? $InformasiPenjanjianKontrak->nama_lengkap : ""  ?>">
                                 </div>
                             </div>      
                             <div class="col-md-6">
@@ -44,7 +44,7 @@
                                 <div class="form-group">
                                     <select class="form-control" name="role_kontrak_id" required="">
                                         <?php foreach ($MasterRoleKontrak as $key): ?>
-                                            <option value="<?= $key->id ?>"><?= $key->nama_role_kontrak ?></option>
+                                            <option <?= !empty($InformasiPenjanjianKontrak) ? $InformasiPenjanjianKontrak->role_kontrak_id == $key->id ? "selected" : "" : ""  ?> value="<?= $key->id ?>"><?= $key->nama_role_kontrak ?></option>
                                         <?php endforeach ?>
                                     </select>
                                 </div>
@@ -54,7 +54,7 @@
                             </div> 
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control" value="<?= $check_users->email ?>">
+                                    <input type="email" name="email" class="form-control" value="<?= !empty($InformasiPenjanjianKontrak) ? $InformasiPenjanjianKontrak->email : "" ?>">
                                 </div>
                             </div>      
                             <div class="col-md-6">
